@@ -523,24 +523,35 @@ InstallMethod( RaysInFaces,
                [ IsCone ],
                
   function( cone )
-  local external_cone, list_of_faces, generating_rays, list, current_cone, current_list, current_ray_generators, i;  
+  local external_cone, list_of_faces, generating_rays, list, current_cone, current_list, current_ray_generators, i,j;  
   
     external_cone := Cdd_H_Rep ( ExternalCddCone ( cone ) );
     
+#     Display( "external_cone " ); Display( external_cone  );
+    
     list_of_faces:= Cdd_Faces( external_cone );
+    
+#     Display( "list_of_faces "); Display( list_of_faces );
     
     generating_rays:= RayGenerators( cone );
     
+#     Display( "generating_rays "); Display( generating_rays );
+    
     list:= [ ];
     
+#     Display( "list is  "); Display( list );
     for i in list_of_faces do
     
         if i[ 1 ]<>0 then 
-    
-            current_cone := Cdd_ExtendLinearity( external_cone, i[2] );
-      
+          
+            current_cone := Cdd_ExtendLinearity( external_cone, i[ 2 ] );
+       
+#             Display( "current_cone\n"); Display( current_cone );
+       
             current_ray_generators := Cdd_GeneratingRays( current_cone ) ;
       
+#             Display( "current_ray_generators"); Display( current_ray_generators );
+            
             current_list:= List( [1..Length( generating_rays )], function(j)
                                                            
                                                                   if generating_rays[j] in current_ray_generators then
@@ -554,9 +565,13 @@ InstallMethod( RaysInFaces,
                                                                   fi;
                                                            
                                                                   end );
+                                                                 
+#             Display( "current_list"); Display( current_list );
+           
                                                            
             Add( list, current_list );
       
+#             Display( "list"); Display( list );
       fi;
       
    od;
