@@ -435,6 +435,8 @@ InstallMethod( Dimension,
     
     if Length( RayGenerators( cone ) ) > 0 then
      
+       Display( [ 4,5,6 ] );
+       
        return RankMat( RayGenerators( cone ) );
       
     else 

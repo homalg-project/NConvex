@@ -99,6 +99,10 @@ DeclareAttribute( "LinearSubspaceGenerators", IsCone );
 
 DeclareAttribute( "LinealitySpaceGenerators", IsCone );
 
+DeclareAttribute( "ExternalCddCone",  IsCone  );
+
+DeclareAttribute( "ExternalNmzCone",  IsCone  );
+
 # AmbientSpace is somewhere declared !!
 # DeclareAttribute( "AmbientSpaceDimension", IsCone );
 
@@ -124,10 +128,6 @@ DeclareOperation( "RayGeneratorContainedInRelativeInterior",
                   
 DeclareOperation( "IntersectionOfConelist",
                   [ IsList ] );
-
-DeclareOperation( "ExternalCddCone", [ IsCone ] );
-
-DeclareOperation( "ExternalNmzCone", [ IsCone ] );
 
 # DeclareOperation( "\*",
 #                    [ IsCone, IsCone ] );
