@@ -50,7 +50,99 @@ BindGlobal( "TheTypeConvexPolytope",
 BindGlobal( "TheTypeInternalPolytope",
         NewType( TheFamilyOfPolytopes,
                  IsInternalPolytopeRep ) );
-                 
+
+####################################
+##
+## Properties
+##
+####################################
+
+##
+InstallMethod( IsEmpty,
+               "for polytopes",
+               [ IsPolytope ],
+               
+  function( polytope )
+    
+    if IsBound( polytope!.input_points ) and Length( polytope!.input_points ) > 0 then
+        
+        return false;
+        
+    elif IsBound( polytope!.input_points ) and Length( polytope!.input_points ) = 0 then
+    
+        return true;
+    
+    else 
+    
+       return Cdd_IsEmpty( ExternalCddPolytope( polytope ) );
+       
+    fi;
+    
+end );
+
+##
+InstallMethod( IsNotEmpty,
+                " for external polytopes.",
+                [ IsPolytope ],
+                
+   function( polytope )
+     
+     return not IsEmpty( polytope );
+     
+end );
+
+##
+InstallMethod( IsNormalPolytope,
+               " for external polytopes.",
+               [ IsPolytope ],
+               
+  function( polytope )
+  local cone, rays_of_the_cone, vertices, H;
+    
+  vertices:= Vertices( polytope );
+  
+  rays_of_the_cone:= List( vertices, i-> Concatenation( [ 1 ], i ) );
+    
+  cone := Cone( rays_of_the_cone );
+  
+  H:= HilbertBasis( cone );
+  
+  return ForAll( H, i-> i[1] = 1 );
+  
+end );
+
+##
+InstallMethod( IsVeryAmple,
+               [ IsPolytope ],
+   function( polyt )
+   local V, t, current_cone, current_polytope, current_Hilbertbasis, current_vertices, lattice_points;
+   
+   if HasIsNormalPolytope( polyt) and IsNormalPolytope( polyt )= true then 
+   
+         return true;
+         
+   fi;
+   
+   V:= Vertices( polyt );
+   
+   return ForAll( V, function( u )
+   
+                     current_vertices:= List( V, i-> i-u );
+
+                     current_polytope:= Polytope( current_vertices );
+       
+                     current_cone := Cone( current_vertices );
+       
+                     lattice_points := LatticePoints( current_polytope );
+       
+                     current_Hilbertbasis:= HilbertBasis( current_cone );
+       
+                     return IsSubsetSet( lattice_points, current_Hilbertbasis );
+       
+                     end );
+
+end );
+             
 ####################################
 ##
 ## Attribute
@@ -63,7 +155,7 @@ InstallMethod( ExternalCddPolytope,
                [ IsPolytope ],
                
    function( polyt )
-   local pointlist, ineqs, i;
+   local old_pointlist, new_pointlist, ineqs, i,j;
    
    if IsBound( polyt!.input_points ) and IsBound( polyt!.input_ineqs ) then
         
@@ -73,15 +165,21 @@ InstallMethod( ExternalCddPolytope,
     
    if IsBound( polyt!.input_points ) then 
    
-       pointlist := ShallowCopy( polyt!.input_points );
+       old_pointlist := polyt!.input_points;
        
-       for i in pointlist do 
-        
-           Add( i, 1, 1 );
+       new_pointlist:= [ ];
+       
+       for i in old_pointlist do 
+           
+           j:= ShallowCopy( i );
+           
+           Add( j, 1, 1 );
+           
+           Add( new_pointlist, j );
            
        od;
            
-       return Cdd_PolyhedronByGenerators( pointlist );
+       return Cdd_PolyhedronByGenerators( new_pointlist );
        
    elif  IsBound( polyt!.input_ineqs ) then
     
@@ -447,3 +545,98 @@ InstallMethod( PolytopeByInequalities,
      return polyt;
      
 end );
+
+
+####################################
+##
+## Methods
+##
+####################################
+
+##
+InstallMethod( \*,
+               "for polytopes",
+               [ IsPolytope, IsPolytope ],
+               
+  function( polytope1, polytope2 )
+    local vertices1, vertices2, new_vertices, i, j;
+    
+    vertices1 := Vertices( polytope1 );
+    
+    vertices2 := Vertices( polytope2 );
+    
+    new_vertices := [ ];
+    
+    for i in vertices1 do
+        
+        for j in vertices2 do
+            
+            Add( new_vertices, Concatenation( i, j ) );
+            
+        od;
+        
+    od;
+    
+    return Polytope( new_vertices );
+    
+end );
+
+##
+InstallMethod( \+,
+               "for polytopes",
+               [ IsPolytope, IsPolytope ],
+               
+  function( polytope1, polytope2 )
+    local vertices1, vertices2, new_polytope;
+    
+    ##Maybe same grid, but this might be complicated
+    if not Rank( ContainingGrid( polytope1 ) ) = Rank( ContainingGrid( polytope2 ) ) then
+        
+        Error( "polytopes are not of the same dimension" );
+        
+    fi;
+    
+    vertices1 := Vertices( polytope1 );
+    
+    vertices2 := Vertices( polytope2 );
+    
+    new_polytope := Concatenation( List( vertices1, i -> List( vertices2, j -> i + j ) ) );
+    
+    new_polytope := Polytope( new_polytope );
+    
+    SetContainingGrid( new_polytope, ContainingGrid( polytope1 ) );
+    
+    return new_polytope;
+    
+end );
+
+
+##
+InstallMethod( IntersectionOfPolytopes,
+               "for homalg cones",
+               [ IsPolytope, IsPolytope ],
+               
+  function( polyt1, polyt2 )
+    local polyt, ext_polytope;
+    
+    if not Rank( ContainingGrid( polyt1 ) ) = Rank( ContainingGrid( polyt2 ) ) then
+        
+        Error( "polytopes are not of the same dimension" );
+        
+    fi;
+    
+    ext_polytope:= Cdd_Intersection( ExternalCddPolytope( polyt1), ExternalCddPolytope( polyt2) ); 
+    
+    polyt := Polytope( Cdd_GeneratingVertices( ext_polytope) );
+    
+    SetExternalCddPolytope( polyt, ext_polytope );
+    
+    SetContainingGrid( polyt, ContainingGrid( polyt1 ) );
+    
+    SetAmbientSpaceDimension( polyt, AmbientSpaceDimension( polyt1 ) );
+    
+    return polyt;
+    
+end );
+
+            

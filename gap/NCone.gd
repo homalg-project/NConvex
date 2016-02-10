@@ -101,7 +101,8 @@ DeclareAttribute( "LinealitySpaceGenerators", IsCone );
 
 DeclareAttribute( "ExternalCddCone",  IsCone  );
 
-DeclareAttribute( "ExternalNmzCone",  IsCone  );
+## If i make this attribute i get error segmentation error ...
+DeclareOperation( "ExternalNmzCone",  [ IsCone ]  );
 
 # AmbientSpace is somewhere declared !!
 # DeclareAttribute( "AmbientSpaceDimension", IsCone );
