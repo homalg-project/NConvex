@@ -213,3 +213,4 @@ DeclareOperation( "\+",
 DeclareOperation( "IntersectionOfPolytopes",
                   [ IsPolytope, IsPolytope ] );
                   
+DeclareOperation( "Points", [ IsList, IsList] );

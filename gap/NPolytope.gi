@@ -115,7 +115,7 @@ end );
 InstallMethod( IsVeryAmple,
                [ IsPolytope ],
    function( polyt )
-   local V, t, current_cone, current_polytope, current_Hilbertbasis, current_vertices, lattice_points;
+   local V;
    
    if HasIsNormalPolytope( polyt) and IsNormalPolytope( polyt )= true then 
    
@@ -126,6 +126,7 @@ InstallMethod( IsVeryAmple,
    V:= Vertices( polyt );
    
    return ForAll( V, function( u )
+                     local  current_cone, current_polytope, current_Hilbertbasis, current_vertices, lattice_points;
    
                      current_vertices:= List( V, i-> i-u );
 
@@ -136,6 +137,9 @@ InstallMethod( IsVeryAmple,
                      lattice_points := LatticePoints( current_polytope );
        
                      current_Hilbertbasis:= HilbertBasis( current_cone );
+       
+                     Display( IsSubsetSet( lattice_points, current_Hilbertbasis ) );
+       
        
                      return IsSubsetSet( lattice_points, current_Hilbertbasis );
        
@@ -195,82 +199,57 @@ InstallMethod( ExternalCddPolytope,
    
 end );
 
-##
+
+## this can be better written.
 InstallMethod( LatticePoints,
                "for polytopes (fallback)",
                [ IsPolytope ],
                
   function( polytope )
-    local vertices, max, ineqs, points, min_vec, lenght, max_vec, i, j, k;
-    
-    if not HasDefiningInequalities( polytope ) and IsBound( polytope!.input_ineqs ) then
-        
-        ineqs := polytope!.input_ineqs;
-        
-    else
-        
-        ineqs := DefiningInequalities( polytope );
-        
-    fi;
-    
-    if HasVertices( polytope ) then
-        
-        vertices := Vertices( polytope );
-        
-        min_vec := List( TransposedMat( vertices ), k -> Minimum( k ) );
-        
-        max_vec := List( TransposedMat( vertices ), k -> Maximum( k ) );
-        
-    else
-        
-        max := Maximum( List( ineqs, i -> AbsoluteValue( i[ 1 ] ) ) );
-        
-        min_vec := List( [ 1 .. Length( ineqs[ 1 ] ) - 1 ], i -> - max );
-        
-        max_vec := List( [ 1 .. Length( ineqs[ 1 ] ) - 1 ], i -> max );
-        
-    fi;
-    
-    ## GAP has changed the behavior on list. Shit!
-    i := ShallowCopy( min_vec );
-    
-    lenght := Length( min_vec );
-    
-    points := [ ];
-    
-    while i[ lenght ] <= max_vec[ lenght ] do
-        
-        if ForAll( ineqs, j -> Sum( [ 1 .. lenght ], k -> j[ k + 1 ] * i[ k ] ) >= - j[ 1 ] ) then
-            
-            Add( points, ShallowCopy( i ) );
-            
-        fi;
-        
-        k := 1;
-        
-        while k <= lenght and i[ k ] = max_vec[ k ] do
-            
-            k := k + 1;
-            
-        od;
-        
-        if k > lenght then
-            
-            break;
-            
-        fi;
-        
-        i[ k ] := i[ k ] + 1;
-        
-        for j in [ 1 .. k - 1 ] do
-            
-            i[ j ] := min_vec[ j ];
-            
-        od;
-        
-    od;
-    
-    return points;
+  local f,g,l,t, maxi, mini,V,w,d,r;
+   
+  f:= function( L )              
+ local u,i;
+ u:= L[1];
+ for i in [ 2..Length( L ) ] do
+ u:= Cartesian(u, L[ i ] );
+ u:= List( u, k-> Flat( k ) );
+ od;
+ return u;                      
+ end;
+ 
+ g:= function( Min, Max )
+ return f( List( [ 1..Length( Max) ], i->[ Min[i] .. Max[i] ] ) );
+ end;
+ 
+ V:= Vertices( polytope );
+ 
+ maxi := List( TransposedMat( V ), u-> Maximum( u ) );
+ mini := List( TransposedMat( V ), u-> Minimum( u ) );
+ 
+ l:= g( mini, maxi);
+ d:= DefiningInequalities( polytope );
+ 
+ w:= [ ];
+ 
+ for t in l do
+ 
+ Add(t, 1, 1 );
+ 
+ r:= Flat( List(d, h->h*TransposedMat( [ t ] ) ) ); 
+ 
+ if ForAll(r, h-> h>=0 ) then 
+ 
+ Remove(t,1);
+ Add( w, t );
+ 
+ fi;
+ 
+ od;
+ 
+ 
+ return w;
+   
     
 end );
 
