@@ -156,6 +156,10 @@ DeclareProperty( "IsSimplicial",
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
+
+DeclareProperty( "IsSimplexPolytope",
+                 IsPolytope );
+
 DeclareProperty( "IsSimplePolytope",
                  IsPolytope );
                  

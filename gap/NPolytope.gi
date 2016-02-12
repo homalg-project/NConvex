@@ -111,6 +111,12 @@ InstallMethod( IsNormalPolytope,
   function( polytope )
   local cone, rays_of_the_cone, vertices, H;
     
+  if HasIsVeryAmple( polytope ) and not IsVeryAmple( polytope ) then 
+  
+          return false;
+          
+  fi;
+  
   vertices:= Vertices( polytope );
   
   rays_of_the_cone:= List( vertices, i-> Concatenation( [ 1 ], i ) );
@@ -180,6 +186,42 @@ InstallMethod( IsSimplePolytope,
                    end );
             
 end );
+
+##
+InstallMethod( IsSimplexPolytope,
+               [ IsPolytope ],
+               
+  function( polyt )
+   
+  return Length( Vertices( polyt ) )=Dimension( polyt ) +1;
+   
+end );
+
+InstallMethod( IsSimplicial,
+               [ IsPolytope ],
+               
+  function( polyt )
+  local eq, ineqs, dim;
+  
+  dim:= Dimension( polyt );
+  
+  eq:= EqualitiesOfPolytope( polyt );
+  
+  ineqs:= FacetInequalities( polyt );
+  
+  return ForAll( ineqs,  function( i )
+                         local p,l;
+  
+                         l:= Concatenation( ineqs, eq, [ -i ] );
+                  
+                         p:= PolytopeByInequalities( l );
+                  
+                         return Length( Vertices( p ) )= dim;
+                  
+                         end );
+                  
+end );
+  
 
 ####################################
 ##
