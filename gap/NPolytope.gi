@@ -82,13 +82,25 @@ end );
 
 ##
 InstallMethod( IsNotEmpty,
-                " for external polytopes.",
+                " for polytopes.",
                 [ IsPolytope ],
                 
    function( polytope )
      
      return not IsEmpty( polytope );
      
+end );
+
+InstallMethod( IsLatticePolytope,
+               "for polytopes",
+               [ IsPolytope ],
+               
+  function( polytope )
+  local V;
+  V:= Set( Flat( Vertices( polytope ) ) );
+  
+  return ForAll( V , IsInt );
+
 end );
 
 ##
@@ -138,15 +150,37 @@ InstallMethod( IsVeryAmple,
        
                      current_Hilbertbasis:= HilbertBasis( current_cone );
        
-                     Display( IsSubsetSet( lattice_points, current_Hilbertbasis ) );
-       
-       
                      return IsSubsetSet( lattice_points, current_Hilbertbasis );
        
                      end );
 
 end );
-             
+
+##
+InstallMethod( IsSimplePolytope,
+               "for polytopes",
+               [ IsPolytope ],
+               
+ function( polyt )
+ local d,v,l;
+ 
+ d:= FacetInequalities( polyt );
+ 
+ v:= Vertices( polyt );
+ 
+ l:= List(v, i-> Concatenation( [ 1 ], i ) );
+ 
+ return ForAll( l, function( i )
+                   local w;
+            
+                   w:= Flat(d* TransposedMat( [ i ] ) );
+            
+                   return Length( Positions( w, 0 ) )= Dimension( polyt );
+            
+                   end );
+            
+end );
+
 ####################################
 ##
 ## Attribute
@@ -199,7 +233,15 @@ InstallMethod( ExternalCddPolytope,
    
 end );
 
+##
+InstallMethod( Dimension, 
+               "for polytopes",
+               [ IsPolytope ],
+function( polytope )
 
+return Cdd_Dimension( ExternalCddPolytope( polytope ) );
+end );
+            
 ## this can be better written.
 InstallMethod( LatticePoints,
                "for polytopes (fallback)",
@@ -585,6 +627,8 @@ InstallMethod( \*,
   return n*polyt;
 
 end );
+
+
 
 ##
 InstallMethod( \+,

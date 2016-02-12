@@ -204,7 +204,7 @@ DeclareOperation( "\*",
                   [ IsPolytope, IsInt ] );
 
 DeclareOperation( "\+",
-                  [ IsPolytope, IsPolytope ] );         
+                  [ IsPolytope, IsPolytope ] );
                   
 DeclareOperation( "IntersectionOfPolytopes",
                   [ IsPolytope, IsPolytope ] );
