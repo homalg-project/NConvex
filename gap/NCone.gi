@@ -700,6 +700,29 @@ InstallMethod( LinealitySpaceGenerators,
 ##
 ##############################
 
+##
+InstallMethod( FourierProjection,
+               [ IsCone, IsInt ],
+  function( cone, n )
+  local ray_generators, new_rays, i, j;
+  
+  ray_generators:= RayGenerators( cone );
+  
+  new_rays:= [ ];
+  
+  for i in ray_generators do
+  
+     j:= ShallowCopy( i );
+     Remove(j, n );
+     Add( new_rays, j );
+     
+  od;
+  
+  return Cone( new_rays );
+  
+end );
+
+##
 InstallMethod( \*,
                " cartesian product for cones.",
                [ IsCone, IsCone ],
@@ -946,6 +969,8 @@ InstallMethod( \*,
     return new_cone;
     
 end );
+
+
 
 ##
 InstallMethod( \=,

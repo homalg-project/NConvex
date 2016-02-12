@@ -112,6 +112,11 @@ DeclareOperation( "ExternalNmzCone",  [ IsCone ]  );
 ##  Methods
 ##
 ##############################
+
+DeclareOperation( "FourierProjection",
+                  [ IsCone, IsInt ] );
+
+
 DeclareOperation( "IntersectionOfCones",
                   [ IsCone, IsCone ] );
                   

@@ -197,20 +197,20 @@ DeclareOperation( "HasVertices",
 DeclareOperation( "\*",
                   [ IsPolytope, IsPolytope ] );
 
-##  <#GAPDoc Label="PLUS">
-##  <ManSection>
-##    <Oper Arg="polytope1,polytope2" Name="#"/>
-##    <Returns>a polytope</Returns>
-##    <Description>
-##      Returns the Minkowski sum of the polytopes <A>polytope1</A> and <A>polytope2</A>.
-##    </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
+DeclareOperation( "\*",
+                  [ IsInt, IsPolytope ] );
+
+DeclareOperation( "\*",
+                  [ IsPolytope, IsInt ] );
+
 DeclareOperation( "\+",
                   [ IsPolytope, IsPolytope ] );         
                   
 DeclareOperation( "IntersectionOfPolytopes",
                   [ IsPolytope, IsPolytope ] );
                   
-DeclareOperation( "Points", [ IsList, IsList] );
+DeclareOperation( "Points", 
+                  [ IsList, IsList] );
+
+DeclareOperation( "FourierProjection", 
+                  [ IsPolytope, IsInt ] );

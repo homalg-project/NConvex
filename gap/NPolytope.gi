@@ -560,6 +560,32 @@ InstallMethod( \*,
     
 end );
 
+InstallMethod( \*,
+               [ IsInt, IsPolytope ],
+               
+  function( n, polyt )
+  local V, polyt2;
+  
+  V:= n*Vertices( polyt );
+  
+  polyt2:= Polytope( V );
+  
+  SetVerticesOfPolytope( polyt2, V);
+  
+  return polyt2;
+
+end );
+
+
+InstallMethod( \*,
+               [ IsPolytope, IsInt ],
+               
+  function( polyt, n )
+  
+  return n*polyt;
+
+end );
+
 ##
 InstallMethod( \+,
                "for polytopes",
@@ -590,6 +616,7 @@ InstallMethod( \+,
 end );
 
 
+
 ##
 InstallMethod( IntersectionOfPolytopes,
                "for homalg cones",
@@ -618,4 +645,202 @@ InstallMethod( IntersectionOfPolytopes,
     
 end );
 
+##
+InstallMethod( FourierProjection,
+               [ IsPolytope, IsInt ],
+  function( polytope , n )
+  local vertices, new_vertices, i, j;
+  
+  vertices := Vertices( polytope );
+  
+  new_vertices := [ ];
+  
+  for i in vertices do
+  
+     j:= ShallowCopy( i );
+     Remove(j, n );
+     Add( new_vertices, j );
+     
+  od;
+  
+  return  Polytope( new_vertices );
+  
+end );
+
+####################################
+##
+## Display Methods
+##
+####################################
+
+##
+InstallMethod( ViewObj,
+               "for homalg polytopes",
+               [ IsPolytope ],
+               
+  function( polytope )
+    local str;
+    
+    Print( "<A" );
+    
+    if HasIsNotEmpty( polytope ) then
+        
+        if IsNotEmpty( polytope ) then
             
+            Print( " not empty" );
+            
+        fi;
+    
+    fi;
+    
+    if HasIsNormalPolytope( polytope ) then
+        
+        if IsNormalPolytope( polytope ) then
+            
+            Print( " normal" );
+            
+        fi;
+    
+    fi;
+    
+    if HasIsSimplicial( polytope ) then
+        
+        if IsSimplicial( polytope ) then
+            
+            Print( " simplicial" );
+            
+        fi;
+    
+    fi;
+    
+    if HasIsSimplePolytope( polytope ) then
+        
+        if IsSimplePolytope( polytope ) then
+            
+            Print( " simple" );
+            
+        fi;
+    
+    fi;
+    
+    if HasIsVeryAmple( polytope ) then
+        
+        if IsVeryAmple( polytope ) then
+            
+            Print( " very ample" );
+            
+        fi;
+    
+    fi;
+    
+    Print( " " );
+    
+    if HasIsLatticePolytope( polytope) then
+        
+        if IsLatticePolytope( polytope ) then
+            
+            Print( "lattice" );
+            
+        fi;
+        
+    fi;
+    
+    Print( "polytope in |R^" );
+    
+    Print( String( AmbientSpaceDimension( polytope ) ) );
+    
+    if HasVertices( polytope ) then
+        
+        Print( " with ", String( Length( Vertices( polytope ) ) )," vertices" );
+        
+    fi;
+    
+    Print( ">" );
+    
+end );
+
+##
+InstallMethod( Display,
+               "for homalg polytopes",
+               [ IsPolytope ],
+               
+  function( polytope )
+    local str;
+    
+    Print( "A" );
+    
+    if HasIsNotEmpty( polytope ) then
+        
+        if IsNotEmpty( polytope ) then
+            
+            Print( " not empty" );
+            
+        fi;
+    
+    fi;
+    
+    if HasIsNormalPolytope( polytope ) then
+        
+        if IsNormalPolytope( polytope ) then
+            
+            Print( " normal" );
+            
+        fi;
+    
+    fi;
+    
+    if HasIsSimplicial( polytope ) then
+        
+        if IsSimplicial( polytope ) then
+            
+            Print( " simplicial" );
+            
+        fi;
+    
+    fi;
+    
+    if HasIsSimplePolytope( polytope ) then
+        
+        if IsSimplePolytope( polytope ) then
+            
+            Print( " simple" );
+            
+        fi;
+    
+    fi;
+    
+    if HasIsVeryAmple( polytope ) then
+        
+        if IsVeryAmple( polytope ) then
+            
+            Print( " very ample" );
+            
+        fi;
+    
+    fi;
+    
+    Print( " " );
+    
+    if HasIsLatticePolytope( polytope) then
+        
+        if IsLatticePolytope( polytope ) then
+            
+            Print( "lattice" );
+            
+        fi;
+        
+    fi;
+    
+    Print( "polytope in |R^" );
+    
+    Print( String( AmbientSpaceDimension( polytope ) ) );
+    
+    if HasVertices( polytope ) then
+        
+        Print( " with ", String( Length( Vertices( polytope ) ) )," vertices" );
+        
+    fi;
+    
+    Print( ".\n" );
+    
+end );
