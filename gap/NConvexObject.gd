@@ -8,16 +8,6 @@
 ##
 #############################################################################
 
-##  <#GAPDoc Label="IsConvexObject">
-##  <ManSection>
-##    <Filt Type="Category" Arg="M" Name="IsConvexObject"/>
-##    <Returns><C>true</C> or <C>false</C></Returns>
-##    <Description>
-##      The &GAP; category of convex objects, the main category of this package.
-##    </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
 DeclareCategory( "IsConvexObject", 
                  IsObject );
 

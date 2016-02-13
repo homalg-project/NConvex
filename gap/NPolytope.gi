@@ -109,16 +109,16 @@ InstallMethod( IsNormalPolytope,
                [ IsPolytope ],
                
   function( polytope )
-  local cone, rays_of_the_cone, vertices, H;
+  local cone, rays_of_the_cone, vertices, H,b;
   
   # Theorem 2.2.12, Cox
-  b:= BabyPolytope( polyt );
+  b:= BabyPolytope( polytope );
   
   if IsFullDimensional( b[2] ) and 
       
       Dimension( b[2] )>=2     and 
    
-      b[1] >= AmbientSpaceDimension( polyt ) -1 then  return true; 
+      b[1] >= AmbientSpaceDimension( polytope ) -1 then  return true; 
       
   fi;
   
@@ -259,6 +259,7 @@ InstallMethod( IsSimplicial,
                   
 end );
   
+##
 InstallMethod( IsBounded,
                " for external polytopes.",
                [ IsExternalPolytopeRep ],
@@ -269,6 +270,7 @@ InstallMethod( IsBounded,
   
 end );
 
+##
 InstallMethod( IsFullDimensional,
                [ IsPolytope ], 
                
