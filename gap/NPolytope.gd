@@ -70,6 +70,15 @@ DeclareAttribute( "NormalFan",
 
 DeclareAttribute( "AffineCone",
                     IsPolytope );
+
+DeclareAttribute( "BabyPolytope",
+                    IsPolytope );
+                   
+DeclareAttribute( "PolarPolytope",
+                    IsPolytope );
+                    
+                    
+    
                     
 ####################################
 ##

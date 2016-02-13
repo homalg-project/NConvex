@@ -117,6 +117,8 @@ InstallMethod( IsNormalPolytope,
           
   fi;
   
+  
+  
   vertices:= Vertices( polytope );
   
   rays_of_the_cone:= List( vertices, i-> Concatenation( [ 1 ], i ) );
@@ -133,8 +135,22 @@ end );
 InstallMethod( IsVeryAmple,
                [ IsPolytope ],
    function( polyt )
-   local V;
+   local V, b;
    
+   # Corollary 2.2.19, Cox
+   b:= BabyPolytope( polyt );
+   
+   if IsFullDimensional( b[2] ) and Dimension( b[2] )=2 then return true; fi;
+  
+   if IsFullDimensional( b[2] ) and 
+      
+      Dimension( b[2] )>=2     and 
+   
+      b[1] >= AmbientSpaceDimension( polyt ) -1 then  return true; 
+      
+   fi;
+      
+      
    if HasIsNormalPolytope( polyt) and IsNormalPolytope( polyt )= true then 
    
          return true;
@@ -222,7 +238,24 @@ InstallMethod( IsSimplicial,
                   
 end );
   
+InstallMethod( IsBounded,
+               " for external polytopes.",
+               [ IsExternalPolytopeRep ],
+               
+  function( polytope )
 
+  return Length( Cdd_GeneratingRays( ExternalCddPolytope( polytope ) ) ) = 0;
+  
+end );
+
+InstallMethod( IsFullDimensional,
+               [ IsPolytope ], 
+               
+function( polyt )
+
+return Dimension( polyt ) = AmbientSpaceDimension( polyt );
+
+end );
 ####################################
 ##
 ## Attribute
@@ -552,6 +585,57 @@ InstallMethod( LatticePointsGenerators,
     
 end );
 
+## 
+InstallMethod( BabyPolytope,
+               [ IsPolytope ],
+               
+ function( polyt )
+ local l,n, new_vertices; 
+ 
+ l:= Set( Flat( Vertices( polyt ) ) );
+ n:= Iterated(l, Gcd );
+ new_vertices:= (1/n)*Vertices( polyt );
+ 
+ return [n, Polytope( new_vertices ) ];
+ 
+end );
+
+InstallMethod( PolarPolytope,
+               [ IsPolytope ],
+               
+  function( polyt )
+  local d,l;
+  
+  if not IsFullDimensional( polyt ) then 
+  
+      Error( "Polar polytope is defined only for full dimensional polytopes!" );
+      
+  fi;
+  
+  d:= DefiningInequalities( polyt );
+  
+  if not ForAll( d, i-> i[ 1 ] > 0 ) then 
+  
+       Error( "The origin 0 should be an interior point in the polytope!" );
+       
+  fi;
+  
+  l:= List(d, function( u )
+          local v;
+          
+          v:= ShallowCopy( u );
+          
+          Remove(v, u[1] );
+          
+          v:= v/u[1];
+          
+          return v;
+          
+          end );
+
+  return Polytope( l );
+  
+end );
 
 ####################################
 ##
@@ -599,6 +683,12 @@ InstallMethod( PolytopeByInequalities,
         polyt, TheTypeConvexPolytope
     );
     
+    if not IsBounded( polyt ) then 
+    
+        Error( "The given inequalities define unbounded polyhedron." );
+        
+    fi;
+
     if not pointlist = [ ] then
         
         SetAmbientSpaceDimension( polyt, Length( pointlist[ 1 ] ) -1 );
