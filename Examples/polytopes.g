@@ -88,6 +88,11 @@ LatticePoints( Q );
 #   [ 2, 1, 5 ], [ 2, 1, 6 ], [ 2, 2, 8 ], [ 2, 2, 9 ], [ 2, 2, 10 ] ]
 ## i.e. we have [1,1,3] in (Q Ո Z^3) but not in k( = Minkowski sum of lattic_points with itself).
 
+#######################################################
+##
+## Example of a polytope with its polar polytope
+##
+#######################################################
 
 P:= Polytope( [ [1,1], [ 1, -1], [-1,1], [-1,-1] ] );
 # <A polytope in |R^2>
