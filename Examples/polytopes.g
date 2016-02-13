@@ -87,3 +87,25 @@ LatticePoints( Q );
 #   [ 1, 0, 1 ], [ 1, 0, 2 ], [ 1, 1, 0 ], [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 3 ], [ 1, 1, 4 ], [ 1, 1, 5 ], [ 1, 1, 6 ], [ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 2, 6 ], [ 2, 0, 0 ], [ 2, 0, 1 ], [ 2, 0, 2 ], [ 2, 1, 4 ], 
 #   [ 2, 1, 5 ], [ 2, 1, 6 ], [ 2, 2, 8 ], [ 2, 2, 9 ], [ 2, 2, 10 ] ]
 ## i.e. we have [1,1,3] in (Q Ո Z^3) but not in k( = Minkowski sum of lattic_points with itself).
+
+
+######################################################
+##
+## Example of a polytope and its polar polytope
+##
+######################################################
+
+P:= Polytope( [ [1,1], [ 1, -1], [-1,1], [-1,-1] ] );
+# A polytope in |R^2>
+q:= PolarPolytope( P );       
+# A polytope in |R^2>
+Vertices( PolarPolytope( q ) );
+# [ [ 1, 1 ], [ 1, -1 ], [ -1, -1 ], [ -1, 1 ] ]
+q:= Polytope( [ [0,0], [ 1, -1], [-1,1], [-1,-1] ] );
+# A polytope in |R^2>
+PolarPolytope( P );
+# Error, The origin 0 should be an interior point in the polytope! called from
+# function "unknown">( <arguments> )
+# called from read-eval loop at line 7 of *stdin*
+# you can 'quit;' to quit to outer loop, or
+# you can 'return;' to continue
