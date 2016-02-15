@@ -20,6 +20,9 @@ DeclareCategory( "IsPolyhedron",
 DeclareAttribute( "ExternalCddPolyhedron",
                    IsPolyhedron );
 
+DeclareAttribute( "DefiningInequalities",
+                   IsPolyhedron );
+
 DeclareAttribute( "MainPolytope",
                   IsPolyhedron );
 

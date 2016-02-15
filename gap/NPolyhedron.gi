@@ -89,6 +89,26 @@ InstallMethod( ExternalCddPolyhedron,
 end );
 
 ##
+InstallMethod( DefiningInequalities, 
+               " for polyhedrons",
+               [ IsPolyhedron ], 
+               
+   function( polyhedron )
+   local ineq, eq, ex, d;
+   
+   ex:= ExternalCddPolyhedron( polyhedron );
+   
+   ineq := Cdd_Inequalities( ex );
+   eq   := Cdd_Equalities( ex );
+   
+   d:= Concatenation( ineq, eq, -eq );
+   
+   return d;
+ 
+end );
+   
+
+##
 InstallMethod( ExternalCddPolyhedron,
                "for polyhedrons with inequalities",
                [ IsPolyhedron ],
@@ -117,15 +137,7 @@ InstallMethod( MainPolytope,
                
   function( polyhedron )
     
-    if IsBound( polyhedron!.inequalities ) then 
-    
-        return Polytope( Cdd_GeneratingVertices( ExternalCddPolyhedron( polyhedron ) ) );
-
-    else
-      
-        Error( "Something went wrong" );
-        
-    fi;
+    return Polytope( VerticesOfMainPolytope( polyhedron ) );
     
 end );
 
@@ -135,11 +147,90 @@ InstallMethod( VerticesOfMainPolytope,
                [ IsPolyhedron ],
                
   function( polyhedron )
+    local v;
     
-    return Vertices( MainPolytope( polyhedron ) );
+    if IsBound( polyhedron!.inequalities ) then 
+    
+        v:= Cdd_GeneratingVertices( ExternalCddPolyhedron( polyhedron ) );
+
+        if Length( v ) > 0 then 
+        
+               return v;
+               
+        else 
+        
+               return [ ListWithIdenticalEntries(AmbientSpaceDimension( polyhedron ), 0 ) ];
+               
+        fi;
+        
+        
+    else 
+    
+        return Vertices( MainPolytope( polyhedron ) );
+        
+    fi;
     
 end );
 
+InstallMethod( TailCone,
+               "for polyhedrons",
+               [ IsPolyhedron ],
+               
+  function( polyhedron )
+    
+  if RayGeneratorsOfTailCone( polyhedron ) <> [ ] then 
+  
+         return Cone( RayGeneratorsOfTailCone( polyhedron ) );
+         
+  else 
+  
+  
+         return Cone( [ ListWithIdenticalEntries( AmbientSpaceDimension( polyhedron ), 0 ) ] );
+   
+  fi;
+  
+end );
+
+##
+InstallMethod( RayGeneratorsOfTailCone,
+               "for polyhedrons",
+               [ IsPolyhedron ],
+               
+  function( polyhedron )
+    
+     if IsBound( polyhedron!.inequalities ) then 
+    
+        return Cdd_GeneratingRays( ExternalCddPolyhedron( polyhedron ) );
+
+     else
+       
+        return RayGenerators( TailCone( polyhedron ) );
+        
+     fi;
+    
+end );
+
+##
+InstallMethod( HomogeneousPointsOfPolyhedron,
+               "for polyhedrons",
+               [ IsPolyhedron ],
+               
+  function( polyhedron )
+    local verts, rays;
+    
+    verts := Vertices( MainPolytope( polyhedron ) );
+    
+    verts := List( verts, i -> Concatenation( [ 1 ], i ) );
+    
+    rays := RayGenerators( TailCone( polyhedron ) );
+    
+    rays := List( rays, i -> Concatenation( [ 0 ], i ) );
+    
+    polyhedron := Concatenation( rays, verts );
+    
+    return polyhedron;
+    
+end );
 
 
 #####################################
@@ -277,7 +368,7 @@ InstallMethod( Polyhedron,
     
     if Length( polytope ) = 0 then
         
-        Error( "no empty polytope" );
+        Error( "The polytope of a polyhedron should at least contain one point!" );
         
     fi;
     

@@ -185,6 +185,8 @@ DeclareProperty( "IsRay", IsCone );
 DeclareAttribute( "IsContainedInFan",
                   IsCone );
                   
+DeclareProperty( "IsZero",
+                  IsCone  );
                   
 ##############################
 ##

@@ -1077,6 +1077,13 @@ InstallMethod( ExternalCddCone,
    local list, new_list, number_of_equalities, linearity, i, u ;
    
    new_list:= [ ];
+   if IsBound( cone!.input_rays ) and Length( cone!.input_rays )= 1 and IsZero( cone!.input_rays ) then
+   
+      new_list:= [ Concatenation( [ 1 ], cone!.input_rays[ 1 ] ) ];
+      
+      return Cdd_PolyhedronByGenerators( new_list );
+      
+   fi;
    
    if IsBound( cone!.input_rays ) then 
    
@@ -1253,7 +1260,7 @@ InstallMethod( ConeByGenerators,
         Error( "a cone must contain the zero point" );
         
     fi;
-    
+
     newgens := [ ];
     
     for i in raylist do
@@ -1279,7 +1286,13 @@ InstallMethod( ConeByGenerators,
     ObjectifyWithAttributes( 
         cone, TheTypeConvexCone
      );
+      
+     if Length( raylist ) =1 and IsZero( raylist[ 1 ] ) then 
         
+        SetIsZero( cone, true );
+        
+     fi;
+     
     newgens := Set( newgens );
     
     SetAmbientSpaceDimension( cone, Length( newgens[ 1 ] ) );
