@@ -232,6 +232,30 @@ InstallMethod( HomogeneousPointsOfPolyhedron,
     
 end );
 
+InstallGlobalFunction( Draw,
+function()
+
+Exec( "firefox https://www.desmos.com/calculator" );
+
+end );
+
+#####################################
+##
+##  Properties
+##
+#####################################
+
+##
+InstallMethod( IsBounded,
+               " for external polytopes.",
+               [ IsPolyhedron ],
+               
+  function( polyhedron )
+
+  return Length( Cdd_GeneratingRays( ExternalCddPolyhedron( polyhedron ) ) ) = 0;
+  
+end );
+
 
 #####################################
 ##

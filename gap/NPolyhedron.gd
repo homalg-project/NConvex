@@ -78,3 +78,5 @@ DeclareOperation( "Polyhedron",
 
 DeclareOperation( "Polyhedron",
                   [ IsList, IsList ] );
+                  
+DeclareGlobalFunction( "Draw" );

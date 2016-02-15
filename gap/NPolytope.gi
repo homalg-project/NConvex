@@ -262,7 +262,7 @@ end );
 ##
 InstallMethod( IsBounded,
                " for external polytopes.",
-               [ IsExternalPolytopeRep ],
+               [ IsPolytope ],
                
   function( polytope )
 
