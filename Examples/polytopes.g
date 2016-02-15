@@ -94,14 +94,16 @@ LatticePoints( Q );
 ##
 #######################################################
 
-P:= Polytope( [ [1,1], [ 1, -1], [-1,1], [-1,-1] ] );
+P:= Polytope( [ [ 1, 1 ], [ 1, -1 ], [ -1, 1 ], [ -1, -1 ] ] );
 # <A polytope in |R^2>
-PolarPolytope( P );       
+Q:= PolarPolytope( P );       
 # <A polytope in |R^2>
-q:= last;          
+Vertices( Q );
+# [ [ 0, 1 ], [ 1, 0 ], [ 0, -1 ], [ -1, 0 ] ]
+T := PolarPolytope( Q );
 # <A polytope in |R^2>
-Vertices( PolarPolytope( q ) );
+Vertices( T );
 # [ [ 1, 1 ], [ 1, -1 ], [ -1, -1 ], [ -1, 1 ] ]
-P:= Polytope( [ [0,0], [ 1, -1], [-1,1], [-1,-1] ] );
+P:= Polytope( [ [ 0, 0 ], [ 1, -1], [ -1, 1 ], [ -1, -1 ] ] );
 # <A polytope in |R^2>
 PolarPolytope( P );;
