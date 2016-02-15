@@ -803,11 +803,11 @@ InstallMethod( IntersectionOfCones,
   function( cone1, cone2 )
     local inequalities, cone;
     
-  #  if not IsIdenticalObj( ContainingGrid( cone1 ), ContainingGrid( cone2 ) ) then
+    if not Rank( ContainingGrid( cone1 ) )= Rank( ContainingGrid( cone2 ) ) then
         
-  #      Error( "cones are not from the same grid" );
+        Error( "cones are not from the same grid" );
         
-  #  fi;
+    fi;
     
     inequalities := Unique( Concatenation( [ NonReducedInequalities( cone1 ), NonReducedInequalities( cone2 ) ]  ) );
     
@@ -827,11 +827,11 @@ InstallMethod( IntersectionOfCones,
   function( cone1, cone2 )
     local cone, ext_cone;
     
-  #  if not IsIdenticalObj( ContainingGrid( cone1 ), ContainingGrid( cone2 ) ) then
+    if not Rank( ContainingGrid( cone1 ) )= Rank( ContainingGrid( cone2 ) ) then
         
-  #      Error( "cones are not from the same grid" );
+        Error( "cones are not from the same grid" );
         
-  #  fi;
+    fi;
     
     ext_cone := Cdd_Intersection( ExternalCddCone( cone1), ExternalCddCone( cone2 ) );
     
@@ -1002,9 +1002,8 @@ InstallMethod( \in,
   return ForAll( cones_list, i-> cone = i );
 
 end );
- 
-  
-  
+
+
 ##
 InstallMethod( RayGeneratorContainedInCone,
                "for cones",

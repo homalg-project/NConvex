@@ -1038,7 +1038,7 @@ InstallMethod( Display,
     
     if HasVertices( polytope ) then
         
-        Print( " with ", String( Length( Vertices( polytope ) ) )," vertices" );
+        Print( " with ", String( Length( Vertices( polytope ) ) )," vertices:",Vertices( polytope ) );
         
     fi;
     

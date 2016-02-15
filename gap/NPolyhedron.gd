@@ -11,6 +11,47 @@
 DeclareCategory( "IsPolyhedron",
                  IsConvexObject );
                  
+#####################################
+##
+## Structural Elements
+##
+#####################################
+
+DeclareAttribute( "ExternalCddPolyhedron",
+                   IsPolyhedron );
+
+DeclareAttribute( "MainPolytope",
+                  IsPolyhedron );
+
+DeclareAttribute( "VerticesOfMainPolytope",
+                  IsPolyhedron );
+
+DeclareAttribute( "TailCone",
+                  IsPolyhedron );
+
+DeclareAttribute( "RayGeneratorsOfTailCone",
+                  IsPolyhedron );
+
+DeclareAttribute( "HomogeneousPointsOfPolyhedron",
+                  IsPolyhedron );
+
+DeclareAttribute( "LatticePointsGenerators",
+                  IsPolyhedron );
+
+DeclareAttribute( "BasisOfLinealitySpace",
+                  IsPolyhedron );
+
+#####################################
+##
+## Properties
+##
+#####################################
+
+DeclareProperty( "IsNotEmpty",
+                 IsPolyhedron );
+
+DeclareProperty( "IsBounded",
+                 IsPolyhedron );
 
                  
                  
@@ -22,3 +63,15 @@ DeclareCategory( "IsPolyhedron",
 
 DeclareOperation( "PolyhedronByInequalities",
                   [ IsList ] );
+
+DeclareOperation( "Polyhedron",
+                  [ IsPolytope, IsCone ] );
+
+DeclareOperation( "Polyhedron",
+                  [ IsList, IsCone ] );
+
+DeclareOperation( "Polyhedron",
+                  [ IsPolytope, IsList ] );
+
+DeclareOperation( "Polyhedron",
+                  [ IsList, IsList ] );

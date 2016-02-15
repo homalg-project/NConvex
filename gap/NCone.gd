@@ -233,10 +233,12 @@ DeclareOperation( "RayGeneratorContainedInRelativeInterior",
                   [ IsList, IsCone ] );
                   
 # DeclareOperation( "\*",
-#                    [ IsCone, IsCone ] );
+#                     [ IsCone, IsCone ] );
                    
 DeclareOperation( "\*",
                   [ IsHomalgMatrix, IsCone ] );
 
 DeclareOperation( "NonReducedInequalities",
                   [ IsCone ] );
+                  
+DeclareOperation( "Hi", [ IsInt ] );
