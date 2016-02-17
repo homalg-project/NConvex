@@ -131,6 +131,14 @@ InstallMethod( ExternalCddPolyhedron,
     
 end );
 
+InstallMethod( Dimension, 
+               [ IsPolyhedron ], 
+   function( polyhedron )
+   
+   return Cdd_Dimension( ExternalCddPolyhedron( polyhedron ) );
+   
+end );
+
 InstallMethod( MainPolytope, 
                "for polyhedrons",
                [ IsPolyhedron ],
