@@ -692,6 +692,7 @@ InstallMethod( LinealitySpaceGenerators,
    
  );
 
+##
 InstallMethod( LatticePointsGenerators, 
                [ IsCone ], 
                
@@ -720,7 +721,9 @@ InstallMethod( LatticePointsGenerators,
   n:= AmbientSpaceDimension( cone );
   
   M:= ShallowCopy( lineality_space );
+  
   N:= [ ]; 
+  
   for i in [ 1..n-d ] do
   
      current_list:= BaseOrthogonalSpaceMat( Concatenation( M, N ) );
@@ -744,6 +747,7 @@ InstallMethod( LatticePointsGenerators,
   combi:= testttt2( new_lineality_base );
   
   R:= RayGenerators( cone );
+  
   rays_not_in_lineality:= [ ];
   
   for i in R do 
@@ -763,18 +767,24 @@ InstallMethod( LatticePointsGenerators,
   od;
   
   proj1:= List( all_points, a-> a*B^-1 );
+  
   proj2:= List( [ d+1..n], i-> List(proj1, p-> AbsInt( p[i] ) ) );
+  
   new_proj2:= List( proj2, p-> List(Set(p)) );
+  
   min_proj:= List( new_proj2, function( p )
                               local t,l;
                               
                               l:=LcmOfDenominatorRatInList( p );
+  
                               t:= Iterated(l*p, Gcd );
                               
                               return t/l;
                               
                               end );
+                              
   new_N:= List( [ 1..Length(N) ], i-> min_proj[i]*N[i] );
+  
   new_B:= Concatenation( new_lineality_base, new_N );
   
   proj1:= List(  rays_not_in_lineality, r-> r*new_B^-1 );
@@ -783,6 +793,7 @@ InstallMethod( LatticePointsGenerators,
                        local i,q; 
                        
                        q:= ShallowCopy( p );
+  
                        for i in [1..n] do
                        
                        if i<=d then q[i]:= 0; fi;
@@ -795,10 +806,12 @@ InstallMethod( LatticePointsGenerators,
                        
   H:= HilbertBasis( Cone( proj2 ) );
   
-  points1:= List(H, h->h*new_B );
+  points1:= List(H, h->h*new_B ); 
+  
   points2:= List( points1, p-> LcmOfDenominatorRatInList(p)*p );
   
   return [points2, new_lineality_base ];
+  
 end );
   
      
