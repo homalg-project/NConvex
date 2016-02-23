@@ -125,6 +125,7 @@ DeclareOperation( "Vertices",
 DeclareOperation( "HasVertices",
                   [ IsPolytope ] );
 
+
 ################################
 ##
 ## Methods

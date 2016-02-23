@@ -55,9 +55,7 @@ DeclareProperty( "IsNotEmpty",
 
 DeclareProperty( "IsBounded",
                  IsPolyhedron );
-
-                 
-                 
+                
 #####################################
 ##
 ## Constructors

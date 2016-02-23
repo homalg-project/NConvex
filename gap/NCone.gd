@@ -151,6 +151,7 @@ DeclareOperation( "ExternalNmzCone",  [ IsCone ]  );
 # AmbientSpace is somewhere declared !!
 # DeclareAttribute( "AmbientSpaceDimension", IsCone );
 
+DeclareAttribute( "LatticePointsGenerators",  IsCone  );
 ##############################
 ##
 ##  Properties
@@ -244,3 +245,7 @@ DeclareOperation( "NonReducedInequalities",
                   [ IsCone ] );
                   
 DeclareOperation( "Hi", [ IsInt ] );
+
+
+DeclareGlobalFunction( "testttt" );                
+DeclareGlobalFunction( "testttt2" ); 

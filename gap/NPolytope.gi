@@ -281,7 +281,7 @@ return Dimension( polyt ) = AmbientSpaceDimension( polyt );
 end );
 ####################################
 ##
-## Attribute
+## Attributes
 ##
 ####################################
 

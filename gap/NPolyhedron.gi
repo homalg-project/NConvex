@@ -264,6 +264,17 @@ InstallMethod( IsBounded,
   
 end );
 
+##
+InstallMethod( IsNotEmpty,
+               " for external polytopes.",
+               [ IsPolyhedron ],
+               
+  function( polyhedron )
+
+  return not Cdd_IsEmpty( ExternalCddPolyhedron( polyhedron ) );
+  
+end );
+
 
 #####################################
 ##
@@ -427,6 +438,7 @@ InstallMethod( Polyhedron,
 end );
 
 
+ 
 ##############################
 ##
 ## View & Display

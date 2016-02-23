@@ -435,8 +435,6 @@ InstallMethod( Dimension,
     
     if Length( RayGenerators( cone ) ) > 0 then
      
-       Display( [ 4,5,6 ] );
-       
        return RankMat( RayGenerators( cone ) );
       
     else 
@@ -694,6 +692,154 @@ InstallMethod( LinealitySpaceGenerators,
    
  );
 
+InstallMethod( LatticePointsGenerators, 
+               [ IsCone ], 
+               
+  function( cone )
+  local N,lineality_space, d, n, M, current_list,i, new_lineality_base, combi,B,
+  rays_not_in_lineality, R, H, all_points, proj1, proj2, new_proj2, min_proj, new_N, new_B,
+  points1,points2;
+  
+  
+  if IsPointed( cone ) then 
+  
+          return [ HilbertBasis( cone ), [ ] ];
+          
+  fi;
+  
+  if Dimension( cone )= Length( LinealitySpaceGenerators( cone ) ) then
+  
+          return [ [ ], LinealitySpaceGenerators( cone ) ];
+          
+  fi;
+  
+  lineality_space:= LinealitySpaceGenerators( cone );
+  
+  d:= Length( lineality_space );
+  
+  n:= AmbientSpaceDimension( cone );
+  
+  M:= ShallowCopy( lineality_space );
+  N:= [ ]; 
+  for i in [ 1..n-d ] do
+  
+     current_list:= BaseOrthogonalSpaceMat( Concatenation( M, N ) );
+     
+     Add( N, current_list[ 1 ] );
+
+  od;
+  
+  new_lineality_base:= [ ];
+  
+  for i in [ 1..d ] do
+  
+    current_list:= BaseOrthogonalSpaceMat( Concatenation( N, new_lineality_base ) );
+    
+    Add( new_lineality_base, LcmOfDenominatorRatInList( current_list[ 1 ] )*current_list[ 1 ] );
+    
+  od;
+  
+  B:= Concatenation( new_lineality_base, N );
+  
+  combi:= testttt2( new_lineality_base );
+  
+  R:= RayGenerators( cone );
+  rays_not_in_lineality:= [ ];
+  
+  for i in R do 
+  
+     if not -i in R then Add( rays_not_in_lineality, i ); fi;
+     
+  od;
+  
+  H:= List( combi, c-> HilbertBasis( Cone( Concatenation( c, rays_not_in_lineality ) ) ) );
+  
+  all_points:= [ ];
+  
+  for i in H do 
+  
+      Append( all_points, i );
+      
+  od;
+  
+  proj1:= List( all_points, a-> a*B^-1 );
+  proj2:= List( [ d+1..n], i-> List(proj1, p-> AbsInt( p[i] ) ) );
+  new_proj2:= List( proj2, p-> List(Set(p)) );
+  min_proj:= List( new_proj2, function( p )
+                              local t,l;
+                              
+                              l:=LcmOfDenominatorRatInList( p );
+                              t:= Iterated(l*p, Gcd );
+                              
+                              return t/l;
+                              
+                              end );
+  new_N:= List( [ 1..Length(N) ], i-> min_proj[i]*N[i] );
+  new_B:= Concatenation( new_lineality_base, new_N );
+  
+  proj1:= List(  rays_not_in_lineality, r-> r*new_B^-1 );
+  
+  proj2:= List( proj1, function( p )
+                       local i,q; 
+                       
+                       q:= ShallowCopy( p );
+                       for i in [1..n] do
+                       
+                       if i<=d then q[i]:= 0; fi;
+                       
+                       od;
+                       
+                       return q;
+                       
+                       end);
+                       
+  H:= HilbertBasis( Cone( proj2 ) );
+  
+  points1:= List(H, h->h*new_B );
+  points2:= List( points1, p-> LcmOfDenominatorRatInList(p)*p );
+  
+  return [points2, new_lineality_base ];
+end );
+  
+     
+##############################
+##
+##  Extra Operations
+##
+##############################
+
+InstallGlobalFunction( "testttt", 
+
+ function( m )
+ local com;
+ 
+ com:= Combinations( [1..m] );
+ 
+ return List(com, function( h )
+           local u;
+           u:= [1..m];
+           SubtractSet(u, h );
+           
+           return Concatenation(h,-u);
+           end );
+           
+ 
+ end );
+ 
+InstallGlobalFunction( "testttt2",
+
+ function( arg )
+ local combi,m,l;
+ l:= arg[1];
+ m:= Length( l );
+ combi:= testttt( m );
+ 
+  return List( combi, h-> List( h, j->l[ AbsInt( j ) ]*j/AbsInt( j )  )   );
+ 
+#  return combi;
+ end);    
+  
+ 
 ##############################
 ##
 ## Methods
