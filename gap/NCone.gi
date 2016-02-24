@@ -692,14 +692,14 @@ InstallMethod( LinealitySpaceGenerators,
    
  );
 
-##
+## the black duck :/
 InstallMethod( LatticePointsGenerators, 
                [ IsCone ], 
                
   function( cone )
   local N,lineality_space, d, n, M, current_list,i, new_lineality_base, combi,B,
   rays_not_in_lineality, R, H, all_points, proj1, proj2, new_proj2, min_proj, new_N, new_B,
-  points1,points2;
+  points1,points2, proj12, proj123,h,pos;
   
   
   if IsPointed( cone ) then 
@@ -743,7 +743,7 @@ InstallMethod( LatticePointsGenerators,
   od;
   
   B:= Concatenation( new_lineality_base, N );
-  
+#   
   combi:= testttt2( new_lineality_base );
   
   R:= RayGenerators( cone );
@@ -768,9 +768,11 @@ InstallMethod( LatticePointsGenerators,
   
   proj1:= List( all_points, a-> a*B^-1 );
   
+  
   proj2:= List( [ d+1..n], i-> List(proj1, p-> AbsInt( p[i] ) ) );
   
   new_proj2:= List( proj2, p-> List(Set(p)) );
+  
   
   min_proj:= List( new_proj2, function( p )
                               local t,l;
@@ -782,35 +784,52 @@ InstallMethod( LatticePointsGenerators,
                               return t/l;
                               
                               end );
-                              
+  
   new_N:= List( [ 1..Length(N) ], i-> min_proj[i]*N[i] );
+  
   
   new_B:= Concatenation( new_lineality_base, new_N );
   
-  proj1:= List(  rays_not_in_lineality, r-> r*new_B^-1 );
+  proj12:= List( all_points, a-> a*new_B^-1 );
   
-  proj2:= List( proj1, function( p )
-                       local i,q; 
-                       
-                       q:= ShallowCopy( p );
   
-                       for i in [1..n] do
+  proj123:= List( proj12, function( p )
+                          local i,q; 
+                        
+                          q:= ShallowCopy( p );
+    
+                          for i in [1..n] do
                        
-                       if i<=d then q[i]:= 0; fi;
+                          if i<=d then q[i]:= 0; fi;
                        
-                       od;
+                          od;
                        
-                       return q;
+                          return q;
                        
-                       end);
-                       
-  H:= HilbertBasis( Cone( proj2 ) );
+                          end );
+                          
+ 
+    H:= ReduceTheBase( proj123 )[2];
   
-  points1:= List(H, h->h*new_B ); 
+  points2:= [ ];
   
-  points2:= List( points1, p-> LcmOfDenominatorRatInList(p)*p );
+  for h in H do
   
-  return [points2, new_lineality_base ];
+  pos:= Positions(proj123, h );
+  
+  if Length( pos )=0 then
+  
+        Error( "This shouldn't happen, please tell me if so!" );
+        
+  else
+  
+        Add( points2, all_points[ pos[1] ] );
+        
+  fi;
+  
+  od;
+  
+  return [[ ListWithIdenticalEntries(n,0)],points2, new_lineality_base ];
   
 end );
   
@@ -821,6 +840,24 @@ end );
 ##
 ##############################
 
+InstallGlobalFunction( "AddIfPossible",
+                       [ IsList, IsVector ],
+                       
+  function( M, v )
+  
+  if M = [] then return [ v ]; fi;
+   
+  if SolutionPostIntMat(M, v )= true then 
+  
+             return M;
+             
+  fi;
+  
+  return Concatenation( M, [ v ] );
+  
+end );
+
+     
 InstallGlobalFunction( "testttt", 
 
  function( m )
@@ -853,6 +890,75 @@ InstallGlobalFunction( "testttt2",
  end);    
   
  
+InstallGlobalFunction( "SolutionPostIntMat",
+                       [ IsList, IsVector ],
+                       
+  function( M, v )
+  local N, new_M, id, P, sol, kern, Ver;
+  
+   sol:= SolutionNullspaceIntMat(M, v ); 
+  
+   N:= sol[ 1 ];
+  
+   kern:= sol[ 2 ]; 
+  
+   if N = fail then return false;fi;
+  
+   if ForAll(N, n-> n>=0 ) then return true; fi;
+
+   if Length( kern )= 0 then return false; fi;
+   
+   new_M:= TransposedMat( Concatenation( [ -v ], M ) );
+   id := TransposedMat( Concatenation( [ ListWithIdenticalEntries( Length(M ), 0) ], IdentityMat( Length( M ) ) ) );
+
+   P:= PolyhedronByInequalities( Concatenation( new_M,-new_M, id ) );
+  
+   Ver := VerticesOfMainPolytope( P );
+   
+   return not IsZero( Ver ) and ForAny(Ver, i-> ForAll(i, IsInt ) );
+end );
+  
+InstallGlobalFunction( "IfNotReducedReduceOnce",
+                       [ IsList ],
+                       
+function( N )
+local current_list,i, current_vec, M;
+
+M:= List( Set( N ) );
+for i in [ 1..Length( M ) ] do
+
+    current_vec:= M[i];
+    current_list:= ShallowCopy( M );
+    Remove( current_list, i );
+    if Length( AddIfPossible( current_list, current_vec ) )= Length( current_list ) then
+    
+       return [ false, current_list ];
+       
+    fi;
+od;
+
+return [ true, M ];
+
+end );
+
+InstallGlobalFunction( "ReduceTheBase",
+                       [ IsList ],
+  function( M )
+  local current;
+  
+  current:= [ false, M ];
+  
+  while current[ 1 ]=false do
+  
+  current:= IfNotReducedReduceOnce( current[ 2 ] );
+  
+  od;
+  
+  return current;
+  
+  end );
+
+
 ##############################
 ##
 ## Methods

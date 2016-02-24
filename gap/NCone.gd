@@ -249,3 +249,8 @@ DeclareOperation( "Hi", [ IsInt ] );
 
 DeclareGlobalFunction( "testttt" );                
 DeclareGlobalFunction( "testttt2" ); 
+DeclareGlobalFunction( "SolutionPostIntMat" ); 
+DeclareGlobalFunction( "AddIfPossible" ); 
+DeclareGlobalFunction( "IfNotReducedReduceOnce" );
+DeclareGlobalFunction( "ReduceTheBase" );
+
