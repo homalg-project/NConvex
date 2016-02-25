@@ -466,7 +466,7 @@ InstallMethod( HilbertBasis,
     
     if not IsPointed( cone ) then
         
-        Error( "not yet implemented" );
+        Error( "Hilbert basis for pointed cones is not jet implemented, you can use the command 'LatticePointsGenerators' " );
         
     fi;
     
@@ -693,32 +693,33 @@ InstallMethod( LinealitySpaceGenerators,
  );
 
 ## the black duck :/
+##      
+
 InstallMethod( LatticePointsGenerators, 
                [ IsCone ], 
                
   function( cone )
   local N,lineality_space, d, n, M, current_list,i, new_lineality_base, combi,B,
   rays_not_in_lineality, R, H, all_points, proj1, proj2, new_proj2, min_proj, new_N, new_B,
-  points1,points2, proj12, proj123,h,pos;
+  points1,points2, proj12, proj123,h,pos, new_lineality;
   
+  n:= AmbientSpaceDimension( cone );
   
   if IsPointed( cone ) then 
   
-          return [ HilbertBasis( cone ), [ ] ];
+          return [ [ ListWithIdenticalEntries(n,0) ], HilbertBasis( cone ), [ ] ];
           
   fi;
   
   if Dimension( cone )= Length( LinealitySpaceGenerators( cone ) ) then
   
-          return [ [ ], LinealitySpaceGenerators( cone ) ];
+          return [ [ ListWithIdenticalEntries(n,0) ], [ ], LinealitySpaceGenerators( cone ) ];
           
   fi;
   
   lineality_space:= LinealitySpaceGenerators( cone );
   
   d:= Length( lineality_space );
-  
-  n:= AmbientSpaceDimension( cone );
   
   M:= ShallowCopy( lineality_space );
   
@@ -777,6 +778,8 @@ InstallMethod( LatticePointsGenerators,
   min_proj:= List( new_proj2, function( p )
                               local t,l;
                               
+                              if IsZero( p ) then return 1;fi;
+                              
                               l:=LcmOfDenominatorRatInList( p );
   
                               t:= Iterated(l*p, Gcd );
@@ -819,7 +822,7 @@ InstallMethod( LatticePointsGenerators,
   
   if Length( pos )=0 then
   
-        Error( "This shouldn't happen, please tell me if so!" );
+        Error( "Something went wrong! This shouldn't happen, please tell me about this!" );
         
   else
   
@@ -829,7 +832,9 @@ InstallMethod( LatticePointsGenerators,
   
   od;
   
-  return [[ ListWithIdenticalEntries(n,0)],points2, new_lineality_base ];
+  new_lineality:= ShallowCopy( LLLReducedBasis( HilbertBasis( Cone( combi[1] ) ), "linearcomb" )!.basis );
+  
+  return [ [ ListWithIdenticalEntries(n,0) ], points2, new_lineality ];
   
 end );
   
