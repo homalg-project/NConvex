@@ -713,7 +713,8 @@ InstallMethod( LatticePointsGenerators,
   
   if Dimension( cone )= Length( LinealitySpaceGenerators( cone ) ) then
   
-          return [ [ ListWithIdenticalEntries(n,0) ], [ ], LinealitySpaceGenerators( cone ) ];
+          return [ [ ListWithIdenticalEntries(n,0) ], [ ], 
+                    ShallowCopy( LLLReducedBasis( HilbertBasis( Cone( LinealitySpaceGenerators( cone ) ) ), "linearcomb" )!.basis ) ];
           
   fi;
   
