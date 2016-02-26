@@ -240,6 +240,19 @@ InstallMethod( HomogeneousPointsOfPolyhedron,
     
 end );
 
+InstallMethod( LatticePointsGenerators,
+               [ IsPolyhedron ], 
+               
+  function( p )
+  local l;
+  
+  l:= LatticePointsGenerators( TailCone( p ) );
+  
+  return [ LatticePoints( MainPolytope( p ) ), l[ 2 ], l[ 3 ] ];
+  
+  end );
+
+
 InstallGlobalFunction( Draw,
 function()
 
