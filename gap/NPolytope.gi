@@ -364,8 +364,8 @@ InstallMethod( LatticePoints,
  
  V:= Vertices( polytope );
  
- maxi := List( TransposedMat( V ), u-> Maximum( u ) );
- mini := List( TransposedMat( V ), u-> Minimum( u ) );
+ maxi := List( List( TransposedMat( V ), u-> Maximum( u ) ), t->Int( t ) );
+ mini := List( List( TransposedMat( V ), u-> Minimum( u ) ), t->Int( t ) );
  
  l:= g( mini, maxi);
  d:= DefiningInequalities( polytope );

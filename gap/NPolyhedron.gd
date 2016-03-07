@@ -20,6 +20,9 @@ DeclareCategory( "IsPolyhedron",
 DeclareAttribute( "ExternalCddPolyhedron",
                    IsPolyhedron );
 
+DeclareOperation( "ExternalNmzPolyhedron",
+                   [ IsPolyhedron ] );
+                   
 DeclareAttribute( "DefiningInequalities",
                    IsPolyhedron );
 

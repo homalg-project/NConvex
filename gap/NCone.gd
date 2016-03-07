@@ -42,14 +42,18 @@ DeclareOperation( "ConeByGenerators",
 #! @Arguments arg 
 #! @Returns a **Cone** Object
 #! @Description  
-#! The function takes a list in which every entry represents a vertex in the ambient vector space 
+#! The function takes a list in which every entry represents a ray in the ambient vector space 
 #! and returns the cone defined by them.              
 DeclareOperation( "Cone",
                   [ IsList ] );
 
+#! @Arguments cdd_cone 
+#! @Returns a **Cone** Object
+#! @Description  
+#! This function takes a cone defined in **CddInterface** and converts it to a cone in **NConvex**
 DeclareOperation( "Cone",
                   [ IsCddPolyhedron ] );
-                  
+
 ##############################
 ##
 ##  Attributes 
@@ -237,6 +241,8 @@ DeclareOperation( "RayGeneratorContainedInRelativeInterior",
                   
 # DeclareOperation( "\*",
 #                     [ IsCone, IsCone ] );
+
+#! @InsertChunk example1
                    
 DeclareOperation( "\*",
                   [ IsHomalgMatrix, IsCone ] );

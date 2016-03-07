@@ -131,6 +131,36 @@ InstallMethod( ExternalCddPolyhedron,
     
 end );
 
+InstallMethod( ExternalNmzPolyhedron, 
+               [ IsPolyhedron ], 
+               
+function( poly )
+local ineq, new_ineq;
+
+if IsBound( poly!.inequalities ) then 
+
+     ineq:= poly!.inequalities;
+     
+fi;
+
+ineq:= DefiningInequalities( poly );
+
+new_ineq := List( ineq, function( i )
+                        local j;
+                        
+                        j:= ShallowCopy( i );
+                        Add( j, j[ 1 ] );
+                        Remove(j ,1 );
+                        
+                        return j;
+                        
+                        end );
+return NmzCone( [ "inhom_inequalities", new_ineq ] );
+
+end );
+                        
+                        
+
 InstallMethod( Dimension, 
                [ IsPolyhedron ], 
    function( polyhedron )
@@ -244,14 +274,31 @@ InstallMethod( LatticePointsGenerators,
                [ IsPolyhedron ], 
                
   function( p )
-  local l;
+  local l, Ver,v,r;
   
-  l:= LatticePointsGenerators( TailCone( p ) );
+  Print( "This function for polyhedrons is still not effectively implimented\n" );
+   l:= LatticePointsGenerators( TailCone( p ) );
   
-  return [ LatticePoints( MainPolytope( p ) ), l[ 2 ], l[ 3 ] ];
+  v:= VerticesOfMainPolytope( p );
+#   This NEED to be changed. 
+    r:= RayGeneratorsOfTailCone( p );
+  
+    Ver:= LatticePoints( Polytope( Concatenation(v, Iterated(List(v, t-> List( r, w->w+t ) ), Concatenation ) ) ) );
+  
+   return [ Ver, l[ 2 ], l[ 3 ] ];
   
   end );
 
+
+InstallMethod( BasisOfLinealitySpace,
+               "for polyhedrons",
+               [ IsPolyhedron ],
+               
+  function( polyhedron )
+    
+    return LinealitySpaceGenerators( TailCone( polyhedron ) );
+    
+end );
 
 InstallGlobalFunction( Draw,
 function()

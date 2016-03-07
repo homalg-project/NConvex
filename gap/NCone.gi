@@ -497,7 +497,7 @@ InstallMethod( RaysInFacets,
       
       current_list:= List( [1..Length( generating_rays )], function(j)
                                                            
-                                                           if generating_rays[j] in current_ray_generators then
+                                                           if generating_rays[j] in Cone( current_cone ) then
                                                            
                                                                 return 1;
                                                                 
@@ -554,7 +554,7 @@ InstallMethod( RaysInFaces,
             
             current_list:= List( [1..Length( generating_rays )], function(j)
                                                            
-                                                                  if generating_rays[j] in current_ray_generators then
+                                                                  if generating_rays[j] in Cone( current_cone ) then
                                                            
                                                                       return 1;
                                                                 
@@ -701,7 +701,7 @@ InstallMethod( LatticePointsGenerators,
   function( cone )
   local N,lineality_space, d, n, M, current_list,i, new_lineality_base, combi,B,
   rays_not_in_lineality, R, H, all_points, proj1, proj2, new_proj2, min_proj, new_N, new_B,
-  points1,points2, proj12, proj123,h,pos, new_lineality;
+  points1,points2, proj12, proj123,h,pos, new_lineality, proj1234, rays_pro, rays_pro_mod, H2;
   
   n:= AmbientSpaceDimension( cone );
   
@@ -812,12 +812,46 @@ InstallMethod( LatticePointsGenerators,
                        
                           end );
                           
+ proj1234:= [ ];
  
-    H:= ReduceTheBase( proj123 )[2];
+ for h in Set( proj123 ) do
+ 
+  if not IsZero( h ) then Add( proj1234, h ); fi;
   
+ od;
+ 
+ rays_pro:= List( rays_not_in_lineality, r -> r* new_B^-1 );
+ 
+ rays_pro_mod := List( rays_pro, function( p )
+                            local i,q; 
+                        
+                            q:= ShallowCopy( p );
+    
+                            for i in [1..n] do
+                       
+                            if i<=d then q[i]:= 0; fi;
+                       
+                            od;
+                       
+                            return q;
+                       
+                            end );
+ 
+  H:= NmzModuleGenerators( ExternalNmzPolyhedron( Polyhedron( proj1234, rays_pro_mod ) ) );
+  
+  H2:= List( H, function( h )
+                local q;
+                
+                q:= ShallowCopy( h );
+                
+                Remove(q, n+1 );
+                
+                return q; 
+                
+                end );
   points2:= [ ];
   
-  for h in H do
+  for h in H2 do
   
   pos:= Positions(proj123, h );
   
@@ -900,7 +934,7 @@ InstallGlobalFunction( "SolutionPostIntMat",
                        [ IsList, IsVector ],
                        
   function( M, v )
-  local N, new_M, id, P, sol, kern, Ver;
+  local N, new_M, id, P, sol, kern, Ver,u,r;
   
    sol:= SolutionNullspaceIntMat(M, v ); 
   
@@ -919,8 +953,12 @@ InstallGlobalFunction( "SolutionPostIntMat",
 
    P:= PolyhedronByInequalities( Concatenation( new_M,-new_M, id ) );
   
-   Ver := VerticesOfMainPolytope( P );
-   
+   u:= VerticesOfMainPolytope( P );
+  
+   r:= RayGeneratorsOfTailCone( P );
+  
+   Ver:= LatticePoints( Polytope( Concatenation(u, Iterated(List(u, t-> List( r, w->w+t ) ), Concatenation ) ) ) );
+  
    return not IsZero( Ver ) and ForAny(Ver, i-> ForAll(i, IsInt ) );
 end );
   
