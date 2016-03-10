@@ -748,17 +748,17 @@ end );
 
 ##
 InstallMethod( ViewObj,
-               "for homalg polytopes",
+               "for homalg polyhedrons",
                [ IsPolyhedron ],
                
-  function( polytope )
+  function( polyhedron )
     local str;
     
     Print( "<A" );
     
-    if HasIsNotEmpty( polytope ) then
+    if HasIsNotEmpty( polyhedron ) then
         
-        if IsNotEmpty( polytope ) then
+        if IsNotEmpty( polyhedron ) then
             
             Print( " not empty" );
             
@@ -768,25 +768,31 @@ InstallMethod( ViewObj,
     
     Print( " polyhedron in |R^" );
     
-    Print( String( AmbientSpaceDimension( polytope ) ) );
+    Print( String( AmbientSpaceDimension( polyhedron ) ) );
     
-    Print( ">" );
+    if HasDimension( polyhedron ) then
+        
+        Print( " of dimension ", String( Dimension( polyhedron ) ) );
+        
+    fi;
+    
+    Print( " >" );
     
 end );
 
 ##
 InstallMethod( Display,
-               "for homalg polytopes",
+               "for homalg polyhedrons",
                [ IsPolyhedron ],
                
-  function( polytope )
+  function( polyhedron )
     local str;
     
     Print( "A" );
     
-    if HasIsNotEmpty( polytope ) then
+    if HasIsNotEmpty( polyhedron ) then
         
-        if IsNotEmpty( polytope ) then
+        if IsNotEmpty( polyhedron ) then
             
             Print( " not empty" );
             
@@ -796,7 +802,13 @@ InstallMethod( Display,
     
     Print( " polyhedron in |R^" );
     
-    Print( String( AmbientSpaceDimension( polytope ) ) );
+    Print( String( AmbientSpaceDimension( polyhedron ) ) );
+    
+    if HasDimension( polyhedron ) then
+        
+        Print( " of dimension ", String( Dimension( polyhedron ) ) );
+        
+    fi;
     
     Print( ".\n" );
     
