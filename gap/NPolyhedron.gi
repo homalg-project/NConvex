@@ -274,20 +274,221 @@ InstallMethod( LatticePointsGenerators,
                [ IsPolyhedron ], 
                
   function( p )
-  local l, Ver,v,r;
+  local nmz_p, T,R,l,M,V, int_point_in_p,i,h,g, all_points, rays_not_in_lineality, combi,n,d,N,H,B, current_list,
+  new_lineality_base, proj1, proj2, new_proj2, min_proj, new_N, new_B,
+  points1,points2, proj12, proj123,pos, new_lineality, proj1234, rays_pro, rays_pro_mod, H2,lat;
+    
+  nmz_p:= ExternalNmzPolyhedron( p ); 
   
-  Print( "This function for polyhedrons is still not effectively implimented\n" );
-   l:= LatticePointsGenerators( TailCone( p ) );
+  T:= TailCone( p );
   
-  v:= VerticesOfMainPolytope( p );
-#   This NEED to be changed. 
-    r:= RayGeneratorsOfTailCone( p );
+  if IsPointed( T ) then 
   
-    Ver:= LatticePoints( Polytope( Concatenation(v, Iterated(List(v, t-> List( r, w->w+t ) ), Concatenation ) ) ) );
+         g:= NmzModuleGenerators( nmz_p );
+         
+         for i in g do
+         
+           Remove(i, AmbientSpaceDimension( p ) +1 );
+           
+         od;
+         
+         h:= NmzHilbertBasis( nmz_p );
+   
+         for i in h do
+          
+           Remove( i, AmbientSpaceDimension( p ) +1 );
+           
+         od;
+         
+         return [ g, h, [ ] ];
+         
+  fi;
   
-   return [ Ver, l[ 2 ], l[ 3 ] ];
+  R:= RayGeneratorsOfTailCone( p ); 
   
-  end );
+  l:= BasisOfLinealitySpace( p );
+  
+  V:= VerticesOfMainPolytope( p );
+  
+  if Dimension( p )= Length( l ) then 
+  
+       if IsBound( NmzModuleGenerators(ExternalNmzPolyhedron( Polyhedron( V, l ) ) )[ 1 ] ) then 
+       
+                int_point_in_p:= NmzModuleGenerators(ExternalNmzPolyhedron( Polyhedron( V, l ) ) )[ 1 ];
+                
+       else 
+       
+                Print( "The given polyhedron does not contain integer points\n" );
+                
+                return [ [ ], [ ], [ ] ];
+                
+       fi;
+       
+       Remove( int_point_in_p, AmbientSpaceDimension( p ) +1 );
+  
+       return [ [ int_point_in_p ], [ ], 
+                    ShallowCopy( LLLReducedBasis( HilbertBasis( Cone( l ) ), "linearcomb" )!.basis ) ];
+          
+  fi;
+  
+  n:= AmbientSpaceDimension( p );
+  
+  d:= Length( l );
+  
+  M:= ShallowCopy( l );
+  
+  N:= [ ];
+  
+  for i in [ 1..n-d ] do
+  
+     current_list:= BaseOrthogonalSpaceMat( Concatenation( M, N ) );
+     
+     Add( N, current_list[ 1 ] );
+
+  od;
+  
+  new_lineality_base:= [ ];
+  
+  for i in [ 1..d ] do
+  
+    current_list:= BaseOrthogonalSpaceMat( Concatenation( N, new_lineality_base ) );
+    
+    Add( new_lineality_base, LcmOfDenominatorRatInList( current_list[ 1 ] )*current_list[ 1 ] );
+    
+  od;
+  
+  B:= Concatenation( new_lineality_base, N );
+
+  combi:= testttt2( new_lineality_base );
+  
+  rays_not_in_lineality:= [ ];
+  
+  for i in R do 
+  
+     if not -i in R then Add( rays_not_in_lineality, i ); fi;
+     
+  od;
+
+  H:=  List( combi, c->NmzModuleGenerators(ExternalNmzPolyhedron( Polyhedron( V, Concatenation(c, rays_not_in_lineality) ) ) ) );
+
+  all_points:= [ ];
+  
+  for i in H do 
+  
+      Append( all_points, i );
+      
+  od;
+  
+  for i in all_points do
+  
+      Remove( i, n+1 );
+     
+  od;
+  
+  proj1:= List( all_points, a-> a*B^-1 );
+  
+  
+  proj2:= List( [ d+1..n], i-> List(proj1, p-> AbsInt( p[i] ) ) );
+  
+  new_proj2:= List( proj2, p-> List(Set(p)) );
+  
+  
+  min_proj:= List( new_proj2, function( p )
+                              local t,l;
+                              
+                              if IsZero( p ) then return 1;fi;
+                              
+                              l:=LcmOfDenominatorRatInList( p );
+  
+                              t:= Iterated(l*p, Gcd );
+                              
+                              return t/l;
+                              
+                              end );
+  
+  new_N:= List( [ 1..Length(N) ], i-> min_proj[i]*N[i] );
+  
+  
+  new_B:= Concatenation( new_lineality_base, new_N );
+  
+  proj12:= List( all_points, a-> a*new_B^-1 );
+  
+  
+  proj123:= List( proj12, function( p )
+                          local i,q; 
+                        
+                          q:= ShallowCopy( p );
+    
+                          for i in [1..n] do
+                       
+                          if i<=d then q[i]:= 0; fi;
+                       
+                          od;
+                       
+                          return q;
+                       
+                          end );
+                          
+ proj1234:= [ ];
+ 
+ for h in Set( proj123 ) do
+ 
+  if not IsZero( h ) then Add( proj1234, h ); fi;
+  
+ od;
+ 
+ rays_pro:= List( rays_not_in_lineality, r -> r* new_B^-1 );
+ 
+ rays_pro_mod := List( rays_pro, function( p )
+                            local i,q; 
+                        
+                            q:= ShallowCopy( p );
+    
+                            for i in [1..n] do
+                       
+                            if i<=d then q[i]:= 0; fi;
+                       
+                            od;
+                       
+                            return q;
+                       
+                            end );
+
+   H:= NmzModuleGenerators( ExternalNmzPolyhedron( Polyhedron( proj1234, rays_pro_mod ) ) );
+
+     H2:= List( H, function( h )
+                local q;
+                
+                q:= ShallowCopy( h );
+                
+                Remove(q, n+1 );
+                
+                return q; 
+                
+                end );
+  points2:= [ ];
+  
+  for h in H2 do
+  
+  pos:= Positions(proj123, h );
+  
+  if Length( pos )=0 then
+  
+        Error( "Something went wrong! This shouldn't happen, please tell me about this!" );
+        
+  else
+  
+        Add( points2, all_points[ pos[1] ] );
+        
+  fi;
+  
+  od;
+  
+  lat:= LatticePointsGenerators( T );
+  
+  return [ points2, lat[2] , lat[3] ];
+  
+end );
 
 
 InstallMethod( BasisOfLinealitySpace,
@@ -303,7 +504,7 @@ end );
 InstallGlobalFunction( Draw,
 function()
 
-Exec( "firefox https://www.desmos.com/calculator" );
+Exec( "firefox https://www.desmos.com/calculator &" );
 
 end );
 
@@ -335,6 +536,14 @@ InstallMethod( IsNotEmpty,
   
 end );
 
+InstallMethod( IsPointed,
+               [ IsPolyhedron ], 
+      
+  function( polyhedron )
+  
+  return IsPointed( TailCone( polyhedron ) );
+  
+end );
 
 #####################################
 ##

@@ -58,6 +58,9 @@ DeclareProperty( "IsNotEmpty",
 
 DeclareProperty( "IsBounded",
                  IsPolyhedron );
+
+DeclareProperty( "IsPointed",
+                 IsPolyhedron );
                 
 #####################################
 ##
