@@ -276,7 +276,7 @@ InstallMethod( LatticePointsGenerators,
   function( p )
   local nmz_p, T,R,l,M,V, int_point_in_p,i,h,g, all_points, rays_not_in_lineality, combi,n,d,N,H,B, current_list,
   new_lineality_base, proj1, proj2, new_proj2, min_proj, new_N, new_B,
-  points1,points2, proj12, proj123,pos, new_lineality, proj1234, rays_pro, rays_pro_mod, H2,lat;
+  points1,points2, proj12, proj123,pos, new_lineality, proj1234, rays_pro, rays_pro_mod, H2,lat,l_c,new_pos;
     
   nmz_p:= ExternalNmzPolyhedron( p ); 
   
@@ -472,13 +472,18 @@ InstallMethod( LatticePointsGenerators,
   
   pos:= Positions(proj123, h );
   
+  l_c:= List( pos, p-> all_points[ p ] );
+  
   if Length( pos )=0 then
   
         Error( "Something went wrong! This shouldn't happen, please tell me about this!" );
         
   else
   
-        Add( points2, all_points[ pos[1] ] );
+        new_pos:= Positions( List(List( l_c, l-> List(l, u-> AbsInt( u ) ) ), Sum ), Minimum( List(List( l_c, l-> List(l, u-> AbsInt( u ) ) ), Sum ) ) );
+
+  
+        Add( points2, l_c[ new_pos[1] ] );
         
   fi;
   
