@@ -1,10 +1,11 @@
 #############################################################################
 ##
-##  Fan.gd         ConvexForHomalg package         Sebastian Gutsche
+##  Fan.gd         NConvex package                 Sebastian Gutsche
+##                                                 Kamal Saleh
 ##
 ##  Copyright 2011 Lehrstuhl B für Mathematik, RWTH Aachen
 ##
-##  Fans for ConvexForHomalg.
+##  Fans for NConvex package.
 ##
 #############################################################################
 

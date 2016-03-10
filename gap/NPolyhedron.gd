@@ -1,10 +1,11 @@
 #############################################################################
 ##
-##  Polyhedron.gd         Convex package         Sebastian Gutsche
+##  Polyhedron.gd         NConvex package        Sebastian Gutsche
+##                                               Kamal Saleh
 ##
 ##  Copyright 2011 Lehrstuhl B für Mathematik, RWTH Aachen
 ##
-##  Polyhedrons for Convex.
+##  Polyhedrons for NConvex.
 ##
 #############################################################################
 

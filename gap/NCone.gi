@@ -1,10 +1,11 @@
 #############################################################################
 ##
-##  Cone.gi         ConvexForHomalg package         Sebastian Gutsche
+##  Cone.gi                NConvex package          Sebastian Gutsche
+##                                                  Kamal Saleh
 ##
 ##  Copyright 2011 Lehrstuhl B für Mathematik, RWTH Aachen
 ##
-##  Cones for ConvexForHomalg.
+##  Cones for NConvex package.
 ##
 #############################################################################
 

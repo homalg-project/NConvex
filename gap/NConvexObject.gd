@@ -1,6 +1,7 @@
 #############################################################################
 ##
-##  ConvexObject.gd               Convex package       Sebastian Gutsche
+##  ConvexObject.gd              NConvex package       Sebastian Gutsche
+##                                                     Kamal Saleh
 ##
 ##  Copyright 2011-2012 Lehrstuhl B für Mathematik, RWTH Aachen
 ##
