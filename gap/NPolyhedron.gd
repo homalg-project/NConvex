@@ -26,7 +26,13 @@ DeclareOperation( "ExternalNmzPolyhedron",
 DeclareAttribute( "DefiningInequalities",
                    IsPolyhedron );
 
+DeclareAttribute( "MainRatPolytope",
+                  IsPolyhedron );
+
 DeclareAttribute( "MainPolytope",
+                  IsPolyhedron );
+                  
+DeclareAttribute( "VerticesOfMainRatPolytope",
                   IsPolyhedron );
 
 DeclareAttribute( "VerticesOfMainPolytope",

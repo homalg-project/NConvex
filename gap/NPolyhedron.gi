@@ -45,9 +45,9 @@ InstallMethod( ContainingGrid,
         
         return ContainingGrid( TailCone( polyhedron ) );
         
-    elif HasMainPolytope( polyhedron ) then
+    elif HasMainRatPolytope( polyhedron ) then
         
-        return ContainingGrid( MainPolytope( polyhedron ) );
+        return ContainingGrid( MainRatPolytope( polyhedron ) );
         
     fi;
     
@@ -56,12 +56,12 @@ end );
 ##
 InstallMethod( ExternalCddPolyhedron,
                "for polyhedrons",
-               [ IsPolyhedron and HasMainPolytope and HasTailCone ],
+               [ IsPolyhedron and HasMainRatPolytope and HasTailCone ],
                
   function( polyhedron )
     local verts, rays;
     
-    verts := Vertices( MainPolytope( polyhedron ) );
+    verts := Vertices( MainRatPolytope( polyhedron ) );
     
     verts := List( verts, i -> Concatenation( [ 1 ], i ) );
     
@@ -169,18 +169,38 @@ InstallMethod( Dimension,
    
 end );
 
-InstallMethod( MainPolytope, 
+InstallMethod( MainRatPolytope, 
                "for polyhedrons",
                [ IsPolyhedron ],
                
   function( polyhedron )
     
-    return Polytope( VerticesOfMainPolytope( polyhedron ) );
+    return Polytope( VerticesOfMainRatPolytope( polyhedron ) );
     
 end );
 
 ##
+InstallMethod( MainPolytope,
+              [ IsPolyhedron ],
+  
+  function( polyhedron )
+  
+  return Polytope( LatticePointsGenerators( polyhedron )[ 1 ] );
+  
+end );
+
+##
 InstallMethod( VerticesOfMainPolytope,
+              [ IsPolyhedron ], 
+              
+  function( polyhedron )
+  
+  return Vertices( MainPolytope( polyhedron ) );
+  
+end );
+
+##
+InstallMethod( VerticesOfMainRatPolytope,
                "for polyhedrons",
                [ IsPolyhedron ],
                
@@ -204,7 +224,7 @@ InstallMethod( VerticesOfMainPolytope,
         
     else 
     
-        return Vertices( MainPolytope( polyhedron ) );
+        return Vertices( MainRatPolytope( polyhedron ) );
         
     fi;
     
@@ -256,7 +276,7 @@ InstallMethod( HomogeneousPointsOfPolyhedron,
   function( polyhedron )
     local verts, rays;
     
-    verts := Vertices( MainPolytope( polyhedron ) );
+    verts := Vertices( MainRatPolytope( polyhedron ) );
     
     verts := List( verts, i -> Concatenation( [ 1 ], i ) );
     
@@ -308,7 +328,7 @@ InstallMethod( LatticePointsGenerators,
   
   l:= BasisOfLinealitySpace( p );
   
-  V:= VerticesOfMainPolytope( p );
+  V:= VerticesOfMainRatPolytope( p );
   
   if Dimension( p )= Length( l ) then 
   
@@ -600,7 +620,7 @@ InstallMethod( Polyhedron,
     polyhedron := rec();
     
     ObjectifyWithAttributes( polyhedron, TheTypeConvexPolyhedron,
-                                          MainPolytope, polytope,
+                                          MainRatPolytope, polytope,
                                           TailCone, cone,
                                           ContainingGrid, ContainingGrid( polytope ),
                                           AmbientSpaceDimension, AmbientSpaceDimension( polytope )
@@ -626,9 +646,15 @@ InstallMethod( Polyhedron,
     
     polyhedron := rec( );
     
+    if Length( cone ) = 0 then
+        
+        cone := [ List( [ 1 .. AmbientSpaceDimension( polytope ) ], i -> 0 ) ];
+        
+    fi;
+    
     ObjectifyWithAttributes( polyhedron, TheTypeConvexPolyhedron,
-                                          MainPolytope, polytope,
-                                          RayGeneratorsOfTailCone, cone,
+                                          MainRatPolytope, polytope,
+                                          TailCone, Cone( cone ),
                                           ContainingGrid, ContainingGrid( polytope ),
                                           AmbientSpaceDimension, AmbientSpaceDimension( polytope )
                                         );
@@ -659,7 +685,7 @@ InstallMethod( Polyhedron,
     polyhedron := rec( );
     
     ObjectifyWithAttributes( polyhedron, TheTypeConvexPolyhedron,
-                                          MainPolytope, polytope,
+                                          MainRatPolytope, polytope,
                                           TailCone, cone,
                                           ContainingGrid, ContainingGrid( cone ),
                                           AmbientSpaceDimension, AmbientSpaceDimension( cone )
@@ -698,14 +724,14 @@ InstallMethod( Polyhedron,
     polyhedron := rec();
     
     ObjectifyWithAttributes( polyhedron, TheTypeConvexPolyhedron,
-                                          MainPolytope, Polytope( polytope ),
+                                          MainRatPolytope, Polytope( polytope ),
                                           TailCone, Cone( cone ),
                                           AmbientSpaceDimension, Length( polytope[ 1 ] ) 
                                         );
     
-    SetContainingGrid( TailCone( polyhedron ), ContainingGrid( MainPolytope( polyhedron ) ) );
+    SetContainingGrid( TailCone( polyhedron ), ContainingGrid( MainRatPolytope( polyhedron ) ) );
     
-    SetContainingGrid( polyhedron, ContainingGrid( MainPolytope( polyhedron ) ) );
+    SetContainingGrid( polyhedron, ContainingGrid( MainRatPolytope( polyhedron ) ) );
     
     return polyhedron;
     

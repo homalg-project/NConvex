@@ -339,59 +339,68 @@ function( polytope )
 
 return Cdd_Dimension( ExternalCddPolytope( polytope ) );
 end );
-            
-## this can be better written.
-InstallMethod( LatticePoints,
-               "for polytopes (fallback)",
-               [ IsPolytope ],
+
+InstallMethod( LatticePoints, 
+               [ IsPolytope ], 
                
-  function( polytope )
-  local f,g,l,t, maxi, mini,V,w,d,r;
-   
-  f:= function( L )              
- local u,i;
- u:= L[1];
- for i in [ 2..Length( L ) ] do
- u:= Cartesian(u, L[ i ] );
- u:= List( u, k-> Flat( k ) );
- od;
- return u;                      
- end;
- 
- g:= function( Min, Max )
- return f( List( [ 1..Length( Max) ], i->[ Min[i] .. Max[i] ] ) );
- end;
- 
- V:= Vertices( polytope );
- 
- maxi := List( List( TransposedMat( V ), u-> Maximum( u ) ), t->Int( t ) );
- mini := List( List( TransposedMat( V ), u-> Minimum( u ) ), t->Int( t ) );
- 
- l:= g( mini, maxi);
- d:= DefiningInequalities( polytope );
- 
- w:= [ ];
- 
- for t in l do
- 
- Add(t, 1, 1 );
- 
- r:= Flat( List(d, h->h*TransposedMat( [ t ] ) ) ); 
- 
- if ForAll(r, h-> h>=0 ) then 
- 
- Remove(t,1);
- Add( w, t );
- 
- fi;
- 
- od;
- 
- 
- return w;
-   
-    
+function( polytope )
+
+return LatticePointsGenerators( Polyhedron( polytope, [ ] ) )[ 1 ];
+
 end );
+
+## this can be better written.
+# InstallMethod( LatticePoints,
+#                "for polytopes (fallback)",
+#                [ IsPolytope ],
+#                
+#   function( polytope )
+#   local f,g,l,t, maxi, mini,V,w,d,r;
+#    
+#   f:= function( L )              
+#  local u,i;
+#  u:= L[1];
+#  for i in [ 2..Length( L ) ] do
+#  u:= Cartesian(u, L[ i ] );
+#  u:= List( u, k-> Flat( k ) );
+#  od;
+#  return u;                      
+#  end;
+#  
+#  g:= function( Min, Max )
+#  return f( List( [ 1..Length( Max) ], i->[ Min[i] .. Max[i] ] ) );
+#  end;
+#  
+#  V:= Vertices( polytope );
+#  
+#  maxi := List( List( TransposedMat( V ), u-> Maximum( u ) ), t->Int( t ) );
+#  mini := List( List( TransposedMat( V ), u-> Minimum( u ) ), t->Int( t ) );
+#  
+#  l:= g( mini, maxi);
+#  d:= DefiningInequalities( polytope );
+#  
+#  w:= [ ];
+#  
+#  for t in l do
+#  
+#  Add(t, 1, 1 );
+#  
+#  r:= Flat( List(d, h->h*TransposedMat( [ t ] ) ) ); 
+#  
+#  if ForAll(r, h-> h>=0 ) then 
+#  
+#  Remove(t,1);
+#  Add( w, t );
+#  
+#  fi;
+#  
+#  od;
+#  
+#  
+#  return w;
+#    
+#     
+# end );
 
 
 ##

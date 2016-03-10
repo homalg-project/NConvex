@@ -953,7 +953,7 @@ InstallGlobalFunction( "SolutionPostIntMat",
 
    P:= PolyhedronByInequalities( Concatenation( new_M,-new_M, id ) );
   
-   u:= VerticesOfMainPolytope( P );
+   u:= VerticesOfMainRatPolytope( P );
   
    r:= RayGeneratorsOfTailCone( P );
   
