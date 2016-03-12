@@ -59,4 +59,45 @@ DefiningInequalities( Q );
 #! [ [ 10, -2, 1 ], [ 6, 2, -1 ] ]
 Q;
 #! <A polyhedron in |R^2>
- 
+
+############################################################################
+##
+## find if the equation have integer solutions 3x + 4y - 7z = 2
+##
+############################################################################
+
+P:= PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );
+#! <A polyhedron in |R^3 >
+LatticePointsGenerators( P );
+#! [ [ [ -2, 2, 0 ] ], [  ], [ [ 1, 1, 1 ], [ -4, 3, 0 ] ] ]
+
+## So the solutions set is { [ -2, 2, 0 ]+  t_1*[ 1, 1, 1 ] + t_2[ -4, 3, 0 ] }
+## with t_i integer for all i's.
+
+###########################################################################
+##
+## We know that 4x + 6y = 3 does not have any solutions since gcd(4,6)=2 does not divide 3
+##
+##############################################################################
+
+Q:= PolyhedronByInequalities( [ [-3, 4, 6 ], [ 3, -4, -6 ] ] );
+#! <A polyhedron in |R^2 >
+LatticePointsGenerators( Q );
+#! The given polyhedron does not contain integer points
+#! [ [  ], [  ], [  ] ]
+
+##############################################################################
+##   Example of solving system of linear congruences
+##
+##   2x + 3y = 3 mod 2
+##   7x +  y = 3 mod 5
+##
+##############################################################################
+
+# 2x + 3y + 2z + 0t = 3
+# 7x +  y + 0z + 5t = 3                           
+P:= PolyhedronByInequalities( [ [-3,2,3,2,0], [-3,7,1,0,5 ], -[-3,2,3,2,0], -[-3,7,1,0,5 ] ] );
+#! <A polyhedron in |R^4 >
+LatticePointsGenerators( P );
+#! [ [ [ -6, 5, 0, 8 ] ], [  ], [ [ -1, 2, -2, 1 ], [ -5, 0, 5, 7 ] ] ]
+
