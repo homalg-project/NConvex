@@ -101,3 +101,5 @@ P:= PolyhedronByInequalities( [ [ -3, 2, 3, 2, 0 ], [ -3, 7, 1, 0, 5 ], -[ -3, 2
 LatticePointsGenerators( P );
 #! [ [ [ -6, 5, 0, 8 ] ], [  ], [ [ -1, 2, -2, 1 ], [ -5, 0, 5, 7 ] ] ]
 
+## So the solutions set is { [ -6, 5 ] + t_1*[ -1, 2 ] + t_2*[ -5, 0 ] }, t_1,t_2 are integers. 
+
