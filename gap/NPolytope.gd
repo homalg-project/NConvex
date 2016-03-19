@@ -108,10 +108,6 @@ DeclareAttribute( "BabyPolytope",
                    
 DeclareAttribute( "PolarPolytope",
                     IsPolytope );
-                    
-                    
-    
-                    
   
 ####################################
 ##

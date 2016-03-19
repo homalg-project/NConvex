@@ -740,7 +740,59 @@ InstallMethod( \*,
     return new_fan;
     
 end );
-      
+
+##
+##
+InstallMethod( ToricStarFan,
+               "for fans",
+               [ IsFan, IsCone ],
+               
+  function( fan, cone )
+    local maximal_cones, rays_of_cone, defining_inequalities, value_list, cone_list, i, j, breaker;
+    
+    maximal_cones := MaximalCones( fan );
+    
+    rays_of_cone := RayGenerators( cone );
+    
+    cone_list := [ ];
+    
+    breaker := false;
+    
+    for i in maximal_cones do
+        
+        defining_inequalities := DefiningInequalities( i );
+        
+        for j in rays_of_cone do
+            
+            value_list := List( defining_inequalities, k -> k * j );
+            
+            if not ForAll( value_list, k -> k >= 0 ) or not 0 in value_list then
+                
+                breaker := true;
+                
+                continue;
+                
+            fi;
+            
+        od;
+        
+        if breaker then
+            
+            breaker := false;
+            
+            continue;
+            
+        fi;
+        
+        Add( cone_list, cone );
+        
+    od;
+    
+    cone_list := Fan( cone_list );
+    
+    SetContainingGrid( cone_list, ContainingGrid( fan ) );
+    
+end );
 ##
 InstallMethod( \*,
                "for homalg fans.",

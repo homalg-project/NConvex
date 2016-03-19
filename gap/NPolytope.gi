@@ -341,13 +341,54 @@ function( polytope )
 return Cdd_Dimension( ExternalCddPolytope( polytope ) );
 end );
 
+
+##
+InstallMethod( LatticePointsGenerators,
+               "for polytopes",
+               [ IsPolytope ],
+               
+  function( polytope )
+    
+    return LatticePointsGenerators( Polyhedron( polytope, [ ] ) );
+    
+end );
+
+##
 InstallMethod( LatticePoints, 
                [ IsPolytope ], 
                
-function( polytope )
+  function( polytope )
 
-return LatticePointsGenerators( Polyhedron( polytope, [ ] ) )[ 1 ];
+     return LatticePointsGenerators( Polyhedron( polytope, [ ] ) )[ 1 ];
 
+end );
+
+##
+InstallMethod( RelativeInteriorLatticePoints,
+               "for polytopes",
+               [ IsPolytope ],
+               
+  function( polytope )
+    local lattice_points, ineqs, inner_points, i, j;
+    
+    lattice_points := LatticePoints( polytope );
+    
+    ineqs := FacetInequalities( polytope );
+    
+    inner_points := [ ];
+    
+    for i in lattice_points do
+        
+        if ForAll( ineqs, j -> Sum( [ 1 .. Length( i ) ], k -> j[ k + 1 ] * i[ k ] ) > - j[ 1 ] ) then
+            
+            Add( inner_points, i );
+            
+        fi;
+        
+    od;
+    
+    return inner_points;
+    
 end );
 
 ## this can be better written.
@@ -603,18 +644,6 @@ InstallMethod( AffineCone,
     od;
     
     return Cone( newcone );
-    
-end );
-
-## this is very bad implimentation!
-## Ask!
-InstallMethod( LatticePointsGenerators,
-               "for polytopes",
-               [ IsExternalPolytopeRep ],
-               
-  function( polyt )
-    
-    return [ LatticePoints( polyt ), [ ], [ ] ];
     
 end );
 
