@@ -881,22 +881,23 @@ end );
 ##
 ##############################
 
-InstallGlobalFunction( "AddIfPossible",
-                       [ IsList, IsVector ],
-                       
-  function( M, v )
-  
-  if M = [] then return [ v ]; fi;
-   
-  if SolutionPostIntMat(M, v )= true then 
-  
-             return M;
-             
-  fi;
-  
-  return Concatenation( M, [ v ] );
-  
-end );
+# 
+# InstallGlobalFunction( "AddIfPossible",
+#                        [ IsList, IsVector ],
+#                        
+#   function( M, v )
+#   
+#   if M = [] then return [ v ]; fi;
+#    
+#   if SolutionPostIntMat(M, v )= true then 
+#   
+#              return M;
+#              
+#   fi;
+#   
+#   return Concatenation( M, [ v ] );
+#   
+# end );
 
      
 InstallGlobalFunction( "testttt", 
@@ -927,81 +928,80 @@ InstallGlobalFunction( "testttt2",
  
   return List( combi, h-> List( h, j->l[ AbsInt( j ) ]*j/AbsInt( j )  )   );
  
-#  return combi;
- end);    
+end);    
   
  
-InstallGlobalFunction( "SolutionPostIntMat",
-                       [ IsList, IsVector ],
-                       
-  function( M, v )
-  local N, new_M, id, P, sol, kern, Ver,u,r;
-  
-   sol:= SolutionNullspaceIntMat(M, v ); 
-  
-   N:= sol[ 1 ];
-  
-   kern:= sol[ 2 ]; 
-  
-   if N = fail then return false;fi;
-  
-   if ForAll(N, n-> n>=0 ) then return true; fi;
-
-   if Length( kern )= 0 then return false; fi;
-   
-   new_M:= TransposedMat( Concatenation( [ -v ], M ) );
-   id := TransposedMat( Concatenation( [ ListWithIdenticalEntries( Length(M ), 0) ], IdentityMat( Length( M ) ) ) );
-
-   P:= PolyhedronByInequalities( Concatenation( new_M,-new_M, id ) );
-  
-   u:= VerticesOfMainRatPolytope( P );
-  
-   r:= RayGeneratorsOfTailCone( P );
-  
-   Ver:= LatticePoints( Polytope( Concatenation(u, Iterated(List(u, t-> List( r, w->w+t ) ), Concatenation ) ) ) );
-  
-   return not IsZero( Ver ) and ForAny(Ver, i-> ForAll(i, IsInt ) );
-end );
-  
-InstallGlobalFunction( "IfNotReducedReduceOnce",
-                       [ IsList ],
-                       
-function( N )
-local current_list,i, current_vec, M;
-
-M:= List( Set( N ) );
-for i in [ 1..Length( M ) ] do
-
-    current_vec:= M[i];
-    current_list:= ShallowCopy( M );
-    Remove( current_list, i );
-    if Length( AddIfPossible( current_list, current_vec ) )= Length( current_list ) then
-    
-       return [ false, current_list ];
-       
-    fi;
-od;
-
-return [ true, M ];
-
-end );
-
-InstallGlobalFunction( "ReduceTheBase",
-                       [ IsList ],
-  function( M )
-  local current;
-  
-  current:= [ false, M ];
-  
-  while current[ 1 ]=false do
-  
-  current:= IfNotReducedReduceOnce( current[ 2 ] );
-  
-  od;
-  
-  return current;
-  
-  end );
+# InstallGlobalFunction( "SolutionPostIntMat",
+#                        [ IsList, IsVector ],
+#                        
+#   function( M, v )
+#   local N, new_M, id, P, sol, kern, Ver,u,r;
+#   
+#    sol:= SolutionNullspaceIntMat(M, v ); 
+#   
+#    N:= sol[ 1 ];
+#   
+#    kern:= sol[ 2 ]; 
+#   
+#    if N = fail then return false;fi;
+#   
+#    if ForAll(N, n-> n>=0 ) then return true; fi;
+# 
+#    if Length( kern )= 0 then return false; fi;
+#    
+#    new_M:= TransposedMat( Concatenation( [ -v ], M ) );
+#    id := TransposedMat( Concatenation( [ ListWithIdenticalEntries( Length(M ), 0) ], IdentityMat( Length( M ) ) ) );
+# 
+#    P:= PolyhedronByInequalities( Concatenation( new_M,-new_M, id ) );
+#   
+#    u:= VerticesOfMainRatPolytope( P );
+#   
+#    r:= RayGeneratorsOfTailCone( P );
+#   
+#    Ver:= LatticePoints( Polytope( Concatenation(u, Iterated(List(u, t-> List( r, w->w+t ) ), Concatenation ) ) ) );
+#   
+#    return not IsZero( Ver ) and ForAny(Ver, i-> ForAll(i, IsInt ) );
+# end );
+#   
+# InstallGlobalFunction( "IfNotReducedReduceOnce",
+#                        [ IsList ],
+#                        
+# function( N )
+# local current_list,i, current_vec, M;
+# 
+# M:= List( Set( N ) );
+# for i in [ 1..Length( M ) ] do
+# 
+#     current_vec:= M[i];
+#     current_list:= ShallowCopy( M );
+#     Remove( current_list, i );
+#     if Length( AddIfPossible( current_list, current_vec ) )= Length( current_list ) then
+#     
+#        return [ false, current_list ];
+#        
+#     fi;
+# od;
+# 
+# return [ true, M ];
+# 
+# end );
+# 
+# InstallGlobalFunction( "ReduceTheBase",
+#                        [ IsList ],
+#   function( M )
+#   local current;
+#   
+#   current:= [ false, M ];
+#   
+#   while current[ 1 ]=false do
+#   
+#   current:= IfNotReducedReduceOnce( current[ 2 ] );
+#   
+#   od;
+#   
+#   return current;
+#   
+#   end );
 
 
 ##############################
