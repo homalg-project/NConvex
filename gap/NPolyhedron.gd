@@ -11,6 +11,44 @@
 
 DeclareCategory( "IsPolyhedron",
                  IsConvexObject );
+
+#####################################
+##
+## Constructors
+##
+#####################################
+
+#! @Chapter Polyhedrons
+#! @Section Creating polyhedron
+
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! The function takes a list in which every entry represents an inequality and returns the polyhedron defined by them.
+DeclareOperation( "PolyhedronByInequalities",
+                  [ IsList ] );
+
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+DeclareOperation( "Polyhedron",
+                  [ IsPolytope, IsCone ] );
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+DeclareOperation( "Polyhedron",
+                  [ IsList, IsCone ] );
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+DeclareOperation( "Polyhedron",
+                  [ IsPolytope, IsList ] );
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+DeclareOperation( "Polyhedron",
+                  [ IsList, IsList ] );
+
                  
 #####################################
 ##
@@ -18,30 +56,66 @@ DeclareCategory( "IsPolyhedron",
 ##
 #####################################
 
+#! @Section Attributes
+
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Converts the given polyhedron to CddPolyhedron.
 DeclareAttribute( "ExternalCddPolyhedron",
                    IsPolyhedron );
-
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Converts the given polyhedron to NmzPolyhedron 
 DeclareOperation( "ExternalNmzPolyhedron",
                    [ IsPolyhedron ] );
                    
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Returns the Defining inequalities of the given polyhedron.                   
 DeclareAttribute( "DefiningInequalities",
                    IsPolyhedron );
 
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Returns the main rational polytope of the polyhedron.
 DeclareAttribute( "MainRatPolytope",
                   IsPolyhedron );
 
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Returns the main polytope of the given polyhedron.
 DeclareAttribute( "MainPolytope",
                   IsPolyhedron );
-                  
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Returns the vertices of the main rational polytope of the polyhedron.
 DeclareAttribute( "VerticesOfMainRatPolytope",
                   IsPolyhedron );
 
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Returns the vertices of the main integral polytope of the given polyhedron.
 DeclareAttribute( "VerticesOfMainPolytope",
                   IsPolyhedron );
 
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Returns the tail cone of the polyhedron.
 DeclareAttribute( "TailCone",
                   IsPolyhedron );
 
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Returns the Ray Generators of the tail cone
 DeclareAttribute( "RayGeneratorsOfTailCone",
                   IsPolyhedron );
 
@@ -50,7 +124,10 @@ DeclareAttribute( "HomogeneousPointsOfPolyhedron",
 
 DeclareAttribute( "LatticePointsGenerators",
                   IsPolyhedron );
-
+#! @Arguments arg 
+#! @Returns a **Polyhedron** Object
+#! @Description  
+#! Returns a basis to the lineality space of the polyhedron.
 DeclareAttribute( "BasisOfLinealitySpace",
                   IsPolyhedron );
 
@@ -68,26 +145,7 @@ DeclareProperty( "IsBounded",
 
 DeclareProperty( "IsPointed",
                  IsPolyhedron );
-                
-#####################################
-##
-## Constructors
-##
-#####################################
-
-DeclareOperation( "PolyhedronByInequalities",
-                  [ IsList ] );
-
-DeclareOperation( "Polyhedron",
-                  [ IsPolytope, IsCone ] );
-
-DeclareOperation( "Polyhedron",
-                  [ IsList, IsCone ] );
-
-DeclareOperation( "Polyhedron",
-                  [ IsPolytope, IsList ] );
-
-DeclareOperation( "Polyhedron",
-                  [ IsList, IsList ] );
-                  
+                                  
 DeclareGlobalFunction( "Draw" );
+
+#! @InsertChunk example3
