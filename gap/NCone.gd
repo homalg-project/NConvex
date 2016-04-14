@@ -157,6 +157,18 @@ DeclareOperation( "ExternalNmzCone",  [ IsCone ]  );
 # DeclareAttribute( "AmbientSpaceDimension", IsCone );
 
 DeclareAttribute( "LatticePointsGenerators",  IsCone  );
+
+DeclareAttribute( "GridGeneratedByCone",
+                  IsCone );
+
+DeclareAttribute( "FactorGrid",
+                  IsCone );
+                  
+DeclareAttribute( "GridGeneratedByOrthogonalCone",
+                  IsCone );   
+                  
+DeclareAttribute( "FactorGridMorphism",
+                  IsCone );
 ##############################
 ##
 ##  Properties
@@ -241,7 +253,7 @@ DeclareOperation( "RayGeneratorContainedInRelativeInterior",
                   [ IsList, IsCone ] );
                   
 # DeclareOperation( "\*",
-#                     [ IsCone, IsCone ] );
+#                 [ IsCone, IsCone ] );
 
 #! @InsertChunk example1
                    
@@ -250,7 +262,16 @@ DeclareOperation( "\*",
 
 DeclareOperation( "NonReducedInequalities",
                   [ IsCone ] );
-                  
+
+DeclareOperation( "StarSubdivisionOfIthMaximalCone",
+                      [ IsFan, IsInt ] );
+
+DeclareOperation( "StarFan", 
+                      [ IsCone ] );
+
+DeclareOperation( "StarFan", 
+                      [ IsCone, IsFan ] );
+
 DeclareOperation( "Hi", [ IsInt ] );
 
 

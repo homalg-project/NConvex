@@ -692,6 +692,98 @@ InstallMethod( LinealitySpaceGenerators,
    LinearSubspaceGenerators
    
  );
+ 
+##
+InstallMethod( GridGeneratedByCone,
+               " for homalg cones.",
+               [ IsCone ],
+               
+  function( cone )
+    local rays, M, grid;
+    
+    rays := RayGenerators( cone );
+    
+    M := HomalgMatrix( rays, HOMALG_MATRICES.ZZ );
+    
+    M := HomalgMap( M, "free", ContainingGrid( cone ) );
+    
+    grid := ImageSubobject( M );
+    
+    SetFactorGrid( cone, FactorObject( grid ) );
+    
+    SetFactorGridMorphism( cone, CokernelEpi( M ) );
+    
+    return grid;
+    
+end );
+
+##
+InstallMethod( GridGeneratedByOrthogonalCone,
+               " for homalg cones.",
+               [ IsCone ],
+               
+  function( cone )
+    local rays, M;
+    
+    rays := RayGenerators( cone );
+    
+    M := HomalgMatrix( rays, HOMALG_MATRICES.ZZ );
+    
+    M := Involution( M );
+    
+    M := HomalgMap( M, ContainingGrid( cone ), "free" );
+    
+    return KernelSubobject( M );
+    
+end );
+
+##
+InstallMethod( FactorGrid,
+               " for homalg cones.",
+               [ IsCone ],
+               
+  function( cone )
+    local rays, M, grid;
+    
+    rays := RayGenerators( cone );
+    
+    M := HomalgMatrix( rays, HOMALG_MATRICES.ZZ );
+    
+    M := HomalgMap( M, "free", ContainingGrid( cone ) );
+    
+    grid := ImageSubobject( M );
+    
+    SetGridGeneratedByCone( cone, grid );
+    
+    SetFactorGridMorphism( cone, CokernelEpi( M ) );
+    
+    return FactorObject( grid );
+    
+end );
+
+##
+InstallMethod( FactorGridMorphism,
+               " for homalg cones.",
+               [ IsCone ],
+               
+  function( cone )
+    local rays, grid, M;
+    
+    rays := RayGenerators( cone );
+    
+    M := HomalgMatrix( rays, HOMALG_MATRICES.ZZ );
+    
+    M := HomalgMap( M, "free", ContainingGrid( cone ) );
+    
+    grid := ImageSubobject( M );
+    
+    SetGridGeneratedByCone( cone, grid );
+    
+    SetFactorGrid( cone, FactorObject( grid ) );
+    
+    return CokernelEpi( M );
+    
+end );
 
 ## the black duck :/
 ##      
@@ -873,8 +965,86 @@ InstallMethod( LatticePointsGenerators,
   return [ [ ListWithIdenticalEntries(n,0) ], points2, new_lineality ];
   
 end );
-  
-     
+
+
+##
+InstallMethod( StarSubdivisionOfIthMaximalCone,
+               " for homalg cones and fans",
+               [ IsFan, IsInt ],
+               
+  function( fan, noofcone )
+    local maxcones, cone, ray, cone2;
+    
+    maxcones := MaximalCones( fan );
+    
+    maxcones := List( maxcones, RayGenerators );
+    
+    if Length( maxcones ) < noofcone then
+        
+        Error( " not enough maximal cones" );
+        
+    fi;
+    
+    cone := maxcones[ noofcone ];
+    
+    ray := Sum( cone );
+    
+    cone2 := Concatenation( cone, [ ray ] );
+    
+    cone2 := UnorderedTuples( cone2, Length( cone2 ) - 1 );
+    
+    Apply( cone2, Set );
+    
+    Apply( maxcones, Set );
+    
+    maxcones := Concatenation( maxcones, cone2 );
+    
+    maxcones := Difference( maxcones, [ Set( cone ) ] );
+    
+    maxcones := Fan( maxcones );
+    
+    SetContainingGrid( maxcones, ContainingGrid( fan ) );
+    
+    return maxcones;
+    
+end );
+
+
+##
+InstallMethod( StarFan,
+               " for homalg cones in fans",
+               [ IsCone and HasIsContainedInFan ],
+               
+  function( cone )
+    
+    return StarFan( cone, IsContainedInFan( cone ) );
+    
+end );
+
+##
+InstallMethod( StarFan,
+               " for homalg cones",
+               [ IsCone, IsFan ],
+               
+  function( cone, fan )
+    local maxcones;
+    
+    maxcones := MaximalCones( fan );
+    
+    maxcones := Filtered( maxcones, i -> Contains( i, cone ) );
+    
+    maxcones := List( maxcones, HilbertBasis );
+    
+    ## FIXME: THIS IS BAD CODE! REPAIR IT!
+    maxcones := List( maxcones, i -> List( i, j -> HomalgMap( HomalgMatrix( [ j ], HOMALG_MATRICES.ZZ ), 1 * HOMALG_MATRICES.ZZ, ContainingGrid( cone ) ) ) );
+    
+    maxcones := List( maxcones, i -> List( i, j -> UnderlyingListOfRingElementsInCurrentPresentation( ApplyMorphismToElement( ByASmallerPresentation( FactorGridMorphism( cone ) ), HomalgElement( j ) ) ) ) );
+    
+    maxcones := Fan( maxcones );
+    
+    return maxcones;
+    
+end );
 ##############################
 ##
 ##  Extra Operations
