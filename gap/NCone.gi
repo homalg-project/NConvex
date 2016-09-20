@@ -793,7 +793,7 @@ InstallMethod( LatticePointsGenerators,
     
     n:= AmbientSpaceDimension( cone );
     
-    return LatticePointsGenerators( Polyhedron( [ List( [ 1 .. n ], i->0 ) ], cone ) );
+    return LatticePointsGenerators( Polyhedron( [ List( [ 1 .. n ], i -> 0 ) ], cone ) );
     
     end );
 
