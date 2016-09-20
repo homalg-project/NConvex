@@ -120,6 +120,6 @@ Vertices( T );
 #! [ [ 1, 1 ], [ 1, -1 ], [ -1, -1 ], [ -1, 1 ] ]
 P:= Polytope( [ [ 0, 0 ], [ 1, -1], [ -1, 1 ], [ -1, -1 ] ] );
 #! <A polytope in |R^2>
-PolarPolytope( P );;
+# PolarPolytope( P );;
 #! @EndExample
 #! @EndChunk
