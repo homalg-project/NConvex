@@ -19,12 +19,24 @@ Persons := [
     IsMaintainer := false,
     FirstNames := "Kamal",
     LastName := "Saleh",
-    WWWHome := "Kamal.saleh@rwth-aachen.de",
-    Email := "kamal.saleh@rwth-aachen.de",
+    WWWHome := "To Do",
+    Email := "To Do",
     PostalAddress := "Templergraben ",
     Place := "Aachen",
     Institution := "lehrstuhl B Algebra",
   ),
+  
+  rec(
+    IsAuthor := true,
+    IsMaintainer := false,
+    FirstNames := "Sebastian",
+    LastName := "Gutsche",
+    WWWHome := "To Do",
+    Email := "To Do",
+    PostalAddress := "Templergraben ",
+    Place := "Aachen",
+    Institution := "lehrstuhl B Algebra",
+  )
 ],
 
 PackageWWWHome := "http://TODO/",
