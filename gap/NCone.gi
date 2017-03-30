@@ -192,10 +192,19 @@ InstallMethod( RayGenerators,
                [ IsCone ],
                
   function( cone )
-    
-    return Cdd_GeneratingRays( ExternalCddCone( cone ) );
-    
-end );
+#   local nmz_cone, l, r;
+  
+   return Cdd_GeneratingRays( ExternalCddCone( cone ) );
+  
+#   nmz_cone := ExternalNmzCone( cone );
+  
+#   r := NmzGenerators( nmz_cone );
+  
+#   l := NmzMaximalSubspace( nmz_cone );
+  
+#   return Concatenation( r, l, -l );
+
+  end );
 
 ##
 InstallMethod( DualCone,
