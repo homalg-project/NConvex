@@ -1765,7 +1765,8 @@ InstallMethod( ConeByGenerators,
     
     if Length( raylist ) = 0 then
         
-        Error( "a cone must contain the zero point" );
+        # Think again about this
+        return ConeByGenerators( [ [ ] ] );
         
     fi;
 
