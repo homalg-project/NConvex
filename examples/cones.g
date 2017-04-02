@@ -13,7 +13,7 @@ P=Q;
 IsPointed( P );
 #! true
 RayGenerators( P );
-#! [ [ 2, 7 ], [ -2, 5 ] ]
+#! [ [ -2, 5 ], [ 2, 7 ] ]
 HilbertBasis( P );
 #! [ [ -2, 5 ], [ -1, 3 ], [ 0, 1 ], [ 1, 4 ], [ 2, 7 ] ]
 HilbertBasis( Q );
@@ -27,11 +27,13 @@ Dimension( P );
 Facets( P );
 #! [ <A ray in |R^2>, <A ray in |R^2> ]
 List( last, RayGenerators );
-#! [ [ [ 2, 7 ] ], [ [ -2, 5 ] ] ]
+#! [ [ [ -2, 5 ] ], [ [ 2, 7 ] ] ]
 faces := Faces( P );
-#! [ <A cone in |R^2>, <A ray in |R^2>, <A ray in |R^2> ]
+#! [ <A cone in |R^2>, <A cone in |R^2>, <A ray in |R^2>, 
+#!  <A ray in |R^2> ]
+#e
 RelativeInteriorRayGenerator( P );
-#! [ -2, 29 ]
+#! [ -2, 41 ]
 LinealitySpaceGenerators( P );
 #! [  ]
 IsRegularCone( P );
@@ -43,7 +45,7 @@ IsRay( P );
 proj_x1:= FourierProjection( P, 2 );
 #! <A cone in |R^1>
 RayGenerators( proj_x1 );
-#! [ [ 1 ], [ -1 ] ]
+#! [ [ -1 ], [ 1 ] ]
 DefiningInequalities( proj_x1 );
 #! [ [ 0 ] ]
 R:= Cone( [ [ 4, 5 ], [ -2, 1 ] ] );
@@ -86,10 +88,10 @@ Display( H );
 #! begin 
 #!    2 X 3  rational
 #!                
-#!    0  -7   2 
 #!    0   5   2 
+#!    0  -7   2 
 #! end
-P:= Cone( [ [ 1, 1, -3 ], [ -1, -1, 3 ], [ 1, 2, 1 ], [ 2, 1, 2 ] ] );                   
+P:= Cone( [ [ 1, 1, -3 ], [ -1, -1, 3 ], [ 1, 2, 1 ], [ 2, 1, 2 ] ] );
 #! < A cone in |R^3>
 IsPointed( P );
 #! false
@@ -100,26 +102,29 @@ IsRegularCone( P );
 P;
 #! < A cone in |R^3 of dimension 3 with 4 ray generators>
 RayGenerators( P );
-#! [ [ 1, 1, -3 ], [ -1, -1, 3 ], [ 1, 2, 1 ], [ 2, 1, 2 ] ]
+#! [ [ -1, -1, 3 ], [ 1, 1, -3 ], [ 1, 2, 1 ], [ 2, 1, 2 ] ]
 d:= DefiningInequalities( P );
 #! [ [ -5, 8, 1 ], [ 7, -4, 1 ] ]
 facets:= Facets( P );
 #! [ <A cone in |R^3>, <A cone in |R^3> ]
 faces := Faces( P );
-#! [ <A cone in |R^3>, <A cone in |R^3>, <A cone in |R^3>, <A cone in |R^3> ]
+#! [ <A cone in |R^3>, <A cone in |R^3>, <A cone in |R^3>, 
+#!  <A cone in |R^3>, <A cone in |R^3> ]
 FVector( P );
 #! [ 1, 2, 1 ]
 List( faces, Dimension );
-#! [ 3, 2, 1, 2 ]
+#! [ 0, 3, 2, 1, 2 ]
+#e
 LatticePointsGenerators( P );
-#! [ [ [ 0, 0, 0 ] ], [ [ 2, 1, 2 ], [ 1, 1, -2 ], [ 1, 2, 1 ] ], [ [ 1, 1, -3 ] ] ]
+#! [ [ [ 0, 0, 0 ] ], [ [ -1, 0, 7 ], [ 0, 0, 1 ], [ 1, 0, 5 ] ], 
+#!  [ [ 1, 1, -3 ] ] ]
 DualCone( P );
 #! < A cone in |R^3>
-RayGenerators( last );
+RayGenerators( DualCone( P ) );
 #! [ [ -5, 8, 1 ], [ 7, -4, 1 ] ]
 Q_x1x3:= FourierProjection(P, 2 );
 #! <A cone in |R^2>
 RayGenerators( Q_x1x3 );
-#! [ [ 1, -3 ], [ -1, 3 ], [ 1, 1 ] ]
+#! [ [ -1, 3 ], [ 1, -3 ], [ 1, 1 ] ]
 #! @EndExample
 #! @EndChunk

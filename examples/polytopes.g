@@ -3,25 +3,12 @@ LoadPackage( "NC" );
 #! @Chunk example2
 #! @Example
 
-#! ######################################################
-#! #
-#! # Example of a not very ample( and thus not normal ) polytope.
-#! #
-#! ######################################################
-#! 
 P:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 2 ] ] );
 #! <A polytope in |R^3>
 IsNormalPolytope( P );
 #! false
 IsVeryAmple( P );
 #! false
-#!
-#! ######################################################
-#! #
-#! # Example of a normal( and thus very ample ) polytope.
-#! #
-#! ######################################################
-#!
 Q:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 1 ] ] );
 #! <A polytope in |R^3>
 IsNormalPolytope( Q );
@@ -29,15 +16,7 @@ IsNormalPolytope( Q );
 IsVeryAmple( Q );
 #! true
 Q;
-#! <A normal very ample polytope in |R^3>
-#! 
-#! ######################################################
-#! #
-#! # Examples of a very ample but not normal polytope.
-#! #
-#! ######################################################
-#! 
-#! # Example from "Normality and Minkowski sum of Lattice Polytopes, Shoetsu Ogata"
+#! <A normal very ample polytope in |R^3 with 4 vertices>
 T:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 4 ] ] ); 
 #! <A polytope in |R^3>
 I:= Polytope( [ [ 0, 0, 0 ], [ 0, 0, 1 ] ] );
@@ -49,9 +28,8 @@ IsVeryAmple( J );
 IsNormalPolytope( J );
 #! false
 J;
-#! <A very ample polytope in |R^3>
-#!
-#! # Example 2.2.20 Cox, Toric Varieties
+#! <A very ample polytope in |R^3 with 8 vertices>
+# Example 2.2.20 Cox, Toric Varieties
 A:= [ [1,1,1,0,0,0], [1,1,0,1,0,0], [1,0,1,0,1,0], [ 1,0,0,1,0,1], 
 [ 1,0,0,0,1,1], [ 0,1,1,0,0,1], [0,1,0,1,1,0], [0,1,0,0,1,1], 
 [0,0,1,1,1,0], [0,0,1,1,0,1] ];
@@ -66,16 +44,9 @@ IsVeryAmple( H );
 IsNormalPolytope( H );
 #! false
 H;
-#! <A very ample polytope in |R^6>
-#!
-#! ######################################################
-#! #
-#! # Example of a not normal polytope
-#! #
-#! ######################################################
-#! 
+#! <A very ample polytope in |R^6 with 10 vertices>
 l:= [ [ 0, 0, 1 ], [ 0, 0, 0 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 0, 1, 0 ], 
-[ 0, 1, 1 ], [ 1, 1, 4 ], [ 1, 1, 5 ] ];
+[ 0, 1, 1 ], [ 1, 1, 4 ], [ 1, 1, 5 ] ];;
 P:= Polytope( l );
 #! <A polytope in |R^3>
 IsNormalPolytope( P );
@@ -99,25 +70,16 @@ LatticePoints( Q );
 #! [ 1, 1, 4 ], [ 1, 1, 5 ], [ 1, 1, 6 ], [ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 2, 6 ], 
 #! [ 2, 0, 0 ], [ 2, 0, 1 ], [ 2, 0, 2 ], [ 2, 1, 4 ], 
 #!   [ 2, 1, 5 ], [ 2, 1, 6 ], [ 2, 2, 8 ], [ 2, 2, 9 ], [ 2, 2, 10 ] ]
-#! # i.e. we have [1,1,3] in intersection(2*P, Z^3) but not in 
-#! # k( = Minkowski sum: intersection( P, Z^3 ) + intersection( P, Z^3 ) ).
-#!
-#! ######################################################
-#! #
-#! # Example of a polytope with its polar polytope
-#! #
-#! ######################################################
-#!
 P:= Polytope( [ [ 1, 1 ], [ 1, -1 ], [ -1, 1 ], [ -1, -1 ] ] );
 #! <A polytope in |R^2>
-Q:= PolarPolytope( P );       
+Q:= PolarPolytope( P );
 #! <A polytope in |R^2>
 Vertices( Q );
-#! [ [ 0, 1 ], [ 1, 0 ], [ 0, -1 ], [ -1, 0 ] ]
+#! [ [ -1, 0 ], [ 0, -1 ], [ 0, 1 ], [ 1, 0 ] ]
 T := PolarPolytope( Q );
 #! <A polytope in |R^2>
 Vertices( T );
-#! [ [ 1, 1 ], [ 1, -1 ], [ -1, -1 ], [ -1, 1 ] ]
+#! [ [ -1, -1 ], [ -1, 1 ], [ 1, -1 ], [ 1, 1 ] ]
 P:= Polytope( [ [ 0, 0 ], [ 1, -1], [ -1, 1 ], [ -1, -1 ] ] );
 #! <A polytope in |R^2>
 # PolarPolytope( P );;
