@@ -622,6 +622,10 @@ InstallMethod( Facets,
         
     od;
     
+    if conelist = [ [ ] ] then 
+       return [ Cone( [ List( [ 1 .. AmbientSpaceDimension( cone ) ], i->0 ) ] ) ];
+    fi;
+    
     return List( conelist, Cone );
     
 end );
@@ -658,7 +662,9 @@ InstallMethod( Faces,
         
     od;
     
-    return List( conelist, Cone );
+    lis := [ Cone( [ List( [ 1 .. AmbientSpaceDimension( cone ) ], i-> 0 ) ] ) ];
+    
+    return Concatenation( lis, List( conelist, Cone ) );
     
 end );
 
@@ -1748,7 +1754,7 @@ InstallMethod( ConeByEqualitiesAndInequalities,
     return cone;
     
 end );
-
+ 
 ##
 InstallMethod( ConeByGenerators,
                "constructor for cones by generators",
