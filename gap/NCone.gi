@@ -476,7 +476,7 @@ InstallMethod( HilbertBasis,
     
     if not IsPointed( cone ) then
         
-        Error( "Hilbert basis for pointed cones is not jet implemented, you can use the command 'LatticePointsGenerators' " );
+        Error( "Hilbert basis for not-pointed cones is not jet implemented, you can use the command 'LatticePointsGenerators' " );
         
     fi;
     
