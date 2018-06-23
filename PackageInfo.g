@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "NConvex",
 Subtitle := "new version of the Package Convex",
-Version := "2017.01.02",
-Date := "02/01/2017", # dd/mm/yyyy format
+Version := "2018.06.15",
+Date := "2018.06.15", # dd/mm/yyyy format
 
 Persons := [
   rec(
