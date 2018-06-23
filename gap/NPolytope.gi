@@ -358,9 +358,15 @@ InstallMethod( LatticePoints,
                [ IsPolytope ], 
                
   function( polytope )
+    local vertices, C, H;
 
-     return LatticePointsGenerators( Polyhedron( polytope, [ ] ) )[ 1 ];
-
+    vertices := List( Vertices( polytope ), V -> Concatenation(V,[1]) );
+    C := Cone( vertices );
+    H := HilbertBasis( C );
+    H := Filtered( H, h -> h[ AmbientSpaceDimension( C ) ] = 1 );
+    H := List( H, h -> ShallowCopy( h ) );
+    Perform( H, Remove );
+    return H;
 end );
 
 ##
