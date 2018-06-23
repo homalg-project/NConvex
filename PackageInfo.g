@@ -73,7 +73,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "Modules", ">=0.5" ],
                            [ "NormalizInterface", ">=0.3"],
-                           [ "CddInterface", ">= 2017.04.02" ] ],
+                           [ "CddInterface", ">= 2018.06.15" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
