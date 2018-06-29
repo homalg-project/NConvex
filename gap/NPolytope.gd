@@ -47,7 +47,7 @@ DeclareOperation( "Polytope",
 #! @Arguments polytope 
 #! @Returns a CddPolyhedron
 #! @Description  
-#! Converts the polyhedron to a CddPolyhedron. The functions of CddInterface can then be applied
+#! Converts the polytope to a CddPolyhedron. The functions of CddInterface can then be applied
 #! on this polyhedron.
 DeclareAttribute( "ExternalCddPolytope",
                     IsPolytope );
@@ -62,13 +62,10 @@ DeclareAttribute( "LatticePoints",
 #! @Arguments polytope 
 #! @Returns a List
 #! @Description  
-#! The function returns an interior point inside the polytope.                    
+#! The function returns the interior lattice points inside the polytope.                    
 DeclareAttribute( "RelativeInteriorLatticePoints",
                     IsPolytope );
-#! @Arguments polytope 
-#! @Returns a List
-#! @Description  
-#! The function returns tripl [ A, B, C ] from which we can determind all 
+ 
 DeclareAttribute( "LatticePointsGenerators",
                     IsPolytope );
 #! @Arguments polytope 
