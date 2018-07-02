@@ -214,9 +214,12 @@ InstallMethod( DualCone,
   function( cone )
     local dual;
     
-    
-    dual := ConeByInequalities( RayGenerators( cone ) );
-    
+    if RayGenerators( cone ) = [ ] then
+	dual := ConeByInequalities( [ List( [ 1 .. AmbientSpaceDimension( cone ) ], i -> 0 ) ] );
+    else
+        dual := ConeByInequalities( RayGenerators( cone ) );
+    fi;
+
     SetDualCone( dual, cone );
     
     SetContainingGrid( dual, ContainingGrid( cone ) );
