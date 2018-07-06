@@ -69,6 +69,13 @@ InstallMethod( IsPointed,
 end );
 
 ##
+InstallMethod( InteriorPoint,
+                [ IsCone ],
+    function( cone )
+    return Cdd_InteriorPoint( ExternalCddCone( cone ) );
+end );
+
+##
 InstallMethod( IsComplete,
                " for cones",
                [ IsCone ],

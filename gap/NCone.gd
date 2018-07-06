@@ -99,6 +99,12 @@ DeclareAttribute( "RaysInFaces",
                   IsCone );
 
 #! @Arguments cone 
+#! @Returns a point in the cone
+#! @Description  
+#! Returns an interior point of the cone.
+DeclareAttribute( "InteriorPoint", IsCone );
+
+#! @Arguments cone 
 #! @Returns a list of cones
 #! @Description  
 #! Returns the list of all faces of the cone <A>cone</A>.                  
