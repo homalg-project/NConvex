@@ -98,11 +98,11 @@ DeclareAttribute( "RaysInFacets",
 DeclareAttribute( "RaysInFaces",
                   IsCone );
 
-#! @Arguments cone 
-#! @Returns a point in the cone
-#! @Description  
-#! Returns an interior point of the cone.
-DeclareAttribute( "InteriorPoint", IsCone );
+# @Arguments cone 
+# @Returns a point in the cone
+# @Description  
+# Returns an interior point of the cone.
+#DeclareAttribute( "InteriorPoint", IsCone );
 
 #! @Arguments cone 
 #! @Returns a list of cones
@@ -277,9 +277,6 @@ DeclareOperation( "StarFan",
 
 DeclareOperation( "StarFan", 
                       [ IsCone, IsFan ] );
-
-DeclareOperation( "Hi", [ IsInt ] );
-
 
 DeclareGlobalFunction( "testttt" );                
 DeclareGlobalFunction( "testttt2" ); 

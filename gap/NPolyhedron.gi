@@ -90,6 +90,13 @@ InstallMethod( ExternalCddPolyhedron,
 end );
 
 ##
+InstallMethod( InteriorPoint,
+                [ IsConvexObject and IsPolyhedron ],
+    function( poly )
+    return Cdd_InteriorPoint( ExternalCddPolyhedron( poly ) );
+end );
+
+##
 InstallMethod( DefiningInequalities, 
                " for polyhedrons",
                [ IsPolyhedron ], 

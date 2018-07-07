@@ -70,7 +70,7 @@ end );
 
 ##
 InstallMethod( InteriorPoint,
-                [ IsCone ],
+                [ IsConvexObject and IsCone ],
     function( cone )
     return Cdd_InteriorPoint( ExternalCddCone( cone ) );
 end );

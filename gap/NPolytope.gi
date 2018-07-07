@@ -235,6 +235,14 @@ InstallMethod( IsSimplexPolytope,
    
 end );
 
+##
+InstallMethod( InteriorPoint,
+                [ IsConvexObject and IsPolytope ],
+    function( poly )
+    return Cdd_InteriorPoint( ExternalCddPolytope( poly ) );
+end );
+
+##
 InstallMethod( IsSimplicial,
                [ IsPolytope ],
                
