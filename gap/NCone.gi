@@ -1236,6 +1236,20 @@ InstallMethod( FourierProjection,
   
 end );
 
+InstallMethod( \*,
+               [ IsInt, IsCone ],
+    function( n, cone )
+
+    if n>0 then
+        return cone;
+    elif n=0 then
+        return Cone( [ List([ 1 .. AmbientSpaceDimension( cone ) ], i-> 0 ) ] );
+    else
+        return Cone( -RayGenerators( cone ) );
+    fi;
+    
+end );
+
 ##
 InstallMethod( \*,
                " cartesian product for cones.",

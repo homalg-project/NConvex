@@ -258,8 +258,8 @@ DeclareOperation( "RayGeneratorContainedInCone",
 DeclareOperation( "RayGeneratorContainedInRelativeInterior",
                   [ IsList, IsCone ] );
                   
-# DeclareOperation( "\*",
-#                 [ IsCone, IsCone ] );
+DeclareOperation( "\*",
+                [ IsInt, IsCone ] );
 
 #! @InsertChunk example1
                    
