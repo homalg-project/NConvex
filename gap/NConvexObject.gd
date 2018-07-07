@@ -30,7 +30,14 @@ DeclareRepresentation( "IsInternalConvexObjectRep",
 ##
 ##############################
 
+#! @Chapter Convex objects
+#! @Section Attributes
+
 ##
+#! @Arguments obj 
+#! @Returns integer
+#! @Description  
+#! Returns the dimension of the ambient space, i.e., the space that contains the convex object.
 DeclareAttribute( "AmbientSpaceDimension",
                   IsConvexObject );
                   
@@ -38,8 +45,22 @@ DeclareAttribute( "AmbientSpaceDimension",
 DeclareAttribute( "ContainingGrid",
                   IsConvexObject );
 
+#! @Arguments obj 
+#! @Returns integer
+#! @Description  
+#! Returns the dimension of the covex object.
 DeclareAttribute( "Dimension",
                   IsConvexObject );
-                  
+
+#! @Arguments obj 
+#! @Returns boolian
+#! @Description  
+#! Returns whether the convex object is full dimensional or not.
 DeclareProperty( "IsFullDimensional",
                  IsConvexObject );
+
+#! @Arguments obj
+#! @Returns a point in the object
+#! @Description  
+#! Returns an interior point of the covex object.
+DeclareAttribute( "InteriorPoint", IsConvexObject );
