@@ -72,7 +72,14 @@ end );
 InstallMethod( InteriorPoint,
                 [ IsConvexObject and IsCone ],
     function( cone )
-    return Cdd_InteriorPoint( ExternalCddCone( cone ) );
+    local point, denominators;
+    point := Cdd_InteriorPoint( ExternalCddCone( cone ) );
+    denominators := List( point, DenominatorRat );
+    if DuplicateFreeList( denominators ) = [ 1 ] then
+        return point;
+    else
+        return Lcm( denominators )*point;
+    fi;
 end );
 
 ##
