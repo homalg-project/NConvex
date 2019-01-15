@@ -1685,16 +1685,30 @@ end );
 InstallMethod( ExternalNmzCone, 
               [ IsCone ],
   function( cone )
-  local list, equalities, i;
+  local a, list, equalities, i;
   
   list:= [];
    
    if IsBound( cone!.input_rays ) then 
    
-      list := StructuralCopy( cone!.input_rays );
+        list := StructuralCopy( cone!.input_rays );
+        
+        if ForAll( Concatenation( list ), IsInt ) then
+
+            return NmzCone( [ "integral_closure", list ] );
+        
+        else
+
+            a := DuplicateFreeList( List( Concatenation( list ), l -> DenominatorRat( l ) ) );
             
-      return NmzCone( [ "integral_closure", list ] );
-   
+            a := Iterated( a, LCM_INT );
+            
+            list := a*list;
+
+            return NmzCone( [ "integral_closure", list ] );
+
+        fi;
+
    fi;
    
    list:= StructuralCopy( cone!.input_inequalities );
@@ -1711,11 +1725,26 @@ InstallMethod( ExternalNmzCone,
       
    fi;
       
-      return NmzCone( ["inequalities", list ] );
-   
+    if ForAll( Concatenation( list ), IsInt ) then
+
+        return NmzCone( ["inequalities", list ] );
+        
+    else
+
+        a := DuplicateFreeList( List( Concatenation( list ), l -> DenominatorRat( l ) ) );
+            
+        a := Iterated( a, LCM_INT );
+            
+        list := a*list;
+
+        return NmzCone( ["inequalities", list ] );
+
+    fi;
+
+    Error( "The cone should be defined by vertices or inequalities!" );
+    
 end );
-   
-                 
+
 #####################################
 ##
 ## Constructors
