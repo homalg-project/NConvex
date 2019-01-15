@@ -84,4 +84,14 @@ P:= Polytope( [ [ 0, 0 ], [ 1, -1], [ -1, 1 ], [ -1, -1 ] ] );
 #! <A polytope in |R^2>
 # PolarPolytope( P );;
 #! @EndExample
+#! @BeginLatexOnly
+#! Let us now find out if the vertices of the polytope defined by the following inequalities:
+#! $$x_2\geq 0,1-x_1-x_2\geq 0,1+x_1-x_2\geq 0.$$
+#! @EndLatexOnly
+#! @Example
+P := PolytopeByInequalities( [ [ 0, 0, 1 ], [ 1, -1, -1 ], [ 1, 1, -1 ] ] );
+#! <A polytope in |R^2>
+Vertices( P );
+#! [ [ -1, 0 ], [ 0, 1 ], [ 1, 0 ] ]
+#! @EndExample
 #! @EndChunk

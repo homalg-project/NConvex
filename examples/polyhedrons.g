@@ -46,7 +46,7 @@ Q;
 #! <A polyhedron in |R^2 of dimension 2>
 #! @EndExample
 #! @BeginLatexOnly
-#! Let us now find out if the equation $3x+4y-7z=2$ has integer solutions.
+#! Let us now find out if the equation $-2+3x+4y-7z=0$ has integer solutions.
 #! @EndLatexOnly
 #! @Example
 P:= PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );

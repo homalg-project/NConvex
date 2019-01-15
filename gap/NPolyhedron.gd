@@ -24,7 +24,10 @@ DeclareCategory( "IsPolyhedron",
 #! @Arguments arg 
 #! @Returns a **Polyhedron** Object
 #! @Description  
-#! The function takes a list in which every entry represents an inequality and returns the polyhedron defined by them.
+#! The function takes a list of lists $[L_1, L_2, ...]$ where each $L_j$ represents 
+#! an inequality and returns the polyhedron defined by them. 
+#! For example the $j$'th entry $L_j = [c_j,a_{j1},a_{j2},...,a_{jn}]$ corresponds to the inequality
+#! $c_j+\sum_{i=1}^n a_{ji}x_i \geq 0$.
 DeclareOperation( "PolyhedronByInequalities",
                   [ IsList ] );
 
