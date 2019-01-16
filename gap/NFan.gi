@@ -205,7 +205,7 @@ InstallMethod( GivenRayGenerators,
         
     elif IsBound( fan!.input_cone_list ) then
         
-        return List( Set( Union( fan!.input_cone_list ) ) );
+        return DuplicateFreeList( Concatenation( fan!.input_cone_list ) );
         
     else
         
@@ -399,9 +399,9 @@ InstallMethod( CanonicalizeFan,
  function( fan )
  local list_of_max, new_gen, cones,i,j, F, max_cones, rays_in_max_cones; 
  
- list_of_max:= GivenMaximalCones( fan );
+ list_of_max := GivenMaximalCones( fan );
  
- new_gen:= [ ];
+ new_gen := [ ];
  
  for i in list_of_max do 
  
@@ -409,7 +409,7 @@ InstallMethod( CanonicalizeFan,
      
  od;
  
- new_gen:= List( Set( new_gen ) );
+ new_gen := DuplicateFreeList( new_gen );
  
  cones := List( [ 1 .. Length( list_of_max ) ], i -> List( [ 1 .. Length( new_gen ) ], j -> 0 ) );
       
@@ -431,7 +431,7 @@ InstallMethod( CanonicalizeFan,
  
  rays_in_max_cones:= [ ];
  
- for i in [ 1..Length( max_cones ) ] do
+ for i in [ 1 .. Length( max_cones ) ] do
         
         Add( rays_in_max_cones, [ ] );
         
@@ -680,7 +680,8 @@ InstallMethod( IsRegularFan,
                  return Concatenation( return_list, ListWithIdenticalEntries( a - Length( return_list ), 0 ) );
              end;
     
-    ## FIXME: Our convention is to handle only pointed fans. convex handles fans with lineality spaces, so the lines differ.
+    ## FIXME: Our convention is to handle only pointed fans. 
+    ## convex handles fans with lineality spaces, so the lines differ.
     equations := List( [ 1 .. Length( max_cones ) ],
                        i -> List( EqualitiesOfCone( max_cones[ i ] ), 
                                   r -> embed( nd, r, ambient_dim * ( i - 1 ), [ ], 0 ) ) );
@@ -761,6 +762,7 @@ InstallMethod( IsSimplicial,
     return ForAll( fan, IsSimplicial );
     
 end );
+
 
 #########################
 ##
@@ -981,21 +983,16 @@ end );
 InstallMethod( FirstLessTheSecond,
                [ IsList, IsList],
                
- function( u,v)
- local x;
- 
- x:= List( [ 1..Length( u) ], i-> u[i]<=v[i] );
- 
- if false in x then 
- 
-        return false; 
+    function( u, v )
+    
+    if Length( u ) <> Length( v ) then
         
- else 
- 
-        return true;
-   
- fi;
- 
+        Error( "The two lists should have the same length!" );
+
+    fi;
+
+    return ForAll( [ 1 .. Length( u ) ], i-> u[ i ] <= v[ i ] );
+
 end );
 
 
@@ -1004,16 +1001,16 @@ InstallMethod( OneMaximalConeInList,
  function( u )
  local list, max, new_u, i;
  
- new_u:= List( Set( ShallowCopy( u ) ) );
+ new_u:= DuplicateFreeList( ShallowCopy( u ) );
  
- max:= ShallowCopy( new_u[1] );
+ max := new_u[ 1 ];
  
  for i in new_u do
  
      if FirstLessTheSecond( max, i ) then 
             
-            max:= ShallowCopy( i );
-            
+            max := i;
+        
      fi;
  
  od;
@@ -1038,20 +1035,22 @@ InstallMethod( ListOfMaximalConesInList,
                [ IsList ],
                
   function( L )
-  local list_of_max, current, new_L;
+  local l, list_of_max, current, new_L;
   
   list_of_max := [ ];
   
-  new_L:= Set( L  );
+  new_L:= DuplicateFreeList( L );
   
   while Length( new_L )<> 0 do
   
-      current:= OneMaximalConeInList( new_L );
+      current := OneMaximalConeInList( new_L );
       
       Add( list_of_max, current[ 1 ] );
       
-      SubtractSet( new_L, current[ 2] );
-      
+      for l in current[ 2 ] do
+        Remove( new_L, Position( new_L, l ) );
+      od;
+    
   od;
   
   return list_of_max;
