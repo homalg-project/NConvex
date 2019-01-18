@@ -1701,9 +1701,7 @@ InstallMethod( ExternalNmzCone,
 
             a := DuplicateFreeList( List( Concatenation( list ), l -> DenominatorRat( l ) ) );
             
-            a := Iterated( a, LCM_INT );
-            
-            list := a*list;
+            list := Lcm( a ) * list;
 
             return NmzCone( [ "integral_closure", list ] );
 
@@ -1733,9 +1731,7 @@ InstallMethod( ExternalNmzCone,
 
         a := DuplicateFreeList( List( Concatenation( list ), l -> DenominatorRat( l ) ) );
             
-        a := Iterated( a, LCM_INT );
-            
-        list := a*list;
+        list := Lcm( a ) * list;
 
         return NmzCone( ["inequalities", list ] );
 

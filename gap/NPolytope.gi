@@ -921,6 +921,49 @@ InstallMethod( FourierProjection,
   
 end );
 
+InstallMethod( GaleTransform,
+    [ IsHomalgMatrix ],
+    function( mat )
+      local K, L, P, B;
+
+      K := HomalgRing( mat );
+
+      if not IsField( K ) then
+        
+        Error( "The matrix should be defined over a homalg field" );
+
+      fi;
+
+      L := EntriesOfHomalgMatrixAsListList( mat );
+
+      P := Polytope( L );
+
+      if not IsFullDimensional( P ) then
+
+        Error( "The rows of the given matrix should define a full-dimensional polytope!" );
+
+      fi;
+
+      L := List( L, l -> Concatenation( [ One( K ) ], l ) );
+
+      L := HomalgMatrix( L, K );
+
+      B := EntriesOfHomalgMatrixAsListList( BasisOfRows( SyzygiesOfRows( L ) ) );
+      
+      B := List( B, b -> Lcm( List( b, e -> DenominatorRat( e ) ) ) * b );
+
+      B := HomalgMatrix( B, K );
+
+      if NrRows( B ) <> NrRows( L ) - NrCols( L ) then
+        
+        Error( "This should not happen!" );
+
+      fi;
+
+      return Involution( B );
+
+end );
+
 ####################################
 ##
 ## Display Methods

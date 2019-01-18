@@ -120,7 +120,8 @@ DeclareAttribute( "BabyPolytope",
 DeclareAttribute( "PolarPolytope",
                     IsPolytope );
 
-                    
+DeclareOperation( "GaleTransform", [ IsHomalgMatrix ] );
+
 ####################################
 ##
 ## Properties
