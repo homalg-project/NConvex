@@ -921,10 +921,11 @@ InstallMethod( FourierProjection,
   
 end );
 
+##
 InstallMethod( GaleTransform,
     [ IsHomalgMatrix ],
     function( mat )
-      local K, L, P, B;
+      local K, L, P, A, B;
 
       K := HomalgRing( mat );
 
@@ -948,19 +949,24 @@ InstallMethod( GaleTransform,
 
       L := HomalgMatrix( L, K );
 
-      B := EntriesOfHomalgMatrixAsListList( BasisOfRows( SyzygiesOfRows( L ) ) );
+      B := BasisOfRows( SyzygiesOfRows( L ) );
       
-      B := List( B, b -> Lcm( List( b, e -> DenominatorRat( e ) ) ) * b );
+      A := EntriesOfHomalgMatrixAsListList( B );
 
-      B := HomalgMatrix( B, K );
+      A := List( A, a -> Lcm( List( a, e -> DenominatorRat( e ) ) ) * a );
 
-      if NrRows( B ) <> NrRows( L ) - NrCols( L ) then
+      A := HomalgMatrix( A, NrRows( B ), NrCols( B ), K );
+
+      if NrRows( A ) <> NrRows( L ) - NrCols( L ) then
         
         Error( "This should not happen!" );
 
       fi;
 
-      return Involution( B );
+      return Involution( A );
+
+end );
+
 
 end );
 
