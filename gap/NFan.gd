@@ -105,6 +105,11 @@ DeclareProperty( "IsSmooth",
 DeclareProperty( "IsSimplicial",
                  IsFan );
 
+# The name IsNormal is taken in gap.
+DeclareProperty( "IsNormalFan",
+                 IsFan );
+
+# Synonyme to is normal fan
 DeclareProperty( "IsRegularFan",
                  IsFan );
 

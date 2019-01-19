@@ -778,6 +778,91 @@ InstallMethod( IsRegularFan,
 end );
 
 ##
+## This is implementation of the Shephard's criterion
+## (Theorem 4.7, Combinatorial convexity and algebraic geometry, Ewald, Guenter)
+##
+InstallMethod( IsNormalFan,
+            [ IsFan ],
+
+    function( fan )
+      local rays, cones, mat, G, polytopes, P, M;
+
+      if not IsComplete( fan ) then
+
+        return false;
+
+      fi;
+
+      if AmbientSpaceDimension( fan ) <= 2 then
+
+        return true;
+
+      fi;
+
+      if HasIsRegularFan( fan ) then
+
+        return IsRegularFan( fan );
+
+      fi;
+
+      rays := RayGenerators( fan );
+
+      cones := ShallowCopy( RaysInAllCones( fan ) );
+
+      Remove( cones, PositionProperty( cones, IsZero ) );
+
+      mat := HomalgMatrix( rays, HOMALG_RATIONALS );
+
+      G := GaleTransform( mat );
+
+      if IsZero( G ) then
+
+        return true;
+
+      fi;
+
+      G := EntriesOfHomalgMatrixAsListList( G );
+
+      polytopes := List( cones, cone -> Set( DuplicateFreeList( G{ Positions( cone, 0 ) } ) ) );
+
+      polytopes := DuplicateFreeList( polytopes );
+
+      polytopes := List( polytopes, l -> Polytope( l ) );
+
+      P := Iterated( polytopes, IntersectionOfPolytopes );
+
+      if Dimension( P ) = -1 then
+
+        return false;
+
+      elif Dimension( P ) = 0 then
+
+        M := Vertices( P )[ 1 ];
+
+        return ForAll( polytopes, P -> IsInteriorPoint( M, P ) );
+
+      else
+
+        M := RandomInteriorPoint( P );
+
+        if ForAll( polytopes, P -> IsInteriorPoint( M, P ) ) then
+
+          return true;
+
+        else
+
+          return false;
+
+        fi;
+
+      fi;
+
+end );
+
+##
+InstallMethod( IsRegularFan, [ IsFan ], IsNormalFan );
+
+##
 InstallMethod( IsFullDimensional,
                "for fans",
                [ IsFan ],
