@@ -31,7 +31,6 @@ DeclareOperation( "Fan",
 #! $\{\mathrm{Cone}_i(C_i )\}_{C_i\in C}$.
 DeclareOperation( "Fan",
                  [ IsList ] );
-#! @InsertChunk fan1
 
 #! @Arguments R, C
 #! @Returns a fan object
@@ -41,7 +40,9 @@ DeclareOperation( "Fan",
 #! $\{\mathrm{Cone}_i(\{ R_j, j\in C_i\} )\}_{C_i\in C}$.
 DeclareOperation( "Fan",
                  [ IsList, IsList ] );
+#! @InsertChunk fan1
 #! @InsertChunk fan2
+
 
 DeclareOperation( "FanWithFixedRays",
                  [ IsList, IsList ] );
