@@ -967,6 +967,35 @@ InstallMethod( GaleTransform,
 
 end );
 
+##
+InstallMethod( RandomInteriorPoint,
+              [ IsPolytope ],
+    function( polytope )
+      local vertices, L;
+
+      vertices := Vertices( polytope );
+
+      L := List( vertices, v -> Random( [ 1 .. 1000 ] ) );
+    
+      L := L/Sum( L );
+
+      return L*vertices;
+
+end );
+
+##
+InstallMethod( IsInteriorPoint,
+             [ IsList, IsPolytope ],
+    function( P, polytope )
+      local ineq, P1;
+      
+      ineq := DefiningInequalities( polytope );
+      
+      ineq := Filtered( ineq, i -> not ( i in ineq and -i in ineq ) );
+
+      P1 := Concatenation( [ 1 ], P );
+
+      return ForAll( ineq, i -> i*P1 > 0 );
 
 end );
 

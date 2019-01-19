@@ -224,4 +224,11 @@ DeclareOperation( "Points",
 DeclareOperation( "FourierProjection", 
                   [ IsPolytope, IsInt ] );
 
+DeclareOperation( "RandomInteriorPoint", 
+                  [ IsPolytope ] );
+
+DeclareOperation( "IsInteriorPoint", 
+                  [ IsList,IsPolytope ] );
+
+
 #! @InsertChunk example2
