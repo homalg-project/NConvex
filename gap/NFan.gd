@@ -90,7 +90,7 @@ DeclareAttribute( "Rays",
 ##
 #################################
 
-DeclareProperty( "IsItReallyFan",
+DeclareProperty( "IsWellDefinedFan",
                   IsFan );
 
 DeclareProperty( "IsComplete",

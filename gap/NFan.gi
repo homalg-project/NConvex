@@ -564,7 +564,7 @@ end );
 ##
 #########################
 
-InstallMethod( IsItReallyFan, 
+InstallMethod( IsWellDefinedFan, 
                [ IsFan ],
   
   function( fan )
