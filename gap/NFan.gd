@@ -1,9 +1,9 @@
 #############################################################################
 ##
-##  Fan.gd         NConvex package                 Sebastian Gutsche
-##                                                 Kamal Saleh
+##  NFan.gd         NConvex package                 Sebastian Gutsche
+##                                                  Kamal Saleh
 ##
-##  Copyright 2011 Lehrstuhl B für Mathematik, RWTH Aachen
+##  Copyright 2019 Mathematics Faculty, Siegen University, Germany
 ##
 ##  Fans for NConvex package.
 ##

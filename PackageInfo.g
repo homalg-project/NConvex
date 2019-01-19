@@ -9,37 +9,47 @@
 SetPackageInfo( rec(
 
 PackageName := "NConvex",
-Subtitle := "new version of the Package Convex",
-Version := "2018.06.15",
-Date := "2018.06.15", # dd/mm/yyyy format
+Subtitle := "A Gap package to perform polyhedral computations",
+Version := "2019.01.15",
+Date := "2019.01.15", # dd/mm/yyyy format
 
 Persons := [
   rec(
     IsAuthor := true,
-    IsMaintainer := false,
+    IsMaintainer := true,
     FirstNames := "Kamal",
     LastName := "Saleh",
-    WWWHome := "To Do",
-    Email := "To Do",
-    PostalAddress := "Templergraben ",
-    Place := "Aachen",
-    Institution := "lehrstuhl B Algebra",
+    WWWHome := "https://github.com/kamalsaleh",
+    Email := "kamal.saleh@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
   ),
   
   rec(
     IsAuthor := true,
-    IsMaintainer := false,
+    IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Gutsche",
-    WWWHome := "To Do",
-    Email := "To Do",
-    PostalAddress := "Templergraben ",
-    Place := "Aachen",
-    Institution := "lehrstuhl B Algebra",
+    WWWHome := "https://sebasguts.github.io/",
+    Email := "gutsche@mathematik.uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
   )
 ],
 
-PackageWWWHome := "http://TODO/",
+PackageWWWHome := "https://github.com/kamalsaleh/NConvex",
 
 ArchiveURL     := Concatenation( ~.PackageWWWHome, "NConvex-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
@@ -65,7 +75,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "new version of the Package Convex",
+  LongTitle := "A Gap package to perform polyhedral computations",
 ),
 
 Dependencies := rec(
@@ -73,7 +83,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "Modules", ">=0.5" ],
                            [ "NormalizInterface", ">=0.3"],
-                           [ "CddInterface", ">= 2018.06.15" ] ],
+                           [ "CddInterface", ">= 2019.01.14" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),

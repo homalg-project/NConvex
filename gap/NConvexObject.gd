@@ -1,11 +1,11 @@
 #############################################################################
 ##
-##  ConvexObject.gd              NConvex package       Sebastian Gutsche
-##                                                     Kamal Saleh
+##  NConvexObject.gd         NConvex package        Sebastian Gutsche
+##                                                  Kamal Saleh
 ##
-##  Copyright 2011-2012 Lehrstuhl B für Mathematik, RWTH Aachen
+##  Copyright 2019 Mathematics Faculty, Siegen University, Germany
 ##
-##  The Main Object to be viewed, is almost everything that has a number ;).
+##  Fans for NConvex package.
 ##
 #############################################################################
 

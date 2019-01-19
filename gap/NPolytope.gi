@@ -1,13 +1,14 @@
 #############################################################################
 ##
-##  Polytope.gi         NConvex package package         Sebastian Gutsche
-##                                                      Kamal Saleh
+##  NPolytope.gi         NConvex package            Sebastian Gutsche
+##                                                  Kamal Saleh
 ##
-##  Copyright 2011 Lehrstuhl B für Mathematik, RWTH Aachen
+##  Copyright 2019 Mathematics Faculty, Siegen University, Germany
 ##
-##  Polytopes for NConvex package.
+##  Fans for NConvex package.
 ##
 #############################################################################
+
 
 ####################################
 ##

@@ -1,13 +1,14 @@
 #############################################################################
 ##
-##  Polyhedron.gi         NConvex package         Sebastian Gutsche
-##                                                Kamal Saleh
+##  NPolyhedron.gi         NConvex package          Sebastian Gutsche
+##                                                  Kamal Saleh
 ##
-##  Copyright 2011 Lehrstuhl B für Mathematik, RWTH Aachen
+##  Copyright 2019 Mathematics Faculty, Siegen University, Germany
 ##
-##  Polyhedrons for NConvex.
+##  Fans for NConvex package.
 ##
 #############################################################################
+
 
 DeclareRepresentation( "IsConvexPolyhedronRep",
                        IsPolyhedron and IsExternalConvexObjectRep,
