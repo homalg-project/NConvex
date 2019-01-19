@@ -453,39 +453,78 @@ InstallMethod( CanonicalizeFan,
  
  end );
  
-
-InstallMethod( AllCones,
+##
+InstallMethod( RaysInAllCones,
                [ IsFan ],
  
  function( fan )
- local max_cones, cones,current_list_of_faces, i, j;
+   local max_cones, cones, current_list_of_faces, rays, L, i;
  
+ if IsCone( fan ) then
+   
+    max_cones := [ fan ];
+
+ else
+
+    max_cones:= MaximalCones( fan );
  
- max_cones:= MaximalCones( fan );
- 
+ fi;
+
  cones:= [ ];
  
  for i in max_cones do 
  
     current_list_of_faces:= Faces( i );
     
-    for j in current_list_of_faces do 
-    
-       if not j in cones then 
-       
-            Add( cones, j );
-            
-       fi;
-       
-    od;
+    cones := Concatenation( cones, List( current_list_of_faces, RayGenerators ) );
     
  od;
- 
- return cones;
+
+ cones := DuplicateFreeList( cones );
+
+ rays := RayGenerators( fan );
+
+ if not ForAll( DuplicateFreeList( Concatenation( cones ) ), r -> r = [ ] or r in rays ) then
+   
+   # If this error happens, it means that r is a positive multiple of some element in rays,
+   # which is not problem and can be fixed very easily.
+   Error( "This should not happen, please report this error!" );
+
+ fi;
+
+ L := List( cones, cone -> List( rays, function( r )
+                                          if r in cone then
+                                            return 1;
+                                          else
+                                            return 0;
+                                          fi;
+                                        end ) );
+
+ return DuplicateFreeList( L );
  
 end );
 
+##
+InstallMethod( AllCones,
+        [ IsFan ],
+    function( fan )
+      local n, rays, rays_in_all_cones;
+      
+      n := AmbientSpaceDimension( fan );
 
+      rays := RayGenerators( fan );
+      
+      rays_in_all_cones := RaysInAllCones( fan );
+
+      rays_in_all_cones := List( rays_in_all_cones, r -> rays{ Positions( r, 1 ) } );
+    
+      rays_in_all_cones[ Position( rays_in_all_cones, [  ] ) ] := [ ListWithIdenticalEntries( n, 0 ) ];
+
+      return List( rays_in_all_cones, Cone );
+
+end );
+
+##
 InstallMethod( FVector, 
                [ IsFan ], 
   function( fan )
@@ -1031,6 +1070,7 @@ InstallMethod( OneMaximalConeInList,
  
  end );
             
+##
 InstallMethod( ListOfMaximalConesInList,
                [ IsList ],
                

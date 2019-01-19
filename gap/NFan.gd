@@ -62,19 +62,22 @@ DeclareAttribute( "GivenRayGenerators",
                     
 DeclareAttribute( "RaysInMaximalCones",
                   IsFan );
-                  
-DeclareAttribute( "RaysInTheGivenMaximalCones",
+
+DeclareAttribute( "RaysInAllCones", 
                   IsFan );
-                  
-DeclareAttribute( "GivenMaximalCones",
-                  IsFan );
-                  
-DeclareAttribute( "MaximalCones",
-                  IsFan );
-                  
+
 DeclareAttribute( "AllCones",
                   IsFan );
-                  
+
+DeclareAttribute( "RaysInTheGivenMaximalCones",
+                  IsFan );
+
+DeclareAttribute( "GivenMaximalCones",
+                  IsFan );
+
+DeclareAttribute( "MaximalCones",
+                  IsFan );
+
 DeclareAttribute( "FVector",
                   IsFan );
                   
@@ -89,13 +92,13 @@ DeclareAttribute( "Rays",
 
 DeclareProperty( "IsItReallyFan",
                   IsFan );
-                  
+
 DeclareProperty( "IsComplete",
                    IsFan );
-                   
+
 DeclareProperty( "IsPointed",
                  IsFan );
-                 
+
 DeclareProperty( "IsSmooth",
                  IsFan );
 
@@ -104,7 +107,7 @@ DeclareProperty( "IsSimplicial",
 
 DeclareProperty( "IsRegularFan",
                  IsFan );
-                 
+
 #################################
 ##
 ##    Operations on fans
@@ -138,4 +141,3 @@ DeclareOperation( "OneMaximalConeInList",
                    
 DeclareOperation( "ListOfMaximalConesInList",
                    [ IsList] );
-     
