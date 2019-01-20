@@ -80,9 +80,9 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.6",
-  NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "Modules", ">=0.5" ],
-                           [ "NormalizInterface", ">=0.3"],
+  NeededOtherPackages := [ [ "AutoDoc", ">= 2018.02.14" ],
+                           [ "Modules", ">= 0.5" ],
+                           [ "NormalizInterface", ">= 0.3"],
                            [ "CddInterface", ">= 2019.01.14" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
