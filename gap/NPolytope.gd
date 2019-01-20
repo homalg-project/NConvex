@@ -72,48 +72,80 @@ DeclareAttribute( "RelativeInteriorLatticePoints",
  
 DeclareAttribute( "LatticePointsGenerators",
                     IsPolytope );
+
 #! @Arguments polytope 
-#! @Returns a List
+#! @Returns a list of lists
 #! @Description  
 #! The function returns the vertices of the polytope  
 DeclareAttribute( "VerticesOfPolytope",
                     IsPolytope );
 
 #! @Arguments polytope 
-#! @Returns a List
+#! @Returns a list of lists
 #! @Description  
-#! The function returns the list of the inequalities of the facets.                    
-DeclareAttribute( "FacetInequalities",
-                    IsPolytope );
+#! The same output as <C>VerticesOfPolytope</C>.
+DeclareOperation( "Vertices",
+                  [ IsPolytope ] );
+                  
+DeclareOperation( "HasVertices",
+                  [ IsPolytope ] );
+
 #! @Arguments polytope 
-#! @Returns a List
+#! @Returns a list of lists
 #! @Description  
-#! The function returns the defining inequalities of the polytope.                    
+#! The function returns the defining inequalities of the polytope.
+#! I.e., a list of lists $[L_1, L_2, ...]$ where each 
+#! $L_j=[c_j,a_{j1},a_{j2},...,a_{jn}]$ represents the inequality 
+#! $c_j+\sum_{i=1}^n a_{ji}x_i \geq 0$. If $L$ and $-L$ occur in the 
+#! output then $L$ is called a defining-equality of the polytope.
 DeclareAttribute( "DefiningInequalities",
                     IsPolytope );                    
-                    
+
 #! @Arguments polytope 
-#! @Returns a List
-#! @Description  
-#! The function returns the equalities in the defining inequalities of the polytope.                    
+#! @Returns a list of lists
+#! @Description
+#! The function returns the defining-equalities of the polytope.
 DeclareAttribute( "EqualitiesOfPolytope",
                     IsPolytope );
 
 #! @Arguments polytope 
-#! @Returns a List
+#! @Returns a list of lists
 #! @Description  
-#! The function returns XXX.                          
+#! The function returns the list of the inequalities of the facets.
+#! Each defining inequality that is not defining-equality of the 
+#! polytope is a facet inequality.
+DeclareAttribute( "FacetInequalities",
+                    IsPolytope );
+
+#! @Arguments polytope 
+#! @Returns a list of lists
+#! @Description  
+#! The function returns list of lists $L$. The entries of each $L_j$
+#! in $L$ consists of $0$'s or $1$'s. For instance, if $L_j=[1,0,0,1,0,1]$, then
+#! The polytope has $6$ vertices and the vertices of the $j$'th facet are $\{V_1,V_4,V_6\}$.
 DeclareAttribute( "VerticesInFacets",
                     IsPolytope );
-                    
+
+#! @Arguments polytope 
+#! @Returns a fan
+#! @Description  
+#! The function returns the normal fan of the given polytope.
 DeclareAttribute( "NormalFan",
                     IsPolytope );
 
+#! @Arguments polytope 
+#! @Returns a cone
+#! @Description  
+#! If the ambient space of the polytope is $\mathrm{R}^n$, then the output is a cone in 
+#! $\mathrm{R}^{n+1}$. The defining rays of the cone are 
+#! ${[a_{j1},a_{j2},...,a_{jn},1]}_j$ such that $V_j=[a_{j1},a_{j2},...,a_{jn}]$ is
+#! a vertex in the polytope.
 DeclareAttribute( "AffineCone",
                     IsPolytope );
 
 DeclareAttribute( "BabyPolytope",
                     IsPolytope );
+
 #! @Arguments polytope 
 #! @Returns a Polytope
 #! @Description  
@@ -184,19 +216,6 @@ DeclareProperty( "IsSimplePolytope",
                  
 DeclareProperty( "IsBounded",
                  IsPolytope );
-                 
-####################################
-##
-##  Operations
-##
-####################################
-
-DeclareOperation( "Vertices",
-                  [ IsPolytope ] );
-                  
-DeclareOperation( "HasVertices",
-                  [ IsPolytope ] );
-
 
 ################################
 ##
@@ -204,18 +223,36 @@ DeclareOperation( "HasVertices",
 ##
 ################################
 
+#! @Section Operations on polytopes
+
+#! @Arguments polytope1, polytope2
+#! @Returns a polytope
+#! @Description
+#! The output is cartesian product of the input polytopes.
 DeclareOperation( "\*",
                   [ IsPolytope, IsPolytope ] );
 
+#! @Arguments polytope1, polytope2
+#! @Returns a polytope
+#! @Description
+#! The output is Minkowski sum of the input polytopes.
+DeclareOperation( "\+",
+                  [ IsPolytope, IsPolytope ] );
+
+#! @Arguments n, polytope
+#! @Returns a polytope
+#! @Description
+#! The output is Minkowski sum of the input polytope with itself $n$ times.
 DeclareOperation( "\*",
                   [ IsInt, IsPolytope ] );
 
 DeclareOperation( "\*",
                   [ IsPolytope, IsInt ] );
 
-DeclareOperation( "\+",
-                  [ IsPolytope, IsPolytope ] );
-                  
+#! @Arguments polytope1, polytope2
+#! @Returns a polytope
+#! @Description
+#! The output is the intersection of the input polytopes. 
 DeclareOperation( "IntersectionOfPolytopes",
                   [ IsPolytope, IsPolytope ] );
                   
@@ -225,11 +262,18 @@ DeclareOperation( "Points",
 DeclareOperation( "FourierProjection", 
                   [ IsPolytope, IsInt ] );
 
+#! @Arguments polytope
+#! @Returns a list
+#! @Description
+#! Returns a random interior point in the polytope.
 DeclareOperation( "RandomInteriorPoint", 
                   [ IsPolytope ] );
 
+#! @Arguments M, polytope
+#! @Returns true or false
+#! @Description
+#! Checks if the given point is interior point of the polytope.
 DeclareOperation( "IsInteriorPoint", 
                   [ IsList,IsPolytope ] );
-
 
 #! @InsertChunk example2
