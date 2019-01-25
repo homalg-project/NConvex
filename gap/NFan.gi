@@ -205,7 +205,8 @@ InstallMethod( GivenRayGenerators,
         
     elif IsBound( fan!.input_cone_list ) then
         
-        return DuplicateFreeList( Concatenation( fan!.input_cone_list ) );
+        #return DuplicateFreeList( Concatenation( fan!.input_cone_list ) );
+        return List( Set( Union( fan!.input_cone_list ) ) );
         
     else
         
@@ -408,8 +409,9 @@ InstallMethod( CanonicalizeFan,
      Append( new_gen, RayGenerators( i ) );
      
  od;
- 
- new_gen := DuplicateFreeList( new_gen );
+
+ #new_gen := DuplicateFreeList( new_gen );
+ new_gen:= List( Set( new_gen ) );
  
  cones := List( [ 1 .. Length( list_of_max ) ], i -> List( [ 1 .. Length( new_gen ) ], j -> 0 ) );
       
@@ -1125,7 +1127,8 @@ InstallMethod( OneMaximalConeInList,
  function( u )
  local list, max, new_u, i;
  
- new_u:= DuplicateFreeList( ShallowCopy( u ) );
+ #new_u:= DuplicateFreeList( ShallowCopy( u ) );
+ new_u:= List( Set( u ) );
  
  max := new_u[ 1 ];
  
@@ -1164,7 +1167,8 @@ InstallMethod( ListOfMaximalConesInList,
   
   list_of_max := [ ];
   
-  new_L:= DuplicateFreeList( L );
+  #new_L:= DuplicateFreeList( L );
+  new_L := Set( L );
   
   while Length( new_L )<> 0 do
   
@@ -1172,10 +1176,12 @@ InstallMethod( ListOfMaximalConesInList,
       
       Add( list_of_max, current[ 1 ] );
       
-      for l in current[ 2 ] do
-        Remove( new_L, Position( new_L, l ) );
-      od;
-    
+      #for l in current[ 2 ] do
+        #Remove( new_L, Position( new_L, l ) );
+      #od;
+
+      SubtractSet( new_L, current[ 2] );
+
   od;
   
   return list_of_max;
