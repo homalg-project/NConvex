@@ -153,6 +153,13 @@ DeclareAttribute( "BabyPolytope",
 DeclareAttribute( "PolarPolytope",
                     IsPolytope );
 
+#! @Arguments polytope 
+#! @Returns a Polytope
+#! @Description  
+#! The function returns the dual polytope of the given polytope.
+DeclareAttribute( "DualPolytope",
+                    IsPolytope );
+
 DeclareOperation( "GaleTransform", [ IsHomalgMatrix ] );
 
 ####################################
@@ -216,6 +223,13 @@ DeclareProperty( "IsSimplePolytope",
                  
 DeclareProperty( "IsBounded",
                  IsPolytope );
+
+#! @Arguments polytope 
+#! @Returns a true or false
+#! @Description  
+#! returns if the polytope is reflexive or not, i.e., if its dual polytope is lattice
+#! polytope.
+DeclareProperty( "IsReflexive", IsPolytope );
 
 ################################
 ##

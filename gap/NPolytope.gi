@@ -289,6 +289,34 @@ function( polyt )
 return Dimension( polyt ) = AmbientSpaceDimension( polyt );
 
 end );
+
+InstallMethod( IsReflexive,
+               [ IsPolytope ],
+    function( polyt )
+      local O, dual, V;
+
+      O := ListWithIdenticalEntries( AmbientSpaceDimension( polyt ), 0 );
+
+      if not IsFullDimensional( polyt ) then
+
+        Error( "The polytope should be full dimensional" );
+      
+      elif not IsInteriorPoint( O, polyt ) then
+        
+        Error( "The origin should be an interior point" );
+      
+      else
+        
+        dual := DualPolytope( polyt );
+        
+        V := DuplicateFreeList( Concatenation( Vertices( dual ) ) );
+        
+        return ForAll( V, IsInt );
+      
+      fi;
+
+end );
+
 ####################################
 ##
 ## Attributes
@@ -715,6 +743,36 @@ InstallMethod( PolarPolytope,
   return Polytope( l );
   
 end );
+
+##
+InstallMethod( DualPolytope,
+               [ IsPolytope ],
+               
+  function( polyt )
+    local O, V, ineq;
+ 
+    O := ListWithIdenticalEntries( AmbientSpaceDimension( polyt ), 0 );
+
+    if not IsFullDimensional( polyt ) then
+
+      Error( "The polytope should be full dimensional" );
+    
+    elif not IsInteriorPoint( O, polyt ) then
+      
+      Error( "The origin should be an interior point" );
+    
+    else
+      
+      V := Vertices( polyt );
+
+      ineq := List( V, v -> Concatenation( [ 1 ], v ) );
+
+      return PolytopeByInequalities( ineq );
+
+    fi;
+  
+end );
+
 
 ####################################
 ##
