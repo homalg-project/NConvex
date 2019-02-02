@@ -710,69 +710,35 @@ InstallMethod( PolarPolytope,
                [ IsPolytope ],
                
   function( polyt )
-  local d,l;
+  local D, n;
   
   # Page 65, Cox
   if not IsFullDimensional( polyt ) then 
   
-      Error( "Polar polytope is defined only for full dimensional polytopes!" );
+      Error( "The polytope should be full dimensional!" );
       
   fi;
+
+  D := DefiningInequalities( polyt );
   
-  d:= DefiningInequalities( polyt );
+  if not ForAll( D, d -> d[ 1 ] > 0 ) then 
   
-  if not ForAll( d, i-> i[ 1 ] > 0 ) then 
-  
-       Error( "The origin 0 should be an interior point in the polytope!" );
-       
+     Error( "The origin should be an interior point!" );
+     
   fi;
   
-  l:= List(d, function( u )
-          local v;
-          
-          v:= ShallowCopy( u );
-          
-          Remove(v, u[1] );
-          
-          v:= v/u[1];
-          
-          return v;
-          
-          end );
+  D := List( D, d -> d/d[1] );
 
-  return Polytope( l );
-  
+  n := AmbientSpaceDimension( polyt );
+
+  D := List( D, d -> d{ [ 2 .. n + 1 ] } );
+
+  return Polytope( D );
+
 end );
 
 ##
-InstallMethod( DualPolytope,
-               [ IsPolytope ],
-               
-  function( polyt )
-    local O, V, ineq;
- 
-    O := ListWithIdenticalEntries( AmbientSpaceDimension( polyt ), 0 );
-
-    if not IsFullDimensional( polyt ) then
-
-      Error( "The polytope should be full dimensional" );
-    
-    elif not IsInteriorPoint( O, polyt ) then
-      
-      Error( "The origin should be an interior point" );
-    
-    else
-      
-      V := Vertices( polyt );
-
-      ineq := List( V, v -> Concatenation( [ 1 ], v ) );
-
-      return PolytopeByInequalities( ineq );
-
-    fi;
-  
-end );
-
+InstallMethod( DualPolytope, [ IsPolytope ], PolarPolytope );
 
 ####################################
 ##
