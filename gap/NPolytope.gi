@@ -317,6 +317,142 @@ InstallMethod( IsReflexive,
 
 end );
 
+# The definitions can be found in ""Gorenstein Toric Fano Varieties, Benjamin Nill""
+#
+# A polytope is fano if its vertices are primitives in the containing lattice.
+#
+InstallMethod( IsFanoPolytope,
+            [ IsPolytope ],
+    function( polyt )
+      local n, V, G;
+      
+      if not IsFullDimensional( polyt ) or not IsLatticePolytope( polyt ) then
+        
+        return false;
+
+      fi;
+
+      n := AmbientSpaceDimension( polyt );
+
+      if not IsInteriorPoint( ListWithIdenticalEntries( n, 0 ), polyt ) then
+
+        return false;
+
+      fi;
+
+      V := Vertices( polyt );
+
+      G := Set( List( V, Gcd ) );
+
+      return IsSubsetSet( Set( [ 1 ] ), G );
+
+end );
+
+# A polytope full dimensional lattice polytope is canonical fano if int(P) cap M = {Origin}.
+InstallMethod( IsCanonicalFanoPolytope,
+            [ IsPolytope ],
+    function( polyt )
+      local n, L, p;
+      
+      if not IsFullDimensional( polyt ) or not IsLatticePolytope( polyt ) then
+        
+        return false;
+
+      fi;
+
+      n := AmbientSpaceDimension( polyt );
+
+      if not IsInteriorPoint( ListWithIdenticalEntries( n, 0 ), polyt ) then
+
+        return false;
+
+      fi;
+
+      L := ShallowCopy( LatticePoints( polyt ) );
+
+      p := Position( L, ListWithIdenticalEntries( n, 0 ) );
+
+      Remove( L, p );
+
+      return ForAll( L, l -> not IsInteriorPoint( l, polyt ) );
+
+end );
+
+# A polytope full dimensional lattice polytope is terminsl fano if P cap M = {Origin} cub Vertices( P ).
+InstallMethod( IsTerminalFanoPolytope,
+            [ IsPolytope ],
+    function( polyt )
+      local n, L, p;
+      
+      if not IsFullDimensional( polyt ) or not IsLatticePolytope( polyt ) then
+        
+        return false;
+
+      fi;
+
+      n := AmbientSpaceDimension( polyt );
+
+      if not IsInteriorPoint( ListWithIdenticalEntries( n, 0 ), polyt ) then
+
+        return false;
+
+      fi;
+
+      L := ShallowCopy( LatticePoints( polyt ) );
+
+      p := Position( L, ListWithIdenticalEntries( n, 0 ) );
+
+      Remove( L, p );
+
+      return Set( L ) = Set( Vertices( polyt ) );
+
+end );
+
+
+
+# A polytope is smooth-fano iff vertices of each facet form a basis for N.
+# the only interior lattice point of such a polytope is the origin.
+# Smooth fano polytope has at most 2*n^2 vertices, where n is the dimension of the ambient space (Voskresenski & Klyachko).
+InstallMethod( IsSmoothFanoPolytope,
+            [ IsPolytope ],
+    function( polyt )
+      local n, V, facets, f;
+      
+      if not IsFullDimensional( polyt ) or not IsLatticePolytope( polyt ) then
+        
+        return false;
+
+      fi;
+
+      n := AmbientSpaceDimension( polyt );
+
+      V := Vertices( polyt );
+      
+      facets := VerticesInFacets( polyt );
+
+      facets := List( facets, indices -> V{ Positions( indices, 1 ) } );
+
+      f := function( mat )
+              
+              if Length( mat ) <> n or RankMat( mat ) <> n then
+                
+                return false;
+
+              fi;
+
+              if not IsSubset( Set( [ 0, 1 ] ), Set( Flat( SmithNormalFormIntegerMat( mat ) ) ) )  then
+
+                return false;
+
+              fi;
+
+              return true;
+
+            end;
+
+    return ForAll( facets, f );
+
+end );
 ####################################
 ##
 ## Attributes

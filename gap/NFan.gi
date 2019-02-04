@@ -889,7 +889,20 @@ InstallMethod( IsSimplicial,
     
 end );
 
+##
+InstallMethod( IsFanoFan,
+            [ IsFan ],
+    function( fan )
+      
+      if not IsComplete( fan ) then
+        
+        Error( "The fan should be complete" );
 
+      fi;
+
+      return fan = NormalFan( PolarPolytope( Polytope( RayGenerators( fan ) ) ) );
+
+end );
 #########################
 ##
 ##  Methods

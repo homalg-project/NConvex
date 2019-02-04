@@ -231,6 +231,36 @@ DeclareProperty( "IsBounded",
 #! polytope.
 DeclareProperty( "IsReflexive", IsPolytope );
 
+#! @Arguments polytope 
+#! @Returns a true or false
+#! @Description  
+#! returns whether the polytope is Fano or not. Fano polytope is a full dimensional lattice polytope whose vertices are 
+#! primitive elements in the containing lattice, i.e., each vertex is not a positive integer multiple of any other lattice element.
+DeclareProperty( "IsFanoPolytope", IsPolytope );
+
+#! @Arguments polytope 
+#! @Returns a true or false
+#! @Description  
+#! returns whether the polytope is canonical Fano or not. A canonical Fano polytope is a full dimensional lattice polytope whose relative
+#! interior contains only one lattice point, namely the origin.
+DeclareProperty( "IsCanonicalFanoPolytope", IsPolytope );
+
+#! @Arguments polytope 
+#! @Returns a true or false
+#! @Description  
+#! returns whether the polytope is terminal Fano or not. A terminal Fano polytope is a full dimensional lattice polytope whose
+#! lattice points are its vertices and the origin.
+DeclareProperty( "IsTerminalFanoPolytope", IsPolytope );
+
+
+
+#! @Arguments polytope 
+#! @Returns a true or false
+#! @Description  
+#! returns if the polytope is smooth fano polytope or not, i.e, if the vertices in each facet form a basis for the containing lattice or not.
+#! polytope.
+DeclareProperty( "IsSmoothFanoPolytope", IsPolytope );
+
 ################################
 ##
 ## Methods

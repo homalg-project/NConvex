@@ -114,6 +114,9 @@ DeclareProperty( "IsNormalFan",
 DeclareProperty( "IsRegularFan",
                  IsFan );
 
+DeclareProperty( "IsFanoFan",
+                 IsFan );
+
 #################################
 ##
 ##    Operations on fans
