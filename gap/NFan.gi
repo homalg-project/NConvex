@@ -908,7 +908,22 @@ end );
 ##  Methods
 ##
 #########################
-      
+
+##
+InstallMethod( \=,
+            [ IsFan, IsFan ],
+    function( fan1, fan2 )
+      if RayGenerators( fan1 ) = RayGenerators( fan2 ) and Set( RaysInMaximalCones( fan1 ) ) = Set( RaysInMaximalCones( fan2 ) ) then
+        return true;
+      fi;
+
+      if RayGenerators( fan1 ) <> RayGenerators( fan2 ) and Set( RayGenerators( fan1 ) ) <> Set( RayGenerators( fan2 ) ) then
+        Error( "This should not happen! Please report this error." );
+      fi;
+
+      return false;
+end );
+
 ##
 InstallMethod( \*,
                "for fans.",
@@ -1133,7 +1148,6 @@ InstallMethod( FirstLessTheSecond,
     return ForAll( [ 1 .. Length( u ) ], i-> u[ i ] <= v[ i ] );
 
 end );
-
 
 InstallMethod( OneMaximalConeInList,
               [ IsList ],
