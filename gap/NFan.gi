@@ -893,14 +893,24 @@ end );
 InstallMethod( IsFanoFan,
             [ IsFan ],
     function( fan )
-      
-      if not IsComplete( fan ) then
-        
-        Error( "The fan should be complete" );
+      local polyt;
+    
+      if HasIsComplete( fan ) and not IsComplete( fan ) then
+
+        return false;
 
       fi;
 
-      return fan = NormalFan( PolarPolytope( Polytope( RayGenerators( fan ) ) ) );
+      polyt := Polytope( RayGenerators( fan ) );
+
+      if not IsFullDimensional( polyt ) or 
+            not IsInteriorPoint( ListWithIdenticalEntries( AmbientSpaceDimension( polyt ), 0 ), polyt ) then
+
+        return false;
+
+      fi;
+
+      return fan = NormalFan( PolarPolytope( polyt ) );
 
 end );
 #########################
