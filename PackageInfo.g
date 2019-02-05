@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "NConvex",
 Subtitle := "A Gap package to perform polyhedral computations",
-Version := "2019.01.15",
-Date := "2019.01.15", # dd/mm/yyyy format
+Version := "2019.02.02",
+Date := "2019.02.02", # dd/mm/yyyy format
 
 Persons := [
   rec(
@@ -83,7 +83,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "AutoDoc", ">= 2018.02.14" ],
                            [ "Modules", ">= 0.5" ],
                            [ "NormalizInterface", ">= 0.3"],
-                           [ "CddInterface", ">= 2019.01.14" ] ],
+                           [ "CddInterface", ">= 2019.02.01" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
