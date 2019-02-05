@@ -913,6 +913,7 @@ InstallMethod( IsFanoFan,
       return fan = NormalFan( PolarPolytope( polyt ) );
 
 end );
+
 #########################
 ##
 ##  Methods

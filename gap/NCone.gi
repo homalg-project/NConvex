@@ -514,7 +514,7 @@ InstallMethod( RaysInFacets,
     
     for i in list_of_facets do
     
-      current_cone := Cdd_ExtendLinearity( external_cone, i[2] );
+      current_cone := Cdd_ExtendLinearity( external_cone, i );
       
       current_ray_generators := Cdd_GeneratingRays( current_cone ) ;
       
