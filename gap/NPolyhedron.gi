@@ -594,6 +594,22 @@ InstallMethod( BasisOfLinealitySpace,
     
 end );
 
+##
+InstallMethod( FVector,
+            [ IsPolyhedron ],
+    function( polyhedron )
+      local external_polyhedron, faces;
+      
+      external_polyhedron := Cdd_H_Rep( ExternalCddPolyhedron( polyhedron ) );
+      
+      faces := Cdd_Faces( external_polyhedron );
+      
+      return List( [ 0 .. Dimension( polyhedron ) - 1 ], 
+                i -> Length( PositionsProperty( faces, face -> face[ 1 ] = i ) ) );
+
+end );
+
+##
 InstallGlobalFunction( Draw,
 function()
 

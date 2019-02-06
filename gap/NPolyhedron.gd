@@ -134,6 +134,11 @@ DeclareAttribute( "LatticePointsGenerators",
 #! Returns a basis to the lineality space of the polyhedron.
 DeclareAttribute( "BasisOfLinealitySpace",
                   IsPolyhedron );
+#! @Arguments arg 
+#! @Returns a list
+#! @Description  
+#! Returns a list whose $i$'th entry is the number of faces of dimension $i-1$.
+DeclareAttribute( "FVector", IsPolyhedron );
 
 #####################################
 ##
