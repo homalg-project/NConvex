@@ -685,14 +685,14 @@ InstallMethod( FVector,
                "for cones",
                [ IsCone ],
   function( cone )
-  local faces, dim_of_faces;
+    local external_cone, faces;
+
+    external_cone := Cdd_H_Rep( ExternalCddCone( cone ) );
   
-  faces:= Faces( cone );
-  
-  dim_of_faces := List( faces, Dimension );
-  
-  return List( [ 1..Maximum( dim_of_faces) ], i-> Length( Positions( dim_of_faces, i) ) );
-  
+    faces := Cdd_Faces( external_cone );
+
+    return List( [ 1 .. Dimension( cone ) ], 
+                i -> Length( PositionsProperty( faces, face -> face[ 1 ] = i ) ) );
   end );
 
 

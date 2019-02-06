@@ -232,7 +232,7 @@ InstallMethod( IsSimplexPolytope,
                
   function( polyt )
    
-  return Length( Vertices( polyt ) )=Dimension( polyt ) +1;
+  return Length( Vertices( polyt ) ) = Dimension( polyt ) + 1;
    
 end );
 
@@ -263,7 +263,7 @@ InstallMethod( IsSimplicial,
                   
                          p:= PolytopeByInequalities( l );
                   
-                         return Length( Vertices( p ) )= dim;
+                         return Length( Vertices( p ) ) = dim;
                   
                          end );
                   
@@ -453,6 +453,7 @@ InstallMethod( IsSmoothFanoPolytope,
     return ForAll( facets, f );
 
 end );
+
 ####################################
 ##
 ## Attributes
@@ -875,6 +876,22 @@ end );
 
 ##
 InstallMethod( DualPolytope, [ IsPolytope ], PolarPolytope );
+
+##
+InstallMethod( FVector,
+        "for polytopes",
+        [ IsPolytope ],
+    function( polyt )
+      local external_polytope, faces;
+      
+      external_polytope := Cdd_H_Rep( ExternalCddPolytope( polyt ) );
+      
+      faces := Cdd_Faces( external_polytope );
+      
+      return List( [ 0 .. Dimension( polyt ) - 1 ], 
+                i -> Length( PositionsProperty( faces, face -> face[ 1 ] = i ) ) );
+
+end );
 
 ####################################
 ##

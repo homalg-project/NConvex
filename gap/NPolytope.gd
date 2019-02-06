@@ -162,6 +162,8 @@ DeclareAttribute( "DualPolytope",
 
 DeclareOperation( "GaleTransform", [ IsHomalgMatrix ] );
 
+DeclareAttribute( "FVector", IsPolytope );
+
 ####################################
 ##
 ## Properties
