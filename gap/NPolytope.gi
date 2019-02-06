@@ -344,7 +344,7 @@ InstallMethod( IsFanoPolytope,
 
       G := Set( List( V, Gcd ) );
 
-      return IsSubsetSet( Set( [ 1 ] ), G );
+      return G = Set( [ 1 ] );
 
 end );
 
@@ -450,7 +450,19 @@ InstallMethod( IsSmoothFanoPolytope,
 
             end;
 
-    return ForAll( facets, f );
+    if ForAll( facets, f ) then
+
+      SetIsSimplicial( polyt, true );
+
+      SetIsReflexive( polyt, true );
+
+      return true;
+
+    else
+
+      return false;
+
+    fi;
 
 end );
 
