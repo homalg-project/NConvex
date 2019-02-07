@@ -518,23 +518,21 @@ InstallMethod( RaysInFacets,
       
       current_ray_generators := Cdd_GeneratingRays( current_cone ) ;
       
-      current_list:= List( [1..Length( generating_rays )], function(j)
-                                                           
-                                                           if generating_rays[j] in Cone( current_cone ) then
-                                                           
-                                                                return 1;
-                                                                
-                                                           else 
-                                                           
-                                                                return 0;
-                                                                
-                                                           fi;
-                                                           
-                                                           end );
-                                                           
+      current_list:= List( [1..Length( generating_rays )], 
+                           
+                           function(j)
+
+                             if generating_rays[j] in Cone( current_cone ) then
+                                return 1;
+                             else 
+                                return 0;
+                             fi;
+                           
+                           end );
+                           
       Add( list, current_list );
       
-      od;
+    od;
       
 return list;
     
@@ -548,64 +546,47 @@ InstallMethod( RaysInFaces,
   function( cone )
   local external_cone, list_of_faces, generating_rays, list, current_cone, current_list, current_ray_generators, i,j;  
   
-    external_cone := Cdd_H_Rep ( ExternalCddCone ( cone ) );
-    
-#     Display( "external_cone " ); Display( external_cone  );
+    external_cone := Cdd_H_Rep( ExternalCddCone ( cone ) );
     
     list_of_faces:= Cdd_Faces( external_cone );
     
-#     Display( "list_of_faces "); Display( list_of_faces );
-    
     generating_rays:= RayGenerators( cone );
-    
-#     Display( "generating_rays "); Display( generating_rays );
     
     list:= [ ];
     
-#     Display( "list is  "); Display( list );
     for i in list_of_faces do
-    
-        if i[ 1 ]<>0 then 
-          
-            current_cone := Cdd_ExtendLinearity( external_cone, i[ 2 ] );
-       
-#             Display( "current_cone\n"); Display( current_cone );
-       
-            current_ray_generators := Cdd_GeneratingRays( current_cone ) ;
       
-#             Display( "current_ray_generators"); Display( current_ray_generators );
+      if i[ 1 ] <> 0 then
+        
+        current_cone := Cdd_ExtendLinearity( external_cone, i[ 2 ] );
+       
+        current_ray_generators := Cdd_GeneratingRays( current_cone ) ;
             
-            current_list:= List( [1..Length( generating_rays )], function(j)
-                                                           
-                                                                  if generating_rays[j] in Cone( current_cone ) then
-                                                           
-                                                                      return 1;
-                                                                
-                                                                  else 
-                                                           
-                                                                      return 0;
-                                                                
-                                                                  fi;
-                                                           
-                                                                  end );
-                                                                 
-#             Display( "current_list"); Display( current_list );
-           
-                                                           
-            Add( list, current_list );
-      
-#             Display( "list"); Display( list );
+        current_list:= List( [ 1 .. Length( generating_rays ) ], 
+        
+                                function(j)
+
+                                  if generating_rays[j] in Cone( current_cone ) then
+                                        return 1;                        
+                                  else
+                                        return 0;
+                                  fi;
+                                
+                                end );
+
+        Add( list, current_list );
+
       fi;
-      
+
    od;
-      
+
 return list;
-    
+
 end );
 
 ##
 InstallMethod( Facets,
-               " for external cones",
+               "for external cones",
                [ IsCone ],
                
   function( cone )
@@ -823,190 +804,7 @@ InstallMethod( LatticePointsGenerators,
     
     return LatticePointsGenerators( Polyhedron( [ List( [ 1 .. n ], i -> 0 ) ], cone ) );
     
-    end );
-
-
-## This is horrible 
-##      
-# 
-# InstallMethod( LatticePointsGenerators, 
-#                [ IsCone ], 
-#                
-#   function( cone )
-#   local N,lineality_space, d, n, M, current_list,i, new_lineality_base, combi,B,
-#   rays_not_in_lineality, R, H, all_points, proj1, proj2, new_proj2, min_proj, new_N, new_B,
-#   points1,points2, proj12, proj123,h,pos, new_lineality, proj1234, rays_pro, rays_pro_mod, H2;
-#   
-#   n:= AmbientSpaceDimension( cone );
-#   
-#   if IsPointed( cone ) then 
-#   
-#           return [ [ ListWithIdenticalEntries(n,0) ], HilbertBasis( cone ), [ ] ];
-#           
-#   fi;
-#   
-#   if Dimension( cone )= Length( LinealitySpaceGenerators( cone ) ) then
-#   
-#           return [ [ ListWithIdenticalEntries(n,0) ], [ ], 
-#                     ShallowCopy( LLLReducedBasis( HilbertBasis( Cone( LinealitySpaceGenerators( cone ) ) ), "linearcomb" )!.basis ) ];
-#           
-#   fi;
-#   
-#   lineality_space:= LinealitySpaceGenerators( cone );
-#   
-#   d:= Length( lineality_space );
-#   
-#   M:= ShallowCopy( lineality_space );
-#   
-#   N:= [ ]; 
-#   
-#   for i in [ 1..n-d ] do
-#   
-#      current_list:= BaseOrthogonalSpaceMat( Concatenation( M, N ) );
-#      
-#      Add( N, current_list[ 1 ] );
-# 
-#   od;
-#   
-#   new_lineality_base:= [ ];
-#   
-#   for i in [ 1..d ] do
-#   
-#     current_list:= BaseOrthogonalSpaceMat( Concatenation( N, new_lineality_base ) );
-#     
-#     Add( new_lineality_base, LcmOfDenominatorRatInList( current_list[ 1 ] )*current_list[ 1 ] );
-#     
-#   od;
-#   
-#   B:= Concatenation( new_lineality_base, N );
-# #   
-#   combi:= testttt2( new_lineality_base );
-#   
-#   R:= RayGenerators( cone );
-#   
-#   rays_not_in_lineality:= [ ];
-#   
-#   for i in R do 
-#   
-#      if not -i in R then Add( rays_not_in_lineality, i ); fi;
-#      
-#   od;
-#   
-#   H:= List( combi, c-> HilbertBasis( Cone( Concatenation( c, rays_not_in_lineality ) ) ) );
-#   
-#   all_points:= [ ];
-#   
-#   for i in H do 
-#   
-#       Append( all_points, i );
-#       
-#   od;
-#   
-#   proj1:= List( all_points, a-> a*B^-1 );
-#   
-#   
-#   proj2:= List( [ d+1..n], i-> List(proj1, p-> AbsInt( p[i] ) ) );
-#   
-#   new_proj2:= List( proj2, p-> List(Set(p)) );
-#   
-#   
-#   min_proj:= List( new_proj2, function( p )
-#                               local t,l;
-#                               
-#                               if IsZero( p ) then return 1;fi;
-#                               
-#                               l:=LcmOfDenominatorRatInList( p );
-#   
-#                               t:= Iterated(l*p, Gcd );
-#                               
-#                               return t/l;
-#                               
-#                               end );
-#   
-#   new_N:= List( [ 1..Length(N) ], i-> min_proj[i]*N[i] );
-#   
-#   
-#   new_B:= Concatenation( new_lineality_base, new_N );
-#   
-#   proj12:= List( all_points, a-> a*new_B^-1 );
-#   
-#   
-#   proj123:= List( proj12, function( p )
-#                           local i,q; 
-#                         
-#                           q:= ShallowCopy( p );
-#     
-#                           for i in [1..n] do
-#                        
-#                           if i<=d then q[i]:= 0; fi;
-#                        
-#                           od;
-#                        
-#                           return q;
-#                        
-#                           end );
-#                           
-#  proj1234:= [ ];
-#  
-#  for h in Set( proj123 ) do
-#  
-#   if not IsZero( h ) then Add( proj1234, h ); fi;
-#   
-#  od;
-#  
-#  rays_pro:= List( rays_not_in_lineality, r -> r* new_B^-1 );
-#  
-#  rays_pro_mod := List( rays_pro, function( p )
-#                             local i,q; 
-#                         
-#                             q:= ShallowCopy( p );
-#     
-#                             for i in [1..n] do
-#                        
-#                             if i<=d then q[i]:= 0; fi;
-#                        
-#                             od;
-#                        
-#                             return q;
-#                        
-#                             end );
-#  
-#   H:= NmzModuleGenerators( ExternalNmzPolyhedron( Polyhedron( proj1234, rays_pro_mod ) ) );
-#   
-#   H2:= List( H, function( h )
-#                 local q;
-#                 
-#                 q:= ShallowCopy( h );
-#                 
-#                 Remove(q, n+1 );
-#                 
-#                 return q; 
-#                 
-#                 end );
-#   points2:= [ ];
-#   
-#   for h in H2 do
-#   
-#   pos:= Positions(proj123, h );
-#   
-#   if Length( pos )=0 then
-#   
-#         Error( "Something went wrong! This shouldn't happen, please tell me about this!" );
-#         
-#   else
-#   
-#         Add( points2, all_points[ pos[1] ] );
-#         
-#   fi;
-#   
-#   od;
-#   
-#   new_lineality:= ShallowCopy( LLLReducedBasis( HilbertBasis( Cone( combi[1] ) ), "linearcomb" )!.basis );
-#   
-#   return [ [ ListWithIdenticalEntries(n,0) ], points2, new_lineality ];
-#   
-# end );
-# 
+end ); 
 
 ##
 InstallMethod( StarSubdivisionOfIthMaximalCone,
@@ -1086,6 +884,7 @@ InstallMethod( StarFan,
     return maxcones;
     
 end );
+
 ##############################
 ##
 ##  Extra Operations
