@@ -1265,7 +1265,27 @@ InstallMethod( Contains,
                
   function( ambcone, cone )
     local ineq;
-    
+   
+    if HasRayGenerators( ambcone ) and HasRayGenerators( cone ) then
+
+      if IsSubset( Set( RayGenerators( ambcone ) ), Set( RayGenerators( cone )  ) ) then
+
+        return true;
+
+      fi;
+
+    fi;
+
+    if HasDefiningInequalities( ambcone ) and HasDefiningInequalities( cone ) then
+
+      if IsSubset( Set( DefiningInequalities( cone ) ), Set( DefiningInequalities( ambcone )  ) ) then
+
+        return true;
+
+      fi;
+
+    fi;
+
     ineq := NonReducedInequalities( ambcone );
     
     cone := RayGenerators( cone );
