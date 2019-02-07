@@ -134,6 +134,14 @@ DeclareAttribute( "NormalFan",
                     IsPolytope );
 
 #! @Arguments polytope 
+#! @Returns a fan
+#! @Description
+#! The function returns the face fan of the given polytope. Remember that the face fan of a polytope is isomorphic to the normal fan of its
+#! polar polytope.
+DeclareAttribute( "FaceFan",
+                    IsPolytope );
+
+#! @Arguments polytope 
 #! @Returns a cone
 #! @Description  
 #! If the ambient space of the polytope is $\mathrm{R}^n$, then the output is a cone in 

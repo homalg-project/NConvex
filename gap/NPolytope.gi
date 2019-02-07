@@ -813,6 +813,27 @@ InstallMethod( NormalFan,
     
 end );
 
+InstallMethod( FaceFan,
+               [ IsPolytope ],
+    function( polyt )
+      local vertices, vertsinfacets, cones, fan;
+
+      vertices := Vertices( polyt );
+
+      vertsinfacets := VerticesInFacets( polyt );
+
+      cones := List( vertsinfacets, l -> vertices{Positions( l, 1 )} );
+
+      fan := Fan( cones );
+
+      SetIsRegularFan( fan, true );
+
+      SetIsComplete( fan, true );
+
+      return fan;
+
+end );
+
 ##
 InstallMethod( AffineCone,
                " for homalg polytopes",
