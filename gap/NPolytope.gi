@@ -1222,72 +1222,61 @@ InstallMethod( ViewObj,
                [ IsPolytope ],
                
   function( polytope )
-    local str;
     
-    Print( "<A" );
+    Print( "<A " );
     
-    if HasIsNotEmpty( polytope ) then
-        
-        if IsNotEmpty( polytope ) then
-            
-            Print( " not empty" );
-            
-        fi;
-    
+    if HasIsNotEmpty( polytope ) and IsNotEmpty( polytope ) then
+      
+      Print( "not empty " );
+
     fi;
     
-    if HasIsNormalPolytope( polytope ) then
-        
-        if IsNormalPolytope( polytope ) then
-            
-            Print( " normal" );
-            
-        fi;
-    
+    if HasIsNormalPolytope( polytope ) and IsNormalPolytope( polytope ) then
+      
+      Print( "normal " );
+
     fi;
     
-    if HasIsSimplicial( polytope ) then
-        
-        if IsSimplicial( polytope ) then
-            
-            Print( " simplicial" );
-            
-        fi;
-    
+    if HasIsSimplicial( polytope ) and IsSimplicial( polytope ) then
+      
+      Print( "simplicial " );
+
     fi;
     
-    if HasIsSimplePolytope( polytope ) then
-        
-        if IsSimplePolytope( polytope ) then
-            
-            Print( " simple" );
-            
-        fi;
-    
+    if HasIsSimplePolytope( polytope ) and IsSimplePolytope( polytope ) then
+      
+      Print( "simple " );
+
     fi;
     
-    if HasIsVeryAmple( polytope ) then
-        
-        if IsVeryAmple( polytope ) then
-            
-            Print( " very ample" );
-            
-        fi;
-    
+    if HasIsVeryAmple( polytope ) and IsVeryAmple( polytope ) then
+
+      Print( "very ample " );
+
     fi;
-    
-    Print( " " );
-    
-    if HasIsLatticePolytope( polytope) then
-        
-        if IsLatticePolytope( polytope ) then
-            
-            Print( "lattice" );
-            
-        fi;
-        
+
+    if HasIsLatticePolytope( polytope) and IsLatticePolytope( polytope ) then
+
+      Print( "lattice " );
+
     fi;
-    
+
+    if HasIsReflexive( polytope ) and IsReflexive( polytope ) then
+
+      Print( "reflexive " );
+
+    fi;
+
+    if HasIsSmoothFanoPolytope( polytope ) and IsSmoothFanoPolytope( polytope ) then
+
+      Print( "smooth fano " );
+
+    elif HasIsFanoPolytope( polytope ) and IsFanoPolytope( polytope ) then
+
+      Print( "fano " );
+
+    fi;
+
     Print( "polytope in |R^" );
     
     Print( String( AmbientSpaceDimension( polytope ) ) );
@@ -1308,82 +1297,72 @@ InstallMethod( Display,
                [ IsPolytope ],
                
   function( polytope )
-    local str;
     
-    Print( "A" );
+    Print( "A " );
     
-    if HasIsNotEmpty( polytope ) then
-        
-        if IsNotEmpty( polytope ) then
-            
-            Print( " not empty" );
-            
-        fi;
-    
+    if HasIsNotEmpty( polytope ) and IsNotEmpty( polytope ) then
+      
+      Print( "not empty " );
+
     fi;
     
-    if HasIsNormalPolytope( polytope ) then
-        
-        if IsNormalPolytope( polytope ) then
-            
-            Print( " normal" );
-            
-        fi;
-    
+    if HasIsNormalPolytope( polytope ) and IsNormalPolytope( polytope ) then
+      
+      Print( "normal " );
+
     fi;
     
-    if HasIsSimplicial( polytope ) then
-        
-        if IsSimplicial( polytope ) then
-            
-            Print( " simplicial" );
-            
-        fi;
-    
+    if HasIsSimplicial( polytope ) and IsSimplicial( polytope ) then
+      
+      Print( "simplicial " );
+
     fi;
     
-    if HasIsSimplePolytope( polytope ) then
-        
-        if IsSimplePolytope( polytope ) then
-            
-            Print( " simple" );
-            
-        fi;
-    
+    if HasIsSimplePolytope( polytope ) and IsSimplePolytope( polytope ) then
+      
+      Print( "simple " );
+
     fi;
     
-    if HasIsVeryAmple( polytope ) then
-        
-        if IsVeryAmple( polytope ) then
-            
-            Print( " very ample" );
-            
-        fi;
-    
+    if HasIsVeryAmple( polytope ) and IsVeryAmple( polytope ) then
+
+      Print( "very ample " );
+
     fi;
-    
-    Print( " " );
-    
-    if HasIsLatticePolytope( polytope) then
-        
-        if IsLatticePolytope( polytope ) then
-            
-            Print( "lattice" );
-            
-        fi;
-        
+
+    if HasIsLatticePolytope( polytope) and IsLatticePolytope( polytope ) then
+
+      Print( "lattice " );
+
     fi;
-    
+
+    if HasIsReflexive( polytope ) and IsReflexive( polytope ) then
+
+      Print( "reflexive " );
+
+    fi;
+
+    if HasIsSmoothFanoPolytope( polytope ) and IsSmoothFanoPolytope( polytope ) then
+
+      Print( "smooth fano " );
+
+    elif HasIsFanoPolytope( polytope ) and IsFanoPolytope( polytope ) then
+
+      Print( "fano " );
+
+    fi;
+
     Print( "polytope in |R^" );
     
     Print( String( AmbientSpaceDimension( polytope ) ) );
     
     if HasVertices( polytope ) then
         
-        Print( " with ", String( Length( Vertices( polytope ) ) )," vertices:",Vertices( polytope ) );
+        Print( " with ", String( Length( Vertices( polytope ) ) )," vertices" );
         
     fi;
     
-    Print( ".\n" );
-    
+    Print( "." );
+ 
 end );
+
