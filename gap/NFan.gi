@@ -603,50 +603,46 @@ end );
 InstallMethod( IsComplete, 
                [ IsFan ], 
   function( fan )
-  local list_of_cones, current_facets, number_of_cones_containing_j,u,i,j;
-  
-  if Dimension( fan ) < AmbientSpaceDimension( fan ) then 
-         
-         return false;
-  
-  fi;
-  
-  list_of_cones:= MaximalCones( fan, AmbientSpaceDimension( fan ) );
-  
-  for i in  list_of_cones do
-  
-      current_facets:= Facets( i );
+    local list_of_cones, facets, facets_without_duplicates, positions;
+
+    if Dimension( fan ) < AmbientSpaceDimension( fan ) then
       
-      for j in current_facets do 
-      
-           number_of_cones_containing_j:=
-            
-             Sum( List( list_of_cones, function( u )
-                                
-                                       if Contains( u, j ) then 
-                                
-                                          return 1;
-                                      
-                                       else 
-                                
-                                          return 0;
-                                     
-                                       fi;
-                                
-                                       end ) );
-           
-           if number_of_cones_containing_j < 2 then 
-           
-                       return false;
-                       
-           fi;
-      od;
-      
-   od;
-   
-   return true;
-   
-   end );
+      return false;
+  
+    fi;
+ 
+    list_of_cones := MaximalCones( fan );
+
+
+    if not ForAll( list_of_cones, IsFullDimensional ) then
+
+      return false;
+
+    fi;
+  
+    facets := Concatenation( List( list_of_cones, Facets ) );
+
+    facets_without_duplicates := DuplicateFreeList( facets );
+
+    positions := List( facets_without_duplicates, 
+                      facet -> Length( Positions( facets, facet ) ) );
+
+    if Set( positions ) = Set( [ 2 ] ) then
+
+      return true;
+
+    elif Set( positions ) = Set( [ 1, 2 ] ) then
+
+      return false;
+
+    else
+
+      Print( "This should not happen, This may be caused by a not well-defined fan!\n" );
+      return false;
+
+    fi;
+    
+end );
    
 ##
 InstallMethod( IsPointed,
