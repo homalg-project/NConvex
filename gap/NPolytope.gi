@@ -1001,7 +1001,7 @@ InstallMethod( \*,
                [ IsPolytope, IsPolytope ],
                
   function( polytope1, polytope2 )
-    local vertices1, vertices2, new_vertices, i, j;
+    local vertices1, vertices2, new_vertices, i, j, polyt;
     
     vertices1 := Vertices( polytope1 );
     
@@ -1019,8 +1019,12 @@ InstallMethod( \*,
         
     od;
     
-    return Polytope( new_vertices );
-    
+    polyt := Polytope( new_vertices );
+
+    SetVerticesOfPolytope( polyt, new_vertices );
+
+    return polyt;
+
 end );
 
 InstallMethod( \*,
