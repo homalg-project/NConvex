@@ -184,12 +184,12 @@ InstallMethod( RayGenerators,
 end );
 
 InstallMethod( RaysInMaximalCones, 
-               [ IsFan ], 
-               
+               [ IsFan ],
+
   function( fan )
 
   return RaysInMaximalCones( CanonicalizeFan( fan ) );
-  
+
 end );
 
 ##
@@ -287,7 +287,15 @@ InstallMethod( RaysInTheGivenMaximalCones,
         return ListOfMaximalConesInList( cones );
         
     fi;
+   
+    if IsCone( fan ) then
+      
+      return RaysInMaximalCones( Fan( [ fan ] ) );
     
+    fi;
+
+    TryNextMethod(  );
+
 end );
 
 InstallMethod( MaximalCones,
