@@ -1084,7 +1084,38 @@ InstallMethod( \+,
     
 end );
 
+##
+InstallMethod( FreeSumOfPolytopes,
+            [ IsPolytope, IsPolytope ],
 
+    function( polyt1, polyt2 )
+      local vertices1, vertices2, n1, n2, V, P;
+ 
+      vertices1 := Vertices( polyt1 );
+
+      vertices2 := Vertices( polyt2 );
+
+      n1 := AmbientSpaceDimension( polyt1 );
+
+      n2 := AmbientSpaceDimension( polyt2 );
+
+      n1 := ListWithIdenticalEntries( n1, 0 );
+
+      n2 := ListWithIdenticalEntries( n2, 0 );
+
+      vertices1 := List( vertices1, v -> Concatenation( v, n2 ) );
+
+      vertices2 := List( vertices2, v -> Concatenation( n1, v ) );
+
+      V := Concatenation( vertices1, vertices2 );
+
+      P := Polytope( V );
+
+      SetVerticesOfPolytope( P, V );
+
+      return P;
+
+end );
 
 ##
 InstallMethod( IntersectionOfPolytopes,

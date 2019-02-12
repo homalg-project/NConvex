@@ -279,10 +279,11 @@ DeclareProperty( "IsSmoothFanoPolytope", IsPolytope );
 
 #! @Section Operations on polytopes
 
-#! @Arguments polytope1, polytope2
-#! @Returns a polytope
-#! @Description
-#! The output is cartesian product of the input polytopes.
+# @Arguments polytope1, polytope2
+# @Returns a polytope
+# @Description
+# The output is cartesian product of the input polytopes. The cartesian product of two polytopes 
+# $P$ and $Q$ is defined by $\{(M,N),M \in P & N \in Q\}$.
 DeclareOperation( "\*",
                   [ IsPolytope, IsPolytope ] );
 
@@ -302,6 +303,13 @@ DeclareOperation( "\*",
 
 DeclareOperation( "\*",
                   [ IsPolytope, IsInt ] );
+
+# @Arguments polytope1, polytope2
+# @Returns a polytope
+# @Description
+# The output The free sum  of the given polytopes. The free sum of two polytopes $P$ and $Q$ is
+# defined by $\{(M,0),M\in P\} \cub \{ (0,N),N\in Q\}$.
+DeclareOperation( "FreeSumOfPolytopes", [ IsPolytope, IsPolytope ] );
 
 #! @Arguments polytope1, polytope2
 #! @Returns a polytope
