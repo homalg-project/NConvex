@@ -24,11 +24,11 @@ L := [
 
 polytopes := List( L, l -> Polytope( l ) );
 
-List( polytopes, IsReflexive );
+Display( List( polytopes, IsReflexive ) );
 # [ true, true, true, true, true, true, true, true, true, true, true, true, true, true, 
 #   true, true ]
 
-List( polytopes, IsSmoothFanoPolytope );
+Display( List( polytopes, IsSmoothFanoPolytope ) );
 # [ true, true, true, true, true, false, false, false, false, false, false, false, false,
 #   false, false, false ]
 
