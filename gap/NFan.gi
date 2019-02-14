@@ -932,7 +932,7 @@ InstallMethod( \=,
         return true;
       fi;
 
-      if RayGenerators( fan1 ) <> RayGenerators( fan2 ) and Set( RayGenerators( fan1 ) ) <> Set( RayGenerators( fan2 ) ) then
+      if RayGenerators( fan1 ) <> RayGenerators( fan2 ) and Set( RayGenerators( fan1 ) ) = Set( RayGenerators( fan2 ) ) then
         Error( "This should not happen! Please report this error." );
       fi;
 
