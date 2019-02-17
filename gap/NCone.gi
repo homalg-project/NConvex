@@ -815,15 +815,21 @@ InstallMethod( StarSubdivisionOfIthMaximalCone,
     local maxcones, cone, ray, cone2;
     
     maxcones := MaximalCones( fan );
-    
-    maxcones := List( maxcones, RayGenerators );
-    
+ 
     if Length( maxcones ) < noofcone then
         
         Error( " not enough maximal cones" );
         
     fi;
     
+    if not IsSmooth( maxcones[ noofcone ] ) then
+
+      Error( " the specified cone is not smooth!" );
+
+    fi;
+
+    maxcones := List( maxcones, RayGenerators );
+     
     cone := maxcones[ noofcone ];
     
     ray := Sum( cone );
