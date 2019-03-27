@@ -486,17 +486,31 @@ InstallMethod( HilbertBasis,
                [ IsCone ],
                
   function( cone )
-    
+    local ineq, const;
+
     if not IsPointed( cone ) then
         
         Error( "Hilbert basis for not-pointed cones is not yet implemented, you can use the command 'LatticePointsGenerators' " );
         
     fi;
-    
-    return NmzHilbertBasis( ExternalNmzCone( cone ) );
+
+    if IsPackageMarkedForLoading( "4ti2Interface", "2018.07.06" ) then
+      
+      ineq := DefiningInequalities( cone );
+
+      const := ListWithIdenticalEntries( Length( ineq ), 0 );
+
+      return Set( ValueGlobal( "4ti2Interface_zsolve_equalities_and_inequalities" )( [  ], [  ], ineq, const )[ 2 ]: precision := "gmp" );
+
+    elif IsPackageMarkedForLoading( "NormalizInterface", "1.0.2" ) then
+
+      return Set( ValueGlobal( "NmzHilbertBasis" )( ExternalNmzCone( cone ) ) );
+
+    fi;
     
 end );
 
+##
 InstallMethod( RaysInFacets,
                " for cones",
                [ IsCone ],
@@ -1520,7 +1534,7 @@ InstallMethod( ExternalNmzCone,
         
         if ForAll( Concatenation( list ), IsInt ) then
 
-            return NmzCone( [ "integral_closure", list ] );
+            return ValueGlobal( "NmzCone" )( [ "integral_closure", list ] );
         
         else
 
@@ -1528,7 +1542,7 @@ InstallMethod( ExternalNmzCone,
             
             list := Lcm( a ) * list;
 
-            return NmzCone( [ "integral_closure", list ] );
+            return ValueGlobal( "NmzCone" )( [ "integral_closure", list ] );
 
         fi;
 
@@ -1550,7 +1564,7 @@ InstallMethod( ExternalNmzCone,
       
     if ForAll( Concatenation( list ), IsInt ) then
 
-        return NmzCone( ["inequalities", list ] );
+        return ValueGlobal( "NmzCone" )( ["inequalities", list ] );
         
     else
 
@@ -1558,7 +1572,7 @@ InstallMethod( ExternalNmzCone,
             
         list := Lcm( a ) * list;
 
-        return NmzCone( ["inequalities", list ] );
+        return ValueGlobal( "NmzCone" )( ["inequalities", list ] );
 
     fi;
 

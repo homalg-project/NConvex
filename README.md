@@ -23,14 +23,23 @@ Required packages
 * The Gap package "CddInterface" is required to convert between H-rep and V-rep of polyhedrons. It can be obtained at:
   https://github.com/homalg-project/CddInterface.git
   
-* The Gap package "NormalizInterface". You can install it from 
-  https://github.com/gap-packages/NormalizInterface.git
-
 * The Gap/homalg-project package "Modules". You can install the package by cloning the "homalg_project" repository from
 https://github.com/homalg-project/homalg_project.git
 
 * You will also need "AutoDoc" package to be able to create the documentation and to perform tests. A fresh version can be installed from
 https://github.com/gap-packages/AutoDoc.git
+
+* Finallay You will need **one** of the following two packages. In case both are available then "NConvex" will use "4ti2Interface".
+
+  * The Gap/homalg package "4ti2Interface". It is already included in the
+  homalg-project https://github.com/homalg-project/homalg_project
+
+  * The Gap package "NormalizInterface". You can install it from 
+  https://github.com/gap-packages/NormalizInterface.git
+
+
+
+
 
 Remarks
 -------
