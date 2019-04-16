@@ -49,11 +49,16 @@ Persons := [
   )
 ],
 
-PackageWWWHome := "https://github.com/kamalsaleh/NConvex",
+PackageWWWHome := "https://kamalsaleh.github.io/NConvex",
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "NConvex-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/NConvex" ),
+
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+ArchiveURL     := Concatenation( ~.SourceRepository.URL, "/archive/", ~.Version ),
+README_URL     := Concatenation( ~.SourceRepository.URL, "/releases/latest/download/README.md" ),
+PackageInfoURL := Concatenation( ~.SourceRepository.URL, "/releases/latest/download/PackageInfo.g" ),
 
 ArchiveFormats := ".tar.gz",
 
@@ -82,9 +87,10 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2018.02.14" ],
                            [ "Modules", ">= 0.5" ], 
-                           [ "CddInterface", ">= 2019.02.01" ] ],
-  SuggestedOtherPackages := [ [ "4ti2Interface", "2018.07.06"  ],
-                              [ "NormalizInterface", ">= 1.0.2"  ] ],
+                           [ "CddInterface", ">= 2019.02.01" ],
+                           [ "NormalizInterface", ">= 1.0.2"  ]
+                         ],
+  SuggestedOtherPackages := [ [ "4ti2Interface", ">= 2018.07.06" ] ],
   ExternalConditions := [ ],
 ),
 
