@@ -92,6 +92,8 @@ IsNormalFan( P3 );
 #! true
 Dimension( P3 );
 #! 3
+PrimitiveCollections( P3 );
+#! [ [ 4, 3 ], [ 5, 2 ], [ 6, 1 ] ]
 
 #! @EndExample
 #! @EndChunk
@@ -112,6 +114,11 @@ IsComplete( F );
 #! true
 IsNormalFan( F );
 #! false
+PrimitiveCollections( F );
+#! [ [ 7, 1 ], [ 7, 2 ], [ 7, 3 ], [ 7, 4 ], [ 7, 5 ], [ 7, 6 ], 
+#!   [ 9, 1 ], [ 9, 2 ], [ 9, 3 ], [ 9, 6 ], [ 10, 1 ], [ 10, 2 ], 
+#!   [ 10, 3 ], [ 10, 4 ], [ 8, 1 ], [ 8, 2 ], [ 8, 3 ], [ 8, 5 ], 
+#!   [ 6, 1 ], [ 5, 2 ], [ 4, 3 ], [ 9, 10, 8 ], [ 5, 6, 4 ] ]
 
 #! @EndExample
 #! @EndChunk
