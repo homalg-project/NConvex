@@ -85,6 +85,9 @@ DeclareAttribute( "FVector",
 DeclareAttribute( "Rays",
                   IsFan );
 
+DeclareAttribute( "PrimitiveCollections",
+                  IsFan );
+
 #################################
 ##
 ##  Properties
