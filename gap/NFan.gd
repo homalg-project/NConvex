@@ -47,7 +47,6 @@ DeclareOperation( "Fan",
 DeclareOperation( "FanWithFixedRays",
                  [ IsList, IsList ] );
 
-#! @EndSection
 
 ##################################
 ##
