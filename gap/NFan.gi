@@ -167,6 +167,78 @@ InstallMethod( FanWithFixedRays,
   
 );
 
+##
+InstallMethod( DeriveFansFromTriangulation,
+               "for a list of rays.",
+               [ IsList, IsBool ],
+  function( rays, single_fan_desired )
+    local triangulations, i, j, fans;
+    
+    # (0) Check if TopcomInterface is available
+    if TestPackageAvailability( "TopcomInterface", ">=2019.06.15" ) = fail then
+      Error( "The package TopcomInterface is not available " );
+    fi;
+    
+    # (1) and marked to be loaded as suggested package
+    if not IsPackageMarkedForLoading( "TopcomInterface", ">=2019.06.15" ) then
+      Error( "The package TopcomInterface has not been marked to be loaded by NConvex if available " );
+    fi;
+    
+    # (2) Check that the given rays are valid input
+    
+    # (2a) Are the rays all of the same length?
+    if Length( DuplicateFreeList( List( [ 1 .. Length( rays ) ], i -> Length( rays[ i ] ) ) ) ) > 1 then
+      Error( "The rays must be lists of the equal lengths " );
+      return;
+    fi;
+    
+    # (2b) Are the rays lists of integers?
+    for i in [ 1 .. Length( rays ) ] do
+      for j in [ 1 .. Length( rays[ i ] ) ] do
+        if not IsInt( rays[ i ][ j ] ) then
+          Error( "The rays must be lists of integers " );
+          return;
+        fi;
+      od;
+    od;
+    
+    # (3) compute all fine and regular triangulations
+    triangulations := points2allfinetriangs( rays, [], ["regular"] );
+    
+    # to match the conventions of NConvex, the counting of rays must start at 1
+    # whilst topcom (in C++-standard) starts the counting at 0
+    Apply( triangulations, i -> i + 1 );
+    
+    # (4) iterate over the obtained triangulations and turn them into fans
+    if single_fan_desired then
+      fans := Fan( rays, triangulations[ 1 ] );
+    else
+      fans := List( [ 1 .. Length( triangulations ) ], i -> Fan( rays, triangulations[ i ] ) );
+    fi;
+    
+    # return the result
+    return fans;
+    
+end );
+
+##
+InstallMethod( FansFromTriangulation,
+               "for a list of rays.",
+               [ IsList ],
+  function( rays )
+
+      return DeriveFansFromTriangulation( rays, false );
+    
+end );
+
+InstallMethod( FanFromTriangulation,
+               "for a list of rays.",
+               [ IsList ],
+  function( rays )
+      
+      return DeriveFansFromTriangulation( rays, true );
+end );
+
 ##############################
 ##
 ##  Attributes
