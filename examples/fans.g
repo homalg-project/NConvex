@@ -123,4 +123,25 @@ PrimitiveCollections( F );
 #! @EndExample
 #! @EndChunk
 
+#! @Chunk fan4
+#! A star subdivision is a certain way of extending a fan. In toric geometry, its applications
+#! include blowups of varieties. The following examples correspond to blowups of the origin of 
+#! the 2-dimensional and 3-dimensional affine space, respectively.
 
+#! @Example
+rays := [ [ 1,0 ], [ 0,1 ] ];;
+max_cones := [ [1,2] ];;
+fan_affine2 := Fan( rays, max_cones );;
+fan_blowup_affine2 := StarSubdivisionOfIthMaximalCone( fan_affine2, 1 );
+#! <A fan in |R^2>
+Length( RaysInMaximalCones( fan_blowup_affine2 ) );
+#! 2
+rays := [ [ 1,0,0 ], [ 0,1,0 ], [0,0,1] ];;
+max_cones := [ [1,2,3] ];;
+fan_affine3 := Fan( rays, max_cones );;
+fan_blowup_affine3 := StarSubdivisionOfIthMaximalCone( fan_affine3, 1 );
+#! <A fan in |R^3>
+Length( RaysInMaximalCones( fan_blowup_affine3 ) );
+#! 3
+#! @EndExample
+#! @EndChunk
