@@ -149,6 +149,10 @@ DeclareProperty( "IsFanoFan",
 ##
 #################################
 
+#! @Chapter Fans
+#! @Section Operations on fans
+#! 
+
 DeclareOperation( "\*",
                  [ IsFan, IsFan ] );
 
@@ -160,7 +164,9 @@ DeclareOperation( "CanonicalizeFan",
                   
 DeclareOperation( "MaximalCones",
                   [ IsFan, IsInt ] );
-                  
+
+#! @InsertChunk fan4
+
 #################################
 ##
 ## some extra operations
