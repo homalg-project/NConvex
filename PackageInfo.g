@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "NConvex",
 Subtitle := "A Gap package to perform polyhedral computations",
-Version := "2019.03.25",
-Date := "25/03/2019", # dd/mm/yyyy format
+Version := "2019.06.25",
+Date := "25/06/2019", # dd/mm/yyyy format
 
 Persons := [
   rec(
