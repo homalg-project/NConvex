@@ -90,7 +90,8 @@ Dependencies := rec(
                            [ "CddInterface", ">= 2019.02.01" ],
                            [ "NormalizInterface", ">= 1.0.2"  ]
                          ],
-  SuggestedOtherPackages := [ [ "4ti2Interface", ">= 2018.07.06" ] ],
+  SuggestedOtherPackages := [ [ "4ti2Interface", ">= 2018.07.06" ],
+                              [ "TopcomInterface", ">=2019.06.15" ] ],
   ExternalConditions := [ ],
 ),
 

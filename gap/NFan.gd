@@ -47,6 +47,30 @@ DeclareOperation( "Fan",
 DeclareOperation( "FanWithFixedRays",
                  [ IsList, IsList ] );
 
+DeclareOperation( "DeriveFansFromTriangulation",
+                 [ IsList, IsBool ] );
+
+#! @Arguments R
+#! @Returns a list of fans
+#! @Description
+#! The input is a list of ray generators $R$. Provided that the package
+#! TopcomInterface is available, this function computes the list of all
+#! fine and regular triangulations of these ray generators. It then returns
+#! the list of the associated fans of these triangulations.
+DeclareOperation( "FansFromTriangulation",
+                 [ IsList ] );
+
+#! @Arguments R
+#! @Returns a fan
+#! @Description
+#! The input is a list of ray generators $R$. Provided that the package
+#! TopcomInterface is available, this function computes a
+#! fine and regular triangulation of these ray generators and returns
+#! the associated fan.
+DeclareOperation( "FanFromTriangulation",
+                 [ IsList ] );
+
+#! @InsertChunk fan3
 
 ##################################
 ##

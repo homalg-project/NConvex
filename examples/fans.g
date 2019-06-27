@@ -123,6 +123,36 @@ PrimitiveCollections( F );
 #! @EndExample
 #! @EndChunk
 
+#! @Chunk fan3
+#! The above methods construct fans from so-called triangulations.
+#! For a given list $R$ of lists of integers, a triangulation is a fan
+#! whose ray generators are contained in the given list $R$.
+#!
+#! A regular triangulation is such a fan, for which all cones are strictly convex.
+#! It is called a fine triangulation, iff all elements of $R$ are ray generators of this fan.
+#!
+#! Above we present two method which make this approach available in NConvex via the package TopcomInterface,
+#! which in turn rests on the program Topcom. Consequently, these methods are only available if the
+#! package TopcomInterface is available. They compute either all of the fine and regular triangulations
+#! or merely just a single such triangulation.
+#!
+#! As an example inspired from toric geometry, let us use the ray generators of the fan of the resolved
+#! conifold (i.e. the total space of the bundle
+#& @BeginLatexOnly
+#& \mathcal{O}_{\mathbb{P}^2}(-1) \oplus \mathcal{O}_{\mathbb{P}^2}(-1)
+#& @EndLatexOnly
+#! ). This space is known to allow for two different triangulations.
+#! The code below reproduces this feature.
+
+#! @Example
+rays := [ [ 1,0,1 ], [ 1,1,0 ], [ 0,0,-1 ], [ 0,-1,0 ] ];;
+all_triangulations := FansFromTriangulation( rays );
+#! [ <A fan in |R^3>, <A fan in |R^3> ]
+one_triangulation := FanFromTriangulation( rays );
+#! <A fan in |R^3>
+#! @EndExample
+#! @EndChunk
+
 #! @Chunk fan4
 #! A star subdivision is a certain way of extending a fan. In toric geometry, its applications
 #! include blowups of varieties. The following examples correspond to blowups of the origin of 
