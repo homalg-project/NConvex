@@ -142,15 +142,10 @@ PrimitiveCollections( F );
 #& \mathcal{O}_{\mathbb{P}^2}(-1) \oplus \mathcal{O}_{\mathbb{P}^2}(-1)
 #& @EndLatexOnly
 #! ). This space is known to allow for two different triangulations.
-#! The code below reproduces this feature.
 
-#! @Example
-rays := [ [ 1,0,1 ], [ 1,1,0 ], [ 0,0,-1 ], [ 0,-1,0 ] ];;
-all_triangulations := FansFromTriangulation( rays );
-#! [ <A fan in |R^3>, <A fan in |R^3> ]
-one_triangulation := FanFromTriangulation( rays );
-#! <A fan in |R^3>
-#! @EndExample
+#! The code below reproduces this feature.
+#! @InsertCode triangulations_code
+
 #! @EndChunk
 
 #! @Chunk fan4
@@ -175,3 +170,11 @@ Length( RaysInMaximalCones( fan_blowup_affine3 ) );
 #! 3
 #! @EndExample
 #! @EndChunk
+
+#! @BeginCode triangulations_code
+gap> rays := [ [ 1, 0, 1 ], [ 1, 1, 0 ], [ 0, 0, -1 ], [ 0, -1, 0 ] ];;
+gap> all_triangulations := FansFromTriangulation( rays );
+[ <A fan in |R^3>, <A fan in |R^3> ]
+gap> one_triangulation := FanFromTriangulation( rays );
+<A fan in |R^3>
+#! @EndCode
