@@ -203,7 +203,7 @@ InstallMethod( DeriveFansFromTriangulation,
     od;
     
     # (3) compute all fine and regular triangulations
-    triangulations := points2allfinetriangs( rays, [], ["regular"] );
+    triangulations := ValueGlobal( "points2allfinetriangs" )( rays, [], ["regular"] );
     
     # to match the conventions of NConvex, the counting of rays must start at 1
     # whilst topcom (in C++-standard) starts the counting at 0
