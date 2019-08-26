@@ -10,38 +10,34 @@ fi;
 
 AutoDoc( 
         rec(
+          autodoc := rec( files := [ "doc/intro.autodoc" ] ),
+          maketest := rec( commands := [ "LoadPackage( \"NConvex\" );" ] ),
+          extract_examples := rec( units := "Single" ),
+          scaffold := rec( entities := [ "GAP4", "homalg", "ToricVarieties" ] ),
 
-scaffold := rec( entities := [ "GAP4", "homalg", "TroicVarieties" ] ),
+          ## The following commented code is to include some latex packages that is needed to draw diagrams in tikz.
+          ## It is commented since they may cause error while creating documentation if the latex installation 
+          ## does not provide these packages.
+          ##
+          
+          #?scaffold := rec( entities := [ "GAP4", "homalg", "TroicVarieties" ],
+          #?gapdoc_latex_options := rec(
+          #?LateExtraPreamble := """\usepackage{amsmath}
+          #?\usepackage[T1]{fontenc}
+          #?\usepackage{tikz}
+          #?\usetikzlibrary{shapes,arrows,matrix}
+          #?\usepackage{mathdots}
+          #?\usepackage{cancel}
+          #?\usepackage{color}
+          #?\usepackage{siunitx}
+          #?\usepackage{array}
+          #?\usepackage{multirow}
+          #?\usepackage{amssymb}
+          #?\usepackage{gensymb}
+          #?\usepackage{tabularx}
+          #?\usepackage{booktabs}
+          #?\usetikzlibrary{fadings}""" ) ),
 
-## The following commented code is to include some latex packages that is needed to draw diagrams in tikz.
-## It is commented since they may cause error while creating documentation if the latex installation does provide these packages.
-##
-
-#?scaffold := rec( entities := [ "GAP4", "homalg", "TroicVarieties" ],
-#?gapdoc_latex_options := rec(
-#?LateExtraPreamble := """\usepackage{amsmath}
-#?\usepackage[T1]{fontenc}
-#?\usepackage{tikz}
-#?\usetikzlibrary{shapes,arrows,matrix}
-#?\usepackage{mathdots}
-#?\usepackage{cancel}
-#?\usepackage{color}
-#?\usepackage{siunitx}
-#?\usepackage{array}
-#?\usepackage{multirow}
-#?\usepackage{amssymb}
-#?\usepackage{gensymb}
-#?\usepackage{tabularx}
-#?\usepackage{booktabs}
-#?\usetikzlibrary{fadings}""" ) ),
-
-            autodoc := rec( files := [ "doc/intro.autodoc" ] ),
-
-            maketest := rec( folder := ".",
-                             commands :=
-                             [ "LoadPackage( \"NConvex\" );",
-                             ],
-                           ),
             )
 );
 
