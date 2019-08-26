@@ -8,7 +8,8 @@ Introduction
 The [NConvex](https://kamalsaleh.github.io/NConvex) package is a GAP package. Its aim is to carry out polyhedral constructions and computations, namely computing properties and attributes of
 cones, polyhedrons, polytopes and fans. Its has been written
 to provide the needed tools for the package "ToricVarieties". All written as
-part of the homalg-project.
+part of the homalg-project. A list of available operations can be found in the 
+[manual.pdf](https://github.com/homalg-project/NConvex/releases/latest/download/manual.pdf)
 
 
 Installation
