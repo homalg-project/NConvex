@@ -10,8 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "NConvex",
 Subtitle := "A Gap package to perform polyhedral computations",
-Version := "2019.06.25",
-Date := "25/06/2019", # dd/mm/yyyy format
+Version := "2019.08.20",
+Date := ~.Version{[ 1 .. 10 ]},
+Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -87,8 +89,8 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2018.02.14" ],
                            [ "Modules", ">= 0.5" ], 
-                           [ "CddInterface", ">= 2019.02.01" ],
-                           [ "NormalizInterface", ">= 1.0.2"  ]
+                           [ "CddInterface", ">= 2019.08.20" ],
+                           [ "NormalizInterface", ">= 1.1.0"  ]
                          ],
   SuggestedOtherPackages := [ [ "4ti2Interface", ">= 2018.07.06" ],
                               [ "TopcomInterface", ">=2019.06.15" ] ],
@@ -103,7 +105,7 @@ end,
 
 TestFile := "tst/testall.g",
 
-#Keywords := [ "TODO" ],
+Keywords := [ "Cone", "Fan", "Polytope", "Polyhedron", "ToricVarieties", "homalg" ],
 
 ));
 
