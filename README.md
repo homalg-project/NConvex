@@ -1,7 +1,7 @@
 The NConvex package
 =========================
 
-version 15/01/2019.
+version 20/08/2019.
 
 Introduction
 ------------
@@ -26,20 +26,14 @@ Required packages
 * The Gap/homalg-project package "Modules". You can install the package by cloning the "homalg_project" repository from
 https://github.com/homalg-project/homalg_project.git
 
-* You will also need "AutoDoc" package to be able to create the documentation and to perform tests. A fresh version can be installed from
-https://github.com/gap-packages/AutoDoc.git
+* You will also need "AutoDoc" package to be able to create the documentation and to perform tests. A fresh version can be installed from https://github.com/gap-packages/AutoDoc.git
 
-* Finallay You will need **one** of the following two packages. In case both are available then "NConvex" will use "4ti2Interface".
-
-  * The Gap/homalg package "4ti2Interface". It is already included in the
-  homalg-project https://github.com/homalg-project/homalg_project
-
-  * The Gap package "NormalizInterface". You can install it from 
+* The Gap package "NormalizInterface". You can install it from
   https://github.com/gap-packages/NormalizInterface.git
 
-
-
-
+* In case "NormalizInterface" is not available, then you can use the Gap/homalg package
+  "4ti2Interface". It is already included in the homalg-project https://github.com/homalg-project/homalg_project. Make sure to
+  change accordingly the dependencies entry in PackageInfo.g.
 
 Remarks
 -------
@@ -51,10 +45,7 @@ Remarks
 * To run tests:
    ```sh
    .../NConvex$ gap maketest.g
-   ```
-   or simply
-   ```sh
-   .../NConvex$ make
+   .../NConvex$ gap tst/testall.g
    ```
 * For the installation of Gap see https://www.gap-system.org/
 
@@ -67,11 +58,13 @@ required code by:
    .../NConvex$ gap makedoc.g
    ```
 
-
-
 Of course you are welcome to e-mail me if there are any questions, remarks, suggestions ;)
   
   Kamal Saleh e-mail: saleh@mathematik.uni-siegen.de \
-  Sebastian Gutsche e-mail:
-  gutsche@mathematik.uni-siegen.de
+  Sebastian Gutsche e-mail: gutsche@mathematik.uni-siegen.de
   
+License
+-------
+
+NConvex is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
