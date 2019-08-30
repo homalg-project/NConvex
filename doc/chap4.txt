@@ -1,0 +1,196 @@
+  
+  [1X4 [33X[0;0YPolyhedrons[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YCreating polyhedron[133X[101X
+  
+  [1X4.1-1 PolyhedronByInequalities[101X
+  
+  [33X[1;0Y[29X[2XPolyhedronByInequalities[102X( [3Xarg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YThe function takes a list of lists [23X[L_1, L_2, ...][123X where each [23XL_j[123X represents
+  an  inequality  and  returns the polyhedron defined by them. For example the
+  [23Xj[123X'th   entry   [23XL_j   =  [c_j,a_{j1},a_{j2},...,a_{jn}][123X  corresponds  to  the
+  inequality [23Xc_j+\sum_{i=1}^n a_{ji}x_i \geq 0[123X.[133X
+  
+  [1X4.1-2 Polyhedron[101X
+  
+  [33X[1;0Y[29X[2XPolyhedron[102X( [3Xarg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [1X4.1-3 Polyhedron[101X
+  
+  [33X[1;0Y[29X[2XPolyhedron[102X( [3Xarg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [1X4.1-4 Polyhedron[101X
+  
+  [33X[1;0Y[29X[2XPolyhedron[102X( [3Xarg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [1X4.1-5 Polyhedron[101X
+  
+  [33X[1;0Y[29X[2XPolyhedron[102X( [3Xarg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  
+  [1X4.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X4.2-1 ExternalCddPolyhedron[101X
+  
+  [33X[1;0Y[29X[2XExternalCddPolyhedron[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YConverts the given polyhedron to CddPolyhedron.[133X
+  
+  [1X4.2-2 ExternalNmzPolyhedron[101X
+  
+  [33X[1;0Y[29X[2XExternalNmzPolyhedron[102X( [3Xarg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YConverts the given polyhedron to NmzPolyhedron[133X
+  
+  [1X4.2-3 DefiningInequalities[101X
+  
+  [33X[1;0Y[29X[2XDefiningInequalities[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YReturns the Defining inequalities of the given polyhedron.[133X
+  
+  [1X4.2-4 MainRatPolytope[101X
+  
+  [33X[1;0Y[29X[2XMainRatPolytope[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YReturns the main rational polytope of the polyhedron.[133X
+  
+  [1X4.2-5 MainPolytope[101X
+  
+  [33X[1;0Y[29X[2XMainPolytope[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YReturns the main polytope of the given polyhedron.[133X
+  
+  [1X4.2-6 VerticesOfMainRatPolytope[101X
+  
+  [33X[1;0Y[29X[2XVerticesOfMainRatPolytope[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YReturns the vertices of the main rational polytope of the polyhedron.[133X
+  
+  [1X4.2-7 VerticesOfMainPolytope[101X
+  
+  [33X[1;0Y[29X[2XVerticesOfMainPolytope[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YReturns the vertices of the main integral polytope of the given polyhedron.[133X
+  
+  [1X4.2-8 TailCone[101X
+  
+  [33X[1;0Y[29X[2XTailCone[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YReturns the tail cone of the polyhedron.[133X
+  
+  [1X4.2-9 RayGeneratorsOfTailCone[101X
+  
+  [33X[1;0Y[29X[2XRayGeneratorsOfTailCone[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YReturns the Ray Generators of the tail cone[133X
+  
+  [1X4.2-10 BasisOfLinealitySpace[101X
+  
+  [33X[1;0Y[29X[2XBasisOfLinealitySpace[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [13XPolyhedron[113X Object[133X
+  
+  [33X[0;0YReturns a basis to the lineality space of the polyhedron.[133X
+  
+  [1X4.2-11 FVector[101X
+  
+  [33X[1;0Y[29X[2XFVector[102X( [3Xarg[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns a list whose [23Xi[123X'th entry is the number of faces of dimension [23Xi-1[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XP:= Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );[127X[104X
+    [4X[28X<A polyhedron in |R^2>[128X[104X
+    [4X[25Xgap>[125X [27XVerticesOfMainRatPolytope( P );[127X[104X
+    [4X[28X[ [ 1, 1 ], [ 4, 7 ] ][128X[104X
+    [4X[25Xgap>[125X [27XVerticesOfMainPolytope( P );[127X[104X
+    [4X[28X[ [ 1, 1 ], [ 4, 7 ] ][128X[104X
+    [4X[25Xgap>[125X [27XP:= Polyhedron( [ [ 1/2, 1/2 ] ], [ [ 1, 1 ] ] );[127X[104X
+    [4X[28X<A polyhedron in |R^2>[128X[104X
+    [4X[25Xgap>[125X [27XVerticesOfMainRatPolytope( P );[127X[104X
+    [4X[28X[ [ 1/2, 1/2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XVerticesOfMainPolytope( P );[127X[104X
+    [4X[28X[ [ 1, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XLatticePointsGenerators( P );[127X[104X
+    [4X[28X[ [ [ 1, 1 ] ], [ [ 1, 1 ] ], [  ] ][128X[104X
+    [4X[25Xgap>[125X [27XDimension( P );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XQ:= Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );[127X[104X
+    [4X[28X<A polyhedron in |R^2>[128X[104X
+    [4X[25Xgap>[125X [27XVerticesOfMainRatPolytope( Q );[127X[104X
+    [4X[28X[ [ 0, 6 ], [ 5, 0 ] ][128X[104X
+    [4X[25Xgap>[125X [27XV_using_4ti2 := [ [ -3, -16 ], [ -3, 0 ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XV_using_normaliz := [ [ 0, -10 ], [ 0, 6 ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XV := VerticesOfMainPolytope( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XV = V_using_4ti2 or V = V_using_normaliz;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XL_using_4ti2 := [ [ [ -3, -16 ], [ -3, -15 ], [ -3, -14 ], [127X[104X
+    [4X[25X>[125X [27X[ -3, -13 ], [ -3, -12 ], [ -3, -11 ], [ -3, -10 ], [127X[104X
+    [4X[25X>[125X [27X[ -3, -9 ], [ -3, -8 ], [ -3, -7 ], [ -3, -6 ], [127X[104X
+    [4X[25X>[125X [27X[ -3, -5 ], [ -3, -4 ], [ -3, -3 ], [ -3, -2 ], [127X[104X
+    [4X[25X>[125X [27X[ -3, -1 ], [ -3, 0 ] ], [  ], [ [ 1, 2 ] ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XL_using_normaliz := [ [ [ 0, -10 ], [ 0, -9 ], [ 0, -8 ],[127X[104X
+    [4X[25X>[125X [27X[ 0, -7 ], [ 0, -6 ], [ 0, -5 ], [ 0, -4 ], [ 0, -3 ], [127X[104X
+    [4X[25X>[125X [27X[ 0, -2 ], [ 0, -1 ], [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [127X[104X
+    [4X[25X>[125X [27X[ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ] ], [  ], [ [ 1, 2 ] ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XL := LatticePointsGenerators( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XL = L_using_4ti2 or L = L_using_normaliz;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDimension( Q );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XRayGeneratorsOfTailCone( Q );[127X[104X
+    [4X[28X[ [ -1, -2 ], [ 1, 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XBasisOfLinealitySpace( Q );[127X[104X
+    [4X[28X[ [ 1, 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDefiningInequalities( Q );[127X[104X
+    [4X[28X[ [ 6, 2, -1 ], [ 10, -2, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XQ;[127X[104X
+    [4X[28X<A polyhedron in |R^2 of dimension 2>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XP:= PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );[127X[104X
+    [4X[28X<A polyhedron in |R^3 >[128X[104X
+    [4X[25Xgap>[125X [27XL_using_normaliz := [ [ [ -4, 0, -2 ] ], [  ], [127X[104X
+    [4X[25X>[125X [27X[ [ 1, 1, 1 ], [ 0, 7, 4 ] ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XL_using_4ti2 := [ [ [ -2, 2, 0 ] ], [  ], [127X[104X
+    [4X[25X>[125X [27X[ [ 1, 1, 1 ], [ 4, -3, 0 ] ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XL := LatticePointsGenerators( P );;[127X[104X
+    [4X[25Xgap>[125X [27XL = L_using_4ti2 or L = L_using_normaliz;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ:= PolyhedronByInequalities( [ [-3, 4, 6 ], [ 3, -4, -6 ] ] );[127X[104X
+    [4X[28X<A polyhedron in |R^2 >[128X[104X
+    [4X[25Xgap>[125X [27XLatticePointsGenerators( Q );[127X[104X
+    [4X[28X[ [  ], [  ], [ [ 3, -2 ] ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XP:= PolyhedronByInequalities( [ [ -1, 2, 3, 2, 0 ], [ -3, 7, 1, 0, 5 ], [127X[104X
+    [4X[25X>[125X [27X[ 1, -2, -3, -2, 0 ], [ 3, -7, -1, 0, -5 ] ] );[127X[104X
+    [4X[28X<A polyhedron in |R^4 >[128X[104X
+    [4X[25Xgap>[125X [27XL_using_4ti2 := [ [ [ 0, 3, -4, 0 ] ], [  ], [ [ 0, -10, 15, 2 ], [ 1, -2, 2, -1 ] ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XL_using_normaliz := [ [ [ -19, 1, 18, 27 ] ], [  ], [ [ 1, -2, 2, -1 ], [ 0, 10, -15, -2 ]   ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XL := LatticePointsGenerators( P );;[127X[104X
+    [4X[25Xgap>[125X [27XL = L_using_4ti2 or L = L_using_normaliz;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
