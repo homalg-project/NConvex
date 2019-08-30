@@ -11,7 +11,6 @@ fi;
 AutoDoc( 
         rec(
           autodoc := rec( files := [ "doc/intro.autodoc" ] ),
-          maketest := rec( commands := [ "LoadPackage( \"NConvex\" );" ] ),
           extract_examples := rec( units := "Single" ),
           scaffold := rec( entities := [ "GAP4", "homalg", "ToricVarieties" ] ),
 
