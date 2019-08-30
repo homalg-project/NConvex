@@ -60,7 +60,7 @@ required code by:
 
 Of course you are welcome to e-mail me if there are any questions, remarks, suggestions ;)
   
-  Kamal Saleh e-mail: saleh@mathematik.uni-siegen.de \
+  Kamal Saleh e-mail: saleh@mathematik.uni-siegen.de
   
 License
 -------
