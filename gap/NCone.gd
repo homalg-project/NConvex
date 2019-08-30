@@ -208,13 +208,13 @@ DeclareProperty( "IsRay", IsCone );
 #! @Arguments cone 
 #! @Returns true or false
 #! @Description  
-#! Returns if the cone <A>cone</A> is contained in fan or not.
-DeclareAttribute( "IsContainedInFan",
-                  IsCone );
-                  
-DeclareProperty( "IsZero",
-                  IsCone  );
-                  
+#! Returns whether the cone is the zero cone or not.
+DeclareProperty( "IsZero", IsCone );
+
+# This method is useless for the user and is designed only for internal use.
+# It returns some fan that contains the cone.
+DeclareAttribute( "SuperFan", IsCone );
+
 ##############################
 ##
 ##  Methods

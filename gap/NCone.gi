@@ -872,11 +872,11 @@ end );
 ##
 InstallMethod( StarFan,
                " for homalg cones in fans",
-               [ IsCone and HasIsContainedInFan ],
+               [ IsCone and HasSuperFan ],
                
   function( cone )
     
-    return StarFan( cone, IsContainedInFan( cone ) );
+    return StarFan( cone, SuperFan( cone ) );
     
 end );
 
