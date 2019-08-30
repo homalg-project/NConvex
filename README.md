@@ -1,11 +1,11 @@
 The NConvex package
 =========================
 
-version 20/08/2019.
+version 2019.08.26.
 
 Introduction
 ------------
-The [NConvex](https://kamalsaleh.github.io/NConvex) package is a GAP package. Its aim is to carry out polyhedral constructions and computations, namely computing properties and attributes of
+The [NConvex](https://homalg-project.github.io/NConvex) package is a GAP package. Its aim is to carry out polyhedral constructions and computations, namely computing properties and attributes of
 cones, polyhedrons, polytopes and fans. Its has been written
 to provide the needed tools for the package "ToricVarieties". All written as
 part of the homalg-project. A list of available operations can be found in the 
@@ -45,7 +45,6 @@ Remarks
    ```
 * To run tests:
    ```sh
-   .../NConvex$ gap maketest.g
    .../NConvex$ gap tst/testall.g
    ```
 * For the installation of Gap see https://www.gap-system.org/
