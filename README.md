@@ -1,6 +1,8 @@
+[![Build Status](https://travis-ci.com/homalg-project/NConvex.svg?branch=master)](https://travis-ci.com/homalg-project/NConvex)
+[![Code Coverage](https://codecov.io/github/homalg-project/NConvex/coverage.svg?branch=master&token=)](https://codecov.io/gh/homalg-project/NConvex)
+
 The NConvex package
 =========================
-
 version 2019.08.26.
 
 Introduction
