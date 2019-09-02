@@ -11,13 +11,13 @@
 gap> START_TEST( "nconvex05.tst");
 
 # doc/_Chapter_Polyhedrons.xml:179-227
-gap> P:= Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );
+gap> P := Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );
 <A polyhedron in |R^2>
 gap> VerticesOfMainRatPolytope( P );
 [ [ 1, 1 ], [ 4, 7 ] ]
 gap> VerticesOfMainPolytope( P );
 [ [ 1, 1 ], [ 4, 7 ] ]
-gap> P:= Polyhedron( [ [ 1/2, 1/2 ] ], [ [ 1, 1 ] ] );
+gap> P := Polyhedron( [ [ 1/2, 1/2 ] ], [ [ 1, 1 ] ] );
 <A polyhedron in |R^2>
 gap> VerticesOfMainRatPolytope( P );
 [ [ 1/2, 1/2 ] ]
@@ -27,7 +27,7 @@ gap> LatticePointsGenerators( P );
 [ [ [ 1, 1 ] ], [ [ 1, 1 ] ], [  ] ]
 gap> Dimension( P );
 1
-gap> Q:= Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );
+gap> Q := Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );
 <A polyhedron in |R^2>
 gap> VerticesOfMainRatPolytope( Q );
 [ [ 0, 6 ], [ 5, 0 ] ]
@@ -44,7 +44,7 @@ gap> L_using_4ti2 := [ [ [ -3, -16 ], [ -3, -15 ], [ -3, -14 ],
 gap> L_using_normaliz := [ [ [ 0, -10 ], [ 0, -9 ], [ 0, -8 ],
 > [ 0, -7 ], [ 0, -6 ], [ 0, -5 ], [ 0, -4 ], [ 0, -3 ], 
 > [ 0, -2 ], [ 0, -1 ], [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], 
-> [ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ] ], [  ], [ [ 1, 2 ] ] ];;
+> [ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ] ], [  ], [ [ -1, -2 ] ] ];;
 gap> L := LatticePointsGenerators( Q );;
 gap> L = L_using_4ti2 or L = L_using_normaliz;
 true

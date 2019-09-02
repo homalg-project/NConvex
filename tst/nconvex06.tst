@@ -11,11 +11,11 @@
 gap> START_TEST( "nconvex06.tst");
 
 # doc/_Chapter_Polyhedrons.xml:233-243
-gap> P:= PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );
+gap> P := PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );
 <A polyhedron in |R^3 >
 gap> L_using_normaliz := [ [ [ -4, 0, -2 ] ], [  ], 
-> [ [ 1, 1, 1 ], [ 0, 7, 4 ] ] ];;
-gap> L_using_4ti2 := [ [ [ -2, 2, 0 ] ], [  ], 
+> [ [ 1, 1, 1 ], [ 4, -3, 0 ] ] ];;
+gap> L_using_4ti2 := [ [ [ -2, 2, 0 ] ], [  ],
 > [ [ 1, 1, 1 ], [ 4, -3, 0 ] ] ];;
 gap> L := LatticePointsGenerators( P );;
 gap> L = L_using_4ti2 or L = L_using_normaliz;
