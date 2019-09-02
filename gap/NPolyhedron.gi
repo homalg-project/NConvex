@@ -306,11 +306,61 @@ end );
 InstallMethod( LatticePointsGenerators, 
                  [ IsPolyhedron ], 
                  
-   function( p )
-   local external_poly,nmz_points_in_main_polytope, points_in_main_polytope, 
+  function( p )
+    local external_poly,nmz_points_in_main_polytope, points_in_main_polytope, 
                        nmz_hilbert_basis, hilbert_basis, nmz_lineality, lineality, ineq, const;
-   
-   if IsPackageMarkedForLoading( "4ti2Interface", "2018.07.06" ) then
+    
+    if IsPackageMarkedForLoading( "NormalizInterface", ">=1.1.0" ) then
+
+      external_poly:= ExternalNmzPolyhedron( p );
+
+      nmz_points_in_main_polytope:= ValueGlobal( "NmzModuleGenerators" )( external_poly ); 
+
+      points_in_main_polytope:= 
+        List( nmz_points_in_main_polytope ,
+          function( i ) 
+            local j;
+                       
+            j := ShallowCopy( i );
+                       
+            Remove( j, Length( i ) );
+                       
+            return j;
+                       
+          end );
+                                          
+      nmz_hilbert_basis:= ValueGlobal( "NmzHilbertBasis" )( external_poly );
+     
+      hilbert_basis :=                
+        List( nmz_hilbert_basis ,
+          function( i ) 
+            local j;
+                             
+            j := ShallowCopy( i );
+                             
+            Remove( j, Length( i ) );
+                             
+            return j;
+                             
+          end );
+      
+      nmz_lineality := ValueGlobal( "NmzMaximalSubspace" )( external_poly );
+     
+      lineality:= List( nmz_lineality, 
+        function( i )
+          local j;
+                                   
+          j := ShallowCopy( i );
+                                   
+          Remove( j, Length( i ) );
+                                   
+          return j;
+                                   
+        end );
+
+      return [ Set( points_in_main_polytope ), Set( hilbert_basis ), Set( lineality ) ];
+    
+    elif IsPackageMarkedForLoading( "4ti2Interface", ">=2018.07.06" ) then
      
      ineq := TransposedMat( DefiningInequalities( p ) );
 
@@ -319,56 +369,6 @@ InstallMethod( LatticePointsGenerators,
      ineq := TransposedMat( ineq{ [ 2 .. Length( ineq ) ] } );
 
      return List( ValueGlobal( "4ti2Interface_zsolve_equalities_and_inequalities" )( [  ], [  ], ineq, const : precision := "gmp" ), Set );
-
-   elif IsPackageMarkedForLoading( "NormalizInterface", "1.0.2" ) then
-
-     external_poly:= ExternalNmzPolyhedron( p );
-
-     nmz_points_in_main_polytope:= ValueGlobal( "NmzModuleGenerators" )( external_poly ); 
-
-     points_in_main_polytope:= 
-       List( nmz_points_in_main_polytope ,
-         function( i ) 
-           local j;
-                       
-           j:= ShallowCopy( i );
-                       
-           Remove( j, Length( i ) );
-                       
-           return j;
-                       
-           end );
-                                          
-     nmz_hilbert_basis:= ValueGlobal( "NmzHilbertBasis" )( external_poly );
-     
-     hilbert_basis :=                
-       List( nmz_hilbert_basis ,
-         function( i ) 
-           local j;
-                             
-           j:= ShallowCopy( i );
-                             
-           Remove( j, Length( i ) );
-                             
-           return j;
-                             
-           end );
-      
-     nmz_lineality := ValueGlobal( "NmzMaximalSubspace" )( external_poly );
-     
-     lineality:= List( nmz_lineality, 
-       function( i )
-         local j;
-                                   
-         j:= ShallowCopy( i );
-                                   
-         Remove( j, Length( i ) );
-                                   
-         return j;
-                                   
-         end );
-
-         return [ Set( points_in_main_polytope ), Set( hilbert_basis ), Set( lineality ) ];
 
     else
 

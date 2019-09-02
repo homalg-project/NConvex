@@ -494,7 +494,12 @@ InstallMethod( HilbertBasis,
         
     fi;
 
-    if IsPackageMarkedForLoading( "4ti2Interface", "2018.07.06" ) then
+
+    if IsPackageMarkedForLoading( "NormalizInterface", ">=1.1.0" ) then
+
+      return Set( ValueGlobal( "NmzHilbertBasis" )( ExternalNmzCone( cone ) ) );
+    
+    elif IsPackageMarkedForLoading( "4ti2Interface", ">=2018.07.06" ) then
       
       ineq := DefiningInequalities( cone );
 
@@ -502,12 +507,12 @@ InstallMethod( HilbertBasis,
 
       return Set( ValueGlobal( "4ti2Interface_zsolve_equalities_and_inequalities" )( [  ], [  ], ineq, const )[ 2 ]: precision := "gmp" );
 
-    elif IsPackageMarkedForLoading( "NormalizInterface", "1.0.2" ) then
+    else
 
-      return Set( ValueGlobal( "NmzHilbertBasis" )( ExternalNmzCone( cone ) ) );
+      Error( "4ti2Interface or NormalizInterface should be loaded!" );
 
     fi;
-    
+  
 end );
 
 ##
