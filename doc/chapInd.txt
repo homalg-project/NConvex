@@ -42,7 +42,6 @@
   [2XIntersectionOfCones[102X, for IsCone, IsCone 2.4-2 
   [2XIntersectionOfPolytopes[102X, for IsPolytope, IsPolytope 5.4-3 
   [2XIsCanonicalFanoPolytope[102X, for IsPolytope 5.3-10 
-  [2XIsContainedInFan[102X, for IsCone 2.3-4 
   [2XIsEmpty[102X, for IsPolytope 5.3-1 
   [2XIsEmptyCone[102X, for IsCone 2.3-2 
   [2XIsFanoPolytope[102X, for IsPolytope 5.3-9 
@@ -59,6 +58,7 @@
   [2XIsSmoothFanoPolytope[102X, for IsPolytope 5.3-12 
   [2XIsTerminalFanoPolytope[102X, for IsPolytope 5.3-11 
   [2XIsVeryAmple[102X, for IsPolytope 5.3-3 
+  [2XIsZero[102X, for IsCone 2.3-4 
   [2XLatticePoints[102X, for IsPolytope 5.2-2 
   [2XLinealitySpaceGenerators[102X, for IsCone 2.2-9 
   [2XMainPolytope[102X, for IsPolyhedron 4.2-5 

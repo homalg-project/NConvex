@@ -6,10 +6,10 @@
                [1X A Gap package to perform polyhedral computations [101X
   
   
-                                   2019.08.26
+                                   2019.09.02
   
   
-                                 26 August 2019
+                                2 September 2019
   
   
                                   Kamal Saleh
@@ -71,7 +71,7 @@
       2.3-1 IsRegularCone
       2.3-2 IsEmptyCone
       2.3-3 IsRay
-      2.3-4 IsContainedInFan
+      2.3-4 IsZero
     2.4 [33X[0;0YOperations on cones[133X
       2.4-1 FourierProjection
       2.4-2 IntersectionOfCones

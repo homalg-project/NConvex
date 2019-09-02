@@ -1,7 +1,9 @@
+[![Build Status](https://travis-ci.com/homalg-project/NConvex.svg?branch=master)](https://travis-ci.com/homalg-project/NConvex)
+[![Code Coverage](https://codecov.io/github/homalg-project/NConvex/coverage.svg?branch=master&token=)](https://codecov.io/gh/homalg-project/NConvex)
+
 The NConvex package
 =========================
-
-version 2019.08.26.
+version 2019.09.02
 
 Introduction
 ------------
@@ -15,42 +17,52 @@ part of the homalg-project. A list of available operations can be found in the
 Installation
 -----------
 The package can easily be obtained by cloning the repository 
-https://github.com/homalg-project/NConvex.git
+  
+  https://github.com/homalg-project/NConvex.git
+
 in the pkg directory of the Gap installation or your local directory for Gap packages.
 
 Required packages
 -----------------
 
-* The Gap package "CddInterface" is required to convert between H-rep and V-rep of polyhedrons. It can be obtained at:
-  https://github.com/homalg-project/CddInterface.git
+-   The Gap package "CddInterface" is required to convert between H-rep and V-rep of polyhedrons. It can be obtained at:
   
-* The Gap/homalg-project package "Modules". You can install the package by cloning the "homalg_project" repository from
-https://github.com/homalg-project/homalg_project.git
+      https://github.com/homalg-project/CddInterface.git
+  
+-   The Gap/homalg-project package "Modules". You can install the package by cloning the "homalg_project" repository from
+    
+      https://github.com/homalg-project/homalg_project.git
 
-* You will also need "AutoDoc" package to be able to create the documentation and to perform tests. A fresh version can be installed from https://github.com/gap-packages/AutoDoc.git
+-   You will also need "AutoDoc" package to be able to create the documentation and to perform tests. 
+    A fresh version can be installed from
+    
+      https://github.com/gap-packages/AutoDoc.git
 
-* The Gap package "NormalizInterface". You can install it from
-  https://github.com/gap-packages/NormalizInterface.git
+-   The Gap package "NormalizInterface". You can install it from
+    
+      https://github.com/gap-packages/NormalizInterface.git
 
-* In case "NormalizInterface" is not available, then you can use the Gap/homalg package
-  "4ti2Interface". It is already included in the homalg-project https://github.com/homalg-project/homalg_project. Make sure to
-  change accordingly the dependencies entry in PackageInfo.g.
+-   In case "NormalizInterface" is not available, then you can use the Gap/homalg package
+    "4ti2Interface". It is already included in the homalg-project 
+  
+      https://github.com/homalg-project/homalg_project
+  
+    Make sure to change accordingly the dependencies entry in PackageInfo.g.
 
 Remarks
 -------
-* To create the documentation go in your terminal to where you installed the package and 
+-   To create the documentation go in your terminal to where you installed the package and 
  perform the command
    ```sh
    .../NConvex$ gap makedoc.g
    ```
-* To run tests:
+-   To run tests:
    ```sh
    .../NConvex$ gap tst/testall.g
    ```
-* For the installation of Gap see https://www.gap-system.org/
+-   For the installation of Gap see https://www.gap-system.org/
 
-* You can create the documentation with diagrams if your latex installation has the required packages. To try it by un-commenting the
-required code by:
+-   You can create the documentation with diagrams if your latex installation has the required packages. To try it by un-commenting the required code by:
    
    ```sh
    .../NConvex$ sed -i 's/#?//g' makedoc.g
@@ -60,8 +72,7 @@ required code by:
 
 Of course you are welcome to e-mail me if there are any questions, remarks, suggestions ;)
   
-  Kamal Saleh e-mail: saleh@mathematik.uni-siegen.de \
-  Sebastian Gutsche e-mail: gutsche@mathematik.uni-siegen.de
+  Kamal Saleh e-mail: saleh@mathematik.uni-siegen.de
   
 License
 -------

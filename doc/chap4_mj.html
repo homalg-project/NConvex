@@ -199,13 +199,13 @@
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P:= Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );</span>
 &lt;A polyhedron in |R^2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VerticesOfMainRatPolytope( P );</span>
 [ [ 1, 1 ], [ 4, 7 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VerticesOfMainPolytope( P );</span>
 [ [ 1, 1 ], [ 4, 7 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P:= Polyhedron( [ [ 1/2, 1/2 ] ], [ [ 1, 1 ] ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := Polyhedron( [ [ 1/2, 1/2 ] ], [ [ 1, 1 ] ] );</span>
 &lt;A polyhedron in |R^2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VerticesOfMainRatPolytope( P );</span>
 [ [ 1/2, 1/2 ] ]
@@ -215,7 +215,7 @@
 [ [ [ 1, 1 ] ], [ [ 1, 1 ] ], [  ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( P );</span>
 1
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q:= Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );</span>
 &lt;A polyhedron in |R^2&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VerticesOfMainRatPolytope( Q );</span>
 [ [ 0, 6 ], [ 5, 0 ] ]
@@ -232,7 +232,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_normaliz := [ [ [ 0, -10 ], [ 0, -9 ], [ 0, -8 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">[ 0, -7 ], [ 0, -6 ], [ 0, -5 ], [ 0, -4 ], [ 0, -3 ], </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">[ 0, -2 ], [ 0, -1 ], [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">[ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ] ], [  ], [ [ 1, 2 ] ] ];;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">[ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ] ], [  ], [ [ -1, -2 ] ] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LatticePointsGenerators( Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L = L_using_4ti2 or L = L_using_normaliz;</span>
 true
@@ -250,11 +250,11 @@ true
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P:= PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );</span>
 &lt;A polyhedron in |R^3 &gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_normaliz := [ [ [ -4, 0, -2 ] ], [  ], </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">[ [ 1, 1, 1 ], [ 0, 7, 4 ] ] ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_4ti2 := [ [ [ -2, 2, 0 ] ], [  ], </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">[ [ 1, 1, 1 ], [ 4, -3, 0 ] ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_4ti2 := [ [ [ -2, 2, 0 ] ], [  ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">[ [ 1, 1, 1 ], [ 4, -3, 0 ] ] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LatticePointsGenerators( P );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L = L_using_4ti2 or L = L_using_normaliz;</span>
@@ -263,19 +263,19 @@ true
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q:= PolyhedronByInequalities( [ [-3, 4, 6 ], [ 3, -4, -6 ] ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := PolyhedronByInequalities( [ [-3, 4, 6 ], [ 3, -4, -6 ] ] );</span>
 &lt;A polyhedron in |R^2 &gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LatticePointsGenerators( Q );</span>
-[ [  ], [  ], [ [ 3, -2 ] ] ]
+[ [  ], [  ], [ [ -3, 2 ] ] ]
 </pre></div>
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P:= PolyhedronByInequalities( [ [ -1, 2, 3, 2, 0 ], [ -3, 7, 1, 0, 5 ], </span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PolyhedronByInequalities( [ [ -1, 2, 3, 2, 0 ], [ -3, 7, 1, 0, 5 ], </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">[ 1, -2, -3, -2, 0 ], [ 3, -7, -1, 0, -5 ] ] );</span>
 &lt;A polyhedron in |R^4 &gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_4ti2 := [ [ [ 0, 3, -4, 0 ] ], [  ], [ [ 0, -10, 15, 2 ], [ 1, -2, 2, -1 ] ] ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_normaliz := [ [ [ -19, 1, 18, 27 ] ], [  ], [ [ 1, -2, 2, -1 ], [ 0, 10, -15, -2 ]   ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_normaliz := [ [ [ -19, 1, 18, 27 ] ], [  ], [ [ -1, 2, -2, 1 ], [ 5, 0, -5, -7 ] ] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LatticePointsGenerators( P );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L = L_using_4ti2 or L = L_using_normaliz;</span>
 true

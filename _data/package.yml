@@ -1,6 +1,6 @@
 name: NConvex
-version: "2019.08.26"
-date: 2019-08-26
+version: "2019.09.02"
+date: 2019-09-02
 description: |
     A Gap package to perform polyhedral computations
 
@@ -46,7 +46,7 @@ packageinfo: https://github.com/homalg-project/NConvex/releases/latest/download/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/NConvex/archive/2019.08.26.tar.gz
+      url: https://github.com/homalg-project/NConvex/archive/2019.09.02.tar.gz
 
 abstract: |
 
@@ -59,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>SG19</span>]   <b class='BibAuthor'>Saleh, K. and Gutsche, S.</b>,
      <i class='BibTitle'>NConvex, A Gap package to perform polyhedral computations,
-             Version 2019.08.26</i>
+             Version 2019.09.02</i>
      (<span class='BibYear'>2019</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/NConvex">https://homalg-project.github.io/NConvex</a></span>.
@@ -67,14 +67,14 @@ citeas: |
     
 
 bibtex: |
-    @misc{ NConvex2019.08.26,
+    @misc{ NConvex2019.09.02,
       author =           {Saleh, K. and Gutsche, S.},
-      title =            {{NConvex}, A Gap package to perform polyhedral computations, {V}ersion 2019.08.26},
-      month =            {Aug},
+      title =            {{NConvex}, A Gap package to perform polyhedral computations, {V}ersion 2019.09.02},
+      month =            {Sep},
       year =             {2019},
       note =             {GAP package},
-      howpublished =     {\href                                      {https://homalg-project.github.io/NConvex}
-                          {\texttt{https://homalg-project.github.io/}\discretionary {}{}{}\texttt{NConvex}}},
+      howpublished =     {\href   {https://homalg-project.github.io/NConvex}  {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{NConvex}}},
       keywords =         {Cone; Fan; Polytope; Polyhedron; ToricVarieties; homalg},
       printedkey =       {SG19}
     }

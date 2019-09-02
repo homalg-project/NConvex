@@ -137,12 +137,12 @@
   
   [33X[0;0YReturns if the cone [3Xcone[103X is ray or not.[133X
   
-  [1X2.3-4 IsContainedInFan[101X
+  [1X2.3-4 IsZero[101X
   
-  [33X[1;0Y[29X[2XIsContainedInFan[102X( [3Xcone[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsZero[102X( [3Xcone[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
-  [33X[0;0YReturns if the cone [3Xcone[103X is contained in fan or not.[133X
+  [33X[0;0YReturns whether the cone is the zero cone or not.[133X
   
   
   [1X2.4 [33X[0;0YOperations on cones[133X[101X

@@ -115,13 +115,13 @@
   [33X[0;0YReturns a list whose [23Xi[123X'th entry is the number of faces of dimension [23Xi-1[123X.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XP:= Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );[127X[104X
+    [4X[25Xgap>[125X [27XP := Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );[127X[104X
     [4X[28X<A polyhedron in |R^2>[128X[104X
     [4X[25Xgap>[125X [27XVerticesOfMainRatPolytope( P );[127X[104X
     [4X[28X[ [ 1, 1 ], [ 4, 7 ] ][128X[104X
     [4X[25Xgap>[125X [27XVerticesOfMainPolytope( P );[127X[104X
     [4X[28X[ [ 1, 1 ], [ 4, 7 ] ][128X[104X
-    [4X[25Xgap>[125X [27XP:= Polyhedron( [ [ 1/2, 1/2 ] ], [ [ 1, 1 ] ] );[127X[104X
+    [4X[25Xgap>[125X [27XP := Polyhedron( [ [ 1/2, 1/2 ] ], [ [ 1, 1 ] ] );[127X[104X
     [4X[28X<A polyhedron in |R^2>[128X[104X
     [4X[25Xgap>[125X [27XVerticesOfMainRatPolytope( P );[127X[104X
     [4X[28X[ [ 1/2, 1/2 ] ][128X[104X
@@ -131,7 +131,7 @@
     [4X[28X[ [ [ 1, 1 ] ], [ [ 1, 1 ] ], [  ] ][128X[104X
     [4X[25Xgap>[125X [27XDimension( P );[127X[104X
     [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27XQ:= Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );[127X[104X
+    [4X[25Xgap>[125X [27XQ := Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );[127X[104X
     [4X[28X<A polyhedron in |R^2>[128X[104X
     [4X[25Xgap>[125X [27XVerticesOfMainRatPolytope( Q );[127X[104X
     [4X[28X[ [ 0, 6 ], [ 5, 0 ] ][128X[104X
@@ -148,7 +148,7 @@
     [4X[25Xgap>[125X [27XL_using_normaliz := [ [ [ 0, -10 ], [ 0, -9 ], [ 0, -8 ],[127X[104X
     [4X[25X>[125X [27X[ 0, -7 ], [ 0, -6 ], [ 0, -5 ], [ 0, -4 ], [ 0, -3 ], [127X[104X
     [4X[25X>[125X [27X[ 0, -2 ], [ 0, -1 ], [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [127X[104X
-    [4X[25X>[125X [27X[ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ] ], [  ], [ [ 1, 2 ] ] ];;[127X[104X
+    [4X[25X>[125X [27X[ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ] ], [  ], [ [ -1, -2 ] ] ];;[127X[104X
     [4X[25Xgap>[125X [27XL := LatticePointsGenerators( Q );;[127X[104X
     [4X[25Xgap>[125X [27XL = L_using_4ti2 or L = L_using_normaliz;[127X[104X
     [4X[28Xtrue[128X[104X
@@ -165,11 +165,11 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XP:= PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );[127X[104X
+    [4X[25Xgap>[125X [27XP := PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );[127X[104X
     [4X[28X<A polyhedron in |R^3 >[128X[104X
     [4X[25Xgap>[125X [27XL_using_normaliz := [ [ [ -4, 0, -2 ] ], [  ], [127X[104X
-    [4X[25X>[125X [27X[ [ 1, 1, 1 ], [ 0, 7, 4 ] ] ];;[127X[104X
-    [4X[25Xgap>[125X [27XL_using_4ti2 := [ [ [ -2, 2, 0 ] ], [  ], [127X[104X
+    [4X[25X>[125X [27X[ [ 1, 1, 1 ], [ 4, -3, 0 ] ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XL_using_4ti2 := [ [ [ -2, 2, 0 ] ], [  ],[127X[104X
     [4X[25X>[125X [27X[ [ 1, 1, 1 ], [ 4, -3, 0 ] ] ];;[127X[104X
     [4X[25Xgap>[125X [27XL := LatticePointsGenerators( P );;[127X[104X
     [4X[25Xgap>[125X [27XL = L_using_4ti2 or L = L_using_normaliz;[127X[104X
@@ -177,18 +177,18 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XQ:= PolyhedronByInequalities( [ [-3, 4, 6 ], [ 3, -4, -6 ] ] );[127X[104X
+    [4X[25Xgap>[125X [27XQ := PolyhedronByInequalities( [ [-3, 4, 6 ], [ 3, -4, -6 ] ] );[127X[104X
     [4X[28X<A polyhedron in |R^2 >[128X[104X
     [4X[25Xgap>[125X [27XLatticePointsGenerators( Q );[127X[104X
-    [4X[28X[ [  ], [  ], [ [ 3, -2 ] ] ][128X[104X
+    [4X[28X[ [  ], [  ], [ [ -3, 2 ] ] ][128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XP:= PolyhedronByInequalities( [ [ -1, 2, 3, 2, 0 ], [ -3, 7, 1, 0, 5 ], [127X[104X
+    [4X[25Xgap>[125X [27XP := PolyhedronByInequalities( [ [ -1, 2, 3, 2, 0 ], [ -3, 7, 1, 0, 5 ], [127X[104X
     [4X[25X>[125X [27X[ 1, -2, -3, -2, 0 ], [ 3, -7, -1, 0, -5 ] ] );[127X[104X
     [4X[28X<A polyhedron in |R^4 >[128X[104X
     [4X[25Xgap>[125X [27XL_using_4ti2 := [ [ [ 0, 3, -4, 0 ] ], [  ], [ [ 0, -10, 15, 2 ], [ 1, -2, 2, -1 ] ] ];;[127X[104X
-    [4X[25Xgap>[125X [27XL_using_normaliz := [ [ [ -19, 1, 18, 27 ] ], [  ], [ [ 1, -2, 2, -1 ], [ 0, 10, -15, -2 ]   ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XL_using_normaliz := [ [ [ -19, 1, 18, 27 ] ], [  ], [ [ -1, 2, -2, 1 ], [ 5, 0, -5, -7 ] ] ];;[127X[104X
     [4X[25Xgap>[125X [27XL := LatticePointsGenerators( P );;[127X[104X
     [4X[25Xgap>[125X [27XL = L_using_4ti2 or L = L_using_normaliz;[127X[104X
     [4X[28Xtrue[128X[104X
