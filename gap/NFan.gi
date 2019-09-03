@@ -871,7 +871,7 @@ InstallMethod( IsRegularFan,
         
         for i in [ 1 .. Length( max_cones ) ] do
             
-            if RayGeneratorContainedInCone( rays[ r ], max_cones[ i ] ) then
+            if rays[ r ] in max_cones[ i ] then
                 
                 Add( L1, i );
                 

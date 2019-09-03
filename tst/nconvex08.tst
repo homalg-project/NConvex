@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex08.tst");
 
-# doc/_Chapter_Polyhedrons.xml:267-276
+# doc/_Chapter_Polyhedrons.xml:309-318
 gap> P := PolyhedronByInequalities( [ [ -1, 2, 3, 2, 0 ], [ -3, 7, 1, 0, 5 ], 
 > [ 1, -2, -3, -2, 0 ], [ 3, -7, -1, 0, -5 ] ] );
 <A polyhedron in |R^4 >

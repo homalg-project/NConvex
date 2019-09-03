@@ -24,21 +24,20 @@ RayGenerators( P_dual );
 #! [ [ -7, 2 ], [ 5, 2 ] ]
 Dimension( P );
 #! 2
-Facets( P );
-#! [ <A ray in |R^2>, <A ray in |R^2> ]
-List( last, RayGenerators );
+List( Facets( P ), RayGenerators );
 #! [ [ [ -2, 5 ] ], [ [ 2, 7 ] ] ]
 faces := Faces( P );
 #! [ <A cone in |R^2>, <A cone in |R^2>, <A ray in |R^2>, 
 #!  <A ray in |R^2> ]
-#e
-RelativeInteriorRayGenerator( P );
+RelativeInteriorRay( P );
 #! [ -2, 41 ]
+IsRelativeInteriorRay( [ -2, 41 ], P );
+#! true
+IsRelativeInteriorRay( [ 2, 7 ], P );
+#! false
 LinealitySpaceGenerators( P );
 #! [  ]
 IsRegularCone( P );
-#! false
-IsEmptyCone( P );
 #! false
 IsRay( P );
 #! false

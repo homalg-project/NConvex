@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex06.tst");
 
-# doc/_Chapter_Polyhedrons.xml:233-243
+# doc/_Chapter_Polyhedrons.xml:275-285
 gap> P := PolyhedronByInequalities( [ [ -2, 3, 4, -7 ], -[ -2, 3, 4, -7 ] ] );
 <A polyhedron in |R^3 >
 gap> L_using_normaliz := [ [ [ -4, 0, -2 ] ], [  ], 

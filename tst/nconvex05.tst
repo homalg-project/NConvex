@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex05.tst");
 
-# doc/_Chapter_Polyhedrons.xml:179-227
+# doc/_Chapter_Polyhedrons.xml:221-269
 gap> P := Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );
 <A polyhedron in |R^2>
 gap> VerticesOfMainRatPolytope( P );

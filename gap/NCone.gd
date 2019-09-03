@@ -23,8 +23,8 @@ DeclareCategory( "IsCone",
 #! @Chapter Cones
 #! @Section Creating cones
 
-#! @Arguments arg 
-#! @Returns a **Cone** Object
+#! @Arguments L
+#! @Returns a <C>Cone</C> Object
 #! @Description
 #! The function takes a list of lists $[L_1, L_2, ...]$ where each $L_j$ represents 
 #! an inequality and returns the cone defined by them. 
@@ -33,8 +33,8 @@ DeclareCategory( "IsCone",
 DeclareOperation( "ConeByInequalities",
                   [ IsList ] );
 
-#! @Arguments arg 
-#! @Returns a **Cone** Object
+#! @Arguments Eq, Ineq 
+#! @Returns a <C>Cone</C> Object
 #! @Description  
 #! The function takes two lists. The first list is the equalities and the second is 
 #! the inequalities and returns the cone defined by them.
@@ -43,8 +43,8 @@ DeclareOperation( "ConeByEqualitiesAndInequalities",
 
 DeclareOperation( "ConeByGenerators",
                   [ IsList ] );
-#! @Arguments arg 
-#! @Returns a **Cone** Object
+#! @Arguments L
+#! @Returns a <C>Cone</C> Object
 #! @Description  
 #! The function takes a list in which every entry represents a ray in the ambient vector space 
 #! and returns the cone defined by them.              
@@ -52,7 +52,7 @@ DeclareOperation( "Cone",
                   [ IsList ] );
 
 #! @Arguments cdd_cone 
-#! @Returns a **Cone** Object
+#! @Returns a <C>Cone</C> Object
 #! @Description  
 #! This function takes a cone defined in **CddInterface** and converts it to a cone in **NConvex**
 DeclareOperation( "Cone",
@@ -69,16 +69,16 @@ DeclareOperation( "Cone",
 # DeclareAttribute( "RayGenerators", 
 #                    IsCone );
 
-#! @Arguments cone 
-#! @Returns a **List**
+#! @Arguments C 
+#! @Returns a list
 #! @Description  
-#! Returns the list of the defining inequalities of the cone <A>cone</A>.
+#! Returns the list of the defining inequalities of the cone <C>C</C>.
 DeclareAttribute( "DefiningInequalities", 
                    IsCone );
-#! @Arguments cone 
-#! @Returns a **List**
+#! @Arguments C 
+#! @Returns a list
 #! @Description  
-#! Returns the list of the equalities in the defining inequalities of the cone <A>cone</A>.
+#! Returns the list of the equalities in the defining inequalities of the cone <C>C</C>.
 DeclareAttribute( "EqualitiesOfCone", 
                    IsCone );
 
@@ -87,10 +87,10 @@ DeclareAttribute( "FactorConeEmbedding",
                    IsCone );
                   
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns a cone
 #! @Description  
-#! Returns the dual cone of the cone <A>cone</A>.
+#! Returns the dual cone of the cone <C>C</C>.
 DeclareAttribute( "DualCone",
                   IsCone );
 
@@ -107,77 +107,111 @@ DeclareAttribute( "RaysInFaces",
 # Returns an interior point of the cone.
 #DeclareAttribute( "InteriorPoint", IsCone );
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns a list of cones
 #! @Description  
-#! Returns the list of all faces of the cone <A>cone</A>.                  
+#! Returns the list of all faces of the cone <C>C</C>.                  
 DeclareAttribute( "Faces",
                   IsCone );
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns a list of cones
 #! @Description  
-#! Returns the list of all faces of the cone <A>cone</A>.
+#! Returns the list of all facets of the cone <C>C</C>.
 DeclareAttribute( "Facets",
                   IsCone );
-                    
-# DeclareAttribute( "FVector",
-#                   IsCone );
 
-#! @Arguments cone 
-#! @Returns a point
+if false then
+  #! @Arguments C
+  #! @Returns a list
+  #! @Description
+  #! Returns a list whose $i$'th entry is the number of faces of dimension $i$.
+  DeclareAttribute( "FVector", IsCone );
+fi;
+
+#! @Arguments C 
+#! @Returns a list
 #! @Description  
-#! Returns an interior point in the cone <A>cone</A>.                  
-DeclareAttribute( "RelativeInteriorRayGenerator", 
+#! Returns a relative interior point (or ray) in the cone <C>C</C>.                  
+DeclareAttribute( "RelativeInteriorRay", 
                    IsCone );
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns a list
 #! @Description  
-#! Returns the Hilbert basis of the cone <A>cone</A>
+#! Returns the Hilbert basis of the cone <C>C</C>
 DeclareAttribute( "HilbertBasis", IsCone );
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns a list
 #! @Description  
-#! Returns the Hilbert basis of the dual cone of the cone <A>cone</A>
+#! Returns the Hilbert basis of the dual cone of the cone <C>C</C>
 DeclareAttribute( "HilbertBasisOfDualCone",
                   IsCone );
                   
 DeclareAttribute( "LinearSubspaceGenerators", IsCone );
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns a list
 #! @Description  
-#! Returns a basis of the lineality space of the cone <A>cone</A>.
+#! Returns a basis of the lineality space of the cone <C>C</C>.
 DeclareAttribute( "LinealitySpaceGenerators", IsCone );
 
-#! @Arguments cone 
-#! @Returns a CddPolyhedron
+#! @Arguments C 
+#! @Returns a cdd object
 #! @Description  
-#! Converts the cone to a CddPolyhedron. The functions of CddInterface can then be applied
-#! on this polyhedron.
+#! Converts the cone to a cdd object. The operations of CddInterface can then be applied
+#! on this convex object.
 DeclareAttribute( "ExternalCddCone",  IsCone  );
 
-## If i make this attribute i get error segmentation error ...
-DeclareOperation( "ExternalNmzCone",  [ IsCone ]  );
+#! @Arguments C 
+#! @Returns an normaliz object
+#! @Description  
+#! Converts the cone to a normaliz object. The operations of NormalizInterface can then be applied
+#! on this convex object.
+DeclareAttribute( "ExternalNmzCone",  IsCone );
 
-# AmbientSpace is somewhere declared !!
-# DeclareAttribute( "AmbientSpaceDimension", IsCone );
+if false then
+  #! @Arguments C
+  #! @Returns an integer
+  #! @Description
+  #! The dimension of the ambient space of the cone, i.e., the space that contains the cone.
+  DeclareAttribute( "AmbientSpaceDimension", IsCone );
+fi;
 
+#! @Arguments C
+#! @Returns a list
+#! @Description
+#! See <C>LatticePointsGenerators</C> for polyhedrons. Please note that any cone is a polyhedron.
 DeclareAttribute( "LatticePointsGenerators",  IsCone  );
 
-DeclareAttribute( "GridGeneratedByCone",
-                  IsCone );
+#! @Arguments C
+#! @Returns a homalg module
+#! @Description
+#! Returns the homalg $\mathbb{Z}$-module that is generated by the ray generators of the cone.
+DeclareAttribute( "GridGeneratedByCone", IsCone );
 
+#! @Arguments C
+#! @Returns a homalg module
+#! @Description
+#! Returns the homalg $\mathbb{Z}$-module that is presented by the matrix whose raws are the ray generators of the cone.
 DeclareAttribute( "FactorGrid",
                   IsCone );
-                  
-DeclareAttribute( "GridGeneratedByOrthogonalCone",
-                  IsCone );   
-                  
+
+#! @Arguments C
+#! @Returns a homalg morphism
+#! @Description
+#! Returns an epimorphism from a free $\mathbb{Z}$-module to <C>FactorGrid(C)</C>.
 DeclareAttribute( "FactorGridMorphism",
                   IsCone );
+
+#! @Arguments C
+#! @Returns a homalg module
+#! @Description
+#! Returns the homalg $\mathbb{Z}$-module that is by generated the ray generators of the orthogonal cone on <C>C</C>.
+DeclareAttribute( "GridGeneratedByOrthogonalCone",
+                  IsCone );   
+
 ##############################
 ##
 ##  Properties
@@ -185,27 +219,21 @@ DeclareAttribute( "FactorGridMorphism",
 ##############################
 #! @Section Properties of Cones
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns true or false
 #! @Description  
-#! Returns if the cone <A>cone</A> is regular or not.
+#! Returns if the cone <C>C</C> is regular or not.
 DeclareProperty( "IsRegularCone", IsCone );
-
-#! @Arguments cone 
-#! @Returns true or false
-#! @Description  
-#! Returns if the cone <A>cone</A> is empty or not.
-DeclareProperty( "IsEmptyCone", IsCone );
 
 DeclareProperty( "HasConvexSupport", IsCone );
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns true or false
 #! @Description  
-#! Returns if the cone <A>cone</A> is ray or not.
+#! Returns if the cone <C>C</C> is ray or not.
 DeclareProperty( "IsRay", IsCone );
 
-#! @Arguments cone 
+#! @Arguments C 
 #! @Returns true or false
 #! @Description  
 #! Returns whether the cone is the zero cone or not.
@@ -222,43 +250,38 @@ DeclareAttribute( "SuperFan", IsCone );
 ##############################
 #! @Section Operations on cones
 
-#! @Arguments cone, m 
+#! @Arguments C, m 
 #! @Returns a cone
 #! @Description  
-#! Returns the projectiopn of the cone on the space (O, $x_1,...,x_{m-1}, x_{m+1},...,x_n$ ).
+#! Returns the projection of the cone on the space (O, $x_1,...,x_{m-1}, x_{m+1},...,x_n$ ).
 DeclareOperation( "FourierProjection",
                   [ IsCone, IsInt ] );
 
-#! @Arguments cone1, cone2 
+#! @Arguments C1, C2
 #! @Returns a cone
 #! @Description  
-#! Returns the intersection of the cones <A>cone1</A> and <A>cone2</A>.
+#! Returns the intersection.
 DeclareOperation( "IntersectionOfCones",
                   [ IsCone, IsCone ] );
-#! @Arguments [ cone1, cone2, ... ] 
+#! @Arguments L 
 #! @Returns a cone
 #! @Description  
-#! Returns the intersection of all cones in the list  <A>[cone1</A>, <A>cone2,...]</A>.
-DeclareOperation( "IntersectionOfConelist",
+#! The input is a list of cones and the output is their intersection.
+DeclareOperation( "IntersectionOfCones",
                   [ IsList ] );
-                  
-DeclareOperation( "Intersect2",
-                  [ IsCone, IsCone ] );
-#! @Arguments cone1, cone2 
+
+#! @Arguments C1, C2 
 #! @Returns a true or false
 #! @Description  
-#! Returns if the cone <A>cone1</A> contains the cone <A>cone2</A>.                  
+#! Returns if the cone <C>C1</C> contains the cone <C>C2</C>.
 DeclareOperation( "Contains",
                   [ IsCone, IsCone ] );
 
-#! @Arguments ray, cone 
-#! @Returns true or false
+#! @Arguments L, C
+#! @Returns a true or false
 #! @Description  
-#! Returns if the cone <A>cone</A> contains the ray <A>ray</A>.
-DeclareOperation( "RayGeneratorContainedInCone",
-                  [ IsList, IsCone ] );
-
-DeclareOperation( "RayGeneratorContainedInRelativeInterior",
+#! Checks whether the input point (or ray) <C>L</C> is in the relative interior of the cone <C>C</C>.
+DeclareOperation( "IsRelativeInteriorRay",
                   [ IsList, IsCone ] );
                   
 DeclareOperation( "\*",
@@ -281,8 +304,6 @@ DeclareOperation( "StarFan",
 DeclareOperation( "StarFan", 
                       [ IsCone, IsFan ] );
 
-DeclareGlobalFunction( "testttt" );                
-DeclareGlobalFunction( "testttt2" ); 
 DeclareGlobalFunction( "SolutionPostIntMat" ); 
 DeclareGlobalFunction( "AddIfPossible" ); 
 DeclareGlobalFunction( "IfNotReducedReduceOnce" );

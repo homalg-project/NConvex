@@ -22,34 +22,42 @@ DeclareCategory( "IsPolyhedron",
 #! @Chapter Polyhedrons
 #! @Section Creating polyhedron
 
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments L
+#! @Returns a <C>Polyhedron</C> Object
 #! @Description  
-#! The function takes a list of lists $[L_1, L_2, ...]$ where each $L_j$ represents 
+#! The function takes a list of lists <C>L</C>$:=[L_1, L_2, ...]$ where each $L_j$ represents 
 #! an inequality and returns the polyhedron defined by them. 
 #! For example the $j$'th entry $L_j = [c_j,a_{j1},a_{j2},...,a_{jn}]$ corresponds to the inequality
 #! $c_j+\sum_{i=1}^n a_{ji}x_i \geq 0$.
 DeclareOperation( "PolyhedronByInequalities",
                   [ IsList ] );
 
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
-#! @Description  
+#! @Arguments P, C
+#! @Returns a <C>Polyhedron</C> Object
+#! @Description
+#! The input is a polytope <C>P</C> and a cone <C>C</C>. The output is the polyhedron defined by the Minkowski sum <C>P+C</C>.
 DeclareOperation( "Polyhedron",
                   [ IsPolytope, IsCone ] );
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments L, C
+#! @Returns a <C>Polyhedron</C> Object
 #! @Description  
+#! The input is a list <C>L</C> and a cone <C>C</C>. The output is the polyhedron defined by the Minkowski sum 
+#! <C>P+C</C> where <C>P</C> is the polytope, i.e., the convex hull, defined by the points <C>L</C>.
 DeclareOperation( "Polyhedron",
                   [ IsList, IsCone ] );
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
-#! @Description  
+#! @Arguments P, L
+#! @Returns a <C>Polyhedron</C> Object
+#! @Description
+#! The input is a polytope <C>P</C> and a list <C>L</C>. The output is the polyhedron defined by the Minkowski sum 
+#! <C>P+C</C> where <C>C</C> is the cone defined by the rays <C>L</C>.
 DeclareOperation( "Polyhedron",
                   [ IsPolytope, IsList ] );
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
-#! @Description  
+
+#! @Arguments P, C
+#! @Returns a <C>Polyhedron</C> Object
+#! @Description
+#! The input is a list <C>P</C> and a list <C>C</C>. The output is the polyhedron defined by the Minkowski sum 
+#! of the polytope defined by <C>P</C> and the cone defined by <C>C</C>.
 DeclareOperation( "Polyhedron",
                   [ IsList, IsList ] );
 
@@ -62,79 +70,87 @@ DeclareOperation( "Polyhedron",
 
 #! @Section Attributes
 
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments P
+#! @Returns cdd Object
 #! @Description  
-#! Converts the given polyhedron to CddPolyhedron.
+#! Converts the polyhedron to a cdd object. The operations of CddInterface can then be applied
+#! on this convex object.
 DeclareAttribute( "ExternalCddPolyhedron",
                    IsPolyhedron );
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments P
+#! @Returns normaliz Object
 #! @Description  
-#! Converts the given polyhedron to NmzPolyhedron 
-DeclareOperation( "ExternalNmzPolyhedron",
-                   [ IsPolyhedron ] );
+#! Converts the polyhedron to an normaliz object. The operations of NormalizInterface can then be applied
+#! on this convex object.
+DeclareAttribute( "ExternalNmzPolyhedron",
+                   IsPolyhedron );
                    
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments P
+#! @Returns a list
 #! @Description  
-#! Returns the Defining inequalities of the given polyhedron.                   
+#! Returns the Defining inequalities of the given polyhedron.
 DeclareAttribute( "DefiningInequalities",
                    IsPolyhedron );
 
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments P
+#! @Returns a <C>Polytope</C> Object
 #! @Description  
 #! Returns the main rational polytope of the polyhedron.
 DeclareAttribute( "MainRatPolytope",
                   IsPolyhedron );
 
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments P
+#! @Returns a <C>Polytope</C> Object
 #! @Description  
-#! Returns the main polytope of the given polyhedron.
+#! Returns the main integral polytope of the given polyhedron.
 DeclareAttribute( "MainPolytope",
                   IsPolyhedron );
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+
+#! @Arguments P
+#! @Returns a list
 #! @Description  
 #! Returns the vertices of the main rational polytope of the polyhedron.
 DeclareAttribute( "VerticesOfMainRatPolytope",
                   IsPolyhedron );
 
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments P
+#! @Returns a list
 #! @Description  
 #! Returns the vertices of the main integral polytope of the given polyhedron.
 DeclareAttribute( "VerticesOfMainPolytope",
                   IsPolyhedron );
 
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments P
+#! @Returns a <C>Cone</C> Object
 #! @Description  
 #! Returns the tail cone of the polyhedron.
 DeclareAttribute( "TailCone",
                   IsPolyhedron );
 
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+#! @Arguments P
+#! @Returns a list
 #! @Description  
-#! Returns the Ray Generators of the tail cone
+#! Returns the Ray Generators of the tail cone.
 DeclareAttribute( "RayGeneratorsOfTailCone",
                   IsPolyhedron );
 
 DeclareAttribute( "HomogeneousPointsOfPolyhedron",
                   IsPolyhedron );
-
+#! @Arguments P
+#! @Returns a list
+#! @Description  
+#! Returns the integral lattice generators of the polyhedron. The output is a list $L$ of length $3$. Any integral point in
+#! polyhedron can be written as $a+mb+nc$, where $a\in L[1],b\in L[2],c\in L[3], m\geq 0$.
 DeclareAttribute( "LatticePointsGenerators",
                   IsPolyhedron );
-#! @Arguments arg 
-#! @Returns a **Polyhedron** Object
+
+#! @Arguments P
+#! @Returns a list
 #! @Description  
-#! Returns a basis to the lineality space of the polyhedron.
+#! Returns a basis to the lineality space of the polyhedron. I.e., a basis to the vector space that is contained in <C>P</C>.
 DeclareAttribute( "BasisOfLinealitySpace",
                   IsPolyhedron );
-#! @Arguments arg 
+#! @Arguments P
 #! @Returns a list
 #! @Description  
 #! Returns a list whose $i$'th entry is the number of faces of dimension $i-1$.
@@ -146,15 +162,25 @@ DeclareAttribute( "FVector", IsPolyhedron );
 ##
 #####################################
 
-DeclareProperty( "IsNotEmpty",
-                 IsPolyhedron );
+#! @Section Properties
 
+#! @Arguments P
+#! @Returns true or false
+#! @Description  
+#! The input is a polyhedron P and the output is whether it is bounded or not.
 DeclareProperty( "IsBounded",
                  IsPolyhedron );
 
+DeclareProperty( "IsNotEmpty",
+                 IsPolyhedron );
+
+#! @Arguments P
+#! @Returns true or false
+#! @Description  
+#! The input is a polyhedron P and the output is whether its tail cone is pointed or not.
 DeclareProperty( "IsPointed",
                  IsPolyhedron );
-                                  
-DeclareGlobalFunction( "Draw" );
+
+#DeclareGlobalFunction( "Draw" );
 
 #! @InsertChunk example3

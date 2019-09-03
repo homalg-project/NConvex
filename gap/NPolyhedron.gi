@@ -404,14 +404,6 @@ InstallMethod( FVector,
 
 end );
 
-##
-InstallGlobalFunction( Draw,
-function()
-
-Exec( "firefox https://www.desmos.com/calculator &" );
-
-end );
-
 #####################################
 ##
 ##  Properties

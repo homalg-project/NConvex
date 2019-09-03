@@ -163,16 +163,6 @@ InstallMethod( IsSimplicial,
 end );
 
 ##
-InstallMethod( IsEmptyCone,
-               "for cones",
-               [ IsCone ],
-  function( cone )
-  
-  return Cdd_IsEmpty( ExternalCddCone( cone ) );
-  
-end );
-
-##
 InstallMethod( IsFullDimensional,
                "for cones",
                [ IsCone ], 
@@ -314,7 +304,7 @@ InstallMethod( EqualitiesOfCone,
 end );
 
 ##
-InstallMethod( RelativeInteriorRayGenerator,
+InstallMethod( RelativeInteriorRay,
                "for a cone",
                [ IsCone ],
                
@@ -912,135 +902,6 @@ end );
 
 ##############################
 ##
-##  Extra Operations
-##
-##############################
-
-# 
-# InstallGlobalFunction( "AddIfPossible",
-#                        [ IsList, IsVector ],
-#                        
-#   function( M, v )
-#   
-#   if M = [] then return [ v ]; fi;
-#    
-#   if SolutionPostIntMat(M, v )= true then 
-#   
-#              return M;
-#              
-#   fi;
-#   
-#   return Concatenation( M, [ v ] );
-#   
-# end );
-
-     
-InstallGlobalFunction( "testttt", 
-
- function( m )
- local com;
- 
- com:= Combinations( [1..m] );
- 
- return List(com, function( h )
-           local u;
-           u:= [1..m];
-           SubtractSet(u, h );
-           
-           return Concatenation(h,-u);
-           end );
-           
- 
- end );
- 
-InstallGlobalFunction( "testttt2",
-
- function( arg )
- local combi,m,l;
- l:= arg[1];
- m:= Length( l );
- combi:= testttt( m );
- 
-  return List( combi, h-> List( h, j->l[ AbsInt( j ) ]*j/AbsInt( j )  )   );
- 
-end);    
-  
- 
-# InstallGlobalFunction( "SolutionPostIntMat",
-#                        [ IsList, IsVector ],
-#                        
-#   function( M, v )
-#   local N, new_M, id, P, sol, kern, Ver,u,r;
-#   
-#    sol:= SolutionNullspaceIntMat(M, v ); 
-#   
-#    N:= sol[ 1 ];
-#   
-#    kern:= sol[ 2 ]; 
-#   
-#    if N = fail then return false;fi;
-#   
-#    if ForAll(N, n-> n>=0 ) then return true; fi;
-# 
-#    if Length( kern )= 0 then return false; fi;
-#    
-#    new_M:= TransposedMat( Concatenation( [ -v ], M ) );
-#    id := TransposedMat( Concatenation( [ ListWithIdenticalEntries( Length(M ), 0) ], IdentityMat( Length( M ) ) ) );
-# 
-#    P:= PolyhedronByInequalities( Concatenation( new_M,-new_M, id ) );
-#   
-#    u:= VerticesOfMainRatPolytope( P );
-#   
-#    r:= RayGeneratorsOfTailCone( P );
-#   
-#    Ver:= LatticePoints( Polytope( Concatenation(u, Iterated(List(u, t-> List( r, w->w+t ) ), Concatenation ) ) ) );
-#   
-#    return not IsZero( Ver ) and ForAny(Ver, i-> ForAll(i, IsInt ) );
-# end );
-#   
-# InstallGlobalFunction( "IfNotReducedReduceOnce",
-#                        [ IsList ],
-#                        
-# function( N )
-# local current_list,i, current_vec, M;
-# 
-# M:= List( Set( N ) );
-# for i in [ 1..Length( M ) ] do
-# 
-#     current_vec:= M[i];
-#     current_list:= ShallowCopy( M );
-#     Remove( current_list, i );
-#     if Length( AddIfPossible( current_list, current_vec ) )= Length( current_list ) then
-#     
-#        return [ false, current_list ];
-#        
-#     fi;
-# od;
-# 
-# return [ true, M ];
-# 
-# end );
-# 
-# InstallGlobalFunction( "ReduceTheBase",
-#                        [ IsList ],
-#   function( M )
-#   local current;
-#   
-#   current:= [ false, M ];
-#   
-#   while current[ 1 ]=false do
-#   
-#   current:= IfNotReducedReduceOnce( current[ 2 ] );
-#   
-#   od;
-#   
-#   return current;
-#   
-#   end );
-
-
-##############################
-##
 ## Methods
 ##
 ##############################
@@ -1203,7 +1064,7 @@ InstallMethod( IntersectionOfCones,
 end );
 
 ##
-InstallMethod( IntersectionOfConelist,
+InstallMethod( IntersectionOfCones,
                "for a list of convex cones",
                [ IsList ],
                
@@ -1212,7 +1073,7 @@ InstallMethod( IntersectionOfConelist,
     
     if list_of_cones = [ ] then
         
-        Error( "cannot create an empty cone\n" );
+        Error( "Cannot create an empty cone\n" );
         
     fi;
     
@@ -1223,12 +1084,6 @@ InstallMethod( IntersectionOfConelist,
     fi;
     
     grid := ContainingGrid( list_of_cones[ 1 ] );
-    
-  #  if not ForAll( list_of_cones, i -> IsIdenticalObj( ContainingGrid( i ), grid ) ) then
-        
-  #      Error( "all cones must lie in the same grid\n" );
-        
-  #  fi;
     
     inequalities := [ ];
     
@@ -1273,15 +1128,6 @@ InstallMethod( IntersectionOfConelist,
     return cone;
     
 end );
-
-##
-InstallMethod( Intersect2,
-               "for convex cones",
-               [ IsCone, IsCone ],
-               
-  IntersectionOfCones
-  
-);
 
 ##
 InstallMethod( Contains,
@@ -1362,16 +1208,7 @@ InstallMethod( \=,
     
 end );
 
-
 ##
-InstallMethod( \in,
-               "for ray generator and cone",
-               [ IsList, IsCone ],
-               
-RayGeneratorContainedInCone
-
-);
-
 InstallMethod( \in,
                " to see if a cone belongs to a list of cones",
                [ IsCone, IsList ],
@@ -1382,9 +1219,10 @@ InstallMethod( \in,
 
 end );
 
+BindGlobal( "RayGeneratorContainedInCone", \in );
 
 ##
-InstallMethod( RayGeneratorContainedInCone,
+InstallMethod( \in,
                "for cones",
                [ IsList, IsCone ],
                
@@ -1400,7 +1238,7 @@ InstallMethod( RayGeneratorContainedInCone,
 end );
 
 ##
-InstallMethod( RayGeneratorContainedInCone,
+InstallMethod( \in,
                "for cones",
                [ IsList, IsCone and IsSimplicial ],
                
@@ -1418,11 +1256,11 @@ InstallMethod( RayGeneratorContainedInCone,
 end );
 
 ##
-InstallMethod( RayGeneratorContainedInRelativeInterior,
+InstallMethod( IsRelativeInteriorRay,
                "for cones",
                [ IsList, IsCone ],
                
-  function( raygen, cone )
+  function( ray, cone )
     local ineq, mineq, equations;
     
     ineq := NonReducedInequalities( cone );
@@ -1433,9 +1271,9 @@ InstallMethod( RayGeneratorContainedInRelativeInterior,
     
     ineq := Difference( ineq, equations );
     
-    ineq := List( ineq, i -> i * raygen );
+    ineq := List( ineq, i -> i * ray );
     
-    equations := List( equations, i -> i * raygen );
+    equations := List( equations, i -> i * ray );
     
     return ForAll( ineq, i -> i > 0 ) and ForAll( equations, i -> i = 0 );
     

@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex01.tst");
 
-# doc/_Chapter_Cones.xml:264-391
+# doc/_Chapter_Cones.xml:335-461
 gap> P:= Cone( [ [ 2, 7 ], [ 0, 12 ], [ -2, 5 ] ] );
 <A cone in |R^2>
 gap> d:= DefiningInequalities( P );
@@ -33,21 +33,20 @@ gap> RayGenerators( P_dual );
 [ [ -7, 2 ], [ 5, 2 ] ]
 gap> Dimension( P );
 2
-gap> Facets( P );
-[ <A ray in |R^2>, <A ray in |R^2> ]
-gap> List( last, RayGenerators );
+gap> List( Facets( P ), RayGenerators );
 [ [ [ -2, 5 ] ], [ [ 2, 7 ] ] ]
 gap> faces := Faces( P );
 [ <A cone in |R^2>, <A cone in |R^2>, <A ray in |R^2>, 
  <A ray in |R^2> ]
-gap> #e
-> RelativeInteriorRayGenerator( P );
+gap> RelativeInteriorRay( P );
 [ -2, 41 ]
+gap> IsRelativeInteriorRay( [ -2, 41 ], P );
+true
+gap> IsRelativeInteriorRay( [ 2, 7 ], P );
+false
 gap> LinealitySpaceGenerators( P );
 [  ]
 gap> IsRegularCone( P );
-false
-gap> IsEmptyCone( P );
 false
 gap> IsRay( P );
 false

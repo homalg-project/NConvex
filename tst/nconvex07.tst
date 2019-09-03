@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex07.tst");
 
-# doc/_Chapter_Polyhedrons.xml:251-256
+# doc/_Chapter_Polyhedrons.xml:293-298
 gap> Q := PolyhedronByInequalities( [ [-3, 4, 6 ], [ 3, -4, -6 ] ] );
 <A polyhedron in |R^2 >
 gap> LatticePointsGenerators( Q );
