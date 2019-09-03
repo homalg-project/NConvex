@@ -74,7 +74,10 @@ ArchiveFormats := ".tar.gz",
 ##
 Status := "dev",
 
-AbstractHTML   :=  "",
+AbstractHTML :=
+  "The <span class='pkgname'>NConvex</span> package is a GAP package. \
+  Its aim is to carry out polyhedral constructions and computations,\
+  namely computing properties and attributes of cones, polyhedrons, polytopes and fans.",
 
 PackageDoc := rec(
   BookName  := "NConvex",
