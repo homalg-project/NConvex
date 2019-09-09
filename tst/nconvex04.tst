@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex04.tst");
 
-# doc/_Chapter_Fans.xml:197-212
+# doc/_Chapter_Fans.xml:344-359
 gap> rays := [ [ 1,0 ], [ 0,1 ] ];;
 gap> max_cones := [ [1,2] ];;
 gap> fan_affine2 := Fan( rays, max_cones );;
