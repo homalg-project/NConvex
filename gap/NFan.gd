@@ -77,20 +77,50 @@ DeclareOperation( "FanFromTriangulation",
 ##  Attributes
 ##
 ##################################
-                 
+
+#! @Chapter Fans
+#! @Section Attributes
+#! 
+
+#! @Arguments F
+#! @Returns a list
+#! @Description
+#! The input is a fan <A>F</A>. The output is the set of all ray generators of the maximal cones in the fan.
 DeclareAttribute( "RayGenerators",
                     IsFan );
-                    
+
+#! @Arguments F
+#! @Returns a list
+#! @Description
+#! The input is a fan <A>F</A>. The output is the given or defining set of ray generators of the maximal cones in the fan.
 DeclareAttribute( "GivenRayGenerators",
                     IsFan );                    
-                    
+
+#! @Arguments F
+#! @Returns a list
+#! @Description
+#! The input is a fan <A>F</A>. The output is a list of lists.
+#! which represent an incidence matrix for the correspondence of the rays and the maximal cones of the fan <A>F</A>.
+#! The i'th list in the result represents the i'th maximal cone of <A>F</A>.
+#! In such a list, the j'th entry is $1$ if the j'th ray is in the cone, 0 otherwise.
 DeclareAttribute( "RaysInMaximalCones",
                   IsFan );
 
-DeclareAttribute( "RaysInAllCones", 
+#! @Arguments F
+#! @Returns a list
+#! @Description
+#! The input is a fan <A>F</A>. The output is a list of the maximal cones of <A>F</A>.
+DeclareAttribute( "MaximalCones",
                   IsFan );
 
-DeclareAttribute( "AllCones",
+#! @Arguments F
+#! @Returns a list
+#! @Description
+#! Description
+DeclareAttribute( "FVector",
+                  IsFan );
+ 
+DeclareAttribute( "RaysInAllCones", 
                   IsFan );
 
 DeclareAttribute( "RaysInTheGivenMaximalCones",
@@ -99,12 +129,9 @@ DeclareAttribute( "RaysInTheGivenMaximalCones",
 DeclareAttribute( "GivenMaximalCones",
                   IsFan );
 
-DeclareAttribute( "MaximalCones",
+DeclareAttribute( "AllCones",
                   IsFan );
 
-DeclareAttribute( "FVector",
-                  IsFan );
-                  
 DeclareAttribute( "Rays",
                   IsFan );
 
@@ -116,30 +143,63 @@ DeclareAttribute( "PrimitiveCollections",
 ##  Properties
 ##
 #################################
+#! @Chapter Fans
+#! @Section Properties
+#! 
 
+#! @Arguments F
+#! @Returns a true or false
+#! @Description
+#! It checks whether the constructed fan is well defined or not.
 DeclareProperty( "IsWellDefinedFan",
                   IsFan );
 
+#! @Arguments F
+#! @Returns a true or false
+#! @Description
+#! Checks whether the fan is complete, i.e. if it’s support is the whole space.
 DeclareProperty( "IsComplete",
                    IsFan );
 
+#! @Arguments F
+#! @Returns a true or false
+#! @Description
+#! Checks whether the fan is pointed, i.e., that every cone it contains is pointed.
 DeclareProperty( "IsPointed",
                  IsFan );
 
+#! @Arguments F
+#! @Returns a true or false
+#! @Description
+#! Checks if the fan is smooth, i.e. if every cone in the fan is smooth.
 DeclareProperty( "IsSmooth",
                  IsFan );
 
+#! @Arguments F
+#! @Returns a true or false
+#! @Description
+#! Checks if the fan is simplicial, i.e. if every cone in the fan is simplicial.
 DeclareProperty( "IsSimplicial",
                  IsFan );
 
-# The name IsNormal is taken in gap.
+#! @Arguments F
+#! @Returns a true or false
+#! @Description
+#! Checks if the fan is normal as described in (Theorem 4.7, Combinatorial convexity and algebraic geometry, Ewald, Guenter).
 DeclareProperty( "IsNormalFan",
                  IsFan );
 
-# Synonyme to is normal fan
+#! @Arguments F
+#! @Returns a true or false
+#! @Description
+#! Synonyme to <C>IsNormalFan</C>
 DeclareProperty( "IsRegularFan",
                  IsFan );
 
+#! @Arguments F
+#! @Returns a true or false
+#! @Description
+#! Checks whether the fan is a fano fan.
 DeclareProperty( "IsFanoFan",
                  IsFan );
 

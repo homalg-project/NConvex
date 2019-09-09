@@ -292,11 +292,16 @@ DeclareOperation( "\*",
 DeclareOperation( "\*",
                   [ IsHomalgMatrix, IsCone ] );
 
+#! @Arguments C
+#! @Returns a list
+#! @Description  
+#! It returns a list of inequalities that define the cone.
 DeclareOperation( "NonReducedInequalities",
                   [ IsCone ] );
 
 DeclareOperation( "StarSubdivisionOfIthMaximalCone",
                       [ IsFan, IsInt ] );
+
 
 DeclareOperation( "StarFan", 
                       [ IsCone ] );
