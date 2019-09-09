@@ -15,7 +15,7 @@ DeclareGlobalVariable( "HOMALG_RATIONALS" );
 InstallValue( HOMALG_RATIONALS, HomalgFieldOfRationals(  ) );
 
 DeclareCategory( "IsConvexObject", 
-                 IsObject );
+                 IsAttributeStoringRep );
 
 
 DeclareRepresentation( "IsExternalConvexObjectRep",
