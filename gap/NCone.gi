@@ -988,7 +988,7 @@ InstallMethod( NonReducedInequalities,
     
     if HasDefiningInequalities( cone ) then
         
-        return DefiningInequalities( cone );
+      return DefiningInequalities( cone );
         
     fi;
     
@@ -996,19 +996,19 @@ InstallMethod( NonReducedInequalities,
     
     if IsBound( cone!.input_equalities ) then
         
-        inequalities := Concatenation( inequalities, cone!.input_equalities, - cone!.input_equalities );
+      inequalities := Concatenation( inequalities, cone!.input_equalities, - cone!.input_equalities );
         
     fi;
     
     if IsBound( cone!.input_inequalities ) then
         
-        inequalities := Concatenation( inequalities, cone!.input_inequalities );
+      inequalities := Concatenation( inequalities, cone!.input_inequalities );
         
     fi;
     
     if inequalities <> [ ] then
         
-        return inequalities;
+      return inequalities;
         
     fi;
     
