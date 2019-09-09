@@ -1208,17 +1208,6 @@ InstallMethod( \=,
     
 end );
 
-##
-InstallMethod( \in,
-               " to see if a cone belongs to a list of cones",
-               [ IsCone, IsList ],
-  function( cone, cones_list )
-  local l;
-  
-  return ForAll( cones_list, i-> cone = i );
-
-end );
-
 BindGlobal( "RayGeneratorContainedInCone", \in );
 
 ##
