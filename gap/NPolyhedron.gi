@@ -206,9 +206,18 @@ InstallMethod( VerticesOfMainPolytope,
               [ IsPolyhedron ], 
               
   function( polyhedron )
-  
-  return Vertices( MainPolytope( polyhedron ) );
-  
+    local V;
+    
+    V := VerticesOfMainRatPolytope( polyhedron );
+    
+    if ForAll( V, v -> ForAll( v, IsInt ) ) then
+
+      return V;
+
+    fi;
+
+    return Vertices( MainPolytope( polyhedron ) );
+
 end );
 
 ##
