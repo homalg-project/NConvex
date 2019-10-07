@@ -157,7 +157,7 @@ DeclareProperty( "IsWellDefinedFan",
 #! @Arguments F
 #! @Returns a true or false
 #! @Description
-#! Checks whether the fan is complete, i.e. if it’s support is the whole space.
+#! Checks whether the fan is complete, i.e. if its support is the whole space.
 DeclareProperty( "IsComplete",
                    IsFan );
 
