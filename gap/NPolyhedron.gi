@@ -196,9 +196,18 @@ InstallMethod( MainPolytope,
               [ IsPolyhedron ],
   
   function( polyhedron )
+    local V;
+
+    V := VerticesOfMainRatPolytope( polyhedron );
+
+    if ForAll( V, v -> ForAll( v, IsInt ) ) then
+
+      return MainRatPolytope( polyhedron );
+
+    fi;
   
-  return Polytope( LatticePointsGenerators( polyhedron )[ 1 ] );
-  
+    return Polytope( LatticePointsGenerators( polyhedron )[ 1 ] );
+    
 end );
 
 ##
