@@ -115,7 +115,8 @@ List( faces, Dimension );
 #! [ 0, 3, 2, 1, 2 ]
 L_using_4ti2 := [ [ [ 0, 0, 0 ] ], [ [ -2, -1, 10 ], 
 [ 0, 0, 1 ], [ 2, 1, 2 ] ],  [ [ 1, 1, -3 ] ] ];;
-L_using_Normaliz := [ [ [ 0, 0, 0 ] ], [ [ -1, 0, 7 ], [ 0, 0, 1 ], [ 1, 0, 5 ] ], [ [ 1, 1, -3 ] ] ];;
+L_using_Normaliz := [ [ [ 0, 0, 0 ] ], [ [ -1, 0, 7 ], 
+[ 0, 0, 1 ], [ 1, 0, 5 ] ], [ [ 1, 1, -3 ] ] ];;
 L := LatticePointsGenerators( P );;
 L = L_using_4ti2 or L = L_using_Normaliz;
 #! true
