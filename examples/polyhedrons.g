@@ -24,7 +24,7 @@ Q := Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );
 VerticesOfMainRatPolytope( Q );
 #! [ [ 0, 6 ], [ 5, 0 ] ]
 V_using_4ti2 := [ [ -3, -16 ], [ -3, 0 ] ];;
-V_using_normaliz := [ [ 0, -10 ], [ 0, 6 ] ];;
+V_using_normaliz := [ [ 0, 6 ], [ 5, 0 ] ];;
 V := VerticesOfMainPolytope( Q );;
 V = V_using_4ti2 or V = V_using_normaliz;
 #! true
