@@ -9,6 +9,5 @@ ReadPackage( "NConvex", "gap/NFan.gi" );
 ReadPackage( "NConvex", "gap/NCone.gi");
 ReadPackage( "NConvex", "gap/NPolytope.gi");
 ReadPackage( "NConvex", "gap/NPolyhedron.gi");
-ReadPackage( "NConvex", "gap/NLinearProgram.gi");
 
 
