@@ -10,85 +10,13 @@
 #
 gap> START_TEST( "nconvex09.tst");
 
-# doc/_Chapter_Polytopes.xml:379-460
-gap> P:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 2 ] ] );
-<A polytope in |R^3>
-gap> IsNormalPolytope( P );
-false
-gap> IsVeryAmple( P );
-false
-gap> Q:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 1 ] ] );
-<A polytope in |R^3>
-gap> IsNormalPolytope( Q );
-true
-gap> IsVeryAmple( Q );
-true
-gap> Q;
-<A normal very ample polytope in |R^3 with 4 vertices>
-gap> T:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 4 ] ] ); 
-<A polytope in |R^3>
-gap> I:= Polytope( [ [ 0, 0, 0 ], [ 0, 0, 1 ] ] );
-<A polytope in |R^3>
-gap> J:= T + I; 
-<A polytope in |R^3>
-gap> IsVeryAmple( J );
-true
-gap> IsNormalPolytope( J );
-false
-gap> J;
-<A very ample polytope in |R^3 with 8 vertices>
-gap> # Example 2.2.20 Cox, Toric Varieties
-> A:= [ [1,1,1,0,0,0], [1,1,0,1,0,0], [1,0,1,0,1,0], [ 1,0,0,1,0,1], 
-> [ 1,0,0,0,1,1], [ 0,1,1,0,0,1], [0,1,0,1,1,0], [0,1,0,0,1,1], 
-> [0,0,1,1,1,0], [0,0,1,1,0,1] ];
-[ [ 1, 1, 1, 0, 0, 0 ], [ 1, 1, 0, 1, 0, 0 ], [ 1, 0, 1, 0, 1, 0 ],
-[ 1, 0, 0, 1, 0, 1 ], [ 1, 0, 0, 0, 1, 1 ], [ 0, 1, 1, 0, 0, 1 ], 
- [ 0, 1, 0, 1, 1, 0 ], [ 0, 1, 0, 0, 1, 1 ], [ 0, 0, 1, 1, 1, 0 ], 
-[ 0, 0, 1, 1, 0, 1 ] ]
-gap> H:= Polytope( A );
-<A polytope in |R^6>
-gap> IsVeryAmple( H );   
-true
-gap> IsNormalPolytope( H );
-false
-gap> H;
-<A very ample polytope in |R^6 with 10 vertices>
-gap> l:= [ [ 0, 0, 1 ], [ 0, 0, 0 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 0, 1, 0 ], 
-> [ 0, 1, 1 ], [ 1, 1, 4 ], [ 1, 1, 5 ] ];;
-gap> P:= Polytope( l );
-<A polytope in |R^3>
-gap> IsNormalPolytope( P );
-false
-gap> lattic_points:= LatticePoints( P );
-[ [ 0, 0, 0 ], [ 0, 0, 1 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 1, 0, 0 ], [ 1, 0, 1 ], 
-[ 1, 1, 4 ], [ 1, 1, 5 ] ]
-gap> u:= Cartesian( lattic_points, lattic_points );;
-gap> k:= Set( List( u, u-> u[1]+u[2] ) );
-[ [ 0, 0, 0 ], [ 0, 0, 1 ], [ 0, 0, 2 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 0, 1, 2 ],
-[ 0, 2, 0 ], [ 0, 2, 1 ], [ 0, 2, 2 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 1, 0, 2 ], 
-[ 1, 1, 0 ], [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 4 ], [ 1, 1, 5 ], [ 1, 1, 6 ], 
-[ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 2, 6 ], [ 2, 0, 0 ], [ 2, 0, 1 ], [ 2, 0, 2 ], 
-[ 2, 1, 4 ], [ 2, 1, 5 ], [ 2, 1, 6 ], [ 2, 2, 8 ], [ 2, 2, 9 ], [ 2, 2, 10 ] ]
-gap> Q:= 2*P;
-<A polytope in |R^3 with 8 vertices>
-gap> LatticePoints( Q );
-[ [ 0, 0, 0 ], [ 0, 0, 1 ], [ 0, 0, 2 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 0, 1, 2 ],
-[ 0, 2, 0 ], [ 0, 2, 1 ], [ 0, 2, 2 ], [ 1, 0, 0 ], 
-  [ 1, 0, 1 ], [ 1, 0, 2 ], [ 1, 1, 0 ], [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 3 ], 
-[ 1, 1, 4 ], [ 1, 1, 5 ], [ 1, 1, 6 ], [ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 2, 6 ], 
-[ 2, 0, 0 ], [ 2, 0, 1 ], [ 2, 0, 2 ], [ 2, 1, 4 ], 
-  [ 2, 1, 5 ], [ 2, 1, 6 ], [ 2, 2, 8 ], [ 2, 2, 9 ], [ 2, 2, 10 ] ]
-gap> P:= Polytope( [ [ 1, 1 ], [ 1, -1 ], [ -1, 1 ], [ -1, -1 ] ] );
-<A polytope in |R^2>
-gap> Q:= PolarPolytope( P );
-<A polytope in |R^2>
-gap> Vertices( Q );
-[ [ -1, 0 ], [ 0, -1 ], [ 0, 1 ], [ 1, 0 ] ]
-gap> T := PolarPolytope( Q );
-<A polytope in |R^2>
-gap> Vertices( T );
-[ [ -1, -1 ], [ -1, 1 ], [ 1, -1 ], [ 1, 1 ] ]
-gap> P:= Polytope( [ [ 0, 0 ], [ 1, -1], [ -1, 1 ], [ -1, -1 ] ] );
-<A polytope in |R^2>
-gap> # PolarPolytope( P );;
+# doc/_Chapter_Polyhedrons.xml:372-381
+gap> P := PolyhedronByInequalities( [ [ -100, 1, 0 ], [ 200, -1, 0 ],
+> [ -80, 0, 1 ], [ 170, 0, -1 ], [ -200, 1, 1 ] ] );;
+gap> max := SolveLinearProgram( P, "max", [ 1, -2, 5 ] );
+[ [ 100, 170 ], 651 ]
+gap> min := SolveLinearProgram( P, "min", [ 1, -2, 5 ] );
+[ [ 200, 80 ], 1 ]
+gap> VerticesOfMainRatPolytope( P );
+[ [ 100, 100 ], [ 100, 170 ], [ 120, 80 ], [ 200, 80 ], [ 200, 170 ] ]
 gap> STOP_TEST("nconvex09.tst", 1 );

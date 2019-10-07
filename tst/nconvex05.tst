@@ -32,7 +32,7 @@ gap> Q := Polyhedron( [ [ 5, 0 ], [ 0, 6 ] ], [ [ 1, 2 ] , [ -1, -2 ] ] );
 gap> VerticesOfMainRatPolytope( Q );
 [ [ 0, 6 ], [ 5, 0 ] ]
 gap> V_using_4ti2 := [ [ -3, -16 ], [ -3, 0 ] ];;
-gap> V_using_normaliz := [ [ 0, -10 ], [ 0, 6 ] ];;
+gap> V_using_normaliz := [ [ 0, 6 ], [ 5, 0 ] ];;
 gap> V := VerticesOfMainPolytope( Q );;
 gap> V = V_using_4ti2 or V = V_using_normaliz;
 true

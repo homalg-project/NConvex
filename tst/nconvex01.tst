@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex01.tst");
 
-# doc/_Chapter_Cones.xml:335-461
+# doc/_Chapter_Cones.xml:335-462
 gap> P:= Cone( [ [ 2, 7 ], [ 0, 12 ], [ -2, 5 ] ] );
 <A cone in |R^2>
 gap> d:= DefiningInequalities( P );
@@ -124,7 +124,8 @@ gap> List( faces, Dimension );
 [ 0, 3, 2, 1, 2 ]
 gap> L_using_4ti2 := [ [ [ 0, 0, 0 ] ], [ [ -2, -1, 10 ], 
 > [ 0, 0, 1 ], [ 2, 1, 2 ] ],  [ [ 1, 1, -3 ] ] ];;
-gap> L_using_Normaliz := [ [ [ 0, 0, 0 ] ], [ [ -1, 0, 7 ], [ 0, 0, 1 ], [ 1, 0, 5 ] ], [ [ 1, 1, -3 ] ] ];;
+gap> L_using_Normaliz := [ [ [ 0, 0, 0 ] ], [ [ -1, 0, 7 ], 
+> [ 0, 0, 1 ], [ 1, 0, 5 ] ], [ [ 1, 1, -3 ] ] ];;
 gap> L := LatticePointsGenerators( P );;
 gap> L = L_using_4ti2 or L = L_using_Normaliz;
 true
