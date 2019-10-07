@@ -184,3 +184,27 @@ DeclareProperty( "IsPointed",
 #DeclareGlobalFunction( "Draw" );
 
 #! @InsertChunk example3
+
+#! @Section Solving Linear programs
+#! The problem of solving linear programs can be solved in the gap package
+#! <C>CddInterface</C>, which is required by <C>NConvex</C>.
+
+#! @Arguments P, max_or_min, target_func
+#! @Returns a list or fail
+#! @Description  
+#! The input is a polyhedron <C>P</C>, a string <C>max_or_min</C> $\in$ {"max", "min"} and an objective function 
+#! <C>target_func</C>, which we want to maximize or minimize. If the linear program has an optimal solution,
+#! the operation returns a list of two entries, the solution vector and the optimal value of the objective function,
+#! otherwise it returns fail.
+DeclareOperation( "SolveLinearProgram", [ IsPolyhedron, IsString, IsList ] );
+
+#! @Arguments P, max_or_min, target_func
+#! @Returns a list or fail
+#! @Description  
+#! The input is a polytope <C>P</C>, a string <C>max_or_min</C> $\in$ {"max","min"} and an objective function 
+#! <C>target_func</C>, which we want to maximize or minimize. If the linear program has an optimal solution,
+#! the operation returns a list of two entries, the solution vector and the optimal value of the objective function,
+#! otherwise it returns fail.
+DeclareOperation( "SolveLinearProgram", [ IsPolytope, IsString, IsList ] );
+
+#! @InsertChunk linear_program
