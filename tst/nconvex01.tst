@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex01.tst");
 
-# doc/_Chapter_Cones.xml:335-462
+# doc/_Chunks.xml:2-129
 gap> P:= Cone( [ [ 2, 7 ], [ 0, 12 ], [ -2, 5 ] ] );
 <A cone in |R^2>
 gap> d:= DefiningInequalities( P );
@@ -137,4 +137,6 @@ gap> Q_x1x3:= FourierProjection(P, 2 );
 <A cone in |R^2>
 gap> RayGenerators( Q_x1x3 );
 [ [ -1, 3 ], [ 1, -3 ], [ 1, 1 ] ]
+
+#
 gap> STOP_TEST("nconvex01.tst", 1 );

@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex05.tst");
 
-# doc/_Chapter_Polyhedrons.xml:221-269
+# doc/_Chunks.xml:275-323
 gap> P := Polyhedron( [ [ 1, 1 ], [ 4, 7 ] ], [ [ 1, -1 ], [ 1, 1 ] ] );
 <A polyhedron in |R^2>
 gap> VerticesOfMainRatPolytope( P );
@@ -58,4 +58,6 @@ gap> DefiningInequalities( Q );
 [ [ 6, 2, -1 ], [ 10, -2, 1 ] ]
 gap> Q;
 <A polyhedron in |R^2 of dimension 2>
+
+#
 gap> STOP_TEST("nconvex05.tst", 1 );

@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex02.tst");
 
-# doc/_Chapter_Fans.xml:47-107
+# doc/_Chunks.xml:138-198
 gap> F1 := Fan( [ [ [ 2, 1 ], [ 1, 2 ] ], [ [ 2, 1 ], [ 1, -1 ] ],
 >              [ [ -3, 1 ], [ -1, -3 ] ] ] );
 <A fan in |R^2>             
@@ -70,4 +70,6 @@ gap> Dimension( P3 );
 3
 gap> PrimitiveCollections( P3 );
 [ [ 4, 3 ], [ 5, 2 ], [ 6, 1 ] ]
+
+#
 gap> STOP_TEST("nconvex02.tst", 1 );

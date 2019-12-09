@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex04.tst");
 
-# doc/_Chapter_Fans.xml:344-359
+# doc/_Chunks.xml:254-269
 gap> rays := [ [ 1,0 ], [ 0,1 ] ];;
 gap> max_cones := [ [1,2] ];;
 gap> fan_affine2 := Fan( rays, max_cones );;
@@ -25,4 +25,6 @@ gap> fan_blowup_affine3 := StarSubdivisionOfIthMaximalCone( fan_affine3, 1 );
 <A fan in |R^3>
 gap> Length( RaysInMaximalCones( fan_blowup_affine3 ) );
 3
+
+#
 gap> STOP_TEST("nconvex04.tst", 1 );

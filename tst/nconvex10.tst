@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex10.tst");
 
-# doc/_Chapter_Polytopes.xml:379-460
+# doc/_Chunks.xml:411-492
 gap> P:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 2 ] ] );
 <A polytope in |R^3>
 gap> IsNormalPolytope( P );
@@ -91,4 +91,6 @@ gap> Vertices( T );
 gap> P:= Polytope( [ [ 0, 0 ], [ 1, -1], [ -1, 1 ], [ -1, -1 ] ] );
 <A polytope in |R^2>
 gap> # PolarPolytope( P );;
+
+#
 gap> STOP_TEST("nconvex10.tst", 1 );

@@ -10,9 +10,11 @@
 #
 gap> START_TEST( "nconvex11.tst");
 
-# doc/_Chapter_Polytopes.xml:467-472
+# doc/_Chunks.xml:499-504
 gap> P := PolytopeByInequalities( [ [ 0, 0, 1 ], [ 1, -1, -1 ], [ 1, 1, -1 ] ] );
 <A polytope in |R^2>
 gap> Vertices( P );
 [ [ -1, 0 ], [ 0, 1 ], [ 1, 0 ] ]
+
+#
 gap> STOP_TEST("nconvex11.tst", 1 );

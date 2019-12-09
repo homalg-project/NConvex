@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex08.tst");
 
-# doc/_Chapter_Polyhedrons.xml:309-318
+# doc/_Chunks.xml:363-372
 gap> P := PolyhedronByInequalities( [ [ -1, 2, 3, 2, 0 ], [ -3, 7, 1, 0, 5 ], 
 > [ 1, -2, -3, -2, 0 ], [ 3, -7, -1, 0, -5 ] ] );
 <A polyhedron in |R^4 >
@@ -19,4 +19,6 @@ gap> L_using_normaliz := [ [ [ -19, 1, 18, 27 ] ], [  ], [ [ -1, 2, -2, 1 ], [ 5
 gap> L := LatticePointsGenerators( P );;
 gap> L = L_using_4ti2 or L = L_using_normaliz;
 true
+
+#
 gap> STOP_TEST("nconvex08.tst", 1 );

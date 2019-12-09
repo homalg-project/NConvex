@@ -10,7 +10,7 @@
 #
 gap> START_TEST( "nconvex09.tst");
 
-# doc/_Chapter_Polyhedrons.xml:372-381
+# doc/_Chunks.xml:394-403
 gap> P := PolyhedronByInequalities( [ [ -100, 1, 0 ], [ 200, -1, 0 ],
 > [ -80, 0, 1 ], [ 170, 0, -1 ], [ -200, 1, 1 ] ] );;
 gap> max := SolveLinearProgram( P, "max", [ 1, -2, 5 ] );
@@ -19,4 +19,6 @@ gap> min := SolveLinearProgram( P, "min", [ 1, -2, 5 ] );
 [ [ 200, 80 ], 1 ]
 gap> VerticesOfMainRatPolytope( P );
 [ [ 100, 100 ], [ 100, 170 ], [ 120, 80 ], [ 200, 80 ], [ 200, 170 ] ]
+
+#
 gap> STOP_TEST("nconvex09.tst", 1 );
