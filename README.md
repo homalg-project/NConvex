@@ -3,7 +3,7 @@
 
 The NConvex package
 =========================
-version 2019.09.02
+version 2019.12.04
 
 Introduction
 ------------
