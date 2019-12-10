@@ -1,314 +1,35 @@
   
-  [1X2 [33X[0;0YCones[133X[101X
+  [1X2 [33X[0;0YConvex objects[133X[101X
   
   
-  [1X2.1 [33X[0;0YCreating cones[133X[101X
+  [1X2.1 [33X[0;0YAttributes[133X[101X
   
-  [1X2.1-1 ConeByInequalities[101X
+  [1X2.1-1 AmbientSpaceDimension[101X
   
-  [33X[1;0Y[29X[2XConeByInequalities[102X( [3Xarg[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [13XCone[113X Object[133X
+  [33X[1;0Y[29X[2XAmbientSpaceDimension[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yinteger[133X
   
-  [33X[0;0YThe function takes a list of lists [23X[L_1, L_2, ...][123X where each [23XL_j[123X represents
-  an  inequality  and  returns  the cone defined by them. For example the [23Xj[123X'th
-  entry   [23XL_j  =  [a_{j1},a_{j2},...,a_{jn}][123X  corresponds  to  the  inequality
-  [23X\sum_{i=1}^n a_{ji}x_i \geq 0[123X.[133X
+  [33X[0;0YReturns  the  dimension  of the ambient space, i.e., the space that contains
+  the convex object.[133X
   
-  [1X2.1-2 ConeByEqualitiesAndInequalities[101X
+  [1X2.1-2 Dimension[101X
   
-  [33X[1;0Y[29X[2XConeByEqualitiesAndInequalities[102X( [3Xarg[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [13XCone[113X Object[133X
+  [33X[1;0Y[29X[2XDimension[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yinteger[133X
   
-  [33X[0;0YThe  function  takes  two  lists.  The  first list is the equalities and the
-  second is the inequalities and returns the cone defined by them.[133X
+  [33X[0;0YReturns the dimension of the covex object.[133X
   
-  [1X2.1-3 Cone[101X
+  [1X2.1-3 IsFullDimensional[101X
   
-  [33X[1;0Y[29X[2XCone[102X( [3Xarg[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [13XCone[113X Object[133X
+  [33X[1;0Y[29X[2XIsFullDimensional[102X( [3Xobj[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Yboolian[133X
   
-  [33X[0;0YThe  function  takes  a  list  in  which every entry represents a ray in the
-  ambient vector space and returns the cone defined by them.[133X
+  [33X[0;0YReturns whether the convex object is full dimensional or not.[133X
   
-  [1X2.1-4 Cone[101X
+  [1X2.1-4 InteriorPoint[101X
   
-  [33X[1;0Y[29X[2XCone[102X( [3Xcdd_cone[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [13XCone[113X Object[133X
+  [33X[1;0Y[29X[2XInteriorPoint[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya point in the object[133X
   
-  [33X[0;0YThis function takes a cone defined in [13XCddInterface[113X and converts it to a cone
-  in [13XNConvex[113X[133X
-  
-  
-  [1X2.2 [33X[0;0YAttributes of Cones[133X[101X
-  
-  [1X2.2-1 DefiningInequalities[101X
-  
-  [33X[1;0Y[29X[2XDefiningInequalities[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [13XList[113X[133X
-  
-  [33X[0;0YReturns the list of the defining inequalities of the cone [3Xcone[103X.[133X
-  
-  [1X2.2-2 EqualitiesOfCone[101X
-  
-  [33X[1;0Y[29X[2XEqualitiesOfCone[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [13XList[113X[133X
-  
-  [33X[0;0YReturns  the list of the equalities in the defining inequalities of the cone
-  [3Xcone[103X.[133X
-  
-  [1X2.2-3 DualCone[101X
-  
-  [33X[1;0Y[29X[2XDualCone[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya cone[133X
-  
-  [33X[0;0YReturns the dual cone of the cone [3Xcone[103X.[133X
-  
-  [1X2.2-4 Faces[101X
-  
-  [33X[1;0Y[29X[2XFaces[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of cones[133X
-  
-  [33X[0;0YReturns the list of all faces of the cone [3Xcone[103X.[133X
-  
-  [1X2.2-5 Facets[101X
-  
-  [33X[1;0Y[29X[2XFacets[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of cones[133X
-  
-  [33X[0;0YReturns the list of all faces of the cone [3Xcone[103X.[133X
-  
-  [1X2.2-6 RelativeInteriorRayGenerator[101X
-  
-  [33X[1;0Y[29X[2XRelativeInteriorRayGenerator[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya point[133X
-  
-  [33X[0;0YReturns an interior point in the cone [3Xcone[103X.[133X
-  
-  [1X2.2-7 HilbertBasis[101X
-  
-  [33X[1;0Y[29X[2XHilbertBasis[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YReturns the Hilbert basis of the cone [3Xcone[103X[133X
-  
-  [1X2.2-8 HilbertBasisOfDualCone[101X
-  
-  [33X[1;0Y[29X[2XHilbertBasisOfDualCone[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YReturns the Hilbert basis of the dual cone of the cone [3Xcone[103X[133X
-  
-  [1X2.2-9 LinealitySpaceGenerators[101X
-  
-  [33X[1;0Y[29X[2XLinealitySpaceGenerators[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YReturns a basis of the lineality space of the cone [3Xcone[103X.[133X
-  
-  [1X2.2-10 ExternalCddCone[101X
-  
-  [33X[1;0Y[29X[2XExternalCddCone[102X( [3Xcone[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CddPolyhedron[133X
-  
-  [33X[0;0YConverts the cone to a CddPolyhedron. The functions of CddInterface can then
-  be applied on this polyhedron.[133X
-  
-  
-  [1X2.3 [33X[0;0YProperties of Cones[133X[101X
-  
-  [1X2.3-1 IsRegularCone[101X
-  
-  [33X[1;0Y[29X[2XIsRegularCone[102X( [3Xcone[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
-  
-  [33X[0;0YReturns if the cone [3Xcone[103X is regular or not.[133X
-  
-  [1X2.3-2 IsEmptyCone[101X
-  
-  [33X[1;0Y[29X[2XIsEmptyCone[102X( [3Xcone[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
-  
-  [33X[0;0YReturns if the cone [3Xcone[103X is empty or not.[133X
-  
-  [1X2.3-3 IsRay[101X
-  
-  [33X[1;0Y[29X[2XIsRay[102X( [3Xcone[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
-  
-  [33X[0;0YReturns if the cone [3Xcone[103X is ray or not.[133X
-  
-  [1X2.3-4 IsZero[101X
-  
-  [33X[1;0Y[29X[2XIsZero[102X( [3Xcone[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
-  
-  [33X[0;0YReturns whether the cone is the zero cone or not.[133X
-  
-  
-  [1X2.4 [33X[0;0YOperations on cones[133X[101X
-  
-  [1X2.4-1 FourierProjection[101X
-  
-  [33X[1;0Y[29X[2XFourierProjection[102X( [3Xcone[103X, [3Xm[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya cone[133X
-  
-  [33X[0;0YReturns  the  projectiopn  of  the  cone  on  the space (O, [23Xx_1,...,x_{m-1},
-  x_{m+1},...,x_n[123X ).[133X
-  
-  [1X2.4-2 IntersectionOfCones[101X
-  
-  [33X[1;0Y[29X[2XIntersectionOfCones[102X( [3Xcone1[103X, [3Xcone2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya cone[133X
-  
-  [33X[0;0YReturns the intersection of the cones [3Xcone1[103X and [3Xcone2[103X.[133X
-  
-  [1X2.4-3 IntersectionOfConelist[101X
-  
-  [33X[1;0Y[29X[2XIntersectionOfConelist[102X( [[3Xcone1[103X, [3Xcone2[103X, [3X...[103X] ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya cone[133X
-  
-  [33X[0;0YReturns the intersection of all cones in the list [3X[cone1[103X, [3Xcone2,...][103X.[133X
-  
-  [1X2.4-4 Contains[101X
-  
-  [33X[1;0Y[29X[2XContains[102X( [3Xcone1[103X, [3Xcone2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya true or false[133X
-  
-  [33X[0;0YReturns if the cone [3Xcone1[103X contains the cone [3Xcone2[103X.[133X
-  
-  [1X2.4-5 RayGeneratorContainedInCone[101X
-  
-  [33X[1;0Y[29X[2XRayGeneratorContainedInCone[102X( [3Xray[103X, [3Xcone[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
-  
-  [33X[0;0YReturns if the cone [3Xcone[103X contains the ray [3Xray[103X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XP:= Cone( [ [ 2, 7 ], [ 0, 12 ], [ -2, 5 ] ] );[127X[104X
-    [4X[28X<A cone in |R^2>[128X[104X
-    [4X[25Xgap>[125X [27Xd:= DefiningInequalities( P );[127X[104X
-    [4X[28X[ [ -7, 2 ], [ 5, 2 ] ][128X[104X
-    [4X[25Xgap>[125X [27XQ:= ConeByInequalities( d );[127X[104X
-    [4X[28X<A cone in |R^2>[128X[104X
-    [4X[25Xgap>[125X [27XP=Q;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsPointed( P );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRayGenerators( P );[127X[104X
-    [4X[28X[ [ -2, 5 ], [ 2, 7 ] ][128X[104X
-    [4X[25Xgap>[125X [27XHilbertBasis( P );[127X[104X
-    [4X[28X[ [ -2, 5 ], [ -1, 3 ], [ 0, 1 ], [ 1, 4 ], [ 2, 7 ] ][128X[104X
-    [4X[25Xgap>[125X [27XHilbertBasis( Q );[127X[104X
-    [4X[28X[ [ -2, 5 ], [ -1, 3 ], [ 0, 1 ], [ 1, 4 ], [ 2, 7 ] ][128X[104X
-    [4X[25Xgap>[125X [27XP_dual:= DualCone( P );[127X[104X
-    [4X[28X<A cone in |R^2>[128X[104X
-    [4X[25Xgap>[125X [27XRayGenerators( P_dual );[127X[104X
-    [4X[28X[ [ -7, 2 ], [ 5, 2 ] ][128X[104X
-    [4X[25Xgap>[125X [27XDimension( P );[127X[104X
-    [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27XFacets( P );[127X[104X
-    [4X[28X[ <A ray in |R^2>, <A ray in |R^2> ][128X[104X
-    [4X[25Xgap>[125X [27XList( last, RayGenerators );[127X[104X
-    [4X[28X[ [ [ -2, 5 ] ], [ [ 2, 7 ] ] ][128X[104X
-    [4X[25Xgap>[125X [27Xfaces := Faces( P );[127X[104X
-    [4X[28X[ <A cone in |R^2>, <A cone in |R^2>, <A ray in |R^2>, [128X[104X
-    [4X[28X <A ray in |R^2> ][128X[104X
-    [4X[25Xgap>[125X [27X#e[127X[104X
-    [4X[25X>[125X [27XRelativeInteriorRayGenerator( P );[127X[104X
-    [4X[28X[ -2, 41 ][128X[104X
-    [4X[25Xgap>[125X [27XLinealitySpaceGenerators( P );[127X[104X
-    [4X[28X[  ][128X[104X
-    [4X[25Xgap>[125X [27XIsRegularCone( P );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsEmptyCone( P );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsRay( P );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xproj_x1:= FourierProjection( P, 2 );[127X[104X
-    [4X[28X<A cone in |R^1>[128X[104X
-    [4X[25Xgap>[125X [27XRayGenerators( proj_x1 );[127X[104X
-    [4X[28X[ [ -1 ], [ 1 ] ][128X[104X
-    [4X[25Xgap>[125X [27XDefiningInequalities( proj_x1 );[127X[104X
-    [4X[28X[ [ 0 ] ][128X[104X
-    [4X[25Xgap>[125X [27XR:= Cone( [ [ 4, 5 ], [ -2, 1 ] ] );[127X[104X
-    [4X[28X<A cone in |R^2>[128X[104X
-    [4X[25Xgap>[125X [27XT:= IntersectionOfCones( P, R );[127X[104X
-    [4X[28X<A cone in |R^2>[128X[104X
-    [4X[25Xgap>[125X [27XRayGenerators( T );[127X[104X
-    [4X[28X[ [ -2, 5 ], [ 2, 7 ] ][128X[104X
-    [4X[25Xgap>[125X [27XW:= Cone( [ [-3,-4 ] ] );[127X[104X
-    [4X[28X<A ray in |R^2>[128X[104X
-    [4X[25Xgap>[125X [27XI:= IntersectionOfCones( P, W );[127X[104X
-    [4X[28X<A cone in |R^2>[128X[104X
-    [4X[25Xgap>[125X [27XRayGenerators( I );[127X[104X
-    [4X[28X[  ][128X[104X
-    [4X[25Xgap>[125X [27XContains( P, I );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XContains( W, I );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XContains( P, R );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XContains( R, P );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcdd_cone:= ExternalCddCone( P );[127X[104X
-    [4X[28X< Polyhedron given by its V-representation >[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( cdd_cone );[127X[104X
-    [4X[28XV-representation [128X[104X
-    [4X[28Xbegin [128X[104X
-    [4X[28X3 X 3  rational[128X[104X
-    [4X[28X               [128X[104X
-    [4X[28X   0   2   7 [128X[104X
-    [4X[28X   0   0  12 [128X[104X
-    [4X[28X   0  -2   5 [128X[104X
-    [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XCdd_Dimension( cdd_cone );[127X[104X
-    [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27XH:= Cdd_H_Rep( cdd_cone );[127X[104X
-    [4X[28X< Polyhedron given by its H-representation >[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( H );[127X[104X
-    [4X[28XH-representation [128X[104X
-    [4X[28Xbegin [128X[104X
-    [4X[28X   2 X 3  rational[128X[104X
-    [4X[28X               [128X[104X
-    [4X[28X   0   5   2 [128X[104X
-    [4X[28X   0  -7   2 [128X[104X
-    [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XP:= Cone( [ [ 1, 1, -3 ], [ -1, -1, 3 ], [ 1, 2, 1 ], [ 2, 1, 2 ] ] );[127X[104X
-    [4X[28X< A cone in |R^3>[128X[104X
-    [4X[25Xgap>[125X [27XIsPointed( P );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XDimension( P );[127X[104X
-    [4X[28X3[128X[104X
-    [4X[25Xgap>[125X [27XIsRegularCone( P );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XP;[127X[104X
-    [4X[28X< A cone in |R^3 of dimension 3 with 4 ray generators>[128X[104X
-    [4X[25Xgap>[125X [27XRayGenerators( P );[127X[104X
-    [4X[28X[ [ -1, -1, 3 ], [ 1, 1, -3 ], [ 1, 2, 1 ], [ 2, 1, 2 ] ][128X[104X
-    [4X[25Xgap>[125X [27Xd:= DefiningInequalities( P );[127X[104X
-    [4X[28X[ [ -5, 8, 1 ], [ 7, -4, 1 ] ][128X[104X
-    [4X[25Xgap>[125X [27Xfacets:= Facets( P );[127X[104X
-    [4X[28X[ <A cone in |R^3>, <A cone in |R^3> ][128X[104X
-    [4X[25Xgap>[125X [27Xfaces := Faces( P );[127X[104X
-    [4X[28X[ <A cone in |R^3>, <A cone in |R^3>, <A cone in |R^3>, [128X[104X
-    [4X[28X <A cone in |R^3>, <A cone in |R^3> ][128X[104X
-    [4X[25Xgap>[125X [27XFVector( P );[127X[104X
-    [4X[28X[ 1, 2, 1 ][128X[104X
-    [4X[25Xgap>[125X [27XList( faces, Dimension );[127X[104X
-    [4X[28X[ 0, 3, 2, 1, 2 ][128X[104X
-    [4X[25Xgap>[125X [27XL_using_4ti2 := [ [ [ 0, 0, 0 ] ], [ [ -2, -1, 10 ], [127X[104X
-    [4X[25X>[125X [27X[ 0, 0, 1 ], [ 2, 1, 2 ] ],  [ [ 1, 1, -3 ] ] ];;[127X[104X
-    [4X[25Xgap>[125X [27XL_using_Normaliz := [ [ [ 0, 0, 0 ] ], [ [ -1, 0, 7 ], [ 0, 0, 1 ], [ 1, 0, 5 ] ], [ [ 1, 1, -3 ] ] ];;[127X[104X
-    [4X[25Xgap>[125X [27XL := LatticePointsGenerators( P );;[127X[104X
-    [4X[25Xgap>[125X [27XL = L_using_4ti2 or L = L_using_Normaliz;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDualCone( P );[127X[104X
-    [4X[28X< A cone in |R^3>[128X[104X
-    [4X[25Xgap>[125X [27XRayGenerators( DualCone( P ) );[127X[104X
-    [4X[28X[ [ -5, 8, 1 ], [ 7, -4, 1 ] ][128X[104X
-    [4X[25Xgap>[125X [27XQ_x1x3:= FourierProjection(P, 2 );[127X[104X
-    [4X[28X<A cone in |R^2>[128X[104X
-    [4X[25Xgap>[125X [27XRayGenerators( Q_x1x3 );[127X[104X
-    [4X[28X[ [ -1, 3 ], [ 1, -3 ], [ 1, 1 ] ][128X[104X
-  [4X[32X[104X
+  [33X[0;0YReturns an interior point of the covex object.[133X
   

@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (NConvex) - Chapter 2: Cones</title>
+<title>GAP (NConvex) - Chapter 2: Convex objects</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -18,414 +18,70 @@
 <body class="chap2"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
-<p><a id="X8524A7567BA4FFA6" name="X8524A7567BA4FFA6"></a></p>
-<div class="ChapSects"><a href="chap2_mj.html#X8524A7567BA4FFA6">2 <span class="Heading">Cones</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X837F56037886A1EF">2.1 <span class="Heading">Creating cones</span></a>
+<p><a id="X8359268B7FDA6AEC" name="X8359268B7FDA6AEC"></a></p>
+<div class="ChapSects"><a href="chap2_mj.html#X8359268B7FDA6AEC">2 <span class="Heading">Convex objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7C701DBF7BAE649A">2.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E6FB9EC7DFF5403">2.1-1 ConeByInequalities</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8711F345805C5FBD">2.1-2 ConeByEqualitiesAndInequalities</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F0634207B3A4EC6">2.1-3 Cone</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CD248238093A748">2.1-4 Cone</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X85EE90A37DE1E3AC">2.2 <span class="Heading">Attributes of Cones</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80468DD7834C2EFD">2.2-1 DefiningInequalities</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X782F9A6E82AC6EA4">2.2-2 EqualitiesOfCone</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80DB81B58590FC36">2.2-3 DualCone</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X782D6F717CC7AEFF">2.2-4 Faces</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82C77B2A8235567E">2.2-5 Facets</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8705E6927CE0FA16">2.2-6 RelativeInteriorRayGenerator</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EB6BB087BE2FFD6">2.2-7 HilbertBasis</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8445477A83A137CB">2.2-8 HilbertBasisOfDualCone</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X815F2FC4821A961D">2.2-9 LinealitySpaceGenerators</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CFFCB5C7F4C183D">2.2-10 ExternalCddCone</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DD2805F7DF61F97">2.3 <span class="Heading">Properties of Cones</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8490C19A78ED287A">2.3-1 IsRegularCone</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FB5B4B179A1B735">2.3-2 IsEmptyCone</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X831EBE117FC07C40">2.3-3 IsRay</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X810956D0823BDA51">2.3-4 IsZero</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X843CBBD37FC2827B">2.4 <span class="Heading">Operations on cones</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X782E6C6684E1514D">2.4-1 FourierProjection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80715AC378616F14">2.4-2 IntersectionOfCones</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EC2A83682293251">2.4-3 IntersectionOfConelist</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X825A7CBD79653961">2.4-4 Contains</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X801F1F7D848FACCE">2.4-5 RayGeneratorContainedInCone</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D87C111848F25C5">2.1-1 AmbientSpaceDimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79D9BB0F7BB3B411">2.1-2 Dimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E660B6A7B6D0A9D">2.1-3 IsFullDimensional</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8401C12C7937C521">2.1-4 InteriorPoint</a></span>
 </div></div>
 </div>
 
-<h3>2 <span class="Heading">Cones</span></h3>
+<h3>2 <span class="Heading">Convex objects</span></h3>
 
-<p><a id="X837F56037886A1EF" name="X837F56037886A1EF"></a></p>
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
-<h4>2.1 <span class="Heading">Creating cones</span></h4>
+<h4>2.1 <span class="Heading">Attributes</span></h4>
 
-<p><a id="X7E6FB9EC7DFF5403" name="X7E6FB9EC7DFF5403"></a></p>
+<p><a id="X7D87C111848F25C5" name="X7D87C111848F25C5"></a></p>
 
-<h5>2.1-1 ConeByInequalities</h5>
+<h5>2.1-1 AmbientSpaceDimension</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConeByInequalities</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <em>Cone</em> Object</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AmbientSpaceDimension</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: integer</p>
 
-<p>The function takes a list of lists <span class="SimpleMath">\([L_1, L_2, ...]\)</span> where each <span class="SimpleMath">\(L_j\)</span> represents an inequality and returns the cone defined by them. For example the <span class="SimpleMath">\(j\)</span>'th entry <span class="SimpleMath">\(L_j = [a_{j1},a_{j2},...,a_{jn}]\)</span> corresponds to the inequality <span class="SimpleMath">\(\sum_{i=1}^n a_{ji}x_i \geq 0\)</span>.</p>
+<p>Returns the dimension of the ambient space, i.e., the space that contains the convex object.</p>
 
-<p><a id="X8711F345805C5FBD" name="X8711F345805C5FBD"></a></p>
+<p><a id="X79D9BB0F7BB3B411" name="X79D9BB0F7BB3B411"></a></p>
 
-<h5>2.1-2 ConeByEqualitiesAndInequalities</h5>
+<h5>2.1-2 Dimension</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConeByEqualitiesAndInequalities</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <em>Cone</em> Object</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: integer</p>
 
-<p>The function takes two lists. The first list is the equalities and the second is the inequalities and returns the cone defined by them.</p>
+<p>Returns the dimension of the covex object.</p>
 
-<p><a id="X7F0634207B3A4EC6" name="X7F0634207B3A4EC6"></a></p>
+<p><a id="X7E660B6A7B6D0A9D" name="X7E660B6A7B6D0A9D"></a></p>
 
-<h5>2.1-3 Cone</h5>
+<h5>2.1-3 IsFullDimensional</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Cone</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <em>Cone</em> Object</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFullDimensional</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: boolian</p>
 
-<p>The function takes a list in which every entry represents a ray in the ambient vector space and returns the cone defined by them.</p>
+<p>Returns whether the convex object is full dimensional or not.</p>
 
-<p><a id="X7CD248238093A748" name="X7CD248238093A748"></a></p>
+<p><a id="X8401C12C7937C521" name="X8401C12C7937C521"></a></p>
 
-<h5>2.1-4 Cone</h5>
+<h5>2.1-4 InteriorPoint</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Cone</code>( <var class="Arg">cdd_cone</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <em>Cone</em> Object</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InteriorPoint</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a point in the object</p>
 
-<p>This function takes a cone defined in <em>CddInterface</em> and converts it to a cone in <em>NConvex</em></p>
-
-<p><a id="X85EE90A37DE1E3AC" name="X85EE90A37DE1E3AC"></a></p>
-
-<h4>2.2 <span class="Heading">Attributes of Cones</span></h4>
-
-<p><a id="X80468DD7834C2EFD" name="X80468DD7834C2EFD"></a></p>
-
-<h5>2.2-1 DefiningInequalities</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefiningInequalities</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <em>List</em></p>
-
-<p>Returns the list of the defining inequalities of the cone <var class="Arg">cone</var>.</p>
-
-<p><a id="X782F9A6E82AC6EA4" name="X782F9A6E82AC6EA4"></a></p>
-
-<h5>2.2-2 EqualitiesOfCone</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EqualitiesOfCone</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <em>List</em></p>
-
-<p>Returns the list of the equalities in the defining inequalities of the cone <var class="Arg">cone</var>.</p>
-
-<p><a id="X80DB81B58590FC36" name="X80DB81B58590FC36"></a></p>
-
-<h5>2.2-3 DualCone</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualCone</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a cone</p>
-
-<p>Returns the dual cone of the cone <var class="Arg">cone</var>.</p>
-
-<p><a id="X782D6F717CC7AEFF" name="X782D6F717CC7AEFF"></a></p>
-
-<h5>2.2-4 Faces</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Faces</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list of cones</p>
-
-<p>Returns the list of all faces of the cone <var class="Arg">cone</var>.</p>
-
-<p><a id="X82C77B2A8235567E" name="X82C77B2A8235567E"></a></p>
-
-<h5>2.2-5 Facets</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Facets</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list of cones</p>
-
-<p>Returns the list of all faces of the cone <var class="Arg">cone</var>.</p>
-
-<p><a id="X8705E6927CE0FA16" name="X8705E6927CE0FA16"></a></p>
-
-<h5>2.2-6 RelativeInteriorRayGenerator</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelativeInteriorRayGenerator</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a point</p>
-
-<p>Returns an interior point in the cone <var class="Arg">cone</var>.</p>
-
-<p><a id="X7EB6BB087BE2FFD6" name="X7EB6BB087BE2FFD6"></a></p>
-
-<h5>2.2-7 HilbertBasis</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HilbertBasis</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>Returns the Hilbert basis of the cone <var class="Arg">cone</var></p>
-
-<p><a id="X8445477A83A137CB" name="X8445477A83A137CB"></a></p>
-
-<h5>2.2-8 HilbertBasisOfDualCone</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HilbertBasisOfDualCone</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>Returns the Hilbert basis of the dual cone of the cone <var class="Arg">cone</var></p>
-
-<p><a id="X815F2FC4821A961D" name="X815F2FC4821A961D"></a></p>
-
-<h5>2.2-9 LinealitySpaceGenerators</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LinealitySpaceGenerators</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list</p>
-
-<p>Returns a basis of the lineality space of the cone <var class="Arg">cone</var>.</p>
-
-<p><a id="X7CFFCB5C7F4C183D" name="X7CFFCB5C7F4C183D"></a></p>
-
-<h5>2.2-10 ExternalCddCone</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExternalCddCone</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CddPolyhedron</p>
-
-<p>Converts the cone to a CddPolyhedron. The functions of CddInterface can then be applied on this polyhedron.</p>
-
-<p><a id="X7DD2805F7DF61F97" name="X7DD2805F7DF61F97"></a></p>
-
-<h4>2.3 <span class="Heading">Properties of Cones</span></h4>
-
-<p><a id="X8490C19A78ED287A" name="X8490C19A78ED287A"></a></p>
-
-<h5>2.3-1 IsRegularCone</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsRegularCone</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Returns if the cone <var class="Arg">cone</var> is regular or not.</p>
-
-<p><a id="X7FB5B4B179A1B735" name="X7FB5B4B179A1B735"></a></p>
-
-<h5>2.3-2 IsEmptyCone</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEmptyCone</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Returns if the cone <var class="Arg">cone</var> is empty or not.</p>
-
-<p><a id="X831EBE117FC07C40" name="X831EBE117FC07C40"></a></p>
-
-<h5>2.3-3 IsRay</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsRay</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Returns if the cone <var class="Arg">cone</var> is ray or not.</p>
-
-<p><a id="X810956D0823BDA51" name="X810956D0823BDA51"></a></p>
-
-<h5>2.3-4 IsZero</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZero</code>( <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Returns whether the cone is the zero cone or not.</p>
-
-<p><a id="X843CBBD37FC2827B" name="X843CBBD37FC2827B"></a></p>
-
-<h4>2.4 <span class="Heading">Operations on cones</span></h4>
-
-<p><a id="X782E6C6684E1514D" name="X782E6C6684E1514D"></a></p>
-
-<h5>2.4-1 FourierProjection</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FourierProjection</code>( <var class="Arg">cone</var>, <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a cone</p>
-
-<p>Returns the projectiopn of the cone on the space (O, <span class="SimpleMath">\(x_1,...,x_{m-1}, x_{m+1},...,x_n\)</span> ).</p>
-
-<p><a id="X80715AC378616F14" name="X80715AC378616F14"></a></p>
-
-<h5>2.4-2 IntersectionOfCones</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionOfCones</code>( <var class="Arg">cone1</var>, <var class="Arg">cone2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a cone</p>
-
-<p>Returns the intersection of the cones <var class="Arg">cone1</var> and <var class="Arg">cone2</var>.</p>
-
-<p><a id="X7EC2A83682293251" name="X7EC2A83682293251"></a></p>
-
-<h5>2.4-3 IntersectionOfConelist</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionOfConelist</code>( [<var class="Arg">cone1</var>, <var class="Arg">cone2</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a cone</p>
-
-<p>Returns the intersection of all cones in the list <var class="Arg">[cone1</var>, <var class="Arg">cone2,...]</var>.</p>
-
-<p><a id="X825A7CBD79653961" name="X825A7CBD79653961"></a></p>
-
-<h5>2.4-4 Contains</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Contains</code>( <var class="Arg">cone1</var>, <var class="Arg">cone2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a true or false</p>
-
-<p>Returns if the cone <var class="Arg">cone1</var> contains the cone <var class="Arg">cone2</var>.</p>
-
-<p><a id="X801F1F7D848FACCE" name="X801F1F7D848FACCE"></a></p>
-
-<h5>2.4-5 RayGeneratorContainedInCone</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RayGeneratorContainedInCone</code>( <var class="Arg">ray</var>, <var class="Arg">cone</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Returns if the cone <var class="Arg">cone</var> contains the ray <var class="Arg">ray</var>.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P:= Cone( [ [ 2, 7 ], [ 0, 12 ], [ -2, 5 ] ] );</span>
-&lt;A cone in |R^2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d:= DefiningInequalities( P );</span>
-[ [ -7, 2 ], [ 5, 2 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q:= ConeByInequalities( d );</span>
-&lt;A cone in |R^2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P=Q;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPointed( P );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RayGenerators( P );</span>
-[ [ -2, 5 ], [ 2, 7 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HilbertBasis( P );</span>
-[ [ -2, 5 ], [ -1, 3 ], [ 0, 1 ], [ 1, 4 ], [ 2, 7 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HilbertBasis( Q );</span>
-[ [ -2, 5 ], [ -1, 3 ], [ 0, 1 ], [ 1, 4 ], [ 2, 7 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P_dual:= DualCone( P );</span>
-&lt;A cone in |R^2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RayGenerators( P_dual );</span>
-[ [ -7, 2 ], [ 5, 2 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( P );</span>
-2
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Facets( P );</span>
-[ &lt;A ray in |R^2&gt;, &lt;A ray in |R^2&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( last, RayGenerators );</span>
-[ [ [ -2, 5 ] ], [ [ 2, 7 ] ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">faces := Faces( P );</span>
-[ &lt;A cone in |R^2&gt;, &lt;A cone in |R^2&gt;, &lt;A ray in |R^2&gt;, 
- &lt;A ray in |R^2&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#e</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">RelativeInteriorRayGenerator( P );</span>
-[ -2, 41 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LinealitySpaceGenerators( P );</span>
-[  ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRegularCone( P );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEmptyCone( P );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRay( P );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj_x1:= FourierProjection( P, 2 );</span>
-&lt;A cone in |R^1&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RayGenerators( proj_x1 );</span>
-[ [ -1 ], [ 1 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DefiningInequalities( proj_x1 );</span>
-[ [ 0 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R:= Cone( [ [ 4, 5 ], [ -2, 1 ] ] );</span>
-&lt;A cone in |R^2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T:= IntersectionOfCones( P, R );</span>
-&lt;A cone in |R^2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RayGenerators( T );</span>
-[ [ -2, 5 ], [ 2, 7 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W:= Cone( [ [-3,-4 ] ] );</span>
-&lt;A ray in |R^2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I:= IntersectionOfCones( P, W );</span>
-&lt;A cone in |R^2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RayGenerators( I );</span>
-[  ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Contains( P, I );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Contains( W, I );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Contains( P, R );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Contains( R, P );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cdd_cone:= ExternalCddCone( P );</span>
-&lt; Polyhedron given by its V-representation &gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( cdd_cone );</span>
-V-representation 
-begin 
-3 X 3  rational
-               
-   0   2   7 
-   0   0  12 
-   0  -2   5 
-end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Cdd_Dimension( cdd_cone );</span>
-2
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H:= Cdd_H_Rep( cdd_cone );</span>
-&lt; Polyhedron given by its H-representation &gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( H );</span>
-H-representation 
-begin 
-   2 X 3  rational
-               
-   0   5   2 
-   0  -7   2 
-end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P:= Cone( [ [ 1, 1, -3 ], [ -1, -1, 3 ], [ 1, 2, 1 ], [ 2, 1, 2 ] ] );</span>
-&lt; A cone in |R^3&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPointed( P );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( P );</span>
-3
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRegularCone( P );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P;</span>
-&lt; A cone in |R^3 of dimension 3 with 4 ray generators&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RayGenerators( P );</span>
-[ [ -1, -1, 3 ], [ 1, 1, -3 ], [ 1, 2, 1 ], [ 2, 1, 2 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d:= DefiningInequalities( P );</span>
-[ [ -5, 8, 1 ], [ 7, -4, 1 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">facets:= Facets( P );</span>
-[ &lt;A cone in |R^3&gt;, &lt;A cone in |R^3&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">faces := Faces( P );</span>
-[ &lt;A cone in |R^3&gt;, &lt;A cone in |R^3&gt;, &lt;A cone in |R^3&gt;, 
- &lt;A cone in |R^3&gt;, &lt;A cone in |R^3&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FVector( P );</span>
-[ 1, 2, 1 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( faces, Dimension );</span>
-[ 0, 3, 2, 1, 2 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_4ti2 := [ [ [ 0, 0, 0 ] ], [ [ -2, -1, 10 ], </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">[ 0, 0, 1 ], [ 2, 1, 2 ] ],  [ [ 1, 1, -3 ] ] ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L_using_Normaliz := [ [ [ 0, 0, 0 ] ], [ [ -1, 0, 7 ], [ 0, 0, 1 ], [ 1, 0, 5 ] ], [ [ 1, 1, -3 ] ] ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := LatticePointsGenerators( P );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L = L_using_4ti2 or L = L_using_Normaliz;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DualCone( P );</span>
-&lt; A cone in |R^3&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RayGenerators( DualCone( P ) );</span>
-[ [ -5, 8, 1 ], [ 7, -4, 1 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q_x1x3:= FourierProjection(P, 2 );</span>
-&lt;A cone in |R^2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RayGenerators( Q_x1x3 );</span>
-[ [ -1, 3 ], [ 1, -3 ], [ 1, 1 ] ]
-</pre></div>
+<p>Returns an interior point of the covex object.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

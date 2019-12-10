@@ -1,35 +1,17 @@
   
-  [1X1 [33X[0;0YConvex objects[133X[101X
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0YThe  [23X\textbf{NConvex}[123X  package  is  a  GAP  package. Its aim is to carry out
+  polyhedral  constructions  and computations, namely computing properties and
+  attributes  of  cones, polyhedrons, polytopes and fans. Its has been written
+  to  provide  the  needed  tools for the package \textbf{ToricVarieties}. All
+  written as part of the homalg-project.[133X
   
   
-  [1X1.1 [33X[0;0YAttributes[133X[101X
+  [1X1.1 [33X[0;0YInstallation[133X[101X
   
-  [1X1.1-1 AmbientSpaceDimension[101X
   
-  [33X[1;0Y[29X[2XAmbientSpaceDimension[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yinteger[133X
+  [1X1.2 [33X[0;0YRequirements[133X[101X
   
-  [33X[0;0YReturns  the  dimension  of the ambient space, i.e., the space that contains
-  the convex object.[133X
-  
-  [1X1.1-2 Dimension[101X
-  
-  [33X[1;0Y[29X[2XDimension[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yinteger[133X
-  
-  [33X[0;0YReturns the dimension of the covex object.[133X
-  
-  [1X1.1-3 IsFullDimensional[101X
-  
-  [33X[1;0Y[29X[2XIsFullDimensional[102X( [3Xobj[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Yboolian[133X
-  
-  [33X[0;0YReturns whether the convex object is full dimensional or not.[133X
-  
-  [1X1.1-4 InteriorPoint[101X
-  
-  [33X[1;0Y[29X[2XInteriorPoint[102X( [3Xobj[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya point in the object[133X
-  
-  [33X[0;0YReturns an interior point of the covex object.[133X
+  [33X[0;0YHere is a list of the required Gap packages:[133X
   
