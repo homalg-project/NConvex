@@ -35,7 +35,7 @@ gap> Dimension( P );
 2
 gap> List( Facets( P ), RayGenerators );
 [ [ [ -2, 5 ] ], [ [ 2, 7 ] ] ]
-gap> faces := Faces( P );
+gap> faces := FacesOfCone( P );
 [ <A cone in |R^2>, <A cone in |R^2>, <A ray in |R^2>, 
  <A ray in |R^2> ]
 gap> RelativeInteriorRay( P );
@@ -115,7 +115,7 @@ gap> d:= DefiningInequalities( P );
 [ [ -5, 8, 1 ], [ 7, -4, 1 ] ]
 gap> facets:= Facets( P );
 [ <A cone in |R^3>, <A cone in |R^3> ]
-gap> faces := Faces( P );
+gap> faces := FacesOfCone( P );
 [ <A cone in |R^3>, <A cone in |R^3>, <A cone in |R^3>, 
  <A cone in |R^3>, <A cone in |R^3> ]
 gap> FVector( P );

@@ -111,7 +111,7 @@ DeclareAttribute( "RaysInFaces",
 #! @Returns a list of cones
 #! @Description  
 #! Returns the list of all faces of the cone <C>C</C>.                  
-DeclareAttribute( "Faces",
+DeclareAttribute( "FacesOfCone",
                   IsCone );
 
 #! @Arguments C 

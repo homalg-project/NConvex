@@ -555,7 +555,7 @@ InstallMethod( RaysInAllCones,
     
     for i in max_cones do 
       
-      current_list_of_faces:= Faces( i );
+      current_list_of_faces:= FacesOfCone( i );
       
       cones := Concatenation( cones, List( current_list_of_faces, RayGenerators ) );
     
@@ -738,7 +738,7 @@ InstallMethod( IsWellDefinedFan,
         
         U := IntersectionOfCones( C1, C2 );
         
-        if U in Faces( C1 ) and U in Faces( C2 ) then
+        if U in FacesOfCone( C1 ) and U in FacesOfCone( C2 ) then
         
           return true ;
         

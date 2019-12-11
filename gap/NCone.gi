@@ -634,7 +634,7 @@ InstallMethod( Facets,
 end );
 
 ##
-InstallMethod( Faces,
+InstallMethod( FacesOfCone,
                " for external cones",
                [ IsCone ],
                
@@ -671,6 +671,7 @@ InstallMethod( Faces,
     
 end );
 
+##
 InstallMethod( FVector,
                "for cones",
                [ IsCone ],
@@ -684,7 +685,6 @@ InstallMethod( FVector,
     return List( [ 1 .. Dimension( cone ) ], 
                 i -> Length( PositionsProperty( faces, face -> face[ 1 ] = i ) ) );
   end );
-
 
 ##
 InstallMethod( LinearSubspaceGenerators,
