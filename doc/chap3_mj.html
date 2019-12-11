@@ -39,7 +39,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80468DD7834C2EFD">3.2-1 DefiningInequalities</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X782F9A6E82AC6EA4">3.2-2 EqualitiesOfCone</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80DB81B58590FC36">3.2-3 DualCone</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X782D6F717CC7AEFF">3.2-4 Faces</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X825F3C9380C4E2EE">3.2-4 FacesOfCone</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82C77B2A8235567E">3.2-5 Facets</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X817CAD1E84C0757A">3.2-6 FVector</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81488179780BE42F">3.2-7 RelativeInteriorRay</a></span>
@@ -147,11 +147,11 @@
 
 <p>Returns the dual cone of the cone <code class="code">C</code>.</p>
 
-<p><a id="X782D6F717CC7AEFF" name="X782D6F717CC7AEFF"></a></p>
+<p><a id="X825F3C9380C4E2EE" name="X825F3C9380C4E2EE"></a></p>
 
-<h5>3.2-4 Faces</h5>
+<h5>3.2-4 FacesOfCone</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Faces</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FacesOfCone</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list of cones</p>
 
 <p>Returns the list of all faces of the cone <code class="code">C</code>.</p>
@@ -388,7 +388,7 @@ true
 2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( Facets( P ), RayGenerators );</span>
 [ [ [ -2, 5 ] ], [ [ 2, 7 ] ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">faces := Faces( P );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">faces := FacesOfCone( P );</span>
 [ &lt;A cone in |R^2&gt;, &lt;A cone in |R^2&gt;, &lt;A ray in |R^2&gt;, 
  &lt;A ray in |R^2&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RelativeInteriorRay( P );</span>
@@ -468,7 +468,7 @@ false
 [ [ -5, 8, 1 ], [ 7, -4, 1 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">facets:= Facets( P );</span>
 [ &lt;A cone in |R^3&gt;, &lt;A cone in |R^3&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">faces := Faces( P );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">faces := FacesOfCone( P );</span>
 [ &lt;A cone in |R^3&gt;, &lt;A cone in |R^3&gt;, &lt;A cone in |R^3&gt;, 
  &lt;A cone in |R^3&gt;, &lt;A cone in |R^3&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FVector( P );</span>

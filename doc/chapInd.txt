@@ -27,7 +27,7 @@
   [2XExternalNmzCone[102X, for IsCone 3.2-12 
   [2XExternalNmzPolyhedron[102X, for IsPolyhedron 5.2-2 
   [2XFaceFan[102X, for IsPolytope 6.2-11 
-  [2XFaces[102X, for IsCone 3.2-4 
+  [2XFacesOfCone[102X, for IsCone 3.2-4 
   [2XFacetInequalities[102X, for IsPolytope 6.2-8 
   [2XFacets[102X, for IsCone 3.2-5 
   [2XFactorGrid[102X, for IsCone 3.2-16 

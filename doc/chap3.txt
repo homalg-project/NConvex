@@ -63,9 +63,9 @@
   
   [33X[0;0YReturns the dual cone of the cone [10XC[110X.[133X
   
-  [1X3.2-4 Faces[101X
+  [1X3.2-4 FacesOfCone[101X
   
-  [33X[1;0Y[29X[2XFaces[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XFacesOfCone[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of cones[133X
   
   [33X[0;0YReturns the list of all faces of the cone [10XC[110X.[133X
@@ -264,7 +264,7 @@
     [4X[28X2[128X[104X
     [4X[25Xgap>[125X [27XList( Facets( P ), RayGenerators );[127X[104X
     [4X[28X[ [ [ -2, 5 ] ], [ [ 2, 7 ] ] ][128X[104X
-    [4X[25Xgap>[125X [27Xfaces := Faces( P );[127X[104X
+    [4X[25Xgap>[125X [27Xfaces := FacesOfCone( P );[127X[104X
     [4X[28X[ <A cone in |R^2>, <A cone in |R^2>, <A ray in |R^2>, [128X[104X
     [4X[28X <A ray in |R^2> ][128X[104X
     [4X[25Xgap>[125X [27XRelativeInteriorRay( P );[127X[104X
@@ -344,7 +344,7 @@
     [4X[28X[ [ -5, 8, 1 ], [ 7, -4, 1 ] ][128X[104X
     [4X[25Xgap>[125X [27Xfacets:= Facets( P );[127X[104X
     [4X[28X[ <A cone in |R^3>, <A cone in |R^3> ][128X[104X
-    [4X[25Xgap>[125X [27Xfaces := Faces( P );[127X[104X
+    [4X[25Xgap>[125X [27Xfaces := FacesOfCone( P );[127X[104X
     [4X[28X[ <A cone in |R^3>, <A cone in |R^3>, <A cone in |R^3>, [128X[104X
     [4X[28X <A cone in |R^3>, <A cone in |R^3> ][128X[104X
     [4X[25Xgap>[125X [27XFVector( P );[127X[104X

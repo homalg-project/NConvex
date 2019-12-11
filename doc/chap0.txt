@@ -6,10 +6,10 @@
                [1X A Gap package to perform polyhedral computations [101X
   
   
-                                   2019.12.07
+                                   2019.12.08
   
   
-                                7 December 2019
+                                8 December 2019
   
   
                                   Kamal Saleh
@@ -63,7 +63,7 @@
       3.2-1 DefiningInequalities
       3.2-2 EqualitiesOfCone
       3.2-3 DualCone
-      3.2-4 Faces
+      3.2-4 FacesOfCone
       3.2-5 Facets
       3.2-6 FVector
       3.2-7 RelativeInteriorRay
