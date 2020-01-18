@@ -13,8 +13,7 @@ gap> START_TEST( "nconvex07.tst");
 # doc/_Chunks.xml:347-352
 gap> Q := PolyhedronByInequalities( [ [-3, 4, 6 ], [ 3, -4, -6 ] ] );
 <A polyhedron in |R^2 >
-gap> LatticePointsGenerators( Q );
-[ [  ], [  ], [ [ -3, 2 ] ] ]
+gap> #LatticePointsGenerators( Q ); [ [  ], [  ], [ [ -3, 2 ] ] ]
 
 #
 gap> STOP_TEST("nconvex07.tst", 1 );

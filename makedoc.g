@@ -11,7 +11,7 @@ fi;
 AutoDoc( 
         rec(
           autodoc := rec( files := [ "doc/intro.autodoc" ] ),
-          extract_examples := rec( units := "Single" ),
+          #extract_examples := rec( units := "Single" ),
           scaffold := rec( entities := [ "GAP4", "homalg", "ToricVarieties" ] ),
 
           ## The following commented code is to include some latex packages that is needed to draw diagrams in tikz.

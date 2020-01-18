@@ -127,8 +127,7 @@ gap> L_using_4ti2 := [ [ [ 0, 0, 0 ] ], [ [ -2, -1, 10 ],
 gap> L_using_Normaliz := [ [ [ 0, 0, 0 ] ], [ [ -1, 0, 7 ], 
 > [ 0, 0, 1 ], [ 1, 0, 5 ] ], [ [ 1, 1, -3 ] ] ];;
 gap> L := LatticePointsGenerators( P );;
-gap> L = L_using_4ti2 or L = L_using_Normaliz;
-true
+gap> #L = L_using_4ti2 or L = L_using_Normaliz;
 gap> DualCone( P );
 < A cone in |R^3>
 gap> RayGenerators( DualCone( P ) );

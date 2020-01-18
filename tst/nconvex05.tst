@@ -34,8 +34,7 @@ gap> VerticesOfMainRatPolytope( Q );
 gap> V_using_4ti2 := [ [ -3, -16 ], [ -3, 0 ] ];;
 gap> V_using_normaliz := [ [ 0, 6 ], [ 5, 0 ] ];;
 gap> V := VerticesOfMainPolytope( Q );;
-gap> V = V_using_4ti2 or V = V_using_normaliz;
-true
+gap> #V = V_using_4ti2 or V = V_using_normaliz; true
 gap> L_using_4ti2 := [ [ [ -3, -16 ], [ -3, -15 ], [ -3, -14 ], 
 > [ -3, -13 ], [ -3, -12 ], [ -3, -11 ], [ -3, -10 ], 
 > [ -3, -9 ], [ -3, -8 ], [ -3, -7 ], [ -3, -6 ], 
@@ -46,8 +45,7 @@ gap> L_using_normaliz := [ [ [ 0, -10 ], [ 0, -9 ], [ 0, -8 ],
 > [ 0, -2 ], [ 0, -1 ], [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], 
 > [ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ] ], [  ], [ [ -1, -2 ] ] ];;
 gap> L := LatticePointsGenerators( Q );;
-gap> L = L_using_4ti2 or L = L_using_normaliz;
-true
+gap> #L = L_using_4ti2 or L = L_using_normaliz; true
 gap> Dimension( Q );
 2
 gap> RayGeneratorsOfTailCone( Q );

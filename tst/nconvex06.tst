@@ -18,8 +18,7 @@ gap> L_using_normaliz := [ [ [ -4, 0, -2 ] ], [  ],
 gap> L_using_4ti2 := [ [ [ -2, 2, 0 ] ], [  ],
 > [ [ 1, 1, 1 ], [ 4, -3, 0 ] ] ];;
 gap> L := LatticePointsGenerators( P );;
-gap> L = L_using_4ti2 or L = L_using_normaliz;
-true
+gap> #L = L_using_4ti2 or L = L_using_normaliz; true
 
 #
 gap> STOP_TEST("nconvex06.tst", 1 );
