@@ -3,7 +3,7 @@
 
 The NConvex package
 =========================
-version 2019.12.10
+version 2020.03.02
 
 Introduction
 ------------
@@ -11,7 +11,7 @@ The [NConvex](https://homalg-project.github.io/NConvex) package is a GAP package
 cones, polyhedrons, polytopes and fans. Its has been written
 to provide the needed tools for the package "ToricVarieties". All written as
 part of the homalg-project. A list of available operations can be found in the 
-[manual.pdf](https://github.com/homalg-project/NConvex/releases/latest/download/manual.pdf)
+[manual.pdf](https://homalg-project.github.io/NConvex/manual.pdf)
 
 
 Installation
