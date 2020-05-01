@@ -4,11 +4,11 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "NConvex", "gap/NConvexObject.gd" );
-ReadPackage( "NConvex", "gap/NFan.gd" );
-ReadPackage( "NConvex", "gap/NCone.gd" );
-ReadPackage( "NConvex", "gap/NPolytope.gd" );
-ReadPackage( "NConvex", "gap/NPolyhedron.gd" );
+ReadPackage( "NConvex", "gap/ConvexObject.gd" );
+ReadPackage( "NConvex", "gap/Fan.gd" );
+ReadPackage( "NConvex", "gap/Cone.gd" );
+ReadPackage( "NConvex", "gap/Polytope.gd" );
+ReadPackage( "NConvex", "gap/Polyhedron.gd" );
 
 
 
