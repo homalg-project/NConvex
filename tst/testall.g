@@ -6,5 +6,12 @@
 #
 LoadPackage( "NConvex" );
 dirs := DirectoriesPackageLibrary( "NConvex", "tst" );
-TestDirectory( dirs, rec( exitGAP := true, testOptions:= rec(compareFunction:="uptowhitespace" ) ) );
+
+# Until the issue https://github.com/homalg-project/NConvex/issues/5 has been solved
+ex := [];
+if IsPackageLoaded( "majoranaalgebras" ) then
+  ex := [ "nconvex02.tst" ];
+fi;
+
+TestDirectory( dirs, rec( exitGAP := true, testOptions:= rec(compareFunction:="uptowhitespace" ), exclude := ex ) );
 FORCE_QUIT_GAP(1);
