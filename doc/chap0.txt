@@ -6,10 +6,10 @@
                [1X A Gap package to perform polyhedral computations [101X
   
   
-                                   2020.04.02
+                                   2020.07.03
   
   
-                                  2 April 2020
+                                  3 July 2020
   
   
                                   Kamal Saleh
@@ -138,6 +138,8 @@
     5.4 [33X[0;0YSolving Linear programs[133X
       5.4-1 SolveLinearProgram
       5.4-2 SolveLinearProgram
+    5.5 [33X[0;0YZSolve[133X
+      5.5-1 SolveEqualitiesAndInequalitiesOverIntergers
   6 [33X[0;0YPolytopes[133X
     6.1 [33X[0;0YCreating polytopes[133X
       6.1-1 PolytopeByInequalities

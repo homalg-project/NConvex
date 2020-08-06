@@ -101,6 +101,7 @@
   [2XRaysInMaximalCones[102X, for IsFan 4.2-3 
   [2XRelativeInteriorLatticePoints[102X, for IsPolytope 6.2-3 
   [2XRelativeInteriorRay[102X, for IsCone 3.2-7 
+  [2XSolveEqualitiesAndInequalitiesOverIntergers[102X 5.5-1 
   [2XSolveLinearProgram[102X, for IsPolyhedron, IsString, IsList 5.4-1 
       for IsPolytope, IsString, IsList 5.4-2 
   [2XTailCone[102X, for IsPolyhedron 5.2-8 
