@@ -9,7 +9,7 @@ dirs := DirectoriesPackageLibrary( "NConvex", "tst" );
 
 # Until the issue https://github.com/homalg-project/NConvex/issues/5 has been solved
 ex := [];
-if IsPackageLoaded( "majoranaalgebras" ) then
+if IsBound( IsPackageLoaded ) and IsPackageLoaded( "majoranaalgebras" ) then
   ex := [ "nconvex02.tst" ];
 fi;
 
