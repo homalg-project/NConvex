@@ -1,8 +1,8 @@
-
-
-
-
-
+# SPDX-License-Identifier: GPL-2.0-or-later
+# NConvex: A Gap package to perform polyhedral computations
+#
+# Declarations
+#
 
 
 DeclareCategory( "IsCone",

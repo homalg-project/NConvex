@@ -1,8 +1,8 @@
-#
-# NConvex: new version of the Package Convex
+# SPDX-License-Identifier: GPL-2.0-or-later
+# NConvex: A Gap package to perform polyhedral computations
 #
 # Reading the implementation part of the package.
-
+#
 
 ReadPackage( "NConvex", "gap/ConvexObject.gi" );
 ReadPackage( "NConvex", "gap/Fan.gi" );

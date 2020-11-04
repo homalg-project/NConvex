@@ -1,43 +1,32 @@
-#
-# NConvex: new version of the Package Convex
+# SPDX-License-Identifier: GPL-2.0-or-later
+# NConvex: A Gap package to perform polyhedral computations
 #
 # This file is a script which compiles the package manual.
 #
-
-if fail = LoadPackage("AutoDoc", "2016.02.16") then
-    Error("AutoDoc version 2016.02.16 or newer is required.");
+if fail = LoadPackage( "AutoDoc", "2019.05.20" ) then
+    
+    Error( "AutoDoc version 2019.05.20 or newer is required." );
+    
 fi;
 
-AutoDoc( 
-        rec(
-          autodoc := rec( files := [ "doc/intro.autodoc" ] ),
-          #extract_examples := rec( units := "Single" ),
-          scaffold := rec( entities := [ "GAP4", "homalg", "ToricVarieties" ] ),
-
-          ## The following commented code is to include some latex packages that is needed to draw diagrams in tikz.
-          ## It is commented since they may cause error while creating documentation if the latex installation 
-          ## does not provide these packages.
-          ##
-          
-          #?scaffold := rec( entities := [ "GAP4", "homalg", "TroicVarieties" ],
-          #?gapdoc_latex_options := rec(
-          #?LateExtraPreamble := """\usepackage{amsmath}
-          #?\usepackage[T1]{fontenc}
-          #?\usepackage{tikz}
-          #?\usetikzlibrary{shapes,arrows,matrix}
-          #?\usepackage{mathdots}
-          #?\usepackage{cancel}
-          #?\usepackage{color}
-          #?\usepackage{siunitx}
-          #?\usepackage{array}
-          #?\usepackage{multirow}
-          #?\usepackage{amssymb}
-          #?\usepackage{gensymb}
-          #?\usepackage{tabularx}
-          #?\usepackage{booktabs}
-          #?\usetikzlibrary{fadings}""" ) ),
-
-            )
-);
+AutoDoc( rec(
+    autodoc := rec(
+        files := [ "doc/Doc.autodoc" ],
+        scan_dirs := [ "doc", "gap", "examples", "examples/doc" ],
+    ),
+    #extract_examples := rec(
+    #    units := "Single",
+    #),
+    gapdoc := rec(
+        LaTeXOptions := rec(
+            LateExtraPreamble := """
+                \usepackage{mathtools}
+            """,
+        ),
+    ),
+    scaffold := rec(
+        entities := [ "homalg", "CAP" ],
+    ),
+) );
 
 QUIT;
