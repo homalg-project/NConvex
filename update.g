@@ -69,6 +69,9 @@ GeneratePackageYML:=function(pkg)
     
     AppendTo(stream, "name: ", pkg.PackageName, "\n");
     AppendTo(stream, "version: \"", pkg.Version, "\"\n");
+    if IsBound(pkg.License) then
+        AppendTo(stream, "license: \"", pkg.License, "\"\n");
+    fi;
 
     # convert date from DD/MM/YYYY to ISO 8601, i.e. YYYY-MM-DD
     #
@@ -148,6 +151,9 @@ GeneratePackageYML:=function(pkg)
         od;
         AppendTo(stream, "\n");
     fi;
+
+    AppendTo(stream, "pdf: ", pkg.ArchiveURL, ".pdf\n");
+    AppendTo(stream, "\n");
 
     AppendTo(stream, "abstract: |\n");
     for tmp in SplitString(pkg.AbstractHTML,"\n") do
