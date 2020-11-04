@@ -1,4 +1,12 @@
 
+
+
+
+
+
+
+
+
 InstallGlobalFunction( SolveEqualitiesAndInequalitiesOverIntergers,
   function( arg )
     local eq, ineq, eq_and_ineq, nr_cols, signs, P;

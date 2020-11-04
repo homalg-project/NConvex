@@ -1,13 +1,9 @@
-#############################################################################
-##
-##  NPolytope.gi         NConvex package            Sebastian Gutsche
-##                                                  Kamal Saleh
-##
-##  Copyright 2019 Mathematics Faculty, Siegen University, Germany
-##
-##  Fans for NConvex package.
-##
-#############################################################################
+
+
+
+
+
+
 
 
 ####################################

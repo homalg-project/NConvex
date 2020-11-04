@@ -1,13 +1,9 @@
-#############################################################################
-##
-##  NConvexObject.gd         NConvex package        Sebastian Gutsche
-##                                                  Kamal Saleh
-##
-##  Copyright 2019 Mathematics Faculty, Siegen University, Germany
-##
-##  Fans for NConvex package.
-##
-#############################################################################
+
+
+
+
+
+
 
 
 # This field will be used whenever a rationals field is needed in the package.
