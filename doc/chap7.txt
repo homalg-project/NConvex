@@ -1,0 +1,364 @@
+  
+  [1X7 [33X[0;0YPolytopes[133X[101X
+  
+  
+  [1X7.1 [33X[0;0YCreating polytopes[133X[101X
+  
+  [1X7.1-1 PolytopeByInequalities[101X
+  
+  [33X[1;0Y[29X[2XPolytopeByInequalities[102X( [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya Polytope Object[133X
+  
+  [33X[0;0YThe  operation  takes  a  list  [23XL[123X  of  lists  [23X[L_1, L_2, ...][123X where each [23XL_j[123X
+  represents  an  inequality and returns the polytope defined by them (if they
+  define    a    polytope).    For    example    the    [23Xj[123X'th   entry   [23XL_j   =
+  [c_j,a_{j1},a_{j2},...,a_{jn}][123X     corresponds     to     the     inequality
+  [23Xc_j+\sum_{i=1}^n a_{ji}x_i \geq 0[123X.[133X
+  
+  [1X7.1-2 Polytope[101X
+  
+  [33X[1;0Y[29X[2XPolytope[102X( [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya Polytope Object[133X
+  
+  [33X[0;0YThe  operation  takes  the  list  of  the  vertices and returns the polytope
+  defined by them.[133X
+  
+  
+  [1X7.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X7.2-1 ExternalCddPolytope[101X
+  
+  [33X[1;0Y[29X[2XExternalCddPolytope[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CddPolyhedron[133X
+  
+  [33X[0;0YConverts the polytope to a CddPolyhedron. The operations of CddInterface can
+  then be applied on this polyhedron.[133X
+  
+  [1X7.2-2 LatticePoints[101X
+  
+  [33X[1;0Y[29X[2XLatticePoints[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya List[133X
+  
+  [33X[0;0YThe operation returns the list of integer points inside the polytope.[133X
+  
+  [1X7.2-3 RelativeInteriorLatticePoints[101X
+  
+  [33X[1;0Y[29X[2XRelativeInteriorLatticePoints[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya List[133X
+  
+  [33X[0;0YThe operation returns the interior lattice points inside the polytope.[133X
+  
+  [1X7.2-4 VerticesOfPolytope[101X
+  
+  [33X[1;0Y[29X[2XVerticesOfPolytope[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YThe operation returns the vertices of the polytope[133X
+  
+  [1X7.2-5 Vertices[101X
+  
+  [33X[1;0Y[29X[2XVertices[102X( [3XP[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YThe same output as [10XVerticesOfPolytope[110X.[133X
+  
+  [1X7.2-6 DefiningInequalities[101X
+  
+  [33X[1;0Y[29X[2XDefiningInequalities[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YThe  operation  returns  the  defining inequalities of the polytope. I.e., a
+  list  of lists [23X[L_1, L_2, ...][123X where each [23XL_j=[c_j,a_{j1},a_{j2},...,a_{jn}][123X
+  represents  the  inequality  [23Xc_j+\sum_{i=1}^n  a_{ji}x_i \geq 0[123X. If [23XL[123X and [23X-L[123X
+  occur in the output then [23XL[123X is called a defining-equality of the polytope.[133X
+  
+  [1X7.2-7 EqualitiesOfPolytope[101X
+  
+  [33X[1;0Y[29X[2XEqualitiesOfPolytope[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YThe operation returns the defining-equalities of the polytope.[133X
+  
+  [1X7.2-8 FacetInequalities[101X
+  
+  [33X[1;0Y[29X[2XFacetInequalities[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YThe  operation  returns  the  list  of  the inequalities of the facets. Each
+  defining inequality that is not defining-equality of the polytope is a facet
+  inequality.[133X
+  
+  [1X7.2-9 VerticesInFacets[101X
+  
+  [33X[1;0Y[29X[2XVerticesInFacets[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YThe operation returns list of lists [23XL[123X. The entries of each [23XL_j[123X in [23XL[123X consists
+  of  [23X0[123X's  or [23X1[123X's. For instance, if [23XL_j=[1,0,0,1,0,1][123X, then The polytope has [23X6[123X
+  vertices and the vertices of the [23Xj[123X'th facet are [23X\{V_1,V_4,V_6\}[123X.[133X
+  
+  [1X7.2-10 NormalFan[101X
+  
+  [33X[1;0Y[29X[2XNormalFan[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya fan[133X
+  
+  [33X[0;0YThe operation returns the normal fan of the given polytope.[133X
+  
+  [1X7.2-11 FaceFan[101X
+  
+  [33X[1;0Y[29X[2XFaceFan[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya fan[133X
+  
+  [33X[0;0YThe  operation returns the face fan of the given polytope. Remember that the
+  face  fan  of  a  polytope  is  isomorphic  to  the  normal fan of its polar
+  polytope.[133X
+  
+  [1X7.2-12 AffineCone[101X
+  
+  [33X[1;0Y[29X[2XAffineCone[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya cone[133X
+  
+  [33X[0;0YIf  the  ambient space of the polytope is [23X\mathrm{R}^n[123X, then the output is a
+  cone   in   [23X\mathrm{R}^{n+1}[123X.   The   defining   rays   of   the   cone  are
+  [23X{[a_{j1},a_{j2},...,a_{jn},1]}_j[123X such that [23XV_j=[a_{j1},a_{j2},...,a_{jn}][123X is
+  a vertex in the polytope.[133X
+  
+  [1X7.2-13 PolarPolytope[101X
+  
+  [33X[1;0Y[29X[2XPolarPolytope[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya Polytope[133X
+  
+  [33X[0;0YThe operation returns the polar polytope of the given polytope.[133X
+  
+  [1X7.2-14 DualPolytope[101X
+  
+  [33X[1;0Y[29X[2XDualPolytope[102X( [3XP[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya Polytope[133X
+  
+  [33X[0;0YThe operation returns the dual polytope of the given polytope.[133X
+  
+  
+  [1X7.3 [33X[0;0YProperties[133X[101X
+  
+  [1X7.3-1 IsEmpty[101X
+  
+  [33X[1;0Y[29X[2XIsEmpty[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns whether the polytope empty or not[133X
+  
+  [1X7.3-2 IsLatticePolytope[101X
+  
+  [33X[1;0Y[29X[2XIsLatticePolytope[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns whether the polytope is lattice polytope or not.[133X
+  
+  [1X7.3-3 IsVeryAmple[101X
+  
+  [33X[1;0Y[29X[2XIsVeryAmple[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns whether the polytope is very ample or not.[133X
+  
+  [1X7.3-4 IsNormalPolytope[101X
+  
+  [33X[1;0Y[29X[2XIsNormalPolytope[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns whether the polytope is normal or not.[133X
+  
+  [1X7.3-5 IsSimplicial[101X
+  
+  [33X[1;0Y[29X[2XIsSimplicial[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns whether the polytope is simplicial or not.[133X
+  
+  [1X7.3-6 IsSimplexPolytope[101X
+  
+  [33X[1;0Y[29X[2XIsSimplexPolytope[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns whether the polytope is simplex polytope or not.[133X
+  
+  [1X7.3-7 IsSimplePolytope[101X
+  
+  [33X[1;0Y[29X[2XIsSimplePolytope[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns whether the polytope is simple or not.[133X
+  
+  [1X7.3-8 IsReflexive[101X
+  
+  [33X[1;0Y[29X[2XIsReflexive[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns whether the polytope is reflexive or not, i.e., if its dual polytope
+  is lattice polytope.[133X
+  
+  [1X7.3-9 IsFanoPolytope[101X
+  
+  [33X[1;0Y[29X[2XIsFanoPolytope[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0Yreturns  whether  the  polytope  is  Fano  or  not.  Fano polytope is a full
+  dimensional  lattice  polytope  whose vertices are primitive elements in the
+  containing  lattice, i.e., each vertex is not a positive integer multiple of
+  any other lattice element.[133X
+  
+  [1X7.3-10 IsCanonicalFanoPolytope[101X
+  
+  [33X[1;0Y[29X[2XIsCanonicalFanoPolytope[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0Yreturns  whether  the  polytope  is  canonical Fano or not. A canonical Fano
+  polytope  is  a  full  dimensional  lattice polytope whose relative interior
+  contains only one lattice point, namely the origin.[133X
+  
+  [1X7.3-11 IsTerminalFanoPolytope[101X
+  
+  [33X[1;0Y[29X[2XIsTerminalFanoPolytope[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0Yreturns  whether  the  polytope  is  terminal  Fano  or not. A terminal Fano
+  polytope is a full dimensional lattice polytope whose lattice points are its
+  vertices and the origin.[133X
+  
+  [1X7.3-12 IsSmoothFanoPolytope[101X
+  
+  [33X[1;0Y[29X[2XIsSmoothFanoPolytope[102X( [3XP[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya true or false[133X
+  
+  [33X[0;0YReturns  whether  the  polytope  is smooth fano polytope or not, i.e, if the
+  vertices  in  each  facet  form  a  basis for the containing lattice or not.
+  polytope.[133X
+  
+  
+  [1X7.4 [33X[0;0YOperations on polytopes[133X[101X
+  
+  [1X7.4-1 \+[101X
+  
+  [33X[1;0Y[29X[2X\+[102X( [3XP1[103X, [3XP2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya polytope[133X
+  
+  [33X[0;0YThe output is Minkowski sum of the input polytopes.[133X
+  
+  [1X7.4-2 \*[101X
+  
+  [33X[1;0Y[29X[2X\*[102X( [3Xn[103X, [3XP[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya polytope[133X
+  
+  [33X[0;0YThe output is Minkowski sum of the input polytope with itself [23Xn[123X times.[133X
+  
+  [1X7.4-3 IntersectionOfPolytopes[101X
+  
+  [33X[1;0Y[29X[2XIntersectionOfPolytopes[102X( [3XP1[103X, [3XP2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya polytope[133X
+  
+  [33X[0;0YThe output is the intersection of the input polytopes.[133X
+  
+  [1X7.4-4 RandomInteriorPoint[101X
+  
+  [33X[1;0Y[29X[2XRandomInteriorPoint[102X( [3XP[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns a random interior point in the polytope.[133X
+  
+  [1X7.4-5 IsInteriorPoint[101X
+  
+  [33X[1;0Y[29X[2XIsInteriorPoint[102X( [3XM[103X, [3XP[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks if the given point is interior point of the polytope.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XP:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 2 ] ] );[127X[104X
+    [4X[28X<A polytope in |R^3>[128X[104X
+    [4X[25Xgap>[125X [27XIsNormalPolytope( P );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsVeryAmple( P );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XQ:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 1 ] ] );[127X[104X
+    [4X[28X<A polytope in |R^3>[128X[104X
+    [4X[25Xgap>[125X [27XIsNormalPolytope( Q );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsVeryAmple( Q );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ;[127X[104X
+    [4X[28X<A normal very ample polytope in |R^3 with 4 vertices>[128X[104X
+    [4X[25Xgap>[125X [27XT:= Polytope( [ [ 0, 0, 0 ], [ 1, 0, 0 ], [ 0, 1, 0 ], [ 1, 1, 4 ] ] ); [127X[104X
+    [4X[28X<A polytope in |R^3>[128X[104X
+    [4X[25Xgap>[125X [27XI:= Polytope( [ [ 0, 0, 0 ], [ 0, 0, 1 ] ] );[127X[104X
+    [4X[28X<A polytope in |R^3>[128X[104X
+    [4X[25Xgap>[125X [27XJ:= T + I; [127X[104X
+    [4X[28X<A polytope in |R^3>[128X[104X
+    [4X[25Xgap>[125X [27XIsVeryAmple( J );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsNormalPolytope( J );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XJ;[127X[104X
+    [4X[28X<A very ample polytope in |R^3 with 8 vertices>[128X[104X
+    [4X[25Xgap>[125X [27X# Example 2.2.20 Cox, Toric Varieties[127X[104X
+    [4X[25X>[125X [27XA:= [ [1,1,1,0,0,0], [1,1,0,1,0,0], [1,0,1,0,1,0], [ 1,0,0,1,0,1], [127X[104X
+    [4X[25X>[125X [27X[ 1,0,0,0,1,1], [ 0,1,1,0,0,1], [0,1,0,1,1,0], [0,1,0,0,1,1], [127X[104X
+    [4X[25X>[125X [27X[0,0,1,1,1,0], [0,0,1,1,0,1] ];[127X[104X
+    [4X[28X[ [ 1, 1, 1, 0, 0, 0 ], [ 1, 1, 0, 1, 0, 0 ], [ 1, 0, 1, 0, 1, 0 ],[128X[104X
+    [4X[28X[ 1, 0, 0, 1, 0, 1 ], [ 1, 0, 0, 0, 1, 1 ], [ 0, 1, 1, 0, 0, 1 ], [128X[104X
+    [4X[28X [ 0, 1, 0, 1, 1, 0 ], [ 0, 1, 0, 0, 1, 1 ], [ 0, 0, 1, 1, 1, 0 ], [128X[104X
+    [4X[28X[ 0, 0, 1, 1, 0, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XH:= Polytope( A );[127X[104X
+    [4X[28X<A polytope in |R^6>[128X[104X
+    [4X[25Xgap>[125X [27XIsVeryAmple( H );   [127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsNormalPolytope( H );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XH;[127X[104X
+    [4X[28X<A very ample polytope in |R^6 with 10 vertices>[128X[104X
+    [4X[25Xgap>[125X [27Xl:= [ [ 0, 0, 1 ], [ 0, 0, 0 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 0, 1, 0 ], [127X[104X
+    [4X[25X>[125X [27X[ 0, 1, 1 ], [ 1, 1, 4 ], [ 1, 1, 5 ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XP:= Polytope( l );[127X[104X
+    [4X[28X<A polytope in |R^3>[128X[104X
+    [4X[25Xgap>[125X [27XIsNormalPolytope( P );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xlattic_points:= LatticePoints( P );[127X[104X
+    [4X[28X[ [ 0, 0, 0 ], [ 0, 0, 1 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [128X[104X
+    [4X[28X[ 1, 1, 4 ], [ 1, 1, 5 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xu:= Cartesian( lattic_points, lattic_points );;[127X[104X
+    [4X[25Xgap>[125X [27Xk:= Set( List( u, u-> u[1]+u[2] ) );[127X[104X
+    [4X[28X[ [ 0, 0, 0 ], [ 0, 0, 1 ], [ 0, 0, 2 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 0, 1, 2 ],[128X[104X
+    [4X[28X[ 0, 2, 0 ], [ 0, 2, 1 ], [ 0, 2, 2 ], [ 1, 0, 0 ], [ 1, 0, 1 ], [ 1, 0, 2 ], [128X[104X
+    [4X[28X[ 1, 1, 0 ], [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 4 ], [ 1, 1, 5 ], [ 1, 1, 6 ], [128X[104X
+    [4X[28X[ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 2, 6 ], [ 2, 0, 0 ], [ 2, 0, 1 ], [ 2, 0, 2 ], [128X[104X
+    [4X[28X[ 2, 1, 4 ], [ 2, 1, 5 ], [ 2, 1, 6 ], [ 2, 2, 8 ], [ 2, 2, 9 ], [ 2, 2, 10 ] ][128X[104X
+    [4X[25Xgap>[125X [27XQ:= 2*P;[127X[104X
+    [4X[28X<A polytope in |R^3 with 8 vertices>[128X[104X
+    [4X[25Xgap>[125X [27XLatticePoints( Q );[127X[104X
+    [4X[28X[ [ 0, 0, 0 ], [ 0, 0, 1 ], [ 0, 0, 2 ], [ 0, 1, 0 ], [ 0, 1, 1 ], [ 0, 1, 2 ],[128X[104X
+    [4X[28X[ 0, 2, 0 ], [ 0, 2, 1 ], [ 0, 2, 2 ], [ 1, 0, 0 ], [128X[104X
+    [4X[28X  [ 1, 0, 1 ], [ 1, 0, 2 ], [ 1, 1, 0 ], [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 3 ], [128X[104X
+    [4X[28X[ 1, 1, 4 ], [ 1, 1, 5 ], [ 1, 1, 6 ], [ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 2, 6 ], [128X[104X
+    [4X[28X[ 2, 0, 0 ], [ 2, 0, 1 ], [ 2, 0, 2 ], [ 2, 1, 4 ], [128X[104X
+    [4X[28X  [ 2, 1, 5 ], [ 2, 1, 6 ], [ 2, 2, 8 ], [ 2, 2, 9 ], [ 2, 2, 10 ] ][128X[104X
+    [4X[25Xgap>[125X [27XP:= Polytope( [ [ 1, 1 ], [ 1, -1 ], [ -1, 1 ], [ -1, -1 ] ] );[127X[104X
+    [4X[28X<A polytope in |R^2>[128X[104X
+    [4X[25Xgap>[125X [27XQ:= PolarPolytope( P );[127X[104X
+    [4X[28X<A polytope in |R^2>[128X[104X
+    [4X[25Xgap>[125X [27XVertices( Q );[127X[104X
+    [4X[28X[ [ -1, 0 ], [ 0, -1 ], [ 0, 1 ], [ 1, 0 ] ][128X[104X
+    [4X[25Xgap>[125X [27XT := PolarPolytope( Q );[127X[104X
+    [4X[28X<A polytope in |R^2>[128X[104X
+    [4X[25Xgap>[125X [27XVertices( T );[127X[104X
+    [4X[28X[ [ -1, -1 ], [ -1, 1 ], [ 1, -1 ], [ 1, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XP:= Polytope( [ [ 0, 0 ], [ 1, -1], [ -1, 1 ], [ -1, -1 ] ] );[127X[104X
+    [4X[28X<A polytope in |R^2>[128X[104X
+    [4X[25Xgap>[125X [27X# PolarPolytope( P );;[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XP := PolytopeByInequalities( [ [ 0, 0, 1 ], [ 1, -1, -1 ], [ 1, 1, -1 ] ] );[127X[104X
+    [4X[28X<A polytope in |R^2>[128X[104X
+    [4X[25Xgap>[125X [27XVertices( P );[127X[104X
+    [4X[28X[ [ -1, 0 ], [ 0, 1 ], [ 1, 0 ] ][128X[104X
+  [4X[32X[104X
+  

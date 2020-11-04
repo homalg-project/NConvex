@@ -2,114 +2,114 @@
   
   [1XIndex[101X
   
-  [2X\*[102X, for IsInt, IsPolytope 6.4-2 
-  [2X\+[102X, for IsPolytope, IsPolytope 6.4-1 
-  [2XAffineCone[102X, for IsPolytope 6.2-12 
-  [2XAmbientSpaceDimension[102X, for IsCone 3.2-13 
-      for IsConvexObject 2.1-1 
-  [2XBasisOfLinealitySpace[102X, for IsPolyhedron 5.2-11 
-  [2XCone[102X, for IsCddPolyhedron 3.1-4 
-      for IsList 3.1-3 
-  [2XConeByEqualitiesAndInequalities[102X, for IsList, IsList 3.1-2 
-  [2XConeByInequalities[102X, for IsList 3.1-1 
-  [2XContains[102X, for IsCone, IsCone 3.4-4 
-  [2XDefiningInequalities[102X, for IsCone 3.2-1 
-      for IsPolyhedron 5.2-3 
-      for IsPolytope 6.2-6 
-  [2XDimension[102X, for IsConvexObject 2.1-2 
-  [2XDualCone[102X, for IsCone 3.2-3 
-  [2XDualPolytope[102X, for IsPolytope 6.2-14 
-  [2XEqualitiesOfCone[102X, for IsCone 3.2-2 
-  [2XEqualitiesOfPolytope[102X, for IsPolytope 6.2-7 
-  [2XExternalCddCone[102X, for IsCone 3.2-11 
-  [2XExternalCddPolyhedron[102X, for IsPolyhedron 5.2-1 
-  [2XExternalCddPolytope[102X, for IsPolytope 6.2-1 
-  [2XExternalNmzCone[102X, for IsCone 3.2-12 
-  [2XExternalNmzPolyhedron[102X, for IsPolyhedron 5.2-2 
-  [2XFaceFan[102X, for IsPolytope 6.2-11 
-  [2XFacesOfCone[102X, for IsCone 3.2-4 
-  [2XFacetInequalities[102X, for IsPolytope 6.2-8 
-  [2XFacets[102X, for IsCone 3.2-5 
-  [2XFactorGrid[102X, for IsCone 3.2-16 
-  [2XFactorGridMorphism[102X, for IsCone 3.2-17 
-  [2XFan[102X, for IsFan 4.1-1 
-      for IsList 4.1-2 
-      for IsList, IsList 4.1-3 
-  [2XFanFromTriangulation[102X, for IsList 4.1-5 
-  [2XFansFromTriangulation[102X, for IsList 4.1-4 
-  [2XFourierProjection[102X, for IsCone, IsInt 3.4-1 
-  [2XFVector[102X, for IsCone 3.2-6 
-      for IsFan 4.2-5 
-      for IsPolyhedron 5.2-12 
-  [2XGivenRayGenerators[102X, for IsFan 4.2-2 
-  [2XGridGeneratedByCone[102X, for IsCone 3.2-15 
-  [2XGridGeneratedByOrthogonalCone[102X, for IsCone 3.2-18 
-  [2XHilbertBasis[102X, for IsCone 3.2-8 
-  [2XHilbertBasisOfDualCone[102X, for IsCone 3.2-9 
-  [2XInteriorPoint[102X, for IsConvexObject 2.1-4 
-  [2XIntersectionOfCones[102X, for IsCone, IsCone 3.4-2 
-      for IsList 3.4-3 
-  [2XIntersectionOfPolytopes[102X, for IsPolytope, IsPolytope 6.4-3 
-  [2XIsBounded[102X, for IsPolyhedron 5.3-1 
-  [2XIsCanonicalFanoPolytope[102X, for IsPolytope 6.3-10 
-  [2XIsComplete[102X, for IsFan 4.3-2 
-  [2XIsEmpty[102X, for IsPolytope 6.3-1 
-  [2XIsFanoFan[102X, for IsFan 4.3-8 
-  [2XIsFanoPolytope[102X, for IsPolytope 6.3-9 
-  [2XIsFullDimensional[102X, for IsConvexObject 2.1-3 
-  [2XIsInteriorPoint[102X, for IsList,IsPolytope 6.4-5 
-  [2XIsLatticePolytope[102X, for IsPolytope 6.3-2 
-  [2XIsNormalFan[102X, for IsFan 4.3-6 
-  [2XIsNormalPolytope[102X, for IsPolytope 6.3-4 
-  [2XIsPointed[102X, for IsFan 4.3-3 
-      for IsPolyhedron 5.3-2 
-  [2XIsRay[102X, for IsCone 3.3-2 
-  [2XIsReflexive[102X, for IsPolytope 6.3-8 
-  [2XIsRegularCone[102X, for IsCone 3.3-1 
-  [2XIsRegularFan[102X, for IsFan 4.3-7 
-  [2XIsRelativeInteriorRay[102X, for IsList, IsCone 3.4-5 
-  [2XIsSimplePolytope[102X, for IsPolytope 6.3-7 
-  [2XIsSimplexPolytope[102X, for IsPolytope 6.3-6 
-  [2XIsSimplicial[102X, for IsFan 4.3-5 
-      for IsPolytope 6.3-5 
-  [2XIsSmooth[102X, for IsFan 4.3-4 
-  [2XIsSmoothFanoPolytope[102X, for IsPolytope 6.3-12 
-  [2XIsTerminalFanoPolytope[102X, for IsPolytope 6.3-11 
-  [2XIsVeryAmple[102X, for IsPolytope 6.3-3 
-  [2XIsWellDefinedFan[102X, for IsFan 4.3-1 
-  [2XIsZero[102X, for IsCone 3.3-3 
-  [2XLatticePoints[102X, for IsPolytope 6.2-2 
-  [2XLatticePointsGenerators[102X, for IsCone 3.2-14 
-      for IsPolyhedron 5.2-10 
-  [2XLinealitySpaceGenerators[102X, for IsCone 3.2-10 
-  [2XMainPolytope[102X, for IsPolyhedron 5.2-5 
-  [2XMainRatPolytope[102X, for IsPolyhedron 5.2-4 
-  [2XMaximalCones[102X, for IsFan 4.2-4 
-  [2XNonReducedInequalities[102X, for IsCone 3.4-6 
-  [2XNormalFan[102X, for IsPolytope 6.2-10 
-  [2XPolarPolytope[102X, for IsPolytope 6.2-13 
-  [2XPolyhedron[102X, for IsList, IsCone 5.1-3 
-      for IsList, IsList 5.1-5 
-      for IsPolytope, IsCone 5.1-2 
-      for IsPolytope, IsList 5.1-4 
-  [2XPolyhedronByInequalities[102X, for IsList 5.1-1 
-  [2XPolytope[102X, for IsList 6.1-2 
-  [2XPolytopeByInequalities[102X, for IsList 6.1-1 
-  [2XRandomInteriorPoint[102X, for IsPolytope 6.4-4 
-  [2XRayGenerators[102X, for IsFan 4.2-1 
-  [2XRayGeneratorsOfTailCone[102X, for IsPolyhedron 5.2-9 
-  [2XRaysInMaximalCones[102X, for IsFan 4.2-3 
-  [2XRelativeInteriorLatticePoints[102X, for IsPolytope 6.2-3 
-  [2XRelativeInteriorRay[102X, for IsCone 3.2-7 
-  [2XSolveEqualitiesAndInequalitiesOverIntergers[102X 5.5-1 
-  [2XSolveLinearProgram[102X, for IsPolyhedron, IsString, IsList 5.4-1 
-      for IsPolytope, IsString, IsList 5.4-2 
-  [2XTailCone[102X, for IsPolyhedron 5.2-8 
-  [2XVertices[102X, for IsPolytope 6.2-5 
-  [2XVerticesInFacets[102X, for IsPolytope 6.2-9 
-  [2XVerticesOfMainPolytope[102X, for IsPolyhedron 5.2-7 
-  [2XVerticesOfMainRatPolytope[102X, for IsPolyhedron 5.2-6 
-  [2XVerticesOfPolytope[102X, for IsPolytope 6.2-4 
+  [2X\*[102X, for IsInt, IsPolytope 7.4-2 
+  [2X\+[102X, for IsPolytope, IsPolytope 7.4-1 
+  [2XAffineCone[102X, for IsPolytope 7.2-12 
+  [2XAmbientSpaceDimension[102X, for IsCone 4.2-13 
+      for IsConvexObject 3.1-1 
+  [2XBasisOfLinealitySpace[102X, for IsPolyhedron 6.2-11 
+  [2XCone[102X, for IsCddPolyhedron 4.1-4 
+      for IsList 4.1-3 
+  [2XConeByEqualitiesAndInequalities[102X, for IsList, IsList 4.1-2 
+  [2XConeByInequalities[102X, for IsList 4.1-1 
+  [2XContains[102X, for IsCone, IsCone 4.4-4 
+  [2XDefiningInequalities[102X, for IsCone 4.2-1 
+      for IsPolyhedron 6.2-3 
+      for IsPolytope 7.2-6 
+  [2XDimension[102X, for IsConvexObject 3.1-2 
+  [2XDualCone[102X, for IsCone 4.2-3 
+  [2XDualPolytope[102X, for IsPolytope 7.2-14 
+  [2XEqualitiesOfCone[102X, for IsCone 4.2-2 
+  [2XEqualitiesOfPolytope[102X, for IsPolytope 7.2-7 
+  [2XExternalCddCone[102X, for IsCone 4.2-11 
+  [2XExternalCddPolyhedron[102X, for IsPolyhedron 6.2-1 
+  [2XExternalCddPolytope[102X, for IsPolytope 7.2-1 
+  [2XExternalNmzCone[102X, for IsCone 4.2-12 
+  [2XExternalNmzPolyhedron[102X, for IsPolyhedron 6.2-2 
+  [2XFaceFan[102X, for IsPolytope 7.2-11 
+  [2XFacesOfCone[102X, for IsCone 4.2-4 
+  [2XFacetInequalities[102X, for IsPolytope 7.2-8 
+  [2XFacets[102X, for IsCone 4.2-5 
+  [2XFactorGrid[102X, for IsCone 4.2-16 
+  [2XFactorGridMorphism[102X, for IsCone 4.2-17 
+  [2XFan[102X, for IsFan 5.1-1 
+      for IsList 5.1-2 
+      for IsList, IsList 5.1-3 
+  [2XFanFromTriangulation[102X, for IsList 5.1-5 
+  [2XFansFromTriangulation[102X, for IsList 5.1-4 
+  [2XFourierProjection[102X, for IsCone, IsInt 4.4-1 
+  [2XFVector[102X, for IsCone 4.2-6 
+      for IsFan 5.2-5 
+      for IsPolyhedron 6.2-12 
+  [2XGivenRayGenerators[102X, for IsFan 5.2-2 
+  [2XGridGeneratedByCone[102X, for IsCone 4.2-15 
+  [2XGridGeneratedByOrthogonalCone[102X, for IsCone 4.2-18 
+  [2XHilbertBasis[102X, for IsCone 4.2-8 
+  [2XHilbertBasisOfDualCone[102X, for IsCone 4.2-9 
+  [2XInteriorPoint[102X, for IsConvexObject 3.1-4 
+  [2XIntersectionOfCones[102X, for IsCone, IsCone 4.4-2 
+      for IsList 4.4-3 
+  [2XIntersectionOfPolytopes[102X, for IsPolytope, IsPolytope 7.4-3 
+  [2XIsBounded[102X, for IsPolyhedron 6.3-1 
+  [2XIsCanonicalFanoPolytope[102X, for IsPolytope 7.3-10 
+  [2XIsComplete[102X, for IsFan 5.3-2 
+  [2XIsEmpty[102X, for IsPolytope 7.3-1 
+  [2XIsFanoFan[102X, for IsFan 5.3-8 
+  [2XIsFanoPolytope[102X, for IsPolytope 7.3-9 
+  [2XIsFullDimensional[102X, for IsConvexObject 3.1-3 
+  [2XIsInteriorPoint[102X, for IsList,IsPolytope 7.4-5 
+  [2XIsLatticePolytope[102X, for IsPolytope 7.3-2 
+  [2XIsNormalFan[102X, for IsFan 5.3-6 
+  [2XIsNormalPolytope[102X, for IsPolytope 7.3-4 
+  [2XIsPointed[102X, for IsFan 5.3-3 
+      for IsPolyhedron 6.3-2 
+  [2XIsRay[102X, for IsCone 4.3-2 
+  [2XIsReflexive[102X, for IsPolytope 7.3-8 
+  [2XIsRegularCone[102X, for IsCone 4.3-1 
+  [2XIsRegularFan[102X, for IsFan 5.3-7 
+  [2XIsRelativeInteriorRay[102X, for IsList, IsCone 4.4-5 
+  [2XIsSimplePolytope[102X, for IsPolytope 7.3-7 
+  [2XIsSimplexPolytope[102X, for IsPolytope 7.3-6 
+  [2XIsSimplicial[102X, for IsFan 5.3-5 
+      for IsPolytope 7.3-5 
+  [2XIsSmooth[102X, for IsFan 5.3-4 
+  [2XIsSmoothFanoPolytope[102X, for IsPolytope 7.3-12 
+  [2XIsTerminalFanoPolytope[102X, for IsPolytope 7.3-11 
+  [2XIsVeryAmple[102X, for IsPolytope 7.3-3 
+  [2XIsWellDefinedFan[102X, for IsFan 5.3-1 
+  [2XIsZero[102X, for IsCone 4.3-3 
+  [2XLatticePoints[102X, for IsPolytope 7.2-2 
+  [2XLatticePointsGenerators[102X, for IsCone 4.2-14 
+      for IsPolyhedron 6.2-10 
+  [2XLinealitySpaceGenerators[102X, for IsCone 4.2-10 
+  [2XMainPolytope[102X, for IsPolyhedron 6.2-5 
+  [2XMainRatPolytope[102X, for IsPolyhedron 6.2-4 
+  [2XMaximalCones[102X, for IsFan 5.2-4 
+  [2XNonReducedInequalities[102X, for IsCone 4.4-6 
+  [2XNormalFan[102X, for IsPolytope 7.2-10 
+  [2XPolarPolytope[102X, for IsPolytope 7.2-13 
+  [2XPolyhedron[102X, for IsList, IsCone 6.1-3 
+      for IsList, IsList 6.1-5 
+      for IsPolytope, IsCone 6.1-2 
+      for IsPolytope, IsList 6.1-4 
+  [2XPolyhedronByInequalities[102X, for IsList 6.1-1 
+  [2XPolytope[102X, for IsList 7.1-2 
+  [2XPolytopeByInequalities[102X, for IsList 7.1-1 
+  [2XRandomInteriorPoint[102X, for IsPolytope 7.4-4 
+  [2XRayGenerators[102X, for IsFan 5.2-1 
+  [2XRayGeneratorsOfTailCone[102X, for IsPolyhedron 6.2-9 
+  [2XRaysInMaximalCones[102X, for IsFan 5.2-3 
+  [2XRelativeInteriorLatticePoints[102X, for IsPolytope 7.2-3 
+  [2XRelativeInteriorRay[102X, for IsCone 4.2-7 
+  [2XSolveEqualitiesAndInequalitiesOverIntergers[102X 6.5-1 
+  [2XSolveLinearProgram[102X, for IsPolyhedron, IsString, IsList 6.4-1 
+      for IsPolytope, IsString, IsList 6.4-2 
+  [2XTailCone[102X, for IsPolyhedron 6.2-8 
+  [2XVertices[102X, for IsPolytope 7.2-5 
+  [2XVerticesInFacets[102X, for IsPolytope 7.2-9 
+  [2XVerticesOfMainPolytope[102X, for IsPolyhedron 6.2-7 
+  [2XVerticesOfMainRatPolytope[102X, for IsPolyhedron 6.2-6 
+  [2XVerticesOfPolytope[102X, for IsPolytope 7.2-4 
   
   
   -------------------------------------------------------

@@ -1,5 +1,5 @@
-#
-# NConvex: new version of the Package Convex
+# SPDX-License-Identifier: GPL-2.0-or-later
+# NConvex: A Gap package to perform polyhedral computations
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "NConvex",
 Subtitle := "A Gap package to perform polyhedral computations",
-Version := "2020.07.04",
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Version := "2020.11-04",
+Date := "04/11/2020",
+Date := "04/11/2020",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -51,19 +51,19 @@ Persons := [
   )
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName )
+    URL := "https://github.com/homalg-project/NConvex",
 ),
-
-PackageWWWHome := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
-README_URL     := Concatenation( ~.PackageWWWHome, "/README.md" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
-ArchiveFormats := ".tar.gz",
+PackageWWWHome  := "https://homalg-project.github.io/NConvex",
+PackageInfoURL  := "https://homalg-project.github.io/NConvex/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/NConvex/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/NConvex/releases/download/v", ~.Version, "/NConvex-", ~.Version ),
+# END URLS
+
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
@@ -112,5 +112,3 @@ TestFile := "tst/testall.g",
 Keywords := [ "Cone", "Fan", "Polytope", "Polyhedron", "ToricVarieties", "homalg" ],
 
 ));
-
-
