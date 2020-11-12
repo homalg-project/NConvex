@@ -18,6 +18,7 @@ cones, polyhedrons, polytopes and fans. Its has been written to provide the need
 
 <!-- BEGIN FOOTER -->
 ---
+
 ### Dependencies
 
 To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
