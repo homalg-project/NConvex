@@ -27,7 +27,7 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 |--- | ---------- | ------- |
 | 1. | [**homalg_project**](https://github.com/homalg-project/homalg_project#readme) | https://github.com/homalg-project/homalg_project.git |
 | 2. | [**CddInterface**](https://github.com/homalg-project/CddInterface#readme) | https://github.com/homalg-project/CddInterface.git |
-| 3. | [**NormalizInterface**](https://github.com/gap-packages/NormalizInterface#readme) | https://github.com/homalg-project/NormalizInterface.git |
+| 3. | [**NormalizInterface**](https://github.com/gap-packages/NormalizInterface#readme) | https://github.com/gap-packages/NormalizInterface.git |
 
 [html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/NConvex/doc/chap0_mj.html
