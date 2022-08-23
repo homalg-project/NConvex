@@ -1,9 +1,9 @@
 name: NConvex
-version: "2020.11-04"
+version: "2022.08-01"
 license: "GPL-2.0-or-later"
-date: 2020-11-04
+date: 2022-08-23
 description: |
-    A Gap package to perform polyhedral computations
+    Gap package for polyhedral computations
 
 authors:
     - name: Kamal Saleh
@@ -17,7 +17,7 @@ maintainers:
     - name: Sebastian Gutsche
       url: https://sebasguts.github.io/
 
-GAP: ">= 4.9"
+GAP: ">= 4.11.1"
 
 needed-pkgs:
     - name: "AutoDoc"
@@ -25,7 +25,7 @@ needed-pkgs:
       url: "https://gap-packages.github.io/AutoDoc"
     - name: "Modules"
       version: ">= 0.5"
-      url: "https://homalg-project.github.io/homalg_project/Modules"
+      url: "https://homalg-project.github.io/pkg/Modules"
     - name: "CddInterface"
       version: ">= 2020.06.24"
       url: "https://homalg-project.github.io/CddInterface"
@@ -36,21 +36,21 @@ needed-pkgs:
 suggested-pkgs:
     - name: "4ti2Interface"
       version: ">= 2018.07.06"
-      url: "https://homalg-project.github.io/homalg_project/4ti2Interface"
+      url: "https://homalg-project.github.io/pkg/4ti2Interface"
     - name: "TopcomInterface"
       version: ">=2019.06.15"
 
-www: https://homalg-project.github.io/NConvex
+www: https://homalg-project.github.io/pkg/NConvex
 readme: README.md
 packageinfo: https://homalg-project.github.io/NConvex/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/NConvex/releases/download/v2020.11-04/NConvex-2020.11-04.tar.gz
+      url: https://github.com/homalg-project/NConvex/releases/download/v2022.08-01/NConvex-2022.08-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/NConvex/releases/download/v2020.11-04/NConvex-2020.11-04.zip
+      url: https://github.com/homalg-project/NConvex/releases/download/v2022.08-01/NConvex-2022.08-01.zip
 
-pdf: https://github.com/homalg-project/NConvex/releases/download/v2020.11-04/NConvex-2020.11-04.pdf
+pdf: https://github.com/homalg-project/NConvex/releases/download/v2022.08-01/NConvex-2022.08-01.pdf
 
 abstract: |
     The <span class='pkgname'>NConvex</span> package is a GAP package.   Its aim is to carry out polyhedral constructions and computations,  namely computing properties and attributes of cones, polyhedrons, polytopes and fans.
@@ -62,28 +62,29 @@ keywords: |
     Cone, Fan, Polytope, Polyhedron, ToricVarieties, homalg.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>SG20</span>]   <b class='BibAuthor'>Saleh, K. and Gutsche, S.</b>,
-     <i class='BibTitle'>NConvex, A Gap package to perform polyhedral computations,
-             Version 2020.11-04</i>
-     (<span class='BibYear'>2020</span>)<br />
+    [<span class='BibKey'>SG22</span>]   <b class='BibAuthor'>Saleh, K. and Gutsche, S.</b>,
+     <i class='BibTitle'>NConvex, Gap package for polyhedral computations,
+             Version 2022.08-01</i>
+     (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://homalg-project.github.io/NConvex">https://homalg-project.github.io/NConvex</a></span>.
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/NConvex">https://homalg-project.github.io/pkg/NConvex</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ NConvex2020.11-04,
+    @misc{ NConvex2022.08-01,
       author =           {Saleh, K. and Gutsche, S.},
-      title =            {{NConvex},   A   Gap  package  to  perform  polyhedral
-                          computations, {V}ersion 2020.11-04},
-      month =            {Nov},
-      year =             {2020},
+      title =            {{NConvex},  Gap  package  for polyhedral computations,
+                          {V}ersion 2022.08-01},
+      month =            {Aug},
+      year =             {2022},
       note =             {GAP package},
-      howpublished =     {\href       {https://homalg-project.github.io/NConvex}
+      howpublished =     {\href   {https://homalg-project.github.io/pkg/NConvex}
                           {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{NConvex}}},
       keywords =         {Cone;   Fan;   Polytope;  Polyhedron;  ToricVarieties;
                           homalg},
-      printedkey =       {SG20}
+      printedkey =       {SG22}
     }
 
