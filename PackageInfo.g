@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# NConvex: A Gap package to perform polyhedral computations
+# NConvex: Gap package for polyhedral computations
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -9,8 +9,8 @@
 SetPackageInfo( rec(
 
 PackageName := "NConvex",
-Subtitle := "A Gap package to perform polyhedral computations",
-Version := "2020.11-04",
+Subtitle := "Gap package for polyhedral computations",
+Version := "2022.08-01",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
@@ -57,7 +57,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/NConvex",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/NConvex",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/NConvex",
 PackageInfoURL  := "https://homalg-project.github.io/NConvex/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/NConvex/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/NConvex/releases/download/v", ~.Version, "/NConvex-", ~.Version ),
@@ -86,11 +86,11 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "A Gap package to perform polyhedral computations",
+  LongTitle := "Gap package for polyhedral computations",
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.9",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2018.02.14" ],
                            [ "Modules", ">= 0.5" ], 
                            [ "CddInterface", ">= 2020.06.24" ],
