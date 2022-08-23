@@ -7,18 +7,21 @@ on:
       - "*-ci"
   pull_request:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 4 * * *" # after gap-docker(-master) is rebuilt
+  workflow_dispatch:
 
 jobs:
   test:
     strategy:
       matrix:
-        image: [gapsystem/gap-docker, gapsystem/gap-docker-master]
+        image: ["ghcr.io/homalg-project/gap-docker:latest", "ghcr.io/homalg-project/gap-docker-master:latest"]
       fail-fast: false
     runs-on: ubuntu-latest
     container:
       image: ${{ matrix.image }}
     steps:
+      # keep workflow active even if repository has no activity for 60 days (do not execute for pull requests)
+      - run: '[ "$GITHUB_EVENT_NAME" = "pull_request" ] || curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable'
       - uses: actions/checkout@v1
       - run: mkdir -p /home/gap/.gap/pkg/
       - run: sudo cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
@@ -26,22 +29,22 @@ jobs:
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
-          sudo apt update
-          sudo apt install -y texlive-latex-extra
+          cp ./NConvex/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
-          git clone --depth 1 https://github.com/homalg-project/CddInterface.git
-          git clone --depth 1 https://github.com/gap-packages/NormalizInterface.git
+          #git clone --depth 1 https://github.com/homalg-project/CddInterface.git
+          #git clone --depth 1 https://github.com/homalg-project/NormalizInterface.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C NConvex -j $(nproc) --output-sync ci-test
           cp ./NConvex/.codecov.yml ./
-          curl -s https://codecov.io/bash | bash
+          (cd NConvex && LANG=C.UTF-8 python3 process_coverage.py)
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./NConvex/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           cd NConvex
           CUR_SHA=$(git rev-parse --verify HEAD)
-          if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
+          if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
             LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
