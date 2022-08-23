@@ -1,7 +1,7 @@
 <!-- BEGIN HEADER -->
 # NConvex&ensp;<sup><sup>[![View code][code-img]][code-url]</sup></sup>
 
-### A Gap package to perform polyhedral computations
+### Gap package for polyhedral computations
 
 | Documentation | Latest Release | Build Status | Code Coverage |
 | ------------- | -------------- | ------------ | ------------- |
@@ -27,7 +27,7 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 |--- | ---------- | ------- |
 | 1. | [**homalg_project**](https://github.com/homalg-project/homalg_project#readme) | https://github.com/homalg-project/homalg_project.git |
 | 2. | [**CddInterface**](https://github.com/homalg-project/CddInterface#readme) | https://github.com/homalg-project/CddInterface.git |
-| 3. | [**NormalizInterface**](https://github.com/gap-packages/NormalizInterface#readme) | https://github.com/gap-packages/NormalizInterface.git |
+| 3. | [**NormalizInterface**](https://github.com/gap-packages/NormalizInterface#readme) | https://github.com/homalg-project/NormalizInterface.git |
 
 [html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/NConvex/doc/chap0_mj.html
@@ -41,8 +41,8 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 [date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/NConvex/badge_date.json&label=🔗%20released%20on&color=yellow
 [date-url]: https://homalg-project.github.io/NConvex/view_release.html
 
-[tests-img]: https://github.com/homalg-project/NConvex/workflows/Tests/badge.svg?branch=master
-[tests-url]: https://github.com/homalg-project/NConvex/actions?query=workflow%3ATests+branch%3Amaster
+[tests-img]: https://github.com/homalg-project/NConvex/actions/workflows/Tests.yml/badge.svg?branch=master
+[tests-url]: https://github.com/homalg-project/NConvex/actions/workflows/Tests.yml?query=branch%3Amaster
 
 [codecov-img]: https://codecov.io/gh/homalg-project/NConvex/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/NConvex
