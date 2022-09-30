@@ -3,13 +3,13 @@
                                    [1X NConvex [101X
   
   
-                   [1X Gap package for polyhedral computations [101X
+               [1X A Gap package to perform polyhedral computations [101X
   
   
-                                   2022.08-01
+                                   2022.09-01
   
   
-                                 23 August 2022
+                               30 September 2022
   
   
                                   Kamal Saleh
