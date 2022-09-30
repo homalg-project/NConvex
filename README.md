@@ -1,7 +1,7 @@
 <!-- BEGIN HEADER -->
 # NConvex&ensp;<sup><sup>[![View code][code-img]][code-url]</sup></sup>
 
-### Gap package for polyhedral computations
+### A Gap package to perform polyhedral computations
 
 | Documentation | Latest Release | Build Status | Code Coverage |
 | ------------- | -------------- | ------------ | ------------- |
