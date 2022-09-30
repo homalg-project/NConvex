@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# NConvex: Gap package for polyhedral computations
+# NConvex: A Gap package to perform polyhedral computations
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -9,8 +9,8 @@
 SetPackageInfo( rec(
 
 PackageName := "NConvex",
-Subtitle := "Gap package for polyhedral computations",
-Version := "2022.08-01",
+Subtitle := "A Gap package to perform polyhedral computations",
+Version := "2022.09-01",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
@@ -86,7 +86,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Gap package for polyhedral computations",
+  LongTitle := "A Gap package to perform polyhedral computations",
 ),
 
 Dependencies := rec(

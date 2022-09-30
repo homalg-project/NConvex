@@ -82,7 +82,7 @@ InstallMethod( IsComplete,
                [ IsCone ],
                
   function( cone )
-  local rays; 
+  local rays;
   
    if IsPointed( cone ) or not IsFullDimensional( cone ) then
         
@@ -96,11 +96,11 @@ InstallMethod( IsComplete,
   
 end );
 
-##  Let N= Z^{1 \times n}. Then N is free Z-modue. Let r_1,...,r_k \in N be the generating rays of the 
+##  Let N= Z^{1 \times n}. Then N is free Z-modue. Let r_1,...,r_k \in N be the generating rays of the
 ##  cone. Let A= [ r_1,..., r_k ]^T \in Z^{ k \times n }. Let M= N/ Z^{1 \times k}A. Now let B the smith
-## normal form of A. Then B \in Z^{ k \times n } and there exists l<=k, l<=n with B_{i,i} \neq 0 and B_{i-1,i}| B_{i-1,i} for 
-## all 1<i<= l and B_{i,i}=0 for i>l. We have now M= Z/Zb_{1,1} \oplus ... \oplus Z/Zb_{l,l} \oplus Z^{1 \times max{n,k}-l }. 
-## If all B_{i,i}=1 for i<=l, then M= Z^{1 \times max{n,k}-l }. i.e. M is free. Thus there is H \subset N with N= H \oplus Z^{1 \times k}A. 
+## normal form of A. Then B \in Z^{ k \times n } and there exists l<=k, l<=n with B_{i,i} \neq 0 and B_{i-1,i}| B_{i-1,i} for
+## all 1<i<= l and B_{i,i}=0 for i>l. We have now M= Z/Zb_{1,1} \oplus ... \oplus Z/Zb_{l,l} \oplus Z^{1 \times max{n,k}-l }.
+## If all B_{i,i}=1 for i<=l, thenM= Z^{1 \times max{n,k}-l }. i.e. M is free. Thus there is H \subset N with N= H \oplus Z^{1 \times k}A.
 ## ( Corollary 7.55, Advanced modern algebra, J.rotman ).
 ##
 InstallMethod( IsSmooth,
@@ -159,7 +159,7 @@ end );
 ##
 InstallMethod( IsFullDimensional,
                "for cones",
-               [ IsCone ], 
+               [ IsCone ],
   function( cone )
   
   return RankMat( RayGenerators( cone ) ) = AmbientSpaceDimension( cone );
@@ -213,7 +213,7 @@ InstallMethod( DualCone,
     local dual;
     
     if RayGenerators( cone ) = [ ] then
-	dual := ConeByInequalities( [ List( [ 1 .. AmbientSpaceDimension( cone ) ], i -> 0 ) ] );
+        dual := ConeByInequalities( [ List( [ 1 .. AmbientSpaceDimension( cone ) ], i -> 0 ) ] );
     else
         dual := ConeByInequalities( RayGenerators( cone ) );
     fi;
@@ -231,34 +231,33 @@ InstallMethod( DefiningInequalities,
                [ IsCone ],
                
   function( cone )
-  local inequalities, new_inequalities, equalities, i, u; 
+  local inequalities, new_inequalities, equalities, i, u;
   
   inequalities:= ShallowCopy( Cdd_Inequalities( ExternalCddCone( cone ) ) );
   
   equalities:= ShallowCopy( Cdd_Equalities( ExternalCddCone( cone ) ) );
   
-  for i in equalities do 
-  
-       Append( inequalities, [ i,-i ] );
-       
+  for i in equalities do
+    
+    Append( inequalities, [ i,-i ] );
+    
   od;
     
 new_inequalities:= [ ];
     
-  for i in inequalities do 
-  
-       u:= ShallowCopy( i );
-       
-       Remove( u , 1 );
-       
-       Add(new_inequalities, u );
-       
+  for i in inequalities do
+    
+    u:= ShallowCopy( i );
+    
+    Remove( u , 1 );
+    
+    Add(new_inequalities, u );
+    
   od;
   
-  return new_inequalities; 
-    
+  return new_inequalities;
+  
 end );
-
 
 ##
 InstallMethod( FactorConeEmbedding,
@@ -283,7 +282,7 @@ InstallMethod( EqualitiesOfCone,
     
     new_equalities:= [ ];
     
-  for i in equalities do 
+  for i in equalities do
   
        u:= ShallowCopy( i );
        
@@ -324,95 +323,9 @@ InstallMethod( HilbertBasisOfDualCone,
                
   function( cone )
     
-        return HilbertBasis( DualCone( cone ) );
-        
+    return HilbertBasis( DualCone( cone ) );
+    
 end );
-
-## This method is commented since it returns a wrong answer for not-pinted cones
-## C := Cone( [ e1 ] );
-##
-# InstallMethod( HilbertBasisOfDualCone,
-#                "for cone",
-#                [ IsCone ],
-               
-#   function( cone )
-#     local ray_generators, d, i, dim, V, D, max, v, I, b, DpD, d1, d2, Dgens,
-#     zero_element, entry;
-    
-#     ray_generators := RayGenerators( cone );
-    
-#     dim := AmbientSpaceDimension( cone );
-    
-#     max := Maximum( List( Concatenation( ray_generators ), AbsInt ) );
-    
-#     D := [ ]; 
-    
-#     ## This needs to be done smarter
-#     I:= Cartesian( List( [ 1 .. dim ], i -> [ -max .. max ] ) );
-    
-#     for v in I do
-        
-#         if ForAll( ray_generators, i -> i * v >= 0 ) then
-            
-#             Add( D, v );
-            
-#         fi;
-        
-#     od;
-    
-#     DpD := [ ];
-    
-#     for d1 in D do
-        
-#         if d1 * d1 <> 0 then
-            
-#             for d2 in D do
-                
-#                 if d2 * d2 <> 0 then
-                    
-#                     Add( DpD, d1 + d2 );
-                    
-#                 fi;
-                
-#             od;
-            
-#         fi;
-        
-#     od;
-    
-#     Dgens :=  [ ];
-    
-#     for d in D do
-        
-#         if not d in DpD then
-            
-#             Add( Dgens, d );
-            
-#         fi;
-        
-#     od;
-    
-#     if not Dgens = [ ] then
-        
-#         zero_element := ListWithIdenticalEntries( Length( Dgens[ 1 ] ), 0 );
-        
-#         i := Position( Dgens, zero_element );
-        
-#         if i <> fail then
-            
-#             Remove( Dgens, i );
-            
-#         fi;
-        
-#     fi;
-    
-#     entry := ToDoListEntry( [ [ cone, "DualCone" ] ], [ DualCone, cone ], "HilbertBasis", Dgens );
-    
-#     AddToToDoList( entry );
-    
-#     return Dgens;
-    
-# end);
 
 ##
 InstallMethod( AmbientSpaceDimension,
@@ -422,13 +335,13 @@ InstallMethod( AmbientSpaceDimension,
   function( cone )
     
     if Length( RayGenerators( cone ) ) > 0 then
-    
-       return Length( RayGenerators( cone )[ 1 ] );
-    
-    else 
-    
-       return 1;
-       
+      
+      return Length( RayGenerators( cone )[ 1 ] );
+      
+    else
+      
+      return 1;
+      
     fi;
     
 end );
@@ -442,12 +355,12 @@ InstallMethod( Dimension,
     
     if Length( RayGenerators( cone ) ) > 0 then
      
-       return RankMat( RayGenerators( cone ) );
+      return RankMat( RayGenerators( cone ) );
       
-    else 
-    
-       return 0;
-       
+    else
+      
+      return 0;
+      
     fi;
    
     TryNextMethod();
@@ -455,13 +368,13 @@ InstallMethod( Dimension,
 end );
 
 ##
-InstallMethod( Dimension, 
+InstallMethod( Dimension,
                "for cones",
                [ IsCone ],
   function( cone )
- 
-  return Cdd_Dimension( ExternalCddCone( cone ) );
-  
+    
+    return Cdd_Dimension( ExternalCddCone( cone ) );
+    
 end );
 
 ##
@@ -477,24 +390,23 @@ InstallMethod( HilbertBasis,
         Error( "Hilbert basis for not-pointed cones is not yet implemented, you can use the command 'LatticePointsGenerators' " );
         
     fi;
-
-
-    if IsPackageMarkedForLoading( "NormalizInterface", ">=1.1.0" ) then
-
-      return Set( ValueGlobal( "NmzHilbertBasis" )( ExternalNmzCone( cone ) ) );
     
+    if IsPackageMarkedForLoading( "NormalizInterface", ">=1.1.0" ) then
+      
+      return Set( ValueGlobal( "NmzHilbertBasis" )( ExternalNmzCone( cone ) ) );
+      
     elif IsPackageMarkedForLoading( "4ti2Interface", ">=2018.07.06" ) then
       
       ineq := DefiningInequalities( cone );
-
+      
       const := ListWithIdenticalEntries( Length( ineq ), 0 );
-
+      
       return Set( ValueGlobal( "4ti2Interface_zsolve_equalities_and_inequalities" )( [  ], [  ], ineq, const )[ 2 ]: precision := "gmp" );
-
+      
     else
-
+      
       Error( "4ti2Interface or NormalizInterface should be loaded!" );
-
+      
     fi;
   
 end );
@@ -505,8 +417,8 @@ InstallMethod( RaysInFacets,
                [ IsCone ],
                
   function( cone )
-  local external_cone, list_of_facets, generating_rays, list, current_cone, current_list, current_ray_generators, i;  
-  
+  local external_cone, list_of_facets, generating_rays, list, current_cone, current_list, current_ray_generators, i;
+    
     external_cone := Cdd_H_Rep ( ExternalCddCone ( cone ) );
     
     list_of_facets:= Cdd_Facets( external_cone );
@@ -521,18 +433,18 @@ InstallMethod( RaysInFacets,
       
       current_ray_generators := Cdd_GeneratingRays( current_cone ) ;
       
-      current_list:= List( [1..Length( generating_rays )], 
-                           
-                           function(j)
+      current_list:= List( [1..Length( generating_rays )],
+        
+        function(j)
 
-                             if generating_rays[j] in Cone( current_cone ) then
-                                return 1;
-                             else 
-                                return 0;
-                             fi;
-                           
-                           end );
-                           
+          if generating_rays[j] in Cone( current_cone ) then
+             return 1;
+          else
+             return 0;
+          fi;
+        
+        end );
+        
       Add( list, current_list );
       
     od;
@@ -547,7 +459,7 @@ InstallMethod( RaysInFaces,
                [ IsCone ],
                
   function( cone )
-  local external_cone, list_of_faces, generating_rays, list, current_cone, current_list, current_ray_generators, i,j;  
+  local external_cone, list_of_faces, generating_rays, list, current_cone, current_list, current_ray_generators, i,j;
   
     external_cone := Cdd_H_Rep( ExternalCddCone ( cone ) );
     
@@ -565,16 +477,16 @@ InstallMethod( RaysInFaces,
        
         current_ray_generators := Cdd_GeneratingRays( current_cone ) ;
             
-        current_list:= List( [ 1 .. Length( generating_rays ) ], 
+        current_list:= List( [ 1 .. Length( generating_rays ) ],
         
                                 function(j)
 
                                   if generating_rays[j] in Cone( current_cone ) then
-                                        return 1;                        
+                                        return 1;
                                   else
                                         return 0;
                                   fi;
-                                
+
                                 end );
 
         Add( list, current_list );
@@ -619,7 +531,7 @@ InstallMethod( Facets,
         
     od;
     
-    if conelist = [ [ ] ] then 
+    if conelist = [ [ ] ] then
        return [ Cone( [ List( [ 1 .. AmbientSpaceDimension( cone ) ], i->0 ) ] ) ];
     fi;
     
@@ -673,10 +585,10 @@ InstallMethod( FVector,
     local external_cone, faces;
 
     external_cone := Cdd_H_Rep( ExternalCddCone( cone ) );
-  
+
     faces := Cdd_Faces( external_cone );
 
-    return List( [ 1 .. Dimension( cone ) ], 
+    return List( [ 1 .. Dimension( cone ) ],
                 i -> Length( PositionsProperty( faces, face -> face[ 1 ] = i ) ) );
   end );
 
@@ -797,8 +709,8 @@ InstallMethod( FactorGridMorphism,
     
 end );
 
-InstallMethod( LatticePointsGenerators, 
-               [ IsCone ], 
+InstallMethod( LatticePointsGenerators,
+               [ IsCone ],
                
     function( cone )
     local n;
@@ -807,7 +719,7 @@ InstallMethod( LatticePointsGenerators,
     
     return LatticePointsGenerators( Polyhedron( [ List( [ 1 .. n ], i -> 0 ) ], cone ) );
     
-end ); 
+end );
 
 ##
 InstallMethod( StarSubdivisionOfIthMaximalCone,
@@ -818,7 +730,7 @@ InstallMethod( StarSubdivisionOfIthMaximalCone,
     local maxcones, cone, ray, cone2;
     
     maxcones := MaximalCones( fan );
- 
+    
     if Length( maxcones ) < noofcone then
         
         Error( " not enough maximal cones" );
@@ -830,9 +742,9 @@ InstallMethod( StarSubdivisionOfIthMaximalCone,
       Error( " the specified cone is not smooth!" );
 
     fi;
-
+    
     maxcones := List( maxcones, RayGenerators );
-     
+    
     cone := maxcones[ noofcone ];
     
     ray := Sum( cone );
@@ -1130,27 +1042,27 @@ InstallMethod( Contains,
                
   function( ambcone, cone )
     local ineq;
-   
+    
     if HasRayGenerators( ambcone ) and HasRayGenerators( cone ) then
-
+      
       if IsSubset( Set( RayGenerators( ambcone ) ), Set( RayGenerators( cone )  ) ) then
-
+        
         return true;
-
+        
       fi;
-
+    
     fi;
-
+    
     if HasDefiningInequalities( ambcone ) and HasDefiningInequalities( cone ) then
-
+      
       if IsSubset( Set( DefiningInequalities( cone ) ), Set( DefiningInequalities( ambcone )  ) ) then
-
+        
         return true;
-
+        
       fi;
-
+    
     fi;
-
+    
     ineq := NonReducedInequalities( ambcone );
     
     cone := RayGenerators( cone );
@@ -1231,7 +1143,7 @@ InstallMethod( \in,
     ray_generators := RayGenerators( cone );
     
     ##FIXME: One can use homalg for this, but at the moment
-    ##       we do not want the overhead.
+    ##       we donot want the overhead.
     matrix := SolutionMat( ray_generators, raygen );
     
     return ForAll( matrix, i -> i >= 0 );
@@ -1285,11 +1197,11 @@ InstallMethod( ExternalCddCone,
       
    fi;
    
-   if IsBound( cone!.input_rays ) then 
+   if IsBound( cone!.input_rays ) then
    
       list := cone!.input_rays;
       
-      for i in [1..Length( list ) ] do 
+      for i in [1..Length( list ) ] do
           
           u:= ShallowCopy( list[ i ] );
           
@@ -1314,7 +1226,7 @@ InstallMethod( ExternalCddCone,
       
       Append( list, StructuralCopy( cone!.input_inequalities ) );
       
-      for i in [1..Length( list ) ] do 
+      for i in [1..Length( list ) ] do
       
           u:= ShallowCopy( list[ i ] );
           
@@ -1326,11 +1238,11 @@ InstallMethod( ExternalCddCone,
       
       return Cdd_PolyhedronByInequalities( new_list, linearity );
    
-   else 
+   else
    
       list:= StructuralCopy( cone!.input_inequalities );
       
-      for i in [1..Length( list ) ] do 
+      for i in [1..Length( list ) ] do
           
           u:= ShallowCopy( list[ i ] );
           
@@ -1354,7 +1266,7 @@ InstallMethod( ExternalNmzCone,
   
   list:= [];
    
-   if IsBound( cone!.input_rays ) then 
+   if IsBound( cone!.input_rays ) then
    
         list := StructuralCopy( cone!.input_rays );
         
@@ -1513,7 +1425,7 @@ InstallMethod( ConeByGenerators,
         cone, TheTypeConvexCone
      );
       
-     if Length( raylist ) =1 and IsZero( raylist[ 1 ] ) then 
+     if Length( raylist ) =1 and IsZero( raylist[ 1 ] ) then
         
         SetIsZero( cone, true );
         
@@ -1546,21 +1458,21 @@ InstallMethod( Cone,
 
     );
    
-InstallMethod( Cone, 
+InstallMethod( Cone,
               "Construct cone from Cdd cone",
               [ IsCddPolyhedron ],
               
    function( cdd_cone )
-   local inequalities, equalities, 
+   local inequalities, equalities,
          new_inequalities, new_equalities, u, i;
    
-   if cdd_cone!.rep_type = "H-rep" then 
+   if cdd_cone!.rep_type = "H-rep" then
        
            inequalities:= Cdd_Inequalities( cdd_cone );
            
            new_inequalities:= [ ];
            
-           for i in inequalities do 
+           for i in inequalities do
                 
                  u:= ShallowCopy( i );
                 
@@ -1576,7 +1488,7 @@ InstallMethod( Cone,
                  
                  new_equalities:= [ ];
                  
-                 for i in equalities do 
+                 for i in equalities do
                     
                      u:= ShallowCopy( i );
                      
@@ -1592,7 +1504,7 @@ InstallMethod( Cone,
            
            return ConeByInequalities( new_inequalities );
            
-    else 
+    else
     
            return ConeByGenerators( Cdd_GeneratingRays( cdd_cone ) );
            
@@ -1737,3 +1649,4 @@ InstallMethod( Display,
     Print( ".\n" );
     
 end );
+
