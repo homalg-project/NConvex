@@ -7,8 +7,7 @@
 
 
 # This field will be used whenever a rationals field is needed in the package.
-DeclareGlobalVariable( "HOMALG_RATIONALS" );
-InstallValue( HOMALG_RATIONALS, HomalgFieldOfRationals(  ) );
+BindGlobal( "HOMALG_RATIONALS", HomalgFieldOfRationals(  ) );
 
 DeclareCategory( "IsConvexObject", 
                  IsAttributeStoringRep );
