@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "NConvex",
 Subtitle := "A Gap package to perform polyhedral computations",
-Version := "2022.09-01",
-Date := "30/09/2022",
-Date := "30/09/2022",
+Version := "2024.12-01",
+Date := "28/12/2024",
+Date := "28/12/2024",
 License := "GPL-2.0-or-later",
 
 Persons := [

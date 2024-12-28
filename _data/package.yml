@@ -1,7 +1,7 @@
 name: NConvex
-version: "2022.09-01"
+version: "2024.12-01"
 license: "GPL-2.0-or-later"
-date: 2022-09-30
+date: 2024-12-28
 description: |
     A Gap package to perform polyhedral computations
 
@@ -46,11 +46,11 @@ packageinfo: https://homalg-project.github.io/NConvex/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/NConvex/releases/download/v2022.09-01/NConvex-2022.09-01.tar.gz
+      url: https://github.com/homalg-project/NConvex/releases/download/v2024.12-01/NConvex-2024.12-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/NConvex/releases/download/v2022.09-01/NConvex-2022.09-01.zip
+      url: https://github.com/homalg-project/NConvex/releases/download/v2024.12-01/NConvex-2024.12-01.zip
 
-pdf: https://github.com/homalg-project/NConvex/releases/download/v2022.09-01/NConvex-2022.09-01.pdf
+pdf: https://github.com/homalg-project/NConvex/releases/download/v2024.12-01/NConvex-2024.12-01.pdf
 
 abstract: |
     The <span class='pkgname'>NConvex</span> package is a GAP package.   Its aim is to carry out polyhedral constructions and computations,  namely computing properties and attributes of cones, polyhedrons, polytopes and fans.
@@ -62,29 +62,29 @@ keywords: |
     Cone, Fan, Polytope, Polyhedron, ToricVarieties, homalg.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>SG22</span>]   <b class='BibAuthor'>Saleh, K. and Gutsche, S.</b>,
+    [<span class='BibKey'>SG24</span>]   <b class='BibAuthor'>Saleh, K. and Gutsche, S.</b>,
      <i class='BibTitle'>NConvex, A Gap package to perform polyhedral computations,
-             Version 2022.09-01</i>
-     (<span class='BibYear'>2022</span>)<br />
+             Version 2024.12-01</i>
+     (<span class='BibYear'>2024</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/NConvex">https://homalg-project.github.io/pkg/NConvex</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ NConvex2022.09-01,
+    @misc{ NConvex,
       author =           {Saleh, K. and Gutsche, S.},
       title =            {{NConvex},   A   Gap  package  to  perform  polyhedral
-                          computations, {V}ersion 2022.09-01},
-      month =            {Sep},
-      year =             {2022},
+                          computations, {V}ersion 2024.12\texttt{\symbol{45}}01},
+      month =            {Dec},
+      year =             {2024},
       note =             {GAP package},
       howpublished =     {\href   {https://homalg-project.github.io/pkg/NConvex}
-                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{NConvex}}},
       keywords =         {Cone;   Fan;   Polytope;  Polyhedron;  ToricVarieties;
                           homalg},
-      printedkey =       {SG22}
+      printedkey =       {SG24}
     }
 
