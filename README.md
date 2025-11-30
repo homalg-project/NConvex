@@ -8,8 +8,6 @@
 | [![HTML stable documentation][html-img]][html-url] [![PDF stable documentation][pdf-img]][pdf-url] | [![version][version-img]][version-url] [![date][date-img]][date-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
 <!-- END HEADER -->
-[![Build Status](https://travis-ci.com/homalg-project/NConvex.svg?branch=master)](https://travis-ci.com/homalg-project/NConvex)
-[![Code Coverage](https://codecov.io/github/homalg-project/NConvex/coverage.svg?branch=master&token=)](https://codecov.io/gh/homalg-project/NConvex)
 
 Introduction
 ------------
