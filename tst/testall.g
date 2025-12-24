@@ -4,16 +4,8 @@
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
 #
-
-# Until the issue https://github.com/homalg-project/NConvex/issues/5 has been solved
-exclude := [];
-if IsBound( IsPackageLoaded ) and IsPackageLoaded( "majoranaalgebras" ) then
-  exclude := [ "nconvex02.tst" ];
-fi;
-
 options := rec(
     exitGAP := true,
-    exclude := exclude,
     testOptions := rec(
         compareFunction := "uptowhitespace",
     ),
