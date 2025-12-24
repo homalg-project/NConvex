@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "NConvex",
 Subtitle := "A Gap package to perform polyhedral computations",
-Version := "2025.12-01",
+Version := "2025.12-02",
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -90,8 +90,8 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
-  NeededOtherPackages := [ [ "AutoDoc", ">= 2018.02.14" ],
+  GAP := ">= 4.13.0",
+  NeededOtherPackages := [ [ "AutoDoc", ">= 2025.12.19" ],
                            [ "Modules", ">= 0.5" ], 
                            [ "CddInterface", ">= 2020.06.24" ],
                            [ "NormalizInterface", ">= 1.1.0"  ]
