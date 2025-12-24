@@ -15,18 +15,6 @@ The [NConvex](https://homalg-project.github.io/NConvex) package is a GAP package
 cones, polyhedrons, polytopes and fans. Its has been written to provide the needed tools for the package [ToricVarieties](https://github.com/homalg-project/ToricVarieties_project/tree/master/ToricVarieties).
 
 <!-- BEGIN FOOTER -->
----
-
-### Dependencies
-
-To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
-
-|    | Repository | git URL |
-|--- | ---------- | ------- |
-| 1. | [**homalg_project**](https://github.com/homalg-project/homalg_project#readme) | https://github.com/homalg-project/homalg_project.git |
-| 2. | [**CddInterface**](https://github.com/homalg-project/CddInterface#readme) | https://github.com/homalg-project/CddInterface.git |
-| 3. | [**NormalizInterface**](https://github.com/gap-packages/NormalizInterface#readme) | https://github.com/gap-packages/NormalizInterface.git |
-
 [html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/NConvex/doc/chap0_mj.html
 
@@ -43,7 +31,7 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 [tests-url]: https://github.com/homalg-project/NConvex/actions/workflows/Tests.yml?query=branch%3Amaster
 
 [codecov-img]: https://codecov.io/gh/homalg-project/NConvex/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/homalg-project/NConvex
+[codecov-url]: https://app.codecov.io/gh/homalg-project/NConvex
 
 [code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
 [code-url]: https://github.com/homalg-project/NConvex#top
